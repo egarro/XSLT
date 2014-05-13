@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<form formPrefix="CIMX" charityName="012" presentationStyle="grouped">
+    <remoteserver>http://www.ingenierialibra.com/</remoteserver>
+    <requireditemcolor>#FFCDAD</requireditemcolor>
+    <optionalitemcolor>#A6FEFF</optionalitemcolor>
+    <leftFormMargin>20.0</leftFormMargin>
+    <rightFormMargin>0.0</rightFormMargin>
+    <pageWidth>900.0</pageWidth>
+    <theme id="DOG">NONE</theme>
+    
+    
+    <page name="firstPage">
+        <bgcolor>#eeeeee</bgcolor>
+        <leftPageMargin>100.0</leftPageMargin>
+        <rightPageMargin>100.0</rightPageMargin>  
+        <group name="header">
+            <item name="group0Spacer" type="spacerBlock" required="NO">
+                <position>upper_right</position>
+                <sizeY>30</sizeY>
+            </item>
+            <item name="logo" type="zipImage">
+                <path>CIMX_Logo.png</path>
+                <position>upper_right</position>
+                <width>280.0</width>
+                <height>80.0</height> 
+            </item>
+            <item name="headerTitle" type="label" bleeds="YES">
+                <text language="EN_US">Acuerdo de Apoyo Continuo</text>
+                <textColor>#333333</textColor>
+                <textSize>25.0</textSize>
+                <position>upper_left</position>
+            </item> 
+            <item name="_internalFormId" type="TextField" editable="NO">
+                <size>250</size>
+                <label encoding="base64">TsO6bWVybyBkZSBSZWZlcmVuY2lhOg==</label>
+                <placeholder>US012</placeholder>
+                <position>upper_left</position>
+            </item>
+        </group>
+    </page>
+    
+    <page name="secondPage">
+        <bgcolor>#cccccc</bgcolor>
+        <leftPageMargin>20.0</leftPageMargin>
+        <rightPageMargin>20.0</rightPageMargin> 
+        <group name="firstSection" number="1" title="DETALLES DEL DONADOR">
+            <item name="gender" type="radioControl" multiple="NO" required="YES">
+                <size>620</size>
+                <columns>2</columns>
+                <tag value="M">Masculino</tag>
+                <tag value="F">Femenino</tag>       
+                <label>Sexo</label>
+                <onmissing>
+                    <message language="EN_US">Por favor, seleccione su sexo.</message>
+                    <message language="FR_CA">Por favor, seleccione su sexo.</message>
+                </onmissing>
+            </item>
+            <item name="group10Spacer" type="spacerBlock" required="NO">
+                <sizeY>5</sizeY>
+            </item>  
+            <item name="title" type="radioControl" multiple="NO" required="YES">
+                <size>620</size>
+                <columns>3</columns>
+                <tag value="Sr.">Sr.</tag>
+                <tag value="Sra.">Sra.</tag>
+                <tag value="Srta.">Srta.</tag>
+                <tag value="Dr.">Dr.</tag> 
+                <tag value="Otro">Otro</tag>
+                <label encoding="base64">VMOtdHVsbw==</label>
+                <onmissing>
+                    <message encoding="base64">UG9yIGZhdm9yLCBzZWxlY2Npb25lIHN1IHTDrXR1bG8u</message>
+                    <message language="EN_US">Por favor, seleccione su sexo.</message>
+                </onmissing>
+            </item>
+            <item name="otherTitle" type="textField" isHidden="YES" required="YES">
+                <size>150</size>
+                <maxlength>4</maxlength>
+                <submitName>title</submitName>
+                <placeholder>Otro</placeholder>
+                <validation>lettersOnly</validation>
+                <onmissing>
+                    <message encoding="base64">UG9yIGZhdm9yLCBpbmRpcXVlIHN1IHTDrXR1bG8u</message>
+                    <message langauge="ES_MX">Will this work?</message>
+                    <message language="EN_CA" encoding="base64">UG9yIGZhdm9yLCBpbmRpcXVlIHN1IHTDrXR1bG8u</message>
+                </onmissing>
+            </item>  
+            <item name="group10Spacer" type="spacerBlock" required="NO">
+                <sizeY>10</sizeY>
+            </item>
+            <item name="birthDate" type="dateField" required="YES">
+                <label>Fecha de Nacimiento</label>
+                <formatting>dd/mm/yyyy</formatting>
+                <size>620</size><textSize>26.0</textSize>
+                <prefix>birth</prefix>
+                <minAgeRestriction>21</minAgeRestriction>
+                <maxAgeRestriction>76</maxAgeRestriction>
+                <onmissing>
+                    <message>Por favor, seleccione su fecha de nacimiento.</message>
+                </onmissing>
+            </item>  
+            <item name="firstName" type="textField" required="YES">
+                <size>620</size><textSize>26.0</textSize>
+                <placeholder>Nombre</placeholder>
+                <validation>names</validation>
+                <maxlength>20</maxlength>
+                <onmissing>
+                    <message>Por favor, no olvide su nombre.</message>
+                </onmissing>    
+            </item>
+            <item name="lastName" type="textField" required="YES">
+                <size>620</size><textSize>26.0</textSize>
+                <placeholder>Apellido</placeholder>
+                <validation>names</validation>
+                <maxlength>20</maxlength>
+                <onmissing>
+                    <message>Por favor, no olvide su apellido.</message>
+                </onmissing>
+            </item>
+            <item name="suffix" type="textField" required="NO">
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <placeholder>Sufijo</placeholder>
+                <validation>names</validation>
+                <maxlength>10</maxlength>
+            </item>
+			<item name="citizenship" type="radioControl" multiple="NO" required="YES">
+                <size>150</size>
+                <columns>1</columns>
+                <tag value="me">MEXICO</tag>
+				<defaultValue>me</defaultValue>
+                <label encoding="base64">Q2l1ZGFkYW7DrWE=</label>
+            </item>
+            <item name="address1" type="addressField" required="YES">
+                <size>630</size>
+				<textSize>26.0</textSize>
+                <country>MEX</country>
+                <desiredCountryCode>MEXICO</desiredCountryCode>
+            </item> 
+            <item name="phone1" type="textField" required="phone1||phone2">
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <placeholder encoding="base64">VGVsw6lmb25vIGRlIENhc2E=</placeholder>
+                <validation>usphonenumber</validation>
+            </item>
+            <item name="phone2" type="textField" required="phone1||phone2">
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <placeholder encoding="base64">VGVsw6lmb25vIENlbHVsYXI=</placeholder>
+                <validation>numericOnly</validation>
+            </item>
+            <item name="emailRequired" type="emailPinger" submitAlerts="YES" mustValidate="NO">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <submitName>email</submitName>
+                <label encoding="base64">UGFyYSByZWNpYmlyIHN1IGNvbmZpcm1hY2nDs24gcG9yIGNvcnJlbyBlbGVjdHLDs25pY28geSBwYXJhIGNvcnJlc3BvbmRlbmNpYSBmdXR1cmE6</label>
+            </item>
+        </group>
+    </page>
+    
+    <page name="thirdPage">
+        <bgcolor>#aaaaaa</bgcolor>
+        <group name="secondSection" number="2" title="CONTRIBUCION CONTINUA">
+            <item name="image2Spacer" type="spacerBlock" required="NO">
+                <sizeY>10</sizeY>
+            </item>
+            <item name="charityAddress" type="label" bleeds="YES">
+                <text encoding="base64">TWUgZ3VzdGFyw61hIGhhY2VyIGRvbmFjaW9uZXMgbWVuc3VhbG1lbnRlIGE6</text>
+                <textColor>#333333</textColor>
+                <textSize>14.0</textSize>
+            </item>
+            <item name="logo" type="zipImage">
+                <path>CIMX_Logo.png</path>
+                <width>330.0</width>
+                <height>100.0</height> 
+            </item>
+            <item name="charityId" type="textField" required="YES" editable="NO">
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <placeholder>012</placeholder>
+                <defaultValue>012</defaultValue>
+                <label encoding="base64">TsO6bWVybyBkZSBCZW5lZmljZW5jaWE6</label>
+            </item>
+			<item name="childCountry" type="dropDown" required="YES">
+                <option value="Emergency">LISTA DE EMERGENCIA</option>
+                <!-- <option value="Chile">CHILE</option> -->
+                <option value="Colombia">COLOMBIA</option>
+                <option value="Dominican Republic">REPUBLICA DOMINICANA</option>
+                <option value="Ecuador">ECUADOR</option>
+                <option value="Guatemala">GUATEMALA</option>
+                <option value="Honduras">HONDURAS</option>
+                <option value="Mexico">MEXICO</option>
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <label encoding="base64">UGHDrXMgZGVsIG5pw7FvOg==</label>
+            </item>
+            <item name="childGender" type="radioControl" multiple="NO" required="YES">
+                <size>620</size>
+                <columns>3</columns>
+                <tag value="M">Masculino</tag>
+                <tag value="F">Femenino</tag>
+                <tag value="E">Sin preferencia</tag>
+                <label encoding="base64">U2V4byBkZWwgbmnDsW86</label>
+            </item>
+            <item name="_creditFrequency" type="radioControl" multiple="NO" required="YES">
+                <size>310</size>
+                <columns>1</columns>
+                <tag value="1">Mensual</tag>
+                <label>Recurrencia:</label>
+            </item>
+            <item name="_amount" type="textField" required="YES" editable="NO">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <label>Cada pago por un total de Mex$</label>
+                <placeholder>Cantidad</placeholder>
+            </item>
+            <item name="group3Spacer" type="spacerBlock" required="NO">
+                <sizeY>10</sizeY>
+            </item>
+            <item name="sign1" type="signatureBox" required="YES">
+                <position>center</position>
+                <width>200.0</width>
+                <height>100.0</height> 
+                <label>Iniciales del Donador</label>
+                <detailLabel encoding="base64">RW50aWVuZG8gcXVlIG1pcyBkb25hY2lvbmVzIGNvbnRpbnVhcsOhbiBoYXN0YSBxdWUgeW8gbm90aWZpcXVlIGEgbGEgb3JnYW5pemFjacOzbiBub21icmFkYSBhbnRlcmlvcm1lbnRlIGRlIGN1YWxxdWllciBjYW1iaW8u</detailLabel>
+            </item>
+        </group>
+    </page>    
+    
+    <page name="fourthPage">
+        <bgcolor>#888888</bgcolor>
+        <group name="thirdSection" number="3" title="METODO DE PAGO REGULAR">
+            <item name="methodOfCollection" type="radioControl" multiple="NO" required="YES">
+                <size>620</size>
+                <columns>2</columns>
+                <tag value="3">Tarjeta de credito</tag>
+                <label>Pago con:</label>
+                <defaultValue>3</defaultValue>
+            </item>
+        </group>
+        
+        <group name="creditCardInfo">
+            <item name="_creditCardType" type="dropDown" required="YES">
+                <option value="Visa">Visa</option>
+                <option value="Mastercard">MasterCard</option>
+                <option value="AmericanExpress">American Express</option>
+                <option value="DiscoverNovus">Discover (Novus)</option>
+                <option value="DinersClub">Diners Club</option>
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <label>Tipo de Tarjeta:</label>
+            </item>
+            <item name="_creditCardNumber" type="textField" required="YES">
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <placeholder encoding="base64">TsO6bWVybyBkZSBUYXJqZXRh</placeholder>
+                <validation>creditcard</validation>
+                <action>linksTo::_creditCardType</action>
+            </item>
+            <item name="repeatCreditCardNumber" type="textField" required="YES">
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <placeholder encoding="base64">UmVwaXRhIE7Dum1lcm8gZGUgVGFyamV0YQ==</placeholder>
+                <validation>creditcard</validation>
+            </item>
+            <item name="creditCardPic" type="localImage">
+                <path>cvv_3_es.jpg</path>
+                <width>620.0</width>
+                <height>410.0</height> 
+            </item>
+            <item name="code" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder encoding="base64">Q8OzZGlnbyBkZSBWZXJpZmljYWNpw7Nu</placeholder>
+                <validation>numericOnly</validation>
+                <maxlength>3</maxlength>
+                <minlength>3</minlength>
+            </item>
+            <item name="expDate" type="dateField" required="YES">
+                <label encoding="base64">RmVjaGEgZGUgRXhwaXJhY2nDs24=</label>
+                <formatting>mm/AA</formatting>
+                <size>620</size>
+                <prefix>_creditCardExp</prefix>
+                <minYearRestriction>0</minYearRestriction>
+                <maxYearRestriction>+10</maxYearRestriction>
+            </item>  
+            <item name="copyAddress" type="checkbox" required="NO">
+                <detailLabel encoding="base64">TGEgZGlyZWNjacOzbiBwb3N0YWwgZXMgbGEgbWlzbWEgcXVlIGxhIGRpcmVjY2nDs24gZGVsIGRvbmFkb3Iu</detailLabel>
+            </item>
+            <item name="_creditFirstName" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>Nombre del tarjetahabiente</placeholder>
+                <validation>letters</validation>
+            </item>
+            <item name="_creditLastName" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>Apellido del tarjetahabiente</placeholder>
+                <validation>letters</validation>
+            </item>
+            <item name="_creditAddress" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder encoding="base64">RGlyZWNjacOzbiBkZWwgVGFyamV0YWhhYmllbnRl</placeholder>
+                <validation>alphanumeric</validation>
+            </item>
+            <item name="_creditCity" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>Ciudad</placeholder>
+                <validation>letters</validation>
+            </item>
+            <item name="_creditStateProv" type="dropDown" isHidden="NO" required="YES">
+                <option value="AG">Aguascalientes</option>
+				<option value="BN">Baja California</option>
+				<option value="BS">Baja California Sur</option>
+				<option value="CH">Chihuahua</option>
+				<option value="CL">Colima</option>
+				<option value="CM">Campeche</option>
+				<option value="CA">Coahuila</option>
+				<option value="CP">Chiapas</option>
+				<option value="DF">Distrito Federal</option>
+				<option value="DU">Durango</option>
+				<option value="GR">Guerrero</option>
+				<option value="GJ">Guanajuato</option>
+				<option value="HG">Hidalgo</option>
+				<option value="JA">Jalisco</option>
+				<option value="MC">Michoacan</option>
+				<option value="MR">Morelos</option>
+				<option value="MX">Edo. Mexico</option>
+				<option value="NA">Nayarit</option>
+				<option value="NL">Nuevo Leon</option>
+				<option value="OA">Oaxaca</option>
+				<option value="PU">Puebla</option>
+				<option value="QR">Quintana Roo</option>
+				<option value="QE">Queretaro</option>
+				<option value="SI">Sinaloa</option>
+				<option value="SL">San Luis Potosi</option>
+				<option value="SO">Sonora</option>
+				<option value="TB">Tabasco</option>
+				<option value="TL">Tlaxcala</option>
+				<option value="TM">Tamaulipas</option>
+				<option value="VE">Veracruz</option>
+				<option value="YU">Yucatan</option>
+				<option value="ZA">Zacatecas</option>
+                <size>620</size>
+            </item> 
+            <item name="_creditPostalCode" type="textField" required="YES">
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <placeholder encoding="base64">Q8OzZGlnbyBQb3N0YWw=</placeholder>
+                <validation>numeric</validation>
+            </item> 
+			<item name="_creditNameOnCard" type="textField" required="YES">
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <placeholder>Nombre como aparece en la tarjeta</placeholder>
+                <validation>names</validation>
+                <submitName>_creditNameOnCard</submitName>
+            </item>  
+			<item name="withdrawalDateCard" type="radioControl" multiple="NO" required="YES">
+                <size>310</size>
+                <columns>1</columns>
+                <tag value="5">5 del mes</tag>
+                <tag value="12">12 del mes</tag>
+                <tag value="19">19 del mes</tag>
+                <tag value="26">26 del mes</tag>
+                <label>Fecha de Pago:</label>
+				<submitName>withdrawalDate</submitName>
+            </item>  
+            <item name="sign2card" type="signatureBox" bleeds="YES" required="YES">
+                <position>center</position>
+                <width>250.0</width>
+                <height>80.0</height> 
+                <submitName>sign2</submitName>
+                <label encoding="base64">RmlybWUgYXF1w606</label>
+                <detailLabel>Firma del tarjetahabiente</detailLabel>
+            </item>
+            <item name="cardPrintBank" type="multilineLabel" required="NO" bleeds="YES">
+                <size>620</size>
+                <sizeY>120</sizeY>
+                <numberOfLines>6</numberOfLines>
+                <textColor>#111111</textColor>
+                <textSize>14.0</textSize>
+                <bgcolor>clear</bgcolor>
+                <text encoding="base64">VMOpcm1pbm9zIGRlIGFjdWVyZG86IEF1dG9yaXpvIHF1ZSBsYSBjYW50aWRhZCBhcnJpYmEgc2VhIHBhZ2FkYSBhIENoaWxkcmVuIEludGVybmF0aW9uYWwgY29uIG1lIHRhcmpldGEgZGUgY3LDqWRpdG8gY2FkYSBtZXMgY29tbyBoYSBzaWRvIGluZGljYWRvIGFycmliYSBoYXN0YSBudWV2byBhdmlzby4gU2kgcG9yIGFsZ3VuYSByYXrDs24gZGVjaWRvIHN1c3BlbmRlIG1pcyBjb250cmlidWNpb25lcywgcHVlZG8gaGFjZXJsbyBzb2xpY2l0w6FuZG9sbyBwb3IgZXNjcml0byBvIHBvciB0ZWzDqWZvbm8gcG9yIGxvIG1lbm9zIDEwIGTDrWFzIGFudGVzIGRlIGxhIGZlY2hhIGRlIHBhZ28uIENvbnN0YW5jaWEgZGUgY2FkYSBwYWdvIGFwYXJlY2Vyw6EgZW4gbWkgZXh0cmFjdG8gbWVuc3VhbCBkZSB0YXJqZXRhIGRlIGNyw6lkaXRvIG8gY3VlbnRhIGNvcnJpZW50ZSwgeSBlc3RhIHNlcnZpcsOhIGNvbW8gcmVjaWJvLg==</text>
+            </item>
+        </group>
+    </page>
+    
+    <page name="fifthPage">
+        <bgcolor>#666666</bgcolor>
+        <group name="Signature" isHidden="NO">
+	        <item name="fifthHeaderLabel" type="label" bleeds="YES">
+                <text language="EN_US">FIRMA</text>
+                <textColor>#333333</textColor>
+                <textSize>20.0</textSize>
+            </item>
+            <item name="sign3" type="signatureBox" bleeds="YES" required="YES">
+                <position>center</position>
+                <width>250.0</width>
+                <height>120.0</height> 
+                <label>Me comprometo:</label>
+                <detailLabel encoding="base64">RW50aWVuZG8gcXVlIG1pIGNvbnRyaWJ1Y2nDs24gc2Vyw6EgbWVuc3VhbC4gRWwgRG9uYWRvciBhdXRvcml6YSBlc3RhcyBjb250cmlidWNpb25lcyBtZW5zdWFsZXMgeSBjb25maXJtYSBsb3MgZGV0YWxsZXMgZGUgcGFnby4=</detailLabel>
+            </item>
+            <item name="_formSignDate" type="dateField" required="YES" editable="NO">
+                <label>Fecha del acuerdo:</label>
+                <formatting>mm/dd/aaaa</formatting>
+                <size>620</size>
+                <unix>YES</unix>
+                <defaultDate>today</defaultDate>
+            </item>
+        </group>
+        <group name="officeUse" isHidden="NO">
+            <item name="officeUseTitle" type="label" bleeds="YES">
+                <text language="EN_US">*** PARA USO EXCLUSIVO DE LA OFICINA ***</text>
+                <textColor>#333333</textColor>
+                <textSize>25.0</textSize>
+                <position>upper_left</position>
+            </item> 
+            <item name="fundraisingMethod" type="dropDown" required="YES">
+                <option value="1">01 - Puerta a Puerta</option>
+                <option value="3">03 - Calle/Ambulante</option>
+                <option value="10">10 - Centro Comercial/Evento Especial</option>
+                <size>620</size><textSize>26.0</textSize>
+                <label encoding="base64">TcOpdG9kbyBkZSByZWNhdWRhY2nDs246</label>
+            </item>
+            <item name="officeId" type="textField" required="NO" editable="NO">
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <label>ID de la Oficina:</label>
+            </item>
+            <item name="repId" type="textField" required="NO" editable="NO">
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <label>ID del Representante:</label>
+            </item>
+            <item name="repName" type="textField" required="NO" editable="NO">
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <label>Nombre del Representante:</label>
+            </item>
+            <item name="fundraiserState" type="dropDown" required="YES" enabled="YES">
+				<option value="MX">Distrito Federal</option>
+                <size>620</size>
+				<textSize>26.0</textSize>
+				<defaultValue>DF</defaultValue>
+                <label encoding="base64">RXN0YWRvIGRvbmRlIHNlIGxsZXbDsyBhIGNhYm8gZXN0ZSBjb250cmF0byBkZSBiZW5lZmljZW5jaWE6</label>
+            </item>
+            <item name="fundraiserCity" type="dropDown" required="YES">
+				<option value="Mexico City">Ciudad de Mexico</option>
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <label encoding="base64">Q2l1ZGFkIGRvbmRlIHNlIGxsZXbDsyBhIGNhYm8gZXN0ZSBjb250cmF0byBkZSBiZW5lZmljZW5jaWE6</label>
+            </item>
+            <item name="location" type="textField" required="NO">
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <label>Lugar:</label>
+                <placeholder>Lugar</placeholder>
+				<validation>names</validation>
+            </item>
+            <item name="filRef" type="textField" required="NO">
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <label>FIL Ref:</label>
+                <placeholder>FIL Ref</placeholder>
+            </item>
+        </group>
+    </page>
+	<page name="sixthPage">
+        <bgcolor>#444444</bgcolor>
+        <group name="finalSignature" isHidden="NO">
+            <item name="finePrint" type="multilineLabel" required="NO" bleeds="YES">
+                <size>640</size>
+                <sizeY>160</sizeY>
+                <position>center_left</position>
+                <numberOfLines>7</numberOfLines>
+                <textColor>#111111</textColor>
+                <textSize>16.0</textSize>
+                <bgcolor>transparent</bgcolor>
+                <align>center</align>
+                <text encoding="base64">RXN0ZSByZWNhdWRhZG9yIGRlIGZvbmRvcyBlcyB1biB2ZW5kZWRvciBwcm9mZXNpb25hbCByZW11bmVyYWRvLiBUb2RhcyBsYXMgY29udHJpYnVjaW9uZXMgY29sZWN0YWRhcyBwb3IgZXN0ZSBtZWRpbyBzZXLDoW4gZW50cmVnYWRhcyBhIENoaWxkcmVuIEludGVybmF0aW9uYWwuIFBvciBjYWRhIGNvbnRyaWJ1Y2nDs24gcHJvY2VzYWRhLCBsYSBlbXByZXNhIEZ1bmRyYWlzaW5nIEluaXRpYXRpdmVzIHkgZXN0ZSByZWNhdWRhZG9yIHJlbXVuZXJhZG8gcmVjaWJpcsOhbiB1biBob25vcmFyaW8gZGUgZm9uZG9zIGRlbCBwcmVzdXB1ZXN0byBwYXJhIHJlY2F1ZGFjacOzbiBkZSBmb25kb3MgZGVsIGHDsW8gcHJldmlvLiBEZWJpZG8gYSBxdWUgZXN0ZSBwcm9ncmFtYSBlcyBmYWN0dXJhZG8gYSBDaGlsZHJlbiBJbnRlcm5hdGlvbmFsIHNlZ8O6biBzdSByZW5kaW1pZW50bywgRnVuZHJhaXNpbmcgSW5pdGlhdGl2ZXMgZ2FyYW50aXphIHVuIDAlIGRlIGluZ3Jlc29zIGEgQ2hpbGRyZW4gSW50ZXJuYXRpb25hbCBwb3IgbWVkaW8gZGUgZXN0ZSBwcm9ncmFtYS4=</text>
+            </item>
+            <item name="group5Spacer" type="spacerBlock" required="NO">
+                <sizeY>170</sizeY>
+            </item>
+            <item name="sign4" type="signatureBox" bleeds="YES" required="YES">
+                <position>center</position>
+                <width>200.0</width>
+                <height>80.0</height> 
+                <label>Firma de compromiso:</label>
+                <detailLabel encoding="base64">UG9yIGZhdm9yLCBmaXJtZSBhcXXDrSBwYXJhIGNvbmZpcm1hciBzdSBjb21wcm9taXNvLg==</detailLabel>
+            </item>
+        </group> 
+        
+  		<group name="finalRemarks" isHidden="NO">
+            <item name="finePrint" type="multilineLabel" required="NO" bleeds="YES">
+                <size>640</size>
+                <sizeY>180</sizeY>
+                <position>center_left</position>
+                <numberOfLines>7</numberOfLines>
+                <textColor>#111111</textColor>
+                <textSize>20.0</textSize>
+                <bgcolor>clear</bgcolor>
+                <align>center</align>
+                <text>Gracias por su apoyo
+	
+	01-800-557-5599
+	
+	www.children.org</text>
+            </item>
+            <item name="group5Spacer" type="spacerBlock" required="NO">
+                <sizeY>180</sizeY>
+            </item>
+            <item name="confirmationCode" type="textField" required="YES">
+                <size>620</size>
+				<textSize>26.0</textSize>
+                <placeholder encoding="base64">Q8OzZGlnbyBkZSBDb25maXJtYWNpw7Nu</placeholder>
+            </item>
+        </group>
+    </page>
+    
+    <relationships>
+        
+        <relationship object="item::_creditAddress">
+            <condition>copyAddress == "YES"</condition>
+            <if>
+                <copy>address1::add1,add2,add3</copy>
+            </if>
+            <else>
+                <text> </text>
+            </else>   
+        </relationship>
+        
+        <relationship object="item::_creditCity">
+            <condition>copyAddress == "YES"</condition>
+            <if>
+                <copy>address1::city</copy>
+            </if>
+            <else>
+                <text> </text>
+            </else>   
+        </relationship>
+        
+        <relationship object="item::_creditStateProv">
+            <condition>copyAddress == "YES"</condition>
+            <if>
+                <copy>address1::state</copy>
+            </if>
+        </relationship>
+        
+        <relationship object="item::_creditPostalCode">
+            <condition>copyAddress == "YES"</condition>
+            <if>
+                <copy>address1::zip</copy>
+            </if>
+            <else>
+                <text> </text>
+            </else>   
+        </relationship>
+        
+        <relationship object="item::_creditFirstName">
+            <condition>copyAddress == "YES"</condition>
+            <if>
+                <copy>firstName</copy>
+            </if>
+            <else>
+                <text></text>
+            </else>   
+        </relationship>
+
+        <relationship object="item::_creditLastName">
+            <condition>copyAddress == "YES"</condition>
+            <if>
+                <copy>lastName</copy>
+            </if>
+            <else>
+                <text></text>
+            </else>   
+        </relationship>
+
+        <relationship object="item::otherTitle">
+            <condition>title == "OTRO"</condition>
+            <if>
+                <show>THIS</show>
+            </if>
+            <else>
+                <hide>THIS</hide>
+            </else>   
+        </relationship>
+        
+        <relationship object="item::title">
+            <condition>title == "OTRO"</condition>
+            <if>
+                <skip>THIS</skip>
+            </if>
+            <else>
+                <submit>THIS</submit>
+            </else>   
+        </relationship>
+        
+        <relationship object="item::code">
+            <condition>_creditCardType == "AmericanExpress"</condition>
+            <if>
+                <maxlength>4</maxlength>
+            </if>
+            <else>
+                <maxlength>3</maxlength>
+            </else>   
+        </relationship>
+        
+        <relationship object="item::code">
+            <condition>_creditCardType == "AmericanExpress"</condition>
+            <if>
+                <minlength>4</minlength>
+            </if>
+            <else>
+                <minlength>3</minlength>
+            </else>   
+        </relationship>
+        
+        
+        <relationship object="item::_creditCardNumber">
+            <condition>_creditCardType == "Visa" OR _creditCardType == "Mastercard"</condition>
+            <if>
+                <maxlength>19</maxlength>
+            </if>   
+        </relationship>
+        
+        <relationship object="item::_creditCardNumber">
+            <condition>_creditCardType == "Visa" OR _creditCardType == "Mastercard"</condition>
+            <if>
+                <minlength>16</minlength>
+            </if>   
+        </relationship>
+        
+        <relationship object="item::_creditCardNumber">
+            <condition>_creditCardType == "AmericanExpress"</condition>
+            <if>
+                <maxlength>15</maxlength>
+            </if>   
+        </relationship>
+        
+        <relationship object="item::_creditCardNumber">
+            <condition>_creditCardType == "AmericanExpress"</condition>
+            <if>
+                <minlength>15</minlength>
+            </if>   
+        </relationship>
+        
+        <relationship object="item::_creditCardNumber">
+            <condition>_creditCardType == "DiscoverNovus" OR _creditCardType == "DinersClub"</condition>
+            <if>
+                <maxlength>16</maxlength>
+            </if>   
+        </relationship>
+        
+        <relationship object="item::_creditCardNumber">
+            <condition>_creditCardType == "DiscoverNovus" OR _creditCardType == "DinersClub"</condition>
+            <if>
+                <minlength>14</minlength>
+            </if>   
+        </relationship>
+        
+        <relationship object="item::_amount">
+            <condition>_creditFrequency == "1"</condition>
+            <if>
+                <text>220</text>
+            </if>
+        </relationship>
+                
+		<relationship object="item::fundraiserCity">
+            <condition>fundraiserState == "DF"</condition>
+            <if>
+				<option value="Mexico City">Ciudad de Mexico</option>
+            </if>
+        </relationship>
+        
+    </relationships>
+</form>

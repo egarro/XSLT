@@ -1,0 +1,473 @@
+<html xmlns:saxon="http://saxon.sf.net/">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>WWF Form</title>
+      <link rel="stylesheet" type="text/css" href="css/HTMLForm.css"><script src="js/HTMLForm.js"></script><script src="js/jquery-2.1.1.js"></script></head>
+   <body>
+      <form action="submit.php" method="post" onsubmit="return submitForm(this);">
+         <div class="HTMLForm">
+            <div class="HTMLPage" id="firstPage" name="firstPage">
+               <div class="HTMLGroup" id="firstSection" name="firstSection">
+                  <h3></h3>
+                  <div class="MMspacerBlock"><br></div>
+                  <div class="MMzipImage"><img src="images/WWF/WWF_Logo.png"></div>
+                  <div class="MMimagePicker">
+                     <div class="ITEMLabel">Please choose an animal to adopt:</div>
+                     <li><input type="radio" name="animals" id="animals1" value="1"><label for="animals1"><img src="images/WWF/tiger.jpeg"></label></li>
+                     <li><input type="radio" name="animals" id="animals2" value="2"><label for="animals2"><img src="images/WWF/elephant.jpeg"></label></li>
+                     <li><input type="radio" name="animals" id="animals3" value="3"><label for="animals3"><img src="images/WWF/snowleopard.jpeg"></label></li>
+                     <li><input type="radio" name="animals" id="animals4" value="4"><label for="animals4"><img src="images/WWF/gorilla.jpeg"></label></li>
+                  </div>
+                  <div class="MMinfoButton"><button type="button" onclick="javascript:openInfoPanelWithText(this,'SW1hZ2VJRDogMjMzMjA2DQpUaXRsZTogU25vdyBsZW9wYXJkIHdpdGggY3ViIA0KQ2FwdGlvbjog U25vdyBsZW9wYXJkIHdpdGggY3ViIChQYW50aGVyYSB1bmNpYSkNCkNvcHlyaWdodDogqSBEYXZp ZCBMYXdzb24gLyBXV0YtVUsNCkRhdGUgb2YgUGhvdG86IA0KUmVzdHJpY3Rpb25zOgkgR2VuZXJh bCBSZXN0cmljdGlvbnMgYXBwbHkNCg0KSW1hZ2VJRDogMjMzMjk5DQpUaXRsZTogQXNpYW4gZWxl cGhhbnQgDQpDYXB0aW9uOiBBc2lhbiBlbGVwaGFudCAoRWxlcGhhcyBtYXhpbXVzKQ0KQ29weXJp Z2h0OiCpIERhdmlkIExhd3NvbiAvIFdXRi1VSw0KRGF0ZSBvZiBQaG90bzogDQpSZXN0cmljdGlv bnM6CSBHZW5lcmFsIFJlc3RyaWN0aW9ucyBhcHBseQ0KDQpJbWFnZUlEOiAyNTc4MTANClRpdGxl OiBCZW5nYWwgdGlnZXIsIEJhbmRoYXZnYXJoIE5hdGlvbmFsIFBhcmssIE1hZGh5YSBQcmFkZXNo LCBJbmRpYQ0KQ2FwdGlvbjogQmVuZ2FsIHRpZ2VyIChQYW50aGVyYSB0aWdyaXMgdGlncmlzKSBw b3J0cmFpdCBvZiBhIDE5LW1vbnRoIG1hbGUuIEJhbmRoYXZnYXJoIE5hdGlvbmFsIFBhcmssIE1h ZGh5YSBQcmFkZXNoLCBJbmRpYS4gDQpDb3B5cmlnaHQ6IKkgbmF0dXJlcGwuY29tIC8gQW5kcmV3 IFBhcmtpbnNvbiAvIFdXRi1DYW5vbg0KRGF0ZSBvZiBQaG90bzogDQpSZXN0cmljdGlvbnM6CSBO byBNZXJjaGFuZGlzaW5nIFVzZQ0KDQpJbWFnZUlEOiA1MTE0Mw0KVGl0bGU6IE1vdW50YWluIGdv cmlsbGEgKEdvcmlsbGEgYmVyaW5nZWkgYmVyaW5nZWkpOyBVZ2FuZGENCkNhcHRpb246IEdvcmls bGEgZ29yaWxsYSBiZXJpbmdlaSBNb3VudGFpbiBnb3JpbGxhIFlvdW5nIHBsYXlpbmcgRm91bmQg dGhyb3VnaG91dCBDb25nbywgUndhbmRhLCBVZ2FuZGEgUHJvamVjdCBudW1iZXI6IFJXMDAwNg0K Q29weXJpZ2h0OiCpIE1hcnRpbiBIYXJ2ZXkgLyBXV0YtQ2Fub24NCkRhdGUgb2YgUGhvdG86IA0K UmVzdHJpY3Rpb25zOgkgR2VuZXJhbCBSZXN0cmljdGlvbnMgYXBwbHkNCg0KQ2xlYXJlZCBmb3Ig R2xvYmFsIHVzZQ0KT25seSBmb3IgYXV0aG9yaXplZCB1c2UgaW4gdGhlIGNvbnRleHQgb2YgcG9z aXRpdmVseSBwcm9tb3RpbmcgV1dGLiBQaG90byBjcmVkaXQgaXMgbWFuZGF0b3J5Lg0KTm90ZXM6 IA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQpUZXJtcyBhbmQgQ29uZGl0aW9ucyBmb3IgSW1h Z2UgVXNlDQpCeSBkb3dubG9hZGluZyB0aGUgYWJvdmUgZGVzY3JpYmVkIGltYWdlIGZyb20gdGhl IFdXRiBHbG9iYWwgUGhvdG8gTmV0d29yayAoR1BOKSwgYm90aCB0aGUgR1BOJ3MgVGVybXMgb2Yg VXNlIGFuZCB0aGUgbGVnYWwgcmVxdWlyZW1lbnRzIHN0YXRlZCBpbiB0aGUgQ29weXJpZ2h0ICYg Q3JlZGl0cyBndWlkZWxpbmVzIGhhdmUgYmVlbiBhY2NlcHRlZCBieSB0aGUgYWJvdmUgaWRlbnRp ZmllZCB1c2VyLg0KUGVybWlzc2lvbiB0byBkb3dubG9hZCB0aGlzIGltYWdlIGhhcyBiZWVuIGdp dmVuIG9uIHRoZSBjb25kaXRpb24gdGhhdCB0aGUgaW1hZ2Ugc2hhbGwgb25seSBiZSB1c2VkIG9u Y2UgLSBhbmQgb25seSBmb3IgdGhlIHNwZWNpZmljIHB1cnBvc2Ugc3RhdGVkIGFib3ZlISBBbnkg c3Vic2VxdWVudCB1c2UsIHdoaWNoIGhhcyBub3QgYmVlbiBleHBsaWNpdGx5IGF1dGhvcml6ZWQg YnkgV1dGIGFuZCB0aGUgcGhvdG9ncmFwaGVyIGNvbmNlcm5lZCwgaXMgZm9yYmlkZGVuISAoVGhp cyBpbmNsdWRlcyB0aGUgc3RvcmFnZSBvZiB0aGUgaW1hZ2Ugb24gYW55IG1lZGlhIGZvciBhbnkg cHVycG9zZSBvdGhlciB0aGFuIHRoZSBhYm92ZSBzdGF0ZWQgdXNlIGFuZCBiZXlvbmQgdGhlIG5l Y2Vzc2FyeSBwcm9kdWN0aW9uIHBlcmlvZC4gU28gbm8gYnVpbGRpbmcgb2YgJ29mZmxpbmUgYXJj aGl2ZXMnIHdpdGggZG93bmxvYWRlZCBpbWFnZXMgb3Igc3RvcmluZyB0aGUgaW1hZ2UgLSBvciBj b3BpZXMgb2YgaXQgLSBvbiBDRC1ST00gZm9yIGxhdGVyIHJlLXVzZSEgQW55IHN1YnNlcXVlbnQg dXNlIG9mIHRoZSBpbWFnZSB3aWxsIHJlcXVpcmUgYSBmcmVzaCBkb3dubG9hZCBmcm9tIHRoZSBH UE4gd2l0aCBhIGZyZXNobHkgY29tcGxldGVkIGRvd25sb2FkIHJlcXVlc3QgZm9ybSEpDQpJdCBp cyBhbHNvIHVuZGVyc3Rvb2QgdGhhdCB0aGUgaW1hZ2UgLSBvciBhbnkgY29weSBvZiBpdCAtIG1h eSBub3QgYmUgZ2l2ZW4gdG8gYW55IHRoaXJkIHBhcnR5IGJleW9uZCB0aGUgbmVlZCBmb3IgdGhl IGFib3ZlIHN0YXRlZCB1c2UuIEluIHBhcnRpY3VsYXIgdGhlIGltYWdlIG1heSBub3QsIHVuZGVy IGFueSBjaXJjdW1zdGFuY2VzLCBiZSB1c2VkIGZvciBhbnkgY29tbWVyY2lhbCB1c2Ugb3V0c2lk ZSBhIGNsZWFybHkgZGVmaW5lZCBhbmQgcHJldmlvdXNseSBhdXRob3JpemVkIFdXRiBjb250ZXh0 Lg0KQW55IGJyZWFjaCBvZiB0aGVzZSBjb25kaXRpb25zIHdpbGwgYmUgY29uc2lkZXJlZCBhIHNl dmVyZSB2aW9sYXRpb24gb2YgdGhlIFRlcm1zIG9mIFVzZSBhbmQgb2YgY29weXJpZ2h0IGxhdywg Zm9yIHdoaWNoIHRoZSBhYm92ZSB1c2VyIHdpbGwgYmVhciBmdWxsIGxlZ2FsIHJlc3BvbnNpYmls aXR5LiBJbiBjYXNlIG9mIGRvdWJ0IHBsZWFzZSBjb250YWN0IHRoZSBHUE4gdGVhbSENClBob3Rv LWNyZWRpdHMgYXJlIG1hbmRhdG9yeSEgRXZlcnkgcHVibGlzaGVkIGltYWdlIG11c3QgYmUgYWNj b21wYW5pZWQgYnkgYSBwcm9wZXJseSBmb3JtYXR0ZWQgaW5kaXZpZHVhbCBwaG90by1jcmVkaXQg LSBleGFjdGx5IGFzIGluZGljYXRlZCBhYm92ZS4gKENhcHRpb24gYW5kIGNyZWRpdCBpbmZvcm1h dGlvbiBpcyBhbHNvIGF2YWlsYWJsZSBmcm9tIHRoZSBJUFRDIGZpbGUgaW5mbyBlbWJlZGRlZCBp biB0aGUgZG93bmxvYWRlZCBpbWFnZS4pDQpQcm9vZiBjb3BpZXMgb2YgdGhlIHB1YmxpY2F0aW9u IG11c3QgYmUgcHJvdmlkZWQuIEZvciBtb3JlIGluZm9ybWF0aW9uIHBsZWFzZSBzZWUgdGhlIGlu Zm9ybWF0aW9uIG9uIHRoZSBHUE4gc2l0ZS4NCg0KVGhlIEdQTiBUZWFt');">Image Credits</button></div>
+                  <div class="MMdateField"><input type="text" data-role="date" data-inline="true" size="50" name="batchNo"></div>
+                  <div class="MMtextField">
+                     <div class="ITEMLabel">Membership/Adoption:</div><input type="text" size="50" name="membOrAdopt" placeholder="02-Adoption"></div>
+                  <div class="MMdropDown">
+                     <div class="ITEMLabel">FIL Number:</div><select name="fil">
+                        <option value="77">77</option></select></div>
+                  <div class="MMtextField">
+                     <div class="ITEMLabel">Office Code:</div><input type="text" size="50" name="officeCode" placeholder="Office use only"></div>
+                  <div class="MMtextField">
+                     <div class="ITEMLabel">License:</div><input type="text" size="50" name="licence1" placeholder="License" validation="lettersOnly"></div>
+                  <div class="MMtextField">
+                     <div class="ITEMLabel">Reference Number:</div><input type="text" size="50" name="_internalFormId" placeholder="UK221"></div>
+               </div>
+               <div class="HTMLGroup" id="firstSection2" name="firstSection2">
+                  <h3></h3>
+                  <div class="MMtextField">
+                     <div class="ITEMLabel">URN:</div><input type="text" size="50" name="URN" placeholder="URN"></div>
+                  <div class="MMtextField">
+                     <div class="ITEMLabel">Fundraiser ID:</div><input type="text" size="50" name="repId" submitName="fundraiserId" placeholder="Recruiter ID"></div>
+                  <div class="MMtextField">
+                     <div class="ITEMLabel">Location Code:</div><input type="text" size="50" name="locationCode" placeholder="Location Code"></div>
+                  <div class="MMtextField">
+                     <div class="ITEMLabel">Fundraiser Name:</div><input type="text" size="50" name="repName" placeholder="Fundraiser Name"></div>
+                  <div class="MMdropDown">
+                     <div class="ITEMLabel">Method of Recruitment:</div><select name="fundraisingMethod">
+                        <option value="01">01 - House to House</option>
+                        <option value="10">10 - Private Sites</option></select></div>
+               </div>
+               <div class="HTMLGroup" id="supporterInfo" name="supporterInfo">
+                  <h3>SUPPORTER DETAILS</h3>
+                  <div class="MMradioControl">
+                     <div class="ITEMLabel">Gender</div>
+                     <li><input type="radio" name="gender" id="gender1" value="M"><label for="gender1">Male</label></li>
+                     <li><input type="radio" name="gender" id="gender2" value="F"><label for="gender2">Female</label></li>
+                  </div>
+                  <div class="MMspacerBlock"><br></div>
+                  <div class="MMradioControl">
+                     <div class="ITEMLabel">Title</div>
+                     <li><input type="radio" name="title" id="title1" value="Mr"><label for="title1">Mr</label></li>
+                     <li><input type="radio" name="title" id="title2" value="Dr"><label for="title2">Dr</label></li>
+                     <li><input type="radio" name="title" id="title3" value="other"><label for="title3">Other</label></li>
+                  </div>
+                  <div style="display:none;" class="MMradioControl">
+                     <div class="ITEMLabel">Title</div>
+                     <li><input type="radio" name="title" id="title1" value="Mrs"><label for="title1">Mrs</label></li>
+                     <li><input type="radio" name="title" id="title2" value="Ms"><label for="title2">Ms</label></li>
+                     <li><input type="radio" name="title" id="title3" value="Miss"><label for="title3">Miss</label></li>
+                     <li><input type="radio" name="title" id="title4" value="Dr"><label for="title4">Dr</label></li>
+                     <li><input type="radio" name="title" id="title5" value="other"><label for="title5">Other</label></li>
+                  </div>
+                  <div style="display:none;" class="MMtextField"><input type="text" size="50" name="otherTitleM" submitName="title" placeholder="Other" validation="lettersOnly"></div>
+                  <div style="display:none;" class="MMtextField"><input type="text" size="50" name="otherTitleF" submitName="title" placeholder="Other" validation="lettersOnly"></div>
+                  <div class="MMspacerBlock"><br></div>
+                  <div class="MMtextField"><input type="text" size="50" name="firstName" placeholder="First Name" validation="names"></div>
+                  <div class="MMtextField"><input type="text" size="50" name="lastName" placeholder="Last Name" validation="names"></div>
+                  <div class="MMaddressField">
+                     <div name="address1"><input type="text" size="50" validation="lettersNumeric" name="address1" placeholder="Address Line 1" maxlength="50"><br><input type="text" size="50" validation="lettersNumeric" name="address2" placeholder="Address Line 2" maxlength="50"><br><input type="text" size="50" validation="lettersNumeric" name="address3" placeholder="Address Line 3" maxlength="50"><br><input type="text" size="50" validation="names" placeholder="City" name="city" maxlength="25"><br><input type="text" size="50" validation="ukPostalCode" placeholder="Postal Code" maxlength="8" name="postalCode"><br><input type="text" size="50" validation="names" placeholder="County" name="stateProv" maxlength="25"><br><div class="countryName">United Kingdom</div><button type="button" onclick="javascript:validateAddress('address1','POSTCODE')">
+                           Validate address
+                           </button></div>
+                  </div>
+                  <div class="MMdateField">
+                     <div class="ITEMLabel">Date of birth</div><input type="text" data-role="date" data-inline="true" size="50" name="birthDate"></div>
+                  <div class="MMspacerBlock"><br></div>
+                  <div class="MMlabel">By providing any phone number you are consenting to being contacted by phone call.</div>
+                  <div class="MMtextField"><input type="text" size="50" name="phone1" placeholder="Landline" validation="intlphonenumber"></div>
+                  <div class="MMradioControl">
+                     <li><input type="radio" name="timeOfDayPhone1" id="timeOfDayPhone11" value="1"><label for="timeOfDayPhone11">AM</label></li>
+                     <li><input type="radio" name="timeOfDayPhone1" id="timeOfDayPhone12" value="2"><label for="timeOfDayPhone12">Mid-day</label></li>
+                     <li><input type="radio" name="timeOfDayPhone1" id="timeOfDayPhone13" value="3"><label for="timeOfDayPhone13">Evening</label></li>
+                  </div>
+                  <div class="MMspacerBlock"><br></div>
+                  <div class="MMlabel">By providing your mobile details you are consenting to receiving SMS contact from
+                     WWF-UK.
+                  </div>
+                  <div class="MMtextField"><input type="text" size="50" name="phone2" placeholder="Mobile" validation="intlphonenumber"></div>
+                  <div class="MMradioControl">
+                     <li><input type="radio" name="timeOfDayPhone2" id="timeOfDayPhone21" value="1"><label for="timeOfDayPhone21">AM</label></li>
+                     <li><input type="radio" name="timeOfDayPhone2" id="timeOfDayPhone22" value="2"><label for="timeOfDayPhone22">Mid-day</label></li>
+                     <li><input type="radio" name="timeOfDayPhone2" id="timeOfDayPhone23" value="3"><label for="timeOfDayPhone23">Evening</label></li>
+                  </div>
+                  <div class="MMspacerBlock"><br></div>
+                  <div class="MMlabel">By providing your email address you are consenting to being contacted by email.</div>
+                  <div class="MMtextField"><input type="text" size="50" name="email" placeholder="Email" validation="email"></div>
+                  <div class="MMspacerBlock"><br></div>
+                  <div class="MMsignatureBox">
+                     <div class="ITEMLabel">Please initial here.</div><a href="javascript:openSignaturePanel(this);"><img src="images/emptysignature.png"></a></div>
+               </div>
+            </div>
+            <div class="HTMLPage" id="thirdPage" name="thirdPage">
+               <div class="HTMLGroup" id="secondSection" name="secondSection">
+                  <h3>ADOPT</h3>
+                  <div class="MMspacerBlock"><br></div>
+                  <div class="MMradioControl">
+                     <div class="ITEMLabel">Please Choose Gift Option Sponsor 1:</div>
+                     <li><input type="radio" name="sponsor1Gift" id="sponsor1Gift1" value="1"><label for="sponsor1Gift1">I would like to adopt an animal</label></li>
+                     <li><input type="radio" name="sponsor1Gift" id="sponsor1Gift2" value="2"><label for="sponsor1Gift2">I would like to gift the adoption of an animal</label></li>
+                  </div>
+                  <div class="MMdropDown"><select name="sponsor1Animal1" style="display:none;">
+                        <option value=""></option></select></div>
+               </div>
+               <div class="HTMLGroup" style="display:none;" id="giftSupporterInfo1" name="giftSupporterInfo1">
+                  <h3>Sponsor 1 - Gift this adoption to:</h3>
+                  <div class="MMradioControl">
+                     <div class="ITEMLabel">Gender</div>
+                     <li><input type="radio" name="sponsor1Gender" id="sponsor1Gender1" value="M"><label for="sponsor1Gender1">Male</label></li>
+                     <li><input type="radio" name="sponsor1Gender" id="sponsor1Gender2" value="F"><label for="sponsor1Gender2">Female</label></li>
+                  </div>
+                  <div class="MMspacerBlock"><br></div>
+                  <div class="MMradioControl">
+                     <div class="ITEMLabel">Title</div>
+                     <li><input type="radio" name="sponsor1Title" id="sponsor1Title1" value="Mr"><label for="sponsor1Title1">Mr</label></li>
+                     <li><input type="radio" name="sponsor1Title" id="sponsor1Title2" value="Mrs"><label for="sponsor1Title2">Mrs</label></li>
+                     <li><input type="radio" name="sponsor1Title" id="sponsor1Title3" value="Ms"><label for="sponsor1Title3">Ms</label></li>
+                     <li><input type="radio" name="sponsor1Title" id="sponsor1Title4" value="Miss"><label for="sponsor1Title4">Miss</label></li>
+                     <li><input type="radio" name="sponsor1Title" id="sponsor1Title5" value="Dr"><label for="sponsor1Title5">Dr</label></li>
+                     <li><input type="radio" name="sponsor1Title" id="sponsor1Title6" value="other"><label for="sponsor1Title6">Other</label></li>
+                  </div>
+                  <div style="display:none;" class="MMtextField"><input type="text" size="50" name="sponsor1OtherTitle" submitName="title" placeholder="Other" validation="lettersOnly"></div>
+                  <div class="MMspacerBlock"><br></div>
+                  <div class="MMtextField"><input type="text" size="50" name="sponsor1FirstName" placeholder="First Name" validation="names"></div>
+                  <div class="MMtextField"><input type="text" size="50" name="sponsor1LastName" placeholder="Last Name" validation="names"></div>
+                  <div class="MMcheckbox"><input type="checkbox" value="1" name="sponsor1Button"><div class="ITEMDetailLabel">Check this box if this address is the same as Donor's address</div>
+                  </div>
+                  <div class="MMaddressField">
+                     <div name="sponsor1address"><input type="text" size="50" validation="lettersNumeric" name="Address1" placeholder="Address Line 1" maxlength="50"><br><input type="text" size="50" validation="lettersNumeric" name="Address2" placeholder="Address Line 2" maxlength="50"><br><input type="text" size="50" validation="lettersNumeric" name="Address3" placeholder="Address Line 3" maxlength="50"><br><input type="text" size="50" validation="names" placeholder="City" name="sponsor1City" maxlength="25"><br><input type="text" size="50" validation="usPostalCode" placeholder="Zip Code" maxlength="10" name="sponsor1PostalCode"><br><select>
+                           <option value="AL">Alabama</option>
+                           <option value="AK">Alaska</option>
+                           <option value="AZ">Arizona</option>
+                           <option value="AR">Arkansas</option>
+                           <option value="CA">California</option>
+                           <option value="CO">Colorado</option>
+                           <option value="CT">Connecticut</option>
+                           <option value="DE">Delaware</option>
+                           <option value="DC">Washington, DC</option>
+                           <option value="FL">Florida</option>
+                           <option value="GA">Georgia</option>
+                           <option value="HI">Hawaii</option>
+                           <option value="ID">Idaho</option>
+                           <option value="IL">Illinois</option>
+                           <option value="IN">Indiana</option>
+                           <option value="IA">Iowa</option>
+                           <option value="KS">Kansas</option>
+                           <option value="KY">Kentucky</option>
+                           <option value="LA">Louisiana</option>
+                           <option value="ME">Maine</option>
+                           <option value="MD">Maryland</option>
+                           <option value="MA">Massachusetts</option>
+                           <option value="MI">Michigan</option>
+                           <option value="MN">Minnesota</option>
+                           <option value="MS">Mississippi</option>
+                           <option value="MO">Missouri</option>
+                           <option value="MT">Montana</option>
+                           <option value="NE">Nebraska</option>
+                           <option value="NV">Nevada</option>
+                           <option value="NH">New Hampshire</option>
+                           <option value="NJ">New Jersey</option>
+                           <option value="NM">New Mexico</option>
+                           <option value="NY">New York</option>
+                           <option value="NC">North Carolina</option>
+                           <option value="ND">North Dakota</option>
+                           <option value="OH">Ohio</option>
+                           <option value="OK">Oklahoma</option>
+                           <option value="OR">Oregon</option>
+                           <option value="PA">Pennsylvania</option>
+                           <option value="RI">Rhode Island</option>
+                           <option value="SC">South Carolina</option>
+                           <option value="SD">South Dakota</option>
+                           <option value="TN">Tennessee</option>
+                           <option value="TX">Texas</option>
+                           <option value="UT">Utah</option>
+                           <option value="VT">Vermont</option>
+                           <option value="VA">Virginia</option>
+                           <option value="WA">Washington</option>
+                           <option value="WV">West Virginia</option>
+                           <option value="WI">Wisconsin</option>
+                           <option value="WY">Wyoming</option></select><br><div class="countryName">USA</div><button type="button" onclick="javascript:validateAddress('sponsor1address','QAS')">
+                           Validate address
+                           </button></div>
+                  </div>
+                  <div class="MMdateField">
+                     <div class="ITEMLabel">Date of birth</div><input type="text" data-role="date" data-inline="true" size="50" name="sponsor1BirthDate"></div>
+                  <div class="MMcheckbox"><input type="checkbox" value="1" name="sponsor1SendPack"><div class="ITEMDetailLabel">Send Pack to Recipient?</div>
+                  </div>
+               </div>
+            </div>
+            <div class="HTMLPage" id="fourthPage" name="fourthPage">
+               <div class="HTMLGroup" id="thirdSection" name="thirdSection">
+                  <h3>I wish to make an ongoing donation to  WWF-UK</h3>
+                  <div class="MMlabel">WWF-UK, is a charity with Registered No.1081247.</div>
+                  <div class="MMtextField">
+                     <div class="ITEMLabel">Charity No.</div><input type="text" size="50" name="charityId" placeholder="221"></div>
+                  <div class="MMtextField"><input type="text" size="50" name="sponsor1Amount"><div class="ITEMDetailLabel">Pounds</div>
+                  </div>
+                  <div class="MMradioControl">
+                     <div class="ITEMLabel">Please select preferred donation start date:</div>
+                     <li><input type="radio" name="collectionDay" id="collectionDay1" value="14"><label for="collectionDay1">14th</label></li>
+                     <li><input type="radio" name="collectionDay" id="collectionDay2" value="26"><label for="collectionDay2">26th</label></li>
+                  </div>
+                  <div class="MMradioControl">
+                     <div class="ITEMLabel">Please choose the desired frequency:</div>
+                     <li><input type="radio" name="frequency" id="frequency1" value="1"><label for="frequency1">Monthly</label></li>
+                     <div class="ITEMDetailLabel">until further notice as per the Direct Debit Instruction shown below.</div>
+                  </div>
+                  <div class="MMspacerBlock"><br></div>
+                  <div class="MMmultilineLabel">By providing us with your email address you are consenting to WWF contacting you more
+                     about the charity's work. If you do not wish to receive further communications from
+                     WWF then please contact Supporter Care on 01483 426333 or supportercare@wwf.org.uk.
+                  </div>
+                  <div class="MMradioControl">
+                     <li><input type="radio" name="giftAid" id="giftAid1" value="1"><label for="giftAid1">Yes, I am a UK taxpayer and want WWF-UK to reclaim the tax I have paid on all donations
+                           I have made for the last four years prior to this year, and all donations I make from
+                           the date of this declaration until I notify you otherwise. I understand that I must
+                           pay an amount of income tax/capital gains tax equal to the amount WWF-UK reclaims
+                           on my donations in the tax year (currently 25p for every 1 pound donated.)</label></li>
+                     <li><input type="radio" name="giftAid" id="giftAid2" value="0"><label for="giftAid2">No, I am not a UK taxpayer</label></li>
+                  </div>
+                  <div class="MMzipImage"><img src="images/WWF/giftaidit.png"></div>
+               </div>
+               <div class="HTMLGroup" id="Signature" name="Signature">
+                  <h3></h3>
+                  <div class="MMsignatureBox">
+                     <div class="ITEMLabel">Donor Signature:</div><a href="javascript:openSignaturePanel(this);"><img src="images/emptysignature.png"></a></div>
+                  <div class="MMdateField">
+                     <div class="ITEMLabel">Date signed:</div><input type="text" data-role="date" data-inline="true" size="50" name="_formSignDate"></div>
+                  <div class="MMdateField">
+                     <div class="ITEMLabel">Time signed:</div><input type="text" data-role="date" data-inline="true" size="50" name="_timeSignDate"></div>
+                  <div class="MMmultilineLabel">Thank you for agreeing to support WWF-UK by Direct Debit on an ongoing basis (ideally
+                     for at least 12 months). The person you are speaking to is working on behalf of WWF-UK
+                     and is a paid fundraiser with Fundraising Initiatives Ltd. WWF-UK expects to raise
+                     around 1.4 million Pounds from this form of fundraising over the next 5 years. Fundraising
+                     Initiatives Ltd expects to receive approximately 850,000 Pounds for carrying out this
+                     programme of conversations with supporters like yourself across the UK. Fundraising
+                     Initiatives' fee is determined by how many donors it wants to recruit for the charity,
+                     and then how many of those donors are retained as ongoing supporters.
+                  </div>
+                  <div class="MMsignatureBox">
+                     <div class="ITEMLabel">Initial here:</div><a href="javascript:openSignaturePanel(this);"><img src="images/emptysignature.png"></a></div>
+               </div>
+               <div class="HTMLGroup" id="bankSection" name="bankSection">
+                  <h3>Payment information</h3>
+                  <div class="MMtextField">
+                     <div class="ITEMLabel">Name(s) of Account Holder(s)</div><input type="text" size="50" name="accountHolderName1" placeholder="Name 1" validation="names"></div>
+                  <div class="MMtextField"><input type="text" size="50" name="accountHolderName2" placeholder="Name 2" validation="names"></div>
+                  <div class="MMUKBankPinger">
+                     <div class="ITEMLabel">Bank details:</div>
+                     <div name="bankInfo"><input type="text" size="50" validation="names" placeholder="Bank Name" maxlength="60" name="bankName"><br><input type="text" size="50" placeholder="Bank Address" maxlength="60" name="bankAddress"><br><input type="text" size="50" validation="ukPostalCode" placeholder="POSTAL CODE" maxlength="7" name="bankPostalCode"><br><p>
+                           PERSONAL INFORMATION<br>
+                           Name(s) Of Account Holder(s):
+                           
+                        </p><input type="text" size="50" placeholder="Name 1" name="bankAccountName1"><br><input type="text" size="50" placeholder="Name 2" name="bankAccountName2"><br><input type="text" size="50" validation="numeric" placeholder="Sort Code" maxlength="6" name="bankSortCode"><br><input type="text" size="50" validation="numeric" placeholder="Account Number" maxlength="8" name="bankAccountNumber"><br><button type="button" onclick="javascript:validateUKBank('bankInfo')">
+                           Validate bank account
+                           </button></div>
+                  </div>
+                  <div class="MMlabel">Instructions to your Bank or Building Society:</div>
+                  <div class="MMmultilineLabel">Please pay WWF-UK Direct Debits from the account detailed in this instruction subject
+                     to the safeguards assured by the Direct Debit Guarantee. I understand that this instruction
+                     may remain with WWF-UK and, if so, details will be passed electronically to my Bank/Building
+                     Society.
+                  </div>
+                  <div class="MMspacerBlock"><br></div>
+                  <div class="MMzipImage"><img src="images/WWF/directDebit.png"></div>
+                  <div class="MMtextField">
+                     <div class="ITEMLabel">Service User Number:</div><input type="text" size="50" name="serviceUserNumber" placeholder="991473"></div>
+                  <div class="MMsignatureBox">
+                     <div class="ITEMLabel">Donor Signature:</div><a href="javascript:openSignaturePanel(this);"><img src="images/emptysignature.png"></a></div>
+                  <div class="MMdateField">
+                     <div class="ITEMLabel">Date signed:</div><input type="text" data-role="date" data-inline="true" size="50" name="signDate2"></div>
+                  <div class="MMlabel">Banks and Building Societies may not accept Direct Debits from some types of account</div>
+               </div>
+            </div>
+         </div><input type="submit" name="submitButton" value="Submit Form" class="submitButton"></form><script>
+                        
+                         if (  valueOfItem("animals") != "3" && ( valueOfItem("cock") == "1" )  ) {
+                                
+                                
+                                        updateItemOptions('sponsor1Animal1','Snow leopard');
+                                        
+                                    
+                         
+                         }
+                         </script><script>
+                        
+                         if (  valueOfItem("animals") || "1"  ) {
+                                
+                                
+                                        updateItemOptions('sponsor1Animal1','Tiger');
+                                        
+                                    
+                         
+                         }
+                         </script><script>
+                        
+                         if (  valueOfItem("animals") < "2"  ) {
+                                
+                                
+                                        updateItemOptions('sponsor1Animal1','ElephantCOCKTigerCOCKGorilla');
+                                        
+                                    
+                         
+                         }
+                         </script><script>
+                        
+                         if (  valueOfItem("animals") == "4"  ) {
+                                
+                                
+                                        updateItemOptions('sponsor1Animal1','GorillaCOCKTiger');
+                                        
+                                    
+                         
+                         }
+                         </script><script>
+                        
+                         if (  valueOfItem("sponsor1Button") == "YES"  ) {
+                                
+                                
+                                                    forItemSetAttributeWithValue('sponsor1Address','if','
+                address1
+            ');
+                                                    
+                                    
+                         
+                         }
+                          else {
+                         }    
+                         </script><script>
+                        
+                         if (  valueOfItem("gender") == "M"  ) {
+                                
+                                
+                                                    forItemSetAttributeWithValue('titleMale','if','
+                THIS
+            ');
+                                                    
+                                    
+                         
+                         }
+                          else {
+                         }    
+                         </script><script>
+                        
+                         if (  valueOfItem("gender") == "F"  ) {
+                                
+                                
+                                                    forItemSetAttributeWithValue('titleFemale','if','
+                THIS
+            ');
+                                                    
+                                    
+                         
+                         }
+                          else {
+                         }    
+                         </script><script>
+                        
+                         if (  valueOfItem("gender") == "M" && valueOfItem("titleMale") == "other"  ) {
+                                
+                                
+                                                    forItemSetAttributeWithValue('otherTitleM','if','
+                THIS
+            ');
+                                                    
+                                    
+                         
+                         }
+                          else {
+                         }    
+                         </script><script>
+                        
+                         if (  valueOfItem("gender") == "F" && valueOfItem("titleFemale") == "other"  ) {
+                                
+                                
+                                                    forItemSetAttributeWithValue('otherTitleF','if','
+                THIS
+            ');
+                                                    
+                                    
+                         
+                         }
+                          else {
+                         }    
+                         </script><script>
+                        
+                         if (  valueOfItem("gender") == "M" && valueOfItem("titleMale") == "other"  ) {
+                                
+                                
+                                                    forItemSetAttributeWithValue('titleMale','if','
+                THIS
+            ');
+                                                    
+                                    
+                         
+                         }
+                          else {
+                         }    
+                         </script><script>
+                        
+                         if (  valueOfItem("gender") == "F" && valueOfItem("titleFemale") == "other"  ) {
+                                
+                                
+                                                    forItemSetAttributeWithValue('titleFemale','if','
+                THIS
+            ');
+                                                    
+                                    
+                         
+                         }
+                          else {
+                         }    
+                         </script><script>
+                        
+                         if (  valueOfItem("sponsor1Gift") == "1" || valueOfItem("sponsor1Gift") == "2"  ) {
+                                
+                                
+                                                    forItemSetAttributeWithValue('sponsor1Animal1','if','
+                THIS
+            ');
+                                                    
+                                    
+                         
+                         }
+                          else {
+                         }    
+                         </script><script></script><script>
+                        
+                         if (  valueOfItem("sponsor1Title") == "OTHER"  ) {
+                                
+                                
+                                                    forItemSetAttributeWithValue('sponsor1OtherTitle','if','
+                THIS
+            ');
+                                                    
+                                    
+                         
+                         }
+                          else {
+                         }    
+                         </script><script>
+                        
+                         if (  valueOfItem("sponsor1Title") == "OTHER"  ) {
+                                
+                                
+                                                    forItemSetAttributeWithValue('sponsor1Title','if','
+                THIS
+            ');
+                                                    
+                                    
+                         
+                         }
+                          else {
+                         }    
+                         </script></body>
+</html>

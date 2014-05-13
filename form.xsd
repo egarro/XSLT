@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  
+        xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1"
+        elementFormDefault="qualified" >
+                
+    <!-- Definition of simple elements -->
+    
+    <xs:simpleType name="string5">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string50">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="string_type">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    
+    <!-- (0,1,2,...) -->
+    <xs:simpleType name="int_type">
+        <xs:restriction base="xs:nonNegativeInteger"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="digit_type">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:pattern value="[1-9]"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="float_type">
+        <xs:restriction base="xs:decimal">
+           <xs:fractionDigits value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="color_type">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[#][0-9a-fA-F]{6}|(transparent|clear|red|blue|white|black|dark|orange|green|yellow|brown|darkgray|lightgray)"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="width_type">
+        <xs:restriction base="xs:decimal">
+            <xs:maxInclusive value="720"/>
+            <xs:fractionDigits value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+        
+    <xs:simpleType name="BOOL_type">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="YES|NO"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="country_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CANADA"/>
+            <xs:enumeration value="CA"/>
+            <xs:enumeration value="FRANCE"/>
+            <xs:enumeration value="FRA"/>
+            <xs:enumeration value="MEXICO"/>
+            <xs:enumeration value="MEX"/>
+            <xs:enumeration value="QUEBEC"/>
+            <xs:enumeration value="QC"/>
+            <xs:enumeration value="UK"/>
+            <xs:enumeration value="USA"/>
+            <xs:enumeration value="US"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="validationService_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="POSTCODE"/>
+            <xs:enumeration value="QAS"/>
+        </xs:restriction>
+    </xs:simpleType>
+        
+    <xs:simpleType name="order_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ascending"/>
+            <xs:enumeration value="descending"/>
+            <xs:enumeration value="asc"/>
+            <xs:enumeration value="desc"/>
+            <xs:enumeration value="a"/>
+            <xs:enumeration value="d"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="align_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="left"/>
+            <xs:enumeration value="center"/>
+            <xs:enumeration value="right"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="buttonPosition_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="up_left"/>
+            <xs:enumeration value="up_right"/>
+            <xs:enumeration value="low_right"/>
+            <xs:enumeration value="low_left"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="itemPosition_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="center"/>
+            <xs:enumeration value="upper_left"/>
+            <xs:enumeration value="upper_center"/>
+            <xs:enumeration value="upper_right"/>
+            <xs:enumeration value="center_right"/>
+            <xs:enumeration value="bottom_right"/>
+            <xs:enumeration value="bottom_center"/>
+            <xs:enumeration value="bottom_left"/>
+            <xs:enumeration value="center_left"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="receiptPosition_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="header"/>
+            <xs:enumeration value="banner"/>
+            <xs:enumeration value="map"/>
+            <xs:enumeration value="bannerHeader"/>
+            <xs:enumeration value="bannerFooter"/>
+            <xs:enumeration value="personal"/>
+            <xs:enumeration value="payment"/>
+            <xs:enumeration value="other"/>
+            <xs:enumeration value="legal"/>
+            <xs:enumeration value="extra"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="item_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="localImage"/>
+            <xs:enumeration value="zipImage"/>
+            <xs:enumeration value="spacerBlock"/>
+            <xs:enumeration value="photoCapture"/>
+            <xs:enumeration value="signatureBox"/>
+            <xs:enumeration value="addressField"/>
+            <xs:enumeration value="dateField"/>
+            <xs:enumeration value="label"/>
+            <xs:enumeration value="multilineLabel"/>
+            <xs:enumeration value="checkbox"/>
+            <xs:enumeration value="segmentedControl"/>
+            <xs:enumeration value="radioControl"/>
+            <xs:enumeration value="imagePicker"/>
+            <xs:enumeration value="infoButton"/>
+            <xs:enumeration value="dropDown"/>
+            <xs:enumeration value="valuePicker"/>
+            <xs:enumeration value="canadianPostalCode"/>
+            <xs:enumeration value="FRBankPinger"/>
+            <xs:enumeration value="UKBankPinger"/>
+            <xs:enumeration value="emailPinger"/>
+            <xs:enumeration value="textField"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="keyboard_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="defaultKeyboard"/>
+            <xs:enumeration value="asciiKeyboard"/>
+            <xs:enumeration value="numbersAndPunctuation"/>
+            <xs:enumeration value="URLKeyboard"/>
+            <xs:enumeration value="numberPad"/>
+            <xs:enumeration value="phonePad"/>
+            <xs:enumeration value="namePhonePad"/>
+            <xs:enumeration value="emailAddressKeyboard"/>
+            <xs:enumeration value="decimalPad"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="validation_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="lettersOnly"/>
+            <xs:enumeration value="letters"/>
+            <xs:enumeration value="numericOnly"/>
+            <xs:enumeration value="numericWithPeriods"/>
+            <xs:enumeration value="numeric"/>
+            <xs:enumeration value="lettersNumericOnly"/>
+            <xs:enumeration value="lettersNumeric"/>
+            <xs:enumeration value="alphaOnly"/>
+            <xs:enumeration value="alpha"/>
+            <xs:enumeration value="plain"/>
+            <xs:enumeration value="alphanumericOnly"/>
+            <xs:enumeration value="alphanumeric"/>
+            <xs:enumeration value="intlphonenumber"/>
+            <xs:enumeration value="usphonenumber"/>
+            <xs:enumeration value="creditcard"/>
+            <xs:enumeration value="email"/>
+            <xs:enumeration value="day"/>
+            <xs:enumeration value="month"/>
+            <xs:enumeration value="year"/>
+            <xs:enumeration value="luhn"/>
+            <xs:enumeration value="names"/>
+            <xs:enumeration value="namesNumeric"/>
+            <xs:enumeration value="repeat"/>
+
+            <xs:enumeration value="POSTCODE"/>
+            <xs:enumeration value="QAS"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Definition of complex types -->
+        
+        <xs:complexType name="onMissing_type">
+            <xs:sequence>
+                <xs:element name="message" type="xs:string" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>    
+
+        <xs:complexType name="onError_type">
+            <xs:sequence>
+                <xs:element name="message" type="xs:string" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+        
+    <!-- Definition of Group Attributes -->
+
+    <xs:attributeGroup name="pageAttributes">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="isHidden" type="BOOL_type"/>
+        <xs:attribute name="forceReceipt" type="BOOL_type"/>
+    </xs:attributeGroup>
+    
+    <xs:attributeGroup name="groupAttributes">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="title" type="string50"/>
+        <xs:attribute name="number" type="digit_type"/>
+        <xs:attribute name="isHidden" type="BOOL_type"/>
+        <xs:attribute name="forceReceipt" type="BOOL_type"/>
+    </xs:attributeGroup>
+    
+    <xs:attributeGroup name="allItemAttributes">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="type" type="item_type" use="required"/>
+        <xs:attribute name="required" type="xs:string"/>
+        <xs:attribute name="receipt" type="receiptPosition_type"/>
+        <xs:attribute name="isHidden" type="BOOL_type"/>
+        <xs:attribute name="editable" type="BOOL_type"/>
+        <xs:attribute name="bleeds" type="BOOL_type"/>
+        <xs:attribute name="skipSubmit" type="BOOL_type"/>
+        <xs:attribute name="forceSubmit" type="BOOL_type"/>
+        <xs:attribute name="submitAlerts" type="BOOL_type"/>
+        <xs:attribute name="password" type="BOOL_type"/>
+        <xs:attribute name="forceReceipt" type="BOOL_type"/>
+
+        <xs:attribute name="submitsFlag" type="BOOL_type"/>
+        <xs:attribute name="multiple" type="BOOL_type"/>
+        <xs:attribute name="submitsValue" type="BOOL_type"/>        
+        <xs:attribute name="isChecked" type="BOOL_type"/>
+        <xs:attribute name="mustValidate" type="BOOL_type"/>
+    </xs:attributeGroup>
+                
+    <!-- Definition of sets of similar tag elements (A bounch of tags, a bunch of options, etc...) -->
+    
+    <xs:complexType name="value_type">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="value">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string" />
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+        
+    <xs:complexType name="encoding_type">
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="encoding">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string" >
+                                <xs:enumeration value="base64"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+    </xs:complexType>
+<!-- 
+    Due to ambiguities between PDF_Option and Form_Option this has been defined further below  
+    <xs:element name="option" type="value_type"/>    
+-->
+    <xs:element name="tag" type="value_type"/>
+    <xs:element name="override" type="value_type"/>
+    <xs:element name="image" type="value_type"/>
+        
+         
+        <xs:element name="label" type="encoding_type"/>
+        <xs:element name="detailLabel" type="encoding_type"/>
+        <xs:element name="inlineLabel" type="encoding_type"/>
+        <xs:element name="placeholder" type="encoding_type"/>
+        <xs:element name="text" type="encoding_type"/>
+
+    <!-- Definition of ambigious tags (option) -->
+    
+    <xs:element name="option">    
+        <xs:alternative test="@value" 
+                type="Form_Option"/>
+        <xs:alternative test="@tag" 
+                type="PDF_Option"/>
+        <xs:alternative type="xs:error"/>
+    </xs:element>
+
+            
+    <!-- OPTIONS -->
+        
+        <xs:complexType name="Form_Option">
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="value">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string" />
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+                
+        <xs:complexType name="PDF_Option">
+             <xs:choice maxOccurs="unbounded" minOccurs="1">
+                <xs:element name="xCoordinate" type="int_type" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="yCoordinate" type="int_type" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="command" type="xs:string" maxOccurs="1"/>
+            </xs:choice>
+            <xs:attribute name="tag" type="xs:string"/>
+      </xs:complexType>
+        
+    <!-- ITEMS -->
+        
+        <xs:complexType name="PDF_Item">
+            <xs:sequence>
+                <xs:element name="option" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string"/>
+        </xs:complexType>
+                
+        <xs:complexType name="Form_Item">     
+            <xs:choice minOccurs="1" maxOccurs="unbounded">    
+                <xs:element name="submitName" type="xs:string" maxOccurs="1"/>
+                <xs:element ref="placeholder" maxOccurs="1"/>
+                <xs:element ref="detailLabel" maxOccurs="1"/>
+                <xs:element ref="label" maxOccurs="1"/>
+                <xs:element ref="inlineLabel" maxOccurs="1"/>
+                <xs:element name="onmissing" type="onMissing_type" maxOccurs="1"/>
+                <xs:element name="onerror" type="onError_type" maxOccurs="1"/>
+                
+                <xs:element name="fontColor" type="color_type" maxOccurs="1"/>
+                <xs:element name="bgcolor" type="color_type" maxOccurs="1" />
+                <xs:element name="textColor" type="color_type" maxOccurs="1" />
+                
+                <xs:element name="fontSize" type="int_type" maxOccurs="1"/>
+                <xs:element name="size" type="int_type" maxOccurs="1"/>
+                
+                <xs:element name="width" type="width_type" maxOccurs="1"/>
+                <xs:element name="height" type="int_type" maxOccurs="1"/>
+                
+                <xs:element name="action" type="xs:string" maxOccurs="1" />
+                <xs:element name="defaultValue" type="xs:string" maxOccurs="1" />
+                <xs:element name="mustValidate" type="BOOL_type" maxOccurs="1" />
+                
+                <xs:element name="maxlength" type="int_type" maxOccurs="1"/>
+                <xs:element name="minlength" type="int_type" maxOccurs="1"/>
+                <xs:element name="minValue" type="float_type" maxOccurs="1"/>
+                <xs:element name="maxValue" type="float_type" maxOccurs="1"/>
+                <xs:element name="keyboardtype" type="keyboard_type" maxOccurs="1" />
+                <xs:element name="validation" type="validation_type" maxOccurs="1" />
+                <xs:element name="regex" type="xs:string" maxOccurs="1" />
+                <xs:element name="regexmessage" type="xs:string" maxOccurs="1" />
+                <xs:element name="actionArg" type="xs:string" maxOccurs="1" />
+                <xs:element name="partClone" type="xs:string" maxOccurs="1" />
+                <xs:element name="textSize" type="int_type" maxOccurs="1" />
+                
+                <xs:element name="prefix" type="xs:string" maxOccurs="1" />
+                <xs:element name="posfix" type="xs:string" maxOccurs="1"/>
+                
+                <xs:element name="options" type="xs:string" maxOccurs="1" />
+                <xs:element name="position" type="itemPosition_type" maxOccurs="1" />
+
+                <xs:element name="order" type="order_type" maxOccurs="1" />
+                <xs:element name="buttonPosition" type="buttonPosition_type" maxOccurs="1" />
+                
+                <xs:element ref="text" maxOccurs="1"/>
+                
+                <xs:element name="sizeY" type="int_type" maxOccurs="1"/>
+                <xs:element name="columns" type="digit_type" maxOccurs="1"/>
+                <xs:element name="minRequiredItems" type="int_type" maxOccurs="1"/>
+                <xs:element name="maxRequiredItems" type="int_type" maxOccurs="1"/>
+                <xs:element name="requiredValue" type="xs:string" maxOccurs="1" />
+                <xs:element name="values" type="xs:string" maxOccurs="1" /> 
+                
+                <xs:element name="option" type="Form_Option" maxOccurs="unbounded"/>
+                <xs:element ref="tag" maxOccurs="unbounded"/>
+                <xs:element ref="image" maxOccurs="unbounded"/>
+                <xs:element ref="override" maxOccurs="unbounded"/>
+                                
+                <xs:element name="formatting" type="xs:string" maxOccurs="1"/>
+                <xs:element name="defaultDate" type="xs:string" maxOccurs="1" />
+                <xs:element name="unix" type="BOOL_type" maxOccurs="1" />            
+                <xs:element name="string" type="xs:string" maxOccurs="1"/>
+                <xs:element name="minAgeRestriction" type="int_type" maxOccurs="1"/>
+                <xs:element name="maxAgeRestriction" type="int_type" maxOccurs="1"/>
+                <xs:element name="minYearRestriction" type="xs:integer" maxOccurs="1"/>
+                <xs:element name="maxYearRestriction" type="xs:integer" maxOccurs="1"/>
+                
+                <xs:element name="numberOfLines" type="int_type" maxOccurs="1" />
+                <xs:element name="align" type="align_type" maxOccurs="1" />
+                
+                <xs:element name="country" type="country_type" maxOccurs="1"/>
+                <xs:element name="desiredCountryCode" type="xs:string" maxOccurs="1"/>
+                <xs:element name="validationService" type="validationService_type" maxOccurs="1"/>
+                
+                <xs:element name="legalText" type="xs:string" maxOccurs="1"/>
+                
+                <xs:element name="isColor" type="BOOL_type" maxOccurs="1"/>
+                
+                <xs:element name="path" type="xs:string" maxOccurs="1"/>  
+            </xs:choice>            
+            <xs:attributeGroup ref="allItemAttributes"/>
+            
+            <!-- Restriction of certain attributes to specific item types -->
+            <xs:assert test="if(@isChecked) then @type='checkbox' else true()"/>
+            <xs:assert test="if(@multiple) then (@type='radioControl' or @type='imagePicker') else true()"/>
+            <xs:assert test="if(@submitsValue) then (@type='checkbox' or @type='signatureBox') else true()"/>
+            <xs:assert test="if(@submitsFlag) 
+                then (@type='addressField' or @type='emailPinger' or
+                      @type='UKBankPinger' or @type='FRBankPinger'
+                     ) 
+                else true()"/>
+            <!-- Restrictions on certain elements to specific item types -->            
+            <xs:assert test="if(./text) then (@type='label' or @type='multilineLabel' or @type='infoButton') else true()"/>
+            <xs:assert test="if(./path) then (@type='zipImage' or @type='localImage') else true()"/>
+            <xs:assert test="if(./isColor) then @type='photoCapture' else true()"/>           
+            <xs:assert test="if(./legalText) then @type='signatureBox' else true()"/>
+            <xs:assert test="if(./validation) then (@type='addressField' or @type='textField') else true()"/>
+            <xs:assert test="if(./country or ./validationService) then @type='addressField' else true()"/>
+            <xs:assert test="if(./align or ./numberOfLines) then @type='multilineLabel' else true()"/>
+            <xs:assert test="if(./formatting or ./defaultDate or ./unix or ./string or
+                ./minAgeRestriction or ./maxAgeRestriction or ./minYearRestriction or ./maxYearRestriction
+                ) 
+                then @type='dateField' else true()"/>
+            <xs:assert test="if(./defaultValue) then @type!='dateField' else true()"/>  
+            <xs:assert test="if(./image) then @type='imagePicker' else true()"/>             
+            <xs:assert test="if(./values) then (@type='radioControl' or @type='imagePicker') else true()"/>
+            <xs:assert test="if(./requiredValue) then (@type='radioControl' or @type='imagePicker') else true()"/>
+            <xs:assert test="if(./override) then (@type='checkbox' or 
+                   ((@type='radioControl' or @type='imagePicker') and @multiple='YES')
+                ) else true()"/>
+            <xs:assert test="if(./tag) then (@type='radioControl' or @type='segmentedControl') else true()"/>
+            <xs:assert test="if(./columns) then (@type='radioControl' or @type='imagePicker') else true()"/>
+            <xs:assert test="if(./minRequiredItems or ./maxRequiredItems) then (
+                (@type='radioControl' or @type='imagePicker') and @multiple='YES'
+            ) else true()"/>
+            <xs:assert test="if(./option) then (@type='dropDown' or @type='valuePicker') else true()"/>
+            <xs:assert test="if(./options) then @type='valuePicker' else true()"/>
+            <xs:assert test="if(./order) then (@type='valuePicker' or @type='dateField') else true()"/>
+            <xs:assert test="if(./sizeY) then (@type='spacerBlock' or @type='multilineLabel' or @type='imagePicker') else true()"/>
+            <xs:assert test="if(./posfix) then @type='dateField' else true()"/>
+            <xs:assert test="if(./prefix) then (@type='dateField' or @type='addressField' or @type='UKBankPinger' or @type='FRBankPinger') else true()"/>
+            <xs:assert test="if(./maxlength or ./minlength or ./minValue or ./maxValue or
+                ./keyboardtype or ./regex or ./regexmessage or ./actionArg or ./partClone
+                ) 
+                then @type='textField' else true()"/>
+            <xs:assert test="if(./width or ./height) then (@type='localImage' or @type='zipImage' or @type='photoCapture' or @type='signatureBox') else true()"/>
+            <xs:assert test="if(./mustValidate) then (@type='emailPinger' or @type='UKBankPinger' or @type='FRBankPinger') else true()"/>
+
+            <!-- Exceptional cases -->
+            <xs:assert test="if(./validation and @type='addressField') then (./validation='POSTCODE' or ./validation='QAS') else true()"/>
+            <xs:assert test="if(./action) then (./action='itemShouldNotify:' or ./action='UFUcreateSourceCode' or ./action='SumItems' or
+                ( substring(./action, 1, 9)='linksTo::' )
+                ) else true()" />
+        </xs:complexType>
+
+                            
+   <!-- PAGES -->
+        
+    <xs:complexType name="PDF_Page">
+            <xs:sequence>
+                <xs:element name="bgImage" type="xs:string" maxOccurs="1"/>
+                <xs:element ref="items"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+        
+    <xs:complexType name="Form_Page">
+            <xs:all>
+                <xs:element name="bgcolor" type="color_type" minOccurs="0"/>
+                <xs:element name="leftPageMargin" type="float_type" minOccurs="0"/>
+                <xs:element name="rightPageMargin" type="float_type" minOccurs="0"/>
+                <xs:element ref="group" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:all>
+            <xs:attributeGroup ref="pageAttributes"/>
+    </xs:complexType>
+            
+    <!-- Definition of a Form Group -->
+        
+    <xs:element name="group">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="item" type="Form_Item" maxOccurs="unbounded"/>
+            </xs:sequence>    
+            <xs:attributeGroup ref="groupAttributes"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- Complete structure of the relationships section -->
+    
+    <xs:group name="ifelseElements">
+        <xs:choice>
+            <xs:element name="show" type="xs:string" maxOccurs="1"/>
+            <xs:element name="hide" type="xs:string" maxOccurs="1"/>
+            <xs:element name="evaluate" type="xs:string" maxOccurs="1"/>
+            <xs:element name="text" type="xs:string" maxOccurs="1"/>
+            <xs:element name="check" type="xs:string" maxOccurs="1"/>
+            <xs:element name="uncheck" type="xs:string" maxOccurs="1"/>
+            <xs:element name="toggle" type="xs:string" maxOccurs="1"/>
+            <xs:element name="copy" type="xs:string" maxOccurs="1"/>
+            <xs:element name="submit" type="xs:string" maxOccurs="1"/>
+            <xs:element name="skip" type="xs:string" maxOccurs="1"/>
+            <xs:element name="force" type="xs:string" maxOccurs="1"/>
+            <xs:element name="receipt" type="xs:string" maxOccurs="1"/>
+            <xs:element name="forceReceipt" type="xs:string" maxOccurs="1"/>
+
+            <xs:element name="label" type="xs:string" maxOccurs="1"/>
+            <xs:element name="placeholder" type="xs:string" maxOccurs="1"/>
+            <xs:element name="inlineLabel" type="xs:string" maxOccurs="1"/>
+            <xs:element name="detailLabel" type="xs:string" maxOccurs="1"/>
+            <xs:element name="submitName" type="xs:string" maxOccurs="1"/>
+
+            <xs:element name="maxlength" type="int_type" maxOccurs="1"/>
+            <xs:element name="minlength" type="int_type" maxOccurs="1"/>
+            <xs:element name="maxAgeRestriction" type="int_type" maxOccurs="1"/>
+            <xs:element name="minAgeRestriction" type="int_type" maxOccurs="1"/>
+            <xs:element name="options" type="xs:string" maxOccurs="1"/>
+            <xs:element name="editable" type="BOOL_type" maxOccurs="1"/>
+            <xs:element name="position" type="itemPosition_type" maxOccurs="1"/>
+            <xs:element name="defaultValue" type="xs:string" maxOccurs="1" />
+            
+            <xs:element name="option" type="Form_Option" maxOccurs="unbounded"/>
+            <xs:element ref="tag" maxOccurs="unbounded"/>
+        </xs:choice>
+    </xs:group>
+    
+    <xs:element name="if">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:group ref="ifelseElements" /> 
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="else">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:group ref="ifelseElements" /> 
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+        
+    <xs:element name="relationship">
+        <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="condition" type="xs:string" minOccurs="1"/>
+                    <xs:element ref="if" minOccurs="1" maxOccurs="1"/>
+                    <xs:element ref="else" minOccurs="0" maxOccurs="1"/>                    
+                </xs:sequence>
+            <xs:attribute name="object" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="relationships">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="relationship" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Complete structure of the pdfInfo section -->
+        
+    <xs:element name="pdfItem">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="option" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="items">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="item" type="PDF_Item" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+        
+    <xs:element name="pdfInfo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="page" type="PDF_Page" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- Complete structure of every XML Form -->
+    
+    <xs:element name="form">
+        <xs:complexType>                            
+            <xs:sequence>    
+                <xs:element name="requireditemcolor" type="color_type" minOccurs="1"/>         
+                <xs:element name="optionalitemcolor" type="color_type" minOccurs="1"/>
+                <xs:element name="leftFormMargin" type="float_type" minOccurs="1"/>
+                <xs:element name="rightFormMargin" type="float_type" minOccurs="1"/>
+                <xs:element name="pageWidth" type="float_type" minOccurs="1"/>
+
+                <xs:element name="page" type="Form_Page" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="relationships" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="pdfInfo" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>               
+            
+            <xs:attribute name="formPrefix" type="string5" use="required"/>
+            <xs:attribute name="charityName" type="xs:string"/>
+            <xs:attribute name="presentationStyle" type="xs:string"/>
+            <xs:attribute name="pdfType" type="xs:string"/>
+            
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>

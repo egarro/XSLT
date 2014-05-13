@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<form formPrefix="CARE" charityName="012" presentationStyle="grouped">
+    <remoteserver>http://www.ingenierialibra.com/</remoteserver>
+    <requireditemcolor>#FFCDAD</requireditemcolor>
+    <optionalitemcolor>#A6FEFF</optionalitemcolor>
+    <leftFormMargin>20.0</leftFormMargin>
+    <rightFormMargin>150.0</rightFormMargin>
+    <pageWidth>680.0</pageWidth>
+    <theme id="DOG">NONE</theme>
+
+
+    <page name="firstPage">
+        <bgcolor>#eeeeee</bgcolor>
+        <leftPageMargin>100.0</leftPageMargin>
+        <rightPageMargin>100.0</rightPageMargin>
+        <group name="header">
+            <item name="group0Spacer" type="spacerBlock" required="NO">
+                 <position>upper_right</position>
+                <sizeY>30</sizeY>
+            </item>
+            <item name="logo" type="zipImage">
+                <path>Care_Logo.png</path>
+                <position>upper_right</position>
+                <width>130.0</width>
+                <height>130.0</height>
+            </item>
+            <item name="headerTitle" type="label" bleeds="YES">
+                <text language="EN_US">Regular Giving Agreement</text>
+                <textColor>#333333</textColor>
+                <textSize>25.0</textSize>
+                <position>upper_left</position>
+            </item>
+            <item name="_internalFormId" type="TextField" editable="NO">
+                <size>250</size>
+                <label language="EN_US">Reference Number</label>
+                <placeholder>US012</placeholder>
+                <position>upper_left</position>
+            </item>
+        </group>
+    </page>
+
+    <page name="secondPage">
+        <bgcolor>#cccccc</bgcolor>
+        <leftPageMargin>20.0</leftPageMargin>
+        <rightPageMargin>20.0</rightPageMargin>
+        <group name="firstSection" number="1" title="DONOR DETAILS">
+            <item name="donationType" type="radioControl" multiple="NO" required="YES">
+                <size>620</size>
+                <columns>2</columns>
+                <tag value="individual">Individual</tag>
+                <tag value="business">Business</tag>
+                <label>This donation is made on behalf of:</label>
+            </item>
+            <item name="gender" type="radioControl" multiple="NO" required="YES">
+                <size>620</size>
+                <columns>2</columns>
+                <tag value="M">Male</tag>
+                <tag value="F">Female</tag>
+                <label language="EN_US">Gender</label>
+                <onmissing>
+                    <message language="EN_US">Please, select a gender.</message>
+                </onmissing>
+            </item>
+            <item name="group10Spacer" type="spacerBlock" required="NO">
+                <sizeY>5</sizeY>
+            </item>
+            <item name="title" type="radioControl" multiple="NO" required="YES">
+                <size>620</size>
+                <columns>3</columns>
+                <tag value="MR">Mr</tag>
+                <tag value="MRS">Mrs</tag>
+                <tag value="MS">Ms</tag>
+                <tag value="MISS">Miss</tag>
+                <tag value="DR">Dr</tag>
+                <tag value="OTHER">Other</tag>
+                <label>Title</label>
+                <onmissing>
+                    <message language="EN_US">Please, select a title.</message>
+                </onmissing>
+            </item>
+            <item name="otherTitle" type="textField" isHidden="YES" required="YES">
+                <size>150</size>
+                <maxlength>4</maxlength>
+                <submitName>title</submitName>
+                <placeholder>Other</placeholder>
+                <validation>lettersOnly</validation>
+                <onmissing>
+                    <message language="EN_US">Please, select a title.</message>
+                </onmissing>
+            </item>
+            <item name="group10Spacer" type="spacerBlock" required="NO">
+                <sizeY>10</sizeY>
+            </item>
+            <item name="birthDate" type="dateField" required="YES">
+                <label>Date of birth</label>
+                <formatting>DD/MM/YYYY</formatting>
+                <size>620</size><textSize>26.0</textSize>
+                <prefix>birth</prefix>
+                <minAgeRestriction>21</minAgeRestriction>
+                <maxAgeRestriction>99</maxAgeRestriction>
+                <onmissing>
+                    <message language="EN_US">Please, enter your date of birth.</message>
+                    <message language="FR_CA">Veuillez entrez votre date de naissance.</message>
+                </onmissing>
+            </item>
+            <item name="firstName" type="textField" required="YES">
+                <size>620</size><textSize>26.0</textSize>
+                <placeholder>First Name</placeholder>
+                <validation>names</validation>
+                <maxlength>20</maxlength>
+                <onmissing>
+                    <message language="EN_US">Please, enter your name.</message>
+                    <message language="FR_CA">Veuillez entrez votre prenom.</message>
+                </onmissing>
+            </item>
+            <item name="lastName" type="textField" required="YES">
+                <size>620</size><textSize>26.0</textSize>
+                <placeholder>Last Name</placeholder>
+                <validation>names</validation>
+                <maxlength>20</maxlength>
+            </item>
+            <item name="suffix" type="textField" required="NO">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>Suffix</placeholder>
+                <validation>names</validation>
+                <maxlength>10</maxlength>
+            </item>
+            <item name="businessName" type="textField" isHidden="YES" required="YES">
+                <size>620</size><textSize>26.0</textSize>
+                <placeholder>Business Name</placeholder>
+                <validation>names</validation>
+            </item>
+            <item name="citizenship" type="radioControl" multiple="NO" required="YES">
+                <size>110</size>
+                <columns>1</columns>
+                <tag language="EN_US" value="us">USA</tag>
+                <defaultValue>us</defaultValue>
+                <label>Citizenship:</label>
+                                <detailLabel>Minimum Requirements: Please enter the street address and ZIP Code before validating the address. Apt/Suite Number must be entered in Address Line 2.</detailLabel>
+            </item>
+            <item name="address1" type="addressField" required="YES">
+                <size>630</size>
+                <textSize>26.0</textSize>
+                <country>US</country>
+                <validation>QAS</validation>
+            </item>
+            <item name="phone1" type="textField" required="phone1|phone2">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>Home Phone</placeholder>
+                <validation>usphonenumber</validation>
+            </item>
+            <item name="phone2" type="textField" required="phone1|phone2">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>Cell Phone</placeholder>
+                <validation>usphonenumber</validation>
+            </item>
+            <item name="phone3" type="textField" isHidden="YES">
+                <size>620</size><textSize>26.0</textSize>
+                <placeholder>Business Phone</placeholder>
+                <validation>usphonenumber</validation>
+            </item>
+            <item name="phoneExtension" type="textField" isHidden="YES">
+                <size>620</size><textSize>26.0</textSize>
+                <placeholder>Ext</placeholder>
+                <validation>numericOnly</validation>
+                <maxlength>7</maxlength>
+            </item>
+            <item name="emailRequired" type="emailPinger" submitAlerts="YES" mustValidate="NO">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <submitName>email</submitName>
+                <label>To receive confirmation electronically as well as future updates:</label>
+            </item>
+        </group>
+    </page>
+
+    <page name="thirdPage">
+        <bgcolor>#aaaaaa</bgcolor>
+        <group name="secondSection" number="2" title="MONTHLY DONATION">
+            <item name="text1Spacer" type="spacerBlock" required="NO">
+                <position>upper_center</position>
+                <sizeY>10</sizeY>
+            </item>
+            <item name="group2Label" type="label" bleeds="YES">
+                <text language="EN_US">     I wish to make an automatic monthly contribution to:</text>
+                <textColor>#111111</textColor>
+                <textSize>14.0</textSize>
+                <position>upper_center</position>
+            </item>
+            <!-- <item name="charityAddress" type="multilineLabel" required="NO" bleeds="NO">
+                <size>400</size>
+                <sizeY>160</sizeY>
+                <position>center</position>
+                <numberOfLines>10</numberOfLines>
+                <textColor>#111111</textColor>
+                <textSize>15.0</textSize>
+                <bgcolor>clear</bgcolor>
+                <text>
+                CARE USA
+
+                151 Ellis St NE
+                Atlanta, GA
+                United States  30303
+                Tel: 1-800-422-7385
+                Email: kdowns@care.org</text>
+            </item> -->
+            <item name="addressBanner" type="zipImage" bleeds="YES">
+                <path>address_zip.png</path>
+                <width>650.0</width>
+                <height>187.0</height>
+            </item>
+            <item name="group2Spacer" type="spacerBlock" required="NO">
+                <sizeY>10</sizeY>
+            </item>
+            <item name="charityId" type="textField" forceSubmit="YES" editable="NO">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>67</placeholder>
+                <defaultValue>67</defaultValue>
+                <label>Charity #</label>
+            </item>
+            <item name="_creditFrequency" type="radioControl" multiple="NO" required="YES">
+                <size>310</size>
+                <columns>1</columns>
+                <tag language="EN_US" value="1">Monthly</tag>
+                <label>Recurring:</label>
+                <defaultValue>1</defaultValue>
+            </item>
+            <item name="_amount" type="valuePicker" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>Donation amount</placeholder>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+                <order>descending</order>
+                <action>itemShouldNotify:</action>
+            </item>
+            <item name="firstGiftAmount" type="textField" required="YES" isHidden="YES" forceSubmit="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+            </item>
+            <item name="collectionDate" type="radioControl" multiple="NO" required="YES">
+                <size>310</size>
+                <columns>1</columns>
+                <textSize>10.0</textSize>
+                <tag language="EN_US" value="15">15th of each month</tag>
+            </item>
+            <item name="group3Spacer" type="spacerBlock" required="NO">
+                <sizeY>10</sizeY>
+            </item>
+            <item name="businessId" type="textField" editable="NO">
+                <size>620</size>
+                <inlineLabel language="EN_US">Charitable Business #</inlineLabel>
+                <placeholder>13-168-5039</placeholder>
+                <label>Charitable Business Number:EIN/tax ID number:</label>
+            </item>
+            <item name="group3Spacer" type="spacerBlock" required="NO">
+                <sizeY>10</sizeY>
+            </item>
+            <item name="sign1" type="signatureBox" required="YES">
+                <position>center</position>
+                <width>200.0</width>
+                <height>100.0</height>
+                <label>Donor Initials</label>
+                <detailLabel>I understand that this is an ongoing monthly contribution and my first gift will be processed today.</detailLabel>
+                <legalText>I understand that this is an ongoing monthly contribution and my first gift will be processed today.</legalText>
+            </item>
+
+        </group>
+    </page>
+
+    <page name="fourthPage">
+        <bgcolor>#888888</bgcolor>
+        <group name="thirdSection" number="3" title="REGULAR PAYMENT METHOD">
+            <item name="methodOfCollection" type="radioControl" multiple="NO" required="YES">
+                <size>620</size>
+                <columns>2</columns>
+                <tag language="EN_US" value="3">Credit Card</tag>
+                <tag language="EN_US" value="1">Bank</tag>
+                <label>Pay by:</label>
+                <defaultValue>3</defaultValue>
+            </item>
+        </group>
+
+        <group name="bankInfo" isHidden="YES">
+            <item name="bankName" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>Bank Name</placeholder>
+                <validation>names</validation>
+            </item>
+            <item name="accountType" type="radioControl" multiple="NO" required="YES">
+                <size>620</size>
+                <columns>2</columns>
+                <tag value="c">Checking</tag>
+                <tag value="s">Savings</tag>
+                <label language="EN_US">Bank Account Type</label>
+            </item>
+            <item name="routing" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>Routing Number</placeholder>
+                <validation>numericOnly</validation>
+                <maxlength>9</maxlength>
+                <minlength>9</minlength>
+            </item>
+            <item name="repeatRouting" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>Repeat Routing Number</placeholder>
+                <validation>numericOnly</validation>
+                <maxlength>9</maxlength>
+                <minlength>9</minlength>
+            </item>
+            <item name="chequeImg" type="localImage">
+                <path>chequeUS.jpg</path>
+                <width>620.0</width>
+                <height>360.0</height>
+            </item>
+            <item name="accountNumber" type="textField" required="YES">
+                <size>620</size><textSize>26.0</textSize>
+                <placeholder>Account Number</placeholder>
+                <validation>numericOnly</validation>
+                <maxlength>13</maxlength>
+                <minlength>6</minlength>
+            </item>
+            <item name="repeatAccountNumber" type="textField" required="YES">
+                <size>620</size><textSize>26.0</textSize>
+                <placeholder>Repeat Account Number</placeholder>
+                <validation>numericOnly</validation>
+                <maxlength>13</maxlength>
+                <minlength>6</minlength>
+            </item>
+            <item name="bankholderName" type="textField" required="YES">
+                <size>620</size><textSize>26.0</textSize>
+                <placeholder>Personal or Business Name on Bank Account</placeholder>
+                <validation>names</validation>
+                <submitName>_creditNameOnCard</submitName>
+            </item>
+            <!-- <item name="dataProtectBank" type="multilineLabel" required="NO" bleeds="YES">
+                <size>620</size>
+                <sizeY>310</sizeY>
+                <position>center</position>
+                <numberOfLines>15</numberOfLines>
+                <textColor>#111111</textColor>
+                <textSize>16.0</textSize>
+                <bgcolor>clear</bgcolor>
+                <text>
+                    If you give a gift to CARE your name and address will be placed on our physical mailing list for occasional (quarterly) mail updates. If you do not wish to   receive physical mail from CARE you may call us at any time at 1-800-422-7385, or e-mail us, to be removed.
+                    If you are making a donation in honor of or in memory of someone, we will not use their personal information for any purpose other than sending the acknowledgement card. We make postal addresses and telephone numbers available to other reputable nonprofit and commercial organizations.
+                    If you do not want us to share this information you may call us at any time at 1-800-422-7385, or e-mail us, to have your name removed. CARE does not share your e-mail address with any third parties unless explicitly mentioned at the time of e-mail opt-in.</text>
+            </item> -->
+            <item name="sign2bank" type="signatureBox" bleeds="YES" required="YES">
+                <position>center</position>
+                <width>250.0</width>
+                <height>80.0</height>
+                <submitName>sign2</submitName>
+                <label>Sign here:</label>
+                <detailLabel>Donor authorizing monthly pledge and payment details.</detailLabel>
+                <legalText>Donor authorizing monthly pledge and payment details.</legalText>
+            </item>
+            
+            <item name="comments" type="textField">
+                <label>Comments</label>
+                <size>620</size><textSize>26.0</textSize>
+            </item>
+        </group>
+
+        <group name="creditCardInfo" >
+            <item name="_creditCardType" type="dropDown" required="YES">
+                <option value="Visa">Visa</option>
+                <option value="MC">MasterCard</option>
+                <option value="Amex">American Express</option>
+                <option value="DiscoverNovus">Discover</option>
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <label>Card Type:</label>
+            </item>
+            <item name="_creditCardNumber" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>Card Number</placeholder>
+                <validation>creditcard</validation>
+                <action>linksTo::_creditCardType</action>
+            </item>
+            <item name="repeatCreditCardNumber" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>Repeat Card Number</placeholder>
+                <validation>creditcard</validation>
+            </item>
+            <item name="creditCardPic" type="localImage">
+                <path>cvv_3.jpg</path>
+                <width>620.0</width>
+                <height>410.0</height>
+            </item>
+            <item name="code" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>SIN Number</placeholder>
+                <validation>numericOnly</validation>
+                <maxlength>3</maxlength>
+                <minlength>3</minlength>
+            </item>
+            <item name="expDate" type="dateField" required="YES">
+                <label>Expiry Date:</label>
+                <formatting>MM/YY</formatting>
+                <size>620</size>
+                <prefix>_creditCardExp</prefix>
+                <minYearRestriction>0</minYearRestriction>
+                <maxYearRestriction>+10</maxYearRestriction>
+            </item>
+            <item name="copyAddress" type="checkbox" required="NO">
+                <detailLabel>Billing address same as donor address</detailLabel>
+            </item>
+            <item name="_creditAddress" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>Cardholder Address</placeholder>
+                <validation>alphanumeric</validation>
+            </item>
+            <item name="_creditCity" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>City</placeholder>
+                <validation>letters</validation>
+            </item>
+            <item name="_creditStateProv" type="dropDown" isHidden="NO" required="YES">
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">Washington, DC</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+                <size>620</size>
+            </item>
+            <item name="_creditPostalCode" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>ZIP Code</placeholder>
+                <validation>numeric</validation>
+            </item>
+            <item name="_creditNameOnCard" type="textField" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <placeholder>Name on Card</placeholder>
+                <validation>names</validation>
+                <submitName>_creditNameOnCard</submitName>
+            </item>
+           <!--  <item name="dataProtectCredit" type="multilineLabel" required="NO" bleeds="YES">
+                <size>620</size>
+                <sizeY>310</sizeY>
+                <position>center</position>
+                <numberOfLines>15</numberOfLines>
+                <textColor>#111111</textColor>
+                <textSize>16.0</textSize>
+                <bgcolor>clear</bgcolor>
+                <text>
+                    If you give a gift to CARE your name and address will be placed on our physical mailing list for occasional (quarterly) mail updates. If you do not wish to receive physical mail from CARE you may call us at any time at 1-800-422-7385, or e-mail us, to be removed.
+                    If you are making a donation in honor of or in memory of someone, we will not use their personal information for any purpose other than sending the acknowledgement card. We make postal addresses and telephone numbers available to other reputable nonprofit and commercial organizations.
+                    If you do not want us to share this information you may call us at any time at 1-800-422-7385, or e-mail us, to have your name removed. CARE does not share your e-mail address with any third parties unless explicitly mentioned at the time of e-mail opt-in.</text>
+            </item> -->
+            <item name="sign2card" type="signatureBox" bleeds="YES" required="YES">
+                <position>center</position>
+                <width>250.0</width>
+                <height>80.0</height>
+                <submitName>sign2</submitName>
+                <label>Sign here:</label>
+                <detailLabel>Donor authorizing monthly pledge and payment details.</detailLabel>
+                <legalText>Donor authorizing monthly pledge and payment details.</legalText>
+            </item>
+
+            <item name="comments" type="textField">
+                <label>Comments</label>
+                <size>620</size><textSize>26.0</textSize>
+            </item>
+        </group>
+    </page>
+
+    <page name="fifthPage">
+        <bgcolor>#666666</bgcolor>
+        <group name="Signature" isHidden="NO">
+            <item name="fifthHeaderLabel" type="label" bleeds="YES">
+                <text language="EN_US">SIGNATURE</text>
+                <textColor>#333333</textColor>
+                <textSize>20.0</textSize>
+            </item>
+            <item name="cardPrintBank" type="multilineLabel" required="NO" bleeds="YES">
+                <size>550</size>
+                <sizeY>100</sizeY>
+                <numberOfLines>5</numberOfLines>
+                <textColor>#111111</textColor>
+                <textSize>14.0</textSize>
+                <bgcolor>clear</bgcolor>
+                <align>center</align>
+                <text>Terms of Agreement: My authorization to transfer my regular pledge amount from my bank or credit card shall remain in effect until I notify the above named charity in writing, or by phone, that I wish to end this agreement and the authorized charity has had a reasonable time to act on it. A record of each payment will be included on my bank or credit card statement and will serve as my receipt.</text>
+            </item>
+             <item name="sign3" type="signatureBox" bleeds="YES" required="YES">
+                    <position>center</position>
+                    <width>250.0</width>
+                    <height>120.0</height>
+                    <label>Pledge Signature:</label>
+                    <detailLabel>I have read and understand the terms and conditions.</detailLabel>
+                    <legalText>I have read and understand the terms and conditions.</legalText>
+             </item>
+             <item name="_formSignDate" type="dateField" required="YES" editable="NO">
+                <label>Sign Date:</label>
+                <formatting>MM/DD/YYYY</formatting>
+                <size>620</size>
+                <unix>YES</unix>
+                <defaultDate>today</defaultDate>
+             </item>
+         </group>
+         <group name="officeUse" isHidden="NO">
+            <item name="officeUseTitle" type="label" bleeds="YES">
+                <text language="EN_US">*** OFFICE USE ONLY ***</text>
+                <textColor>#333333</textColor>
+                <textSize>25.0</textSize>
+                <position>upper_left</position>
+            </item>
+            <item name="fundraisingMethod" type="dropDown" required="YES">
+                <option value="3">03 - Street</option>
+                <size>620</size><textSize>26.0</textSize>
+                <label>Fundraising Method:</label>
+            </item>
+            <item name="repId" type="textField" required="NO" editable="NO">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <label>Rep ID:</label>
+            </item>
+            <item name="fundraiserName" type="TextField" editable="NO">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <label>Rep Name:</label>
+            </item>
+            <item name="fundraiserState" type="dropDown" required="YES">
+                <option value="NY">New York</option>
+                <option value="DC">Washington, DC</option>
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <label>Fundraiser State:</label>
+            </item>
+            <item name="fundraiserCity" type="dropDown" required="YES">
+                <size>620</size>
+                <textSize>26.0</textSize>
+                <label>Fundraiser City:</label>
+            </item>
+            <item name="receivedWp" type="radioControl" multiple="NO" required="YES">
+                <size>620</size>
+                <columns>3</columns>
+                <tag value="Y">Yes</tag>
+                <tag value="N">No</tag>
+                <tag value="D">Declined</tag>
+                <label language="EN_US"> Did the donor receive a Charity Welcome Information Package?</label>
+            </item>
+         </group>
+    </page>
+    <page name="sixthPage">
+        <bgcolor>#444444</bgcolor>
+        <group name="confirmationSection" isHidden="NO">
+            <item name="behalfPrint" type="multilineLabel" required="NO" bleeds="YES">
+                <size>550</size>
+                <sizeY>70</sizeY>
+                <numberOfLines>4</numberOfLines>
+                <textColor>#111111</textColor>
+                <textSize>18.0</textSize>
+                <bgcolor>transparent</bgcolor>
+                <align>center</align>
+                <text>On behalf of your chosen charity we would like to thank you for your generous support. To help us monitor and maintain our fundraising standards could you please complete the following:
+                </text>
+            </item>
+
+            <item name="group8Spacer" type="spacerBlock" required="NO">
+                <sizeY>30</sizeY>
+            </item>
+            <item name="firstGift" type="radioControl" multiple="NO" required="YES">
+                <size>220</size>
+                <columns>2</columns>
+                <tag value="yes">Yes</tag>
+                <tag value="no">No</tag>
+                <detailLabel>Did the fundraiser explain that the first gift will be processed today?</detailLabel>
+                <requiredValue>yes</requiredValue>
+            </item>
+            <item name="ongoing" type="radioControl" multiple="NO" required="YES">
+                <size>220</size>
+                <columns>2</columns>
+                <tag value="yes">Yes</tag>
+                <tag value="no">No</tag>
+                <detailLabel>Did the fundraiser make it clear that this is an ongoing monthly donation?</detailLabel>
+                <requiredValue>yes</requiredValue>
+            </item>
+            <item name="notOneTime" type="radioControl" multiple="NO" required="YES">
+                <size>220</size>
+                <columns>2</columns>
+                <tag value="yes">Yes</tag>
+                <tag value="no">No</tag>
+                <detailLabel>Has the fundraiser explained that this is not a program for one time donations?</detailLabel>
+                <requiredValue>yes</requiredValue>
+            </item>
+            <item name="monthly" type="radioControl" multiple="NO" required="YES">
+                <size>220</size>
+                <columns>2</columns>
+                <tag value="yes">Yes</tag>
+                <tag value="no">No</tag>
+                <detailLabel>Do you understand that a copy of your monthly giving agreement will be sent to the email account (if) provided?</detailLabel>
+                <requiredValue>yes</requiredValue>
+            </item>
+            <item name="clearIdentification" type="radioControl" multiple="NO" required="YES">
+                <size>220</size>
+                <columns>2</columns>
+                <tag value="yes">Yes</tag>
+                <tag value="no">No</tag>
+                <detailLabel>Was the fundraiser clearly displaying valid identification?</detailLabel>
+                <requiredValue>yes</requiredValue>
+            </item>
+            <item name="sign4" type="signatureBox" bleeds="YES" required="YES">
+                <width>250.0</width>
+                <height>100.0</height>
+                <label>Donor Signature:</label>
+                <detailLabel>I have chosen to support: CARE USA with an ongoing contribution of  per month.</detailLabel>
+                <legalText>I have chosen to support: CARE USA with an ongoing contribution of  per month.</legalText>
+            </item>
+            <item name="_formSignDate" type="dateField" required="YES" editable="NO">
+                <label>Date:</label>
+                <formatting>MM/DD/YYYY</formatting>
+                <size>620</size>
+                <unix>YES</unix>
+                <defaultDate>today</defaultDate>
+            </item>
+            <item name="group6Spacer" type="spacerBlock" required="NO">
+                <sizeY>30</sizeY>
+            </item>
+        </group>
+        <group name="finalRemarks" isHidden="NO">
+            <item name="finePrint" type="multilineLabel" required="NO" bleeds="YES">
+                <size>640</size>
+                <sizeY>180</sizeY>
+                <position>center_left</position>
+                <numberOfLines>7</numberOfLines>
+                <textColor>#111111</textColor>
+                <textSize>20.0</textSize>
+                <bgcolor>clear</bgcolor>
+                <align>center</align>
+                <text>Thank You for your support
+
+1-855-654-4438 Toll-Free
+
+www.fundraisinginitiatives.ca</text>
+            </item>
+            <item name="group5Spacer" type="spacerBlock" required="NO">
+                <sizeY>180</sizeY>
+            </item>
+        </group>
+    </page>
+
+    <relationships>
+
+        <relationship object="item::businessName">
+            <condition>donationType == "business"</condition>
+            <if>
+                <show>THIS</show>
+            </if>
+            <else>
+                <hide>THIS</hide>
+            </else>
+        </relationship>
+        <relationship object="item::phone3">
+            <condition>donationType == "business"</condition>
+            <if>
+                <show>THIS</show>
+            </if>
+            <else>
+                <hide>THIS</hide>
+            </else>
+        </relationship>
+        <relationship object="item::phoneExtension">
+            <condition>donationType == "business"</condition>
+            <if>
+                <show>THIS</show>
+            </if>
+            <else>
+                <hide>THIS</hide>
+            </else>
+        </relationship>
+
+        <relationship object="item::_creditAddress">
+            <condition>copyAddress == "YES"</condition>
+            <if>
+                <copy>address1::add1,add2,add3</copy>
+            </if>
+            <else>
+                <text> </text>
+            </else>
+        </relationship>
+
+        <relationship object="item::_creditCity">
+            <condition>copyAddress == "YES"</condition>
+            <if>
+                <copy>address1::city</copy>
+            </if>
+            <else>
+                <text> </text>
+            </else>
+        </relationship>
+
+        <relationship object="item::_creditStateProv">
+            <condition>copyAddress == "YES"</condition>
+            <if>
+                <copy>address1::state</copy>
+            </if>
+        </relationship>
+
+        <relationship object="item::_creditPostalCode">
+            <condition>copyAddress == "YES"</condition>
+            <if>
+                <copy>address1::zip</copy>
+            </if>
+            <else>
+                <text> </text>
+            </else>
+        </relationship>
+
+        <relationship object="item::_creditFirstName">
+            <condition>copyAddress == "YES"</condition>
+            <if>
+                <copy>firstName</copy>
+            </if>
+            <else>
+                <text></text>
+            </else>
+        </relationship>
+
+        <relationship object="item::_creditLastName">
+            <condition>copyAddress == "YES"</condition>
+            <if>
+                <copy>lastName</copy>
+            </if>
+            <else>
+                <text></text>
+            </else>
+        </relationship>
+
+        <relationship object="item::otherTitle">
+            <condition>title == "OTHER"</condition>
+            <if>
+                <show>THIS</show>
+            </if>
+            <else>
+                <hide>THIS</hide>
+            </else>
+        </relationship>
+
+        <relationship object="item::title">
+            <condition>title == "OTHER"</condition>
+            <if>
+                <skip>THIS</skip>
+            </if>
+            <else>
+                <submit>THIS</submit>
+            </else>
+        </relationship>
+
+        <relationship object="group::bankInfo">
+            <condition>methodOfCollection == "1"</condition>
+            <if>
+                <show>THIS</show>
+            </if>
+            <else>
+                <hide>THIS</hide>
+            </else>
+        </relationship>
+
+        <relationship object="group::creditCardInfo">
+            <condition>methodOfCollection == "1"</condition>
+            <if>
+                <hide>THIS</hide>
+            </if>
+            <else>
+                <show>THIS</show>
+            </else>
+        </relationship>
+
+        <relationship object="item::code">
+            <condition>_creditCardType == "Amex"</condition>
+            <if>
+                <maxlength>4</maxlength>
+            </if>
+            <else>
+                <maxlength>3</maxlength>
+            </else>
+        </relationship>
+
+        <relationship object="item::code">
+            <condition>_creditCardType == "Amex"</condition>
+            <if>
+                <minlength>4</minlength>
+            </if>
+            <else>
+                <minlength>3</minlength>
+            </else>
+        </relationship>
+
+        <relationship object="item::_creditCardNumber">
+            <condition>_creditCardType == "Amex"</condition>
+            <if>
+                <maxlength>15</maxlength>
+            </if>
+            <else>
+                <maxlength>16</maxlength>
+            </else>
+        </relationship>
+
+        <relationship object="item::_amount">
+            <condition>_creditFrequency == "1"</condition>
+            <if>
+                <text>25</text>
+            </if>
+        </relationship>
+
+        <relationship object="item::_amount">
+            <condition>_creditFrequency == "2"</condition>
+            <if>
+                <text>100</text>
+            </if>
+        </relationship>
+
+        <relationship object="item::_amount">
+            <condition>_creditFrequency == "3"</condition>
+            <if>
+                <text>150</text>
+            </if>
+        </relationship>
+
+        <relationship object="item::_amount">
+            <condition>_creditFrequency == "4"</condition>
+            <if>
+                <text>300</text>
+            </if>
+        </relationship>
+
+        <relationship object="item::fundraiserCity">
+            <condition>fundraiserState == "NY"</condition>
+            <if>
+                <option value="NYC">New York City</option>
+            </if>
+        </relationship>
+
+        <relationship object="item::fundraiserCity">
+            <condition>fundraiserState == "DC"</condition>
+            <if>
+                <option value="DC">District of Columbia</option>
+            </if>
+        </relationship>
+
+        <relationship object="item::firstGiftAmount">
+            <condition>_amount == "1"</condition>
+            <if>
+                <copy>_amount</copy>
+            </if>
+            <else>
+                <copy>_amount</copy>
+            </else>
+        </relationship>
+    </relationships>
+</form>
