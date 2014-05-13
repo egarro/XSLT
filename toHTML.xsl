@@ -49,92 +49,110 @@
              <input type="submit" name="submitButton" value="Submit Form" class="submitButton"/>       
              </form>
                 
+             <script>
+             
+             function relationships() {   
              <xsl:for-each select="//form/relationships/relationship">
                  <xsl:variable name="objectType" select="substring-before(@object,'::')"/>    
                  <xsl:variable name="targetName" select="substring-after(@object,'::')"/>
                  <xsl:variable name="condition" select="./condition"/>
-                 <script>
-                 <xsl:choose>
-                     <xsl:when test="$objectType='page'">
-                         
-                     </xsl:when>
-                     <xsl:when test="$objectType='group'">
-                         
-                     </xsl:when>
-                     <xsl:when test="$objectType='item'">
-                        
                          if (  <xsl:call-template name="for-each-loop"> 
                                <!-- Changing the condition statement to javascript -->
                                <xsl:with-param name="list" select="tokenize($condition,'&quot;\w+&quot;| AND | OR | BT | LT | == | != |[()\s]')" />
                                <xsl:with-param name="past-memory" select="''" />
                                <xsl:with-param name="future-memory" select="$condition" />    
                                </xsl:call-template>  ) {
-                                <!-- Interpreting the tags into corresponding javascript functions -->
-                                <xsl:choose>    
-                                    <xsl:when test="./if/option">
-                                        updateItemOptions('<xsl:value-of select="$targetName" />','<xsl:value-of select="string-join(./if/option,'COCK')" />');
-                                    </xsl:when>
-                                    <xsl:when test="./if/tag">
-                                    </xsl:when>
-                                    <xsl:otherwise>
-                                        <xsl:for-each select="./if">
-                                            <xsl:choose>
-                                                <xsl:when test="local-name()='show'">
-                                                    displayItem('<xsl:value-of select="$targetName" />',true);
-                                                </xsl:when>
-                                                <xsl:when test="local-name()='hide'">
-                                                    displayItem('<xsl:value-of select="$targetName" />',false);
-                                                </xsl:when>
-                                                <xsl:when test="local-name()='evaluate'">
-                                                    evaluatePredicateForItem('<xsl:value-of select="$targetName" />','<xsl:value-of select="." />');
-                                                </xsl:when>
-                                                <xsl:when test="local-name()='text'">
-                                                    setTextForItem('<xsl:value-of select="$targetName" />','<xsl:value-of select="." />');
-                                                </xsl:when>
-                                                <xsl:when test="local-name()='check'">
-                                                    checkItem('<xsl:value-of select="$targetName" />',true);
-                                                </xsl:when>
-                                                <xsl:when test="local-name()='uncheck'">
-                                                    checkItem('<xsl:value-of select="$targetName" />',false);
-                                                </xsl:when>
-                                                <xsl:when test="local-name()='copy'">
-                                                    copyOntoItemFromItem('<xsl:value-of select="$targetName" />','<xsl:value-of select="." />');
-                                                </xsl:when>
-                                                <xsl:when test="local-name()='submit'">
-                                                    forItemSetAttributeWithValue('<xsl:value-of select="$targetName" />','skipSubmit',false);
-                                                </xsl:when>
-                                                <xsl:when test="local-name()='skip'">
-                                                    forItemSetAttributeWithValue('<xsl:value-of select="$targetName" />','skipSubmit',true);
-                                                </xsl:when>
-                                                <xsl:when test="local-name()!='option' or local-name()!='tag'">
-                                                    forItemSetAttributeWithValue('<xsl:value-of select="$targetName" />','<xsl:value-of select="local-name()" />','<xsl:value-of select="." />');
-                                                </xsl:when>
-                                                <xsl:when test="local-name()='option' or local-name()='tag'" />
-                                                <xsl:otherwise>
-                                                    alert('Unknown tag found while generating javascript functions');
-                                                </xsl:otherwise>
-                                            </xsl:choose>    
-                                        </xsl:for-each>                                        
-                                    </xsl:otherwise>
-                                </xsl:choose>    
-                                    
-                         
+                              <!-- Interpreting the tags into corresponding javascript functions -->
+                             <xsl:choose>    
+                                 <xsl:when test="./if/option">
+                                     <xsl:text>updateItemOptions('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select='string-join(./if/option,"&apos;,&apos;")' /><xsl:text>');</xsl:text>
+                                 </xsl:when>
+                                 <xsl:when test="./if/tag">
+                                     <xsl:text>updateItemOptions('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select='string-join(./if/tag,"&apos;,&apos;")' /><xsl:text>');</xsl:text>
+                                 </xsl:when>
+                                 <xsl:otherwise>
+                                     <xsl:for-each select="./if/descendant::*">
+                                        <xsl:call-template name="create-JS-function"> 
+                                            <!-- Looking up matching javascript function -->
+                                            <xsl:with-param name="targetName" select="$targetName" />
+                                        </xsl:call-template>    
+                                    </xsl:for-each>                                        
+                                </xsl:otherwise>
+                            </xsl:choose>  
                          }
-                         <xsl:if test="./else"> else {
-                         }    
+                         <xsl:if test="./else">else {
+                             <!-- Interpreting the tags into corresponding javascript functions -->
+                             <xsl:choose>    
+                                 <xsl:when test="./else/option">
+                                     <xsl:text>updateItemOptions('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select='string-join(./else/option,"&apos;,&apos;")' /><xsl:text>');</xsl:text>
+                                 </xsl:when>
+                                 <xsl:when test="./else/tag">
+                                     <xsl:text>updateItemOptions('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select='string-join(./else/tag,"&apos;,&apos;")' /><xsl:text>');</xsl:text>
+                                 </xsl:when>
+                                 <xsl:otherwise>
+                                     <xsl:for-each select="./else/descendant::*">
+                                         <xsl:call-template name="create-JS-function"> 
+                                             <!-- Looking up matching javascript function -->
+                                             <xsl:with-param name="targetName" select="$targetName" />
+                                         </xsl:call-template>    
+                                     </xsl:for-each>                                        
+                                 </xsl:otherwise>
+                             </xsl:choose>                             
+                         }
                          </xsl:if>
-                     </xsl:when>
-                     <xsl:otherwise>
-                         Unknown item type found in relationship object:<b><xsl:value-of select="$objectType"/></b> 
-                     </xsl:otherwise>
-                 </xsl:choose>
-                 </script>    
              </xsl:for-each>  
-                
-            </body>
+             } 
+             </script>    
+          </body>
         </html>
     </xsl:template>
 
+
+    <!-- Tags to JS Functions mapping -->
+    <xsl:template name="create-JS-function">
+        <xsl:param name="targetName" />
+        <xsl:choose>
+            <!-- show, hide and forceReceipt apply to items, groups or pages (elements) -->
+            <xsl:when test="local-name()='show'">
+                <xsl:text>displayElement('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>',true);</xsl:text>
+            </xsl:when>
+            <xsl:when test="local-name()='hide'">
+                <xsl:text>displayElement('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>',false);</xsl:text>
+            </xsl:when>
+            <xsl:when test="local-name()='forceReceipt'">
+                <xsl:text>setForceReceiptAttributeForElement('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select="." /><xsl:text>');</xsl:text>
+            </xsl:when>
+            <!-- All the other verbs apply to items only -->
+            <xsl:when test="local-name()='evaluate'">
+                <xsl:text>evaluatePredicateForItem('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select="." /><xsl:text>');</xsl:text>
+            </xsl:when>
+            <xsl:when test="local-name()='text'">
+                <xsl:text>setTextForItem('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select="." /><xsl:text>');</xsl:text>
+            </xsl:when>
+            <xsl:when test="local-name()='check'">
+                <xsl:text>checkItem('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>',true);</xsl:text>
+            </xsl:when>
+            <xsl:when test="local-name()='uncheck'">
+                <xsl:text>checkItem('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>',false);</xsl:text>
+            </xsl:when>
+            <xsl:when test="local-name()='copy'">
+                <xsl:text>copyOntoItemFromItem('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select="." /><xsl:text>');</xsl:text>
+            </xsl:when>
+            <xsl:when test="local-name()='submit'">
+                <xsl:text>forItemSetAttributeWithValue('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','skipSubmit',false);</xsl:text>
+            </xsl:when>
+            <xsl:when test="local-name()='skip'">
+                <xsl:text>forItemSetAttributeWithValue('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','skipSubmit',true);</xsl:text>
+            </xsl:when>
+            <xsl:when test="local-name()!='option' or local-name()!='tag'">
+                <xsl:text>forItemSetAttributeWithValue('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select="local-name()" /><xsl:text>','</xsl:text><xsl:value-of select="." /><xsl:text>');</xsl:text>
+            </xsl:when>
+            <xsl:when test="local-name()='option' or local-name()='tag'" />
+            <xsl:otherwise>
+                <xsl:text>alert('Unknown tag found while generating javascript functions');</xsl:text>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>    
     
     <!-- For-each loop emulator with memory -->
     <xsl:template name="for-each-loop">
@@ -227,7 +245,7 @@
                 </div>    
             </xsl:when>
             <xsl:when test="@type='dateField'">
-                <input type="text" data-role="date" data-inline="true" size="50">
+                <input type="text" data-role="date" data-inline="true" size="50" onchange="javascript:relationships();">
                 <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
                 <xsl:if test="./placeholder">
                     <xsl:attribute name="placeholder"><xsl:value-of select="./placeholder"/></xsl:attribute>
@@ -241,7 +259,7 @@
                 <xsl:value-of select="./text"/>          
             </xsl:when>
             <xsl:when test="@type='checkbox'">
-                <input type="checkbox" value="1">
+                <input type="checkbox" value="1" onchange="javascript:relationships();">
                     <xsl:choose>
                         <xsl:when test="./submitName">
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
@@ -258,7 +276,7 @@
             </xsl:when>
             <xsl:when test="@type='segmentedControl'">
                 <xsl:text>SEGMENTED CONTROL ITEM - (Implemented as drop-downs for now)</xsl:text><br/>          
-                <select>
+                <select onchange="javascript:relationships();">
                     <xsl:choose>
                         <xsl:when test="./submitName">
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
@@ -334,7 +352,7 @@
                   </button>
             </xsl:when>
             <xsl:when test="@type='dropDown'">
-                <select>
+                <select onchange="javascript:relationships();">
                     <xsl:choose>
                         <xsl:when test="./submitName">
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
@@ -368,6 +386,12 @@
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute> 
                         </xsl:otherwise>
                     </xsl:choose>
+                    <xsl:if test="./action">
+                        <!-- Matches an action to a corresponding javascript function -->
+                        <xsl:call-template name="JS-function-for-action">
+                            <xsl:with-param name="itemType" select="'textField'" />
+                        </xsl:call-template>
+                    </xsl:if>                    
                     <xsl:for-each select="./option">
                         <xsl:copy-of select="."/>    
                     </xsl:for-each> 
@@ -386,6 +410,12 @@
                     </xsl:choose>
                     <xsl:if test="./placeholder">
                         <xsl:attribute name="placeholder"><xsl:value-of select="./placeholder"/></xsl:attribute>
+                    </xsl:if>
+                    <xsl:if test="./action">
+                        <!-- Matches an action to a corresponding javascript function -->
+                        <xsl:call-template name="JS-function-for-action">
+                            <xsl:with-param name="itemType" select="'canadianPostalCode'" />
+                        </xsl:call-template>
                     </xsl:if>
                 </input>          
             </xsl:when>
@@ -408,6 +438,12 @@
                             <xsl:attribute name="placeholder">Email</xsl:attribute>
                         </xsl:otherwise>                   
                     </xsl:choose>
+                    <xsl:if test="./action">
+                        <!-- Matches an action to a corresponding javascript function -->
+                        <xsl:call-template name="JS-function-for-action">
+                            <xsl:with-param name="itemType" select="'emailPinger'" />
+                        </xsl:call-template>
+                    </xsl:if>
                 </input>          
                 <button type="button">
                     <xsl:attribute name="onclick">javascript:validateEmail('<xsl:value-of select="@name"/>')</xsl:attribute>
@@ -447,6 +483,12 @@
                     <xsl:if test="./validation">
                         <xsl:attribute name="validation"><xsl:value-of select="./validation"/></xsl:attribute>
                     </xsl:if>
+                    <xsl:if test="./action">
+                        <!-- Matches an action to a corresponding javascript function -->
+                        <xsl:call-template name="JS-function-for-action">
+                            <xsl:with-param name="itemType" select="'textField'" />
+                        </xsl:call-template>
+                    </xsl:if>
                 </input>          
             </xsl:when>
             <xsl:otherwise>
@@ -461,6 +503,28 @@
         </xsl:if>
     </xsl:template>
 
+    <!-- Action to JS function mapping -->
+    <xsl:template name="JS-function-for-action">
+        <xsl:param name="itemType"/>
+        <xsl:choose>
+            <xsl:when test="compare(./action,'itemShouldNotify:')=0">
+                <xsl:attribute name="onchange">javascript:relationships();</xsl:attribute>
+            </xsl:when>
+            <xsl:when test="compare(./action,'UFUcreateSourceCode')=0">
+                <xsl:attribute name="onchange">javascript:generateUFUSourceCode('sourceCode');</xsl:attribute>
+            </xsl:when>
+            <xsl:when test="compare(./action,'SumItems')=0 or compare(./action,'SumItems:')=0">
+                <xsl:attribute name="onchange">javascript:sumItemsWithPredicate('<xsl:value-of select="./actionArg"/>');</xsl:attribute>
+            </xsl:when>
+            <xsl:when test="(string-length(./action) &gt; 9) and (substring(./action, 1, 9)='linksTo::')">
+                <xsl:attribute name="onchange">javascript:linkFieldToTypeField(this,'<xsl:value-of select="substring-after(./action,'::')"/>');</xsl:attribute>
+            </xsl:when>
+            <xsl:otherwise>
+                Unknown action found while building <xsl:value-of select="$itemType"/> item: <xsl:value-of select="./action"/> 
+            </xsl:otherwise>                    
+        </xsl:choose>
+    </xsl:template>
+
     <!-- Building a radio control -->
     <xsl:template name="buildRadioControl">
         <xsl:param name="tmp_name" />
@@ -468,7 +532,7 @@
         <xsl:param name="with_images" />
         <xsl:for-each select="$option_list">
             <li>
-                <input type="radio">
+                <input type="radio" onchange="javascript:relationships();">
                     <xsl:attribute name="name"><xsl:value-of select="$tmp_name"/></xsl:attribute>
                     <xsl:attribute name="id"><xsl:value-of select="concat($tmp_name,position())"/></xsl:attribute>
                     <xsl:attribute name="value"><xsl:value-of select="@value"/></xsl:attribute>   
