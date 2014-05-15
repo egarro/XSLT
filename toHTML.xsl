@@ -37,6 +37,7 @@
                                             <xsl:if test="@isHidden='YES'">
                                                 <xsl:attribute name="style">display:none;</xsl:attribute>                        
                                             </xsl:if>
+                                            <xsl:attribute name="id"><xsl:value-of select="@name"/></xsl:attribute>
                                             <xsl:attribute name="class">MM<xsl:value-of select="@type"/></xsl:attribute>
                                             <xsl:call-template name="buildItem" />   
                                         </div>
@@ -68,7 +69,7 @@
                                      <xsl:text>updateItemOptions('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select='string-join(./if/option,"&apos;,&apos;")' /><xsl:text>');</xsl:text>
                                  </xsl:when>
                                  <xsl:when test="./if/tag">
-                                     <xsl:text>updateItemOptions('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select='string-join(./if/tag,"&apos;,&apos;")' /><xsl:text>');</xsl:text>
+                                     <xsl:text>updateItemOptionTags('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select='string-join(./if/tag,"&apos;,&apos;")' /><xsl:text>');</xsl:text>
                                  </xsl:when>
                                  <xsl:otherwise>
                                      <xsl:for-each select="./if/descendant::*">
@@ -87,7 +88,7 @@
                                      <xsl:text>updateItemOptions('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select='string-join(./else/option,"&apos;,&apos;")' /><xsl:text>');</xsl:text>
                                  </xsl:when>
                                  <xsl:when test="./else/tag">
-                                     <xsl:text>updateItemOptions('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select='string-join(./else/tag,"&apos;,&apos;")' /><xsl:text>');</xsl:text>
+                                     <xsl:text>updateItemOptionTags('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select='string-join(./else/tag,"&apos;,&apos;")' /><xsl:text>');</xsl:text>
                                  </xsl:when>
                                  <xsl:otherwise>
                                      <xsl:for-each select="./else/descendant::*">
@@ -205,7 +206,9 @@
                 </img>    
             </xsl:when>
             <xsl:when test="@type='spacerBlock'">
-                 <br />        
+                 <div>
+                     <xsl:attribute name="style">display:block;height:<xsl:value-of select="./sizeY"/>px;</xsl:attribute>
+                 </div>        
             </xsl:when>
             <xsl:when test="@type='photoCapture'">
                 <a>

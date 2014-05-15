@@ -635,6 +635,18 @@
             <xs:attribute name="pdfType" type="xs:string"/>
             
         </xs:complexType>
+        <xs:unique name="pageNamesMustBeUnique">
+            <xs:selector xpath="page"/>
+            <xs:field xpath="@name"/>
+        </xs:unique>
+        <xs:unique name="groupNamesMustBeUnique">
+            <xs:selector xpath="page/group"/>
+            <xs:field xpath="@name"/>
+        </xs:unique>
+        <xs:unique name="itemNamesMustBeUnique">
+            <xs:selector xpath="page/group/item"/>
+            <xs:field xpath="@name"/>
+        </xs:unique>
     </xs:element>
     
 </xs:schema>

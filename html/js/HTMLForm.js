@@ -6,9 +6,70 @@ function updateItemOptions(target) {
  //  }
 }
 
-function valueOfItem(item) {
-console.log("Must fetch " + item + " value and return a string");
+//This function is called with a variable number of arguments:
+function updateItemOptionTags(target) {
+ console.log("Must ad " + arguments.length + " option tags to " + target);
+ // for (var i = 1; i < arguments.length; i++) {
+ //    alert(arguments[i]);
+ //  }
 }
+
+function valueOfItem(item) {
+	console.log("Must fetch " + item + " value and return a string");
+	var theClass = $('#'+item).attr("class").split(" ")[0];
+
+	if (theClass == 'MMlocalImage' ||
+		theClass == 'MMzipImage' ||
+		theClass == 'MMspacerBlock' ||
+		theClass == 'MMphotoCapture' ||
+		theClass == 'MMsignatureBox' ||
+		theClass == 'MMspacerBlock' ||
+		theClass == 'MMaddressField' ||
+		theClass == 'MMlabel' ||
+		theClass == 'MMmultilineLabel' || 
+		theClass == 'MMinfoButton' ||
+		theClass == 'MMFRBankPinger' ||
+		theClass == 'MMUKBankPinger' ) {
+
+		return "";
+	}
+    else if (theClass == 'MMdateField'){
+
+	}
+    else if (theClass == 'MMcheckbox'){
+    	if ( $('#'+item).is(':checked') ) return "YES";
+    	else return "NO";	
+	}
+    else if (theClass == 'MMradioControl' ||
+	 		 theClass == 'MMimagePicker'
+    	    ) {
+
+    	 var resp = $('#'+ item + " input[name='" + item + "']:checked").val(); 
+		 return resp;
+	}
+    else if (theClass == 'MMdropDown' || 
+    		 theClass == 'MMvaluePicker' ||
+    		 theClass == 'MMsegmentedControl'
+			) {
+
+    	var resp = $('#'+ item + " select[name='" + item + "']:first").val(); 
+    	return resp;
+	}
+    else if (theClass == 'MMtextField' || 
+    		 theClass == 'MMcanadianPostalCode' ||
+    		 theClass == 'MMemailPinger'
+    		) {
+
+    	var resp = $('#'+ item + " input[name='" + item + "']:first").val(); 
+    	return resp;
+	}
+	else {
+		console.log("Warning: Unknown class found while finding valueOfItem: " + theClass + " for item " + item );
+	} 
+
+	return "";
+}
+
 
 function generateUFUSourceCode(target) {
  console.log("Generating UFU source code onto target " + target);

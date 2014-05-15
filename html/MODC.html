@@ -9,39 +9,40 @@
             <div class="HTMLPage" id="firstPage" name="firstPage">
                <div class="HTMLGroup" id="header" name="header">
                   <h3></h3>
-                  <div class="MMspacerBlock"><br></div>
-                  <div class="MMzipImage"><img src="images/MODC/MODC_Logo.png"></div>
-                  <div class="MMlabel">Supporter Giving Agreement</div>
-                  <div class="MMTextField">
-                     <div class="ITEMLabel">Reference Number</div>
-                     Unknown item type found in XML file:<b>TextField</b></div>
-                  <div class="MMTextField">
-                     Unknown item type found in XML file:<b>TextField</b></div>
-                  <div class="MMTextField">
-                     Unknown item type found in XML file:<b>TextField</b></div>
+                  <div id="group0Spacer" class="MMspacerBlock">
+                     <div style="display:block;height:30px;"></div>
+                  </div>
+                  <div id="logo" class="MMzipImage"><img src="images/MODC/MODC_Logo.png"></div>
+                  <div id="headerTitle" class="MMlabel">Supporter Giving Agreement</div>
+                  <div id="_internalFormId" class="MMtextField">
+                     <div class="ITEMLabel">Reference Number</div><input type="text" size="50" name="_internalFormId" placeholder="CDC25"></div>
+                  <div id="fundraiserName" class="MMtextField"><input type="text" size="50" name="fundraiserName" submitName="fundraiserName" placeholder="Fundraiser Name"></div>
+                  <div id="repId" class="MMtextField"><input type="text" size="50" name="repId" placeholder="Fundraiser ID"></div>
                </div>
             </div>
             <div class="HTMLPage" id="secondPage" name="secondPage">
                <div class="HTMLGroup" id="firstSection" name="firstSection">
                   <h3>DONOR DETAILS</h3>
-                  <div class="MMradioControl">
+                  <div id="donationType" class="MMradioControl">
                      <div class="ITEMLabel">This donation is made on behalf of:</div>
                      <li><input type="radio" onchange="javascript:relationships();" name="donationType" id="donationType1" value="individual"><label for="donationType1">Individual</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="donationType" id="donationType2" value="business"><label for="donationType2">Business</label></li>
                   </div>
-                  <div class="MMradioControl">
+                  <div id="gender" class="MMradioControl">
                      <div class="ITEMLabel">Gender</div>
                      <li><input type="radio" onchange="javascript:relationships();" name="gender" id="gender1" value="Male"><label for="gender1">Male</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="gender" id="gender2" value="Female"><label for="gender2">Female</label></li>
                   </div>
-                  <div class="MMspacerBlock"><br></div>
-                  <div class="MMradioControl">
+                  <div id="group10Spacer" class="MMspacerBlock">
+                     <div style="display:block;height:10px;"></div>
+                  </div>
+                  <div id="titleMale" class="MMradioControl">
                      <div class="ITEMLabel">Title</div>
                      <li><input type="radio" onchange="javascript:relationships();" name="title" id="title1" value="MR"><label for="title1">Mr</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="title" id="title2" value="DR"><label for="title2">Dr</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="title" id="title3" value="OTHER"><label for="title3">Other</label></li>
                   </div>
-                  <div style="display:none;" class="MMradioControl">
+                  <div style="display:none;" id="titleFemale" class="MMradioControl">
                      <div class="ITEMLabel">Title</div>
                      <li><input type="radio" onchange="javascript:relationships();" name="title" id="title1" value="MRS"><label for="title1">Mrs</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="title" id="title2" value="MS"><label for="title2">Ms</label></li>
@@ -49,15 +50,17 @@
                      <li><input type="radio" onchange="javascript:relationships();" name="title" id="title4" value="DR"><label for="title4">Dr</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="title" id="title5" value="OTHER"><label for="title5">Other</label></li>
                   </div>
-                  <div style="display:none;" class="MMtextField"><input type="text" size="50" name="otherTitleM" submitName="title" placeholder="Other" validation="lettersOnly"></div>
-                  <div style="display:none;" class="MMtextField"><input type="text" size="50" name="otherTitleF" submitName="title" placeholder="Other" validation="lettersOnly"></div>
-                  <div class="MMspacerBlock"><br></div>
-                  <div class="MMtextField"><input type="text" size="50" name="firstName" placeholder="First Name" validation="names"></div>
-                  <div class="MMtextField"><input type="text" size="50" name="lastName" placeholder="Last Name" validation="names"></div>
-                  <div style="display:none;" class="MMtextField"><input type="text" size="50" name="businessName" placeholder="Business Name" validation="names"></div>
-                  <div class="MMdateField">
+                  <div style="display:none;" id="otherTitleM" class="MMtextField"><input type="text" size="50" name="otherTitleM" submitName="title" placeholder="Other" validation="lettersOnly"></div>
+                  <div style="display:none;" id="otherTitleF" class="MMtextField"><input type="text" size="50" name="otherTitleF" submitName="title" placeholder="Other" validation="lettersOnly"></div>
+                  <div id="group11Spacer" class="MMspacerBlock">
+                     <div style="display:block;height:10px;"></div>
+                  </div>
+                  <div id="firstName" class="MMtextField"><input type="text" size="50" name="firstName" placeholder="First Name" validation="names"></div>
+                  <div id="lastName" class="MMtextField"><input type="text" size="50" name="lastName" placeholder="Last Name" validation="names"></div>
+                  <div style="display:none;" id="businessName" class="MMtextField"><input type="text" size="50" name="businessName" placeholder="Business Name" validation="names"></div>
+                  <div id="birthDate" class="MMdateField">
                      <div class="ITEMLabel">Date of birth</div><input type="text" data-role="date" data-inline="true" size="50" onchange="javascript:relationships();" name="birthDate"></div>
-                  <div class="MMaddressField">
+                  <div id="address1" class="MMaddressField">
                      <div name="address1"><input type="text" size="50" validation="lettersNumeric" name="address1" placeholder="Address Line 1" maxlength="50"><br><input type="text" size="50" validation="lettersNumeric" name="address2" placeholder="Address Line 2" maxlength="50"><br><input type="text" size="50" validation="lettersNumeric" name="address3" placeholder="Address Line 3" maxlength="50"><br><input type="text" size="50" validation="names" placeholder="City" name="city" maxlength="25"><br><input type="text" size="50" validation="canadianPostalCode" placeholder="Canadian Postal Code" maxlength="7" name="postalCode"><br><select>
                            <option value="AB">Alberta</option>
                            <option value="BC">British Columbia</option>
@@ -75,50 +78,58 @@
                            Validate address
                            </button></div>
                   </div>
-                  <div class="MMtextField"><input type="text" size="50" name="phone1" placeholder="Home Phone" validation="usphonenumber"></div>
-                  <div class="MMtextField"><input type="text" size="50" name="phone2" placeholder="Cell Phone" validation="usphonenumber"></div>
-                  <div style="display:none;" class="MMtextField"><input type="text" size="50" name="phone3" placeholder="Business Phone" validation="usphonenumber"></div>
-                  <div style="display:none;" class="MMtextField"><input type="text" size="50" name="phoneExtension" placeholder="Ext" validation="numericOnly"></div>
-                  <div class="MMemailPinger"><input type="text" size="50" name="emailRequired" submitName="email" placeholder="Email"><button type="button" onclick="javascript:validateEmail('emailRequired')">
+                  <div id="phone1" class="MMtextField"><input type="text" size="50" name="phone1" placeholder="Home Phone" validation="usphonenumber"></div>
+                  <div id="phone2" class="MMtextField"><input type="text" size="50" name="phone2" placeholder="Cell Phone" validation="usphonenumber"></div>
+                  <div style="display:none;" id="phone3" class="MMtextField"><input type="text" size="50" name="phone3" placeholder="Business Phone" validation="usphonenumber"></div>
+                  <div style="display:none;" id="phoneExtension" class="MMtextField"><input type="text" size="50" name="phoneExtension" placeholder="Ext" validation="numericOnly"></div>
+                  <div id="emailRequired" class="MMemailPinger"><input type="text" size="50" name="emailRequired" submitName="email" placeholder="Email"><button type="button" onclick="javascript:validateEmail('emailRequired')">
                         Validate email
                         </button></div>
-                  <div class="MMlabel">At the end of this year, your tax receipt will be emailed to this address.</div>
-                  <div class="MMspacerBlock"><br></div>
+                  <div id="emailLabel" class="MMlabel">At the end of this year, your tax receipt will be emailed to this address.</div>
+                  <div id="group1Spacer" class="MMspacerBlock">
+                     <div style="display:block;height:30px;"></div>
+                  </div>
                </div>
             </div>
             <div class="HTMLPage" id="thirdPage" name="thirdPage">
                <div class="HTMLGroup" id="secondSection" name="secondSection">
                   <h3>REGULAR DONATION</h3>
-                  <div class="MMlabel">I wish to make an automatic monthly contribution to:</div>
-                  <div class="MMzipImage"><img src="images/MODC/address_zip.png"></div>
-                  <div style="display:none;" class="MMradioControl">
+                  <div id="group2Label" class="MMlabel">I wish to make an automatic monthly contribution to:</div>
+                  <div id="addressBanner" class="MMzipImage"><img src="images/MODC/address_zip.png"></div>
+                  <div style="display:none;" id="frequency" class="MMradioControl">
                      <div class="ITEMLabel">Recurring:</div>
                      <li><input type="radio" onchange="javascript:relationships();" name="frequency" id="frequency1" value="1"><label for="frequency1">Monthly</label></li>
                   </div>
-                  <div class="MMspacerBlock"><br></div>
-                  <div class="MMvaluePicker"><select name="_amount" onchange="javascript:relationships();">
+                  <div id="group2Spacer" class="MMspacerBlock">
+                     <div style="display:block;height:10px;"></div>
+                  </div>
+                  <div id="_amount" class="MMvaluePicker"><select name="_amount" onchange="javascript:relationships();">
                         <option value="10">10</option>
                         <option value="15">15</option>
                         <option value="20">20</option>
                         <option value="25">25</option></select></div>
-                  <div style="display:none;" class="MMtextField"><input type="text" size="50" name="firstGiftAmount"></div>
-                  <div class="MMmultilineLabel">Your first gift will be processed today and the following monthly donations will be
+                  <div style="display:none;" id="firstGiftAmount" class="MMtextField"><input type="text" size="50" name="firstGiftAmount"></div>
+                  <div id="collectionDatePrint" class="MMmultilineLabel">Your first gift will be processed today and the following monthly donations will be
                      withdrawn on the:
                   </div>
-                  <div class="MMradioControl">
+                  <div id="collectionDate" class="MMradioControl">
                      <li><input type="radio" onchange="javascript:relationships();" name="collectionDate" id="collectionDate1" value="15"><label for="collectionDate1">15th of each month</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="collectionDate" id="collectionDate2" value="30"><label for="collectionDate2">30th of each month</label></li>
                   </div>
-                  <div class="MMspacerBlock"><br></div>
-                  <div class="MMtextField">
+                  <div id="group3Spacer" class="MMspacerBlock">
+                     <div style="display:block;height:10px;"></div>
+                  </div>
+                  <div id="businessId" class="MMtextField">
                      <div class="ITEMLabel">Charitable Business Number:</div><input type="text" size="50" name="businessId" placeholder="879585214RR0001"></div>
-                  <div class="MMspacerBlock"><br></div>
-                  <div class="MMsignatureBox">
+                  <div id="group4Spacer" class="MMspacerBlock">
+                     <div style="display:block;height:20px;"></div>
+                  </div>
+                  <div id="sign1" class="MMsignatureBox">
                      <div class="ITEMLabel">Donor Initials</div><a href="javascript:openSignaturePanel(this);"><img src="images/emptysignature.png"></a><div class="ITEMDetailLabel">I understand that this is an ongoing monthly contribution and my first gift will be
                         processed today.
                      </div>
                   </div>
-                  <div class="MMmultilineLabel">I may revoke my authorization or make changes to my donation at any time, subject
+                  <div id="finePrint3" class="MMmultilineLabel">I may revoke my authorization or make changes to my donation at any time, subject
                      to providing notice of 10 days. To obtain a sample cancellation form, or for more
                      information on my right to cancel a PAD agreement, I may contact my financial institution
                      or visit www.cdnpay.ca
@@ -128,7 +139,7 @@
             <div class="HTMLPage" id="fourthPage" name="fourthPage">
                <div class="HTMLGroup" id="thirdSection" name="thirdSection">
                   <h3>METHOD OF PAYMENT</h3>
-                  <div class="MMradioControl">
+                  <div id="methodOfCollection" class="MMradioControl">
                      <div class="ITEMLabel">Pay by:</div>
                      <li><input type="radio" onchange="javascript:relationships();" name="methodOfCollection" id="methodOfCollection1" value="3"><label for="methodOfCollection1">Credit Card</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="methodOfCollection" id="methodOfCollection2" value="1"><label for="methodOfCollection2">Bank</label></li>
@@ -136,45 +147,45 @@
                </div>
                <div class="HTMLGroup" style="display:none;" id="bankInfo" name="bankInfo">
                   <h3></h3>
-                  <div class="MMtextField"><input type="text" size="50" name="transitNumber" placeholder="Transit Number" validation="numericOnly"></div>
-                  <div class="MMtextField"><input type="text" size="50" name="bankNumber" placeholder="Bank Number" validation="numericOnly"></div>
-                  <div class="MMtextField"><input type="text" size="50" name="accountNumber" placeholder="Account Number" validation="numericOnly"></div>
-                  <div class="MMtextField"><input type="text" size="50" name="repeatAccountNumber" placeholder="Repeat Account Number" validation="numericOnly"></div>
-                  <div class="MMlocalImage"><img src="images/cheque.jpg"></div>
-                  <div class="MMtextField"><input type="text" size="50" name="bankholderName" submitName="_creditNameOnCard" placeholder="Personal or Business Name on Bank Account" validation="names"></div>
-                  <div class="MMmultilineLabel">March of Dimes Canada respects your privacy and adheres to all legislative requirements
+                  <div id="transitNumber" class="MMtextField"><input type="text" size="50" name="transitNumber" placeholder="Transit Number" validation="numericOnly"></div>
+                  <div id="bankNumber" class="MMtextField"><input type="text" size="50" name="bankNumber" placeholder="Bank Number" validation="numericOnly"></div>
+                  <div id="accountNumber" class="MMtextField"><input type="text" size="50" name="accountNumber" placeholder="Account Number" validation="numericOnly"></div>
+                  <div id="repeatAccountNumber" class="MMtextField"><input type="text" size="50" name="repeatAccountNumber" placeholder="Repeat Account Number" validation="numericOnly"></div>
+                  <div id="chequeImg" class="MMlocalImage"><img src="images/cheque.jpg"></div>
+                  <div id="bankholderName" class="MMtextField"><input type="text" size="50" name="bankholderName" submitName="_creditNameOnCard" placeholder="Personal or Business Name on Bank Account" validation="names"></div>
+                  <div id="dataProtectBank" class="MMmultilineLabel">March of Dimes Canada respects your privacy and adheres to all legislative requirements
                      and best practices with respect to protecting your privacy. All information collected
                      regarding March of Dimes Canada supporters is kept in the strictest confidence. Your
                      name will not be sold or traded. If at any time you wish to be removed from our contact
                      list please contact our office at 1-800-263-3463 ext. 7338 or services@marchofdimes.ca
                   </div>
-                  <div class="MMsignatureBox">
+                  <div id="sign2bank" class="MMsignatureBox">
                      <div class="ITEMLabel">I am proud to be a monthly donor:</div><a href="javascript:openSignaturePanel(this);"><img src="images/emptysignature.png"></a><div class="ITEMDetailLabel">Donor authorizing monthly pledge and payment details.</div>
                   </div>
-                  <div class="MMmultilineLabel">Falsifying Credit Card or Bank Details is prohibited under the Canadian Criminal Code,
+                  <div id="cardPrintBank" class="MMmultilineLabel">Falsifying Credit Card or Bank Details is prohibited under the Canadian Criminal Code,
                      offenders are liable to imprisonment for a term of up to ten years.
                   </div>
-                  <div class="MMtextField">
-                     <div class="ITEMLabel">Comments</div><input type="text" size="50" name="comments"></div>
+                  <div id="commentsBank" class="MMtextField">
+                     <div class="ITEMLabel">Comments</div><input type="text" size="50" name="commentsBank" submitName="comments"></div>
                </div>
                <div class="HTMLGroup" id="creditCardInfo" name="creditCardInfo">
                   <h3></h3>
-                  <div class="MMdropDown">
+                  <div id="_creditCardType" class="MMdropDown">
                      <div class="ITEMLabel">Card Type:</div><select onchange="javascript:relationships();" name="_creditCardType">
                         <option value="Visa">Visa</option>
                         <option value="Mastercard">Mastercard</option>
                         <option value="Amex">American Express</option></select></div>
-                  <div class="MMtextField"><input type="text" size="50" name="_creditCardNumber" placeholder="Card Number" validation="creditcard" onchange="javascript:linkFieldToTypeField(this,'_creditCardType');"></div>
-                  <div class="MMtextField"><input type="text" size="50" name="repeatCreditCardNumber" placeholder="Repeat Card Number" validation="creditcard"></div>
-                  <div class="MMlocalImage"><img src="images/cvv_3.jpg"></div>
-                  <div class="MMtextField"><input type="text" size="50" name="code" placeholder="CVV number" validation="numericOnly"></div>
-                  <div class="MMdateField"><input type="text" data-role="date" data-inline="true" size="50" onchange="javascript:relationships();" name="expDate"></div>
-                  <div class="MMtextField"><input type="text" size="50" name="cardholderName" submitName="_creditNameOnCard" placeholder="Personal or Business Name on Card" validation="letters"></div>
-                  <div class="MMcheckbox"><input type="checkbox" value="1" onchange="javascript:relationships();" name="copyAddress"><div class="ITEMDetailLabel">Billing address same as donor address</div>
+                  <div id="_creditCardNumber" class="MMtextField"><input type="text" size="50" name="_creditCardNumber" placeholder="Card Number" validation="creditcard" onchange="javascript:linkFieldToTypeField(this,'_creditCardType');"></div>
+                  <div id="repeatCreditCardNumber" class="MMtextField"><input type="text" size="50" name="repeatCreditCardNumber" placeholder="Repeat Card Number" validation="creditcard"></div>
+                  <div id="creditCardPic" class="MMlocalImage"><img src="images/cvv_3.jpg"></div>
+                  <div id="code" class="MMtextField"><input type="text" size="50" name="code" placeholder="CVV number" validation="numericOnly"></div>
+                  <div id="expDate" class="MMdateField"><input type="text" data-role="date" data-inline="true" size="50" onchange="javascript:relationships();" name="expDate"></div>
+                  <div id="cardholderName" class="MMtextField"><input type="text" size="50" name="cardholderName" submitName="_creditNameOnCard" placeholder="Personal or Business Name on Card" validation="letters"></div>
+                  <div id="copyAddress" class="MMcheckbox"><input type="checkbox" value="1" onchange="javascript:relationships();" name="copyAddress"><div class="ITEMDetailLabel">Billing address same as donor address</div>
                   </div>
-                  <div class="MMtextField"><input type="text" size="50" name="_creditAddress" placeholder="Cardholder Address" validation="alphanumeric"></div>
-                  <div class="MMtextField"><input type="text" size="50" name="_creditCity" placeholder="City" validation="letters"></div>
-                  <div class="MMdropDown"><select onchange="javascript:relationships();" name="_creditStateProv">
+                  <div id="_creditAddress" class="MMtextField"><input type="text" size="50" name="_creditAddress" placeholder="Cardholder Address" validation="alphanumeric"></div>
+                  <div id="_creditCity" class="MMtextField"><input type="text" size="50" name="_creditCity" placeholder="City" validation="letters"></div>
+                  <div id="_creditStateProv" class="MMdropDown"><select onchange="javascript:relationships();" name="_creditStateProv">
                         <option value="AB">Alberta</option>
                         <option value="BC">British Columbia</option>
                         <option value="MB">Manitoba</option>
@@ -188,27 +199,27 @@
                         <option value="QC">Quebec</option>
                         <option value="SK">Saskatchewan</option>
                         <option value="YT">Yukon</option></select></div>
-                  <div class="MMcanadianPostalCode"><input type="text" size="50" name="_creditPostalCode"></div>
-                  <div class="MMmultilineLabel">March of Dimes Canada respects your privacy and adheres to all legislative requirements
+                  <div id="_creditPostalCode" class="MMcanadianPostalCode"><input type="text" size="50" name="_creditPostalCode"></div>
+                  <div id="dataProtectCard" class="MMmultilineLabel">March of Dimes Canada respects your privacy and adheres to all legislative requirements
                      and best practices with respect to protecting your privacy. All information collected
                      regarding March of Dimes Canada supporters is kept in the strictest confidence. Your
                      name will not be sold or traded. If at any time you wish to be removed from our contact
                      list please contact our office at 1-800-263-3463 ext. 7338 or services@marchofdimes.ca
                   </div>
-                  <div class="MMsignatureBox">
+                  <div id="sign2credit" class="MMsignatureBox">
                      <div class="ITEMLabel">I am proud to be a monthly donor:</div><a href="javascript:openSignaturePanel(this);"><img src="images/emptysignature.png"></a><div class="ITEMDetailLabel">Donor authorizing monthly pledge and payment details.</div>
                   </div>
-                  <div class="MMmultilineLabel">Falsifying Credit Card or Bank Details is prohibited under the Canadian Criminal Code,
+                  <div id="cardPrintCard" class="MMmultilineLabel">Falsifying Credit Card or Bank Details is prohibited under the Canadian Criminal Code,
                      offenders are liable to imprisonment for a term of up to ten years.
                   </div>
-                  <div class="MMtextField">
-                     <div class="ITEMLabel">Comments</div><input type="text" size="50" name="comments"></div>
+                  <div id="commentsCard" class="MMtextField">
+                     <div class="ITEMLabel">Comments</div><input type="text" size="50" name="commentsCard" submitName="comments"></div>
                </div>
             </div>
             <div class="HTMLPage" id="fifthPage" name="fifthPage">
                <div class="HTMLGroup" id="Text" name="Text">
                   <h3></h3>
-                  <div class="MMmultilineLabel">Thank You for your support.
+                  <div id="finePrint5" class="MMmultilineLabel">Thank You for your support.
                      
                      Fundraising initiatives Inc. has been retained to administer this monthly giving program.
                      The information collected will be used for processing, administrative and summary
@@ -231,76 +242,86 @@
                      by contacting March of Dimes Canada.
                      
                   </div>
-                  <div class="MMspacerBlock"><br></div>
-                  <div class="MMsignatureBox">
+                  <div id="group5Spacer" class="MMspacerBlock">
+                     <div style="display:block;height:460px;"></div>
+                  </div>
+                  <div id="sign3" class="MMsignatureBox">
                      <div class="ITEMLabel">Donor Initials:</div><a href="javascript:openSignaturePanel(this);"><img src="images/emptysignature.png"></a><div class="ITEMDetailLabel">I have read and understand the terms and conditions.</div>
                   </div>
-                  <div class="MMspacerBlock"><br></div>
+                  <div id="group6Spacer" class="MMspacerBlock">
+                     <div style="display:block;height:30px;"></div>
+                  </div>
                </div>
             </div>
             <div class="HTMLPage" id="sixthPage" name="sixthPage">
                <div class="HTMLGroup" id="officeUse" name="officeUse">
                   <h3></h3>
-                  <div class="MMlabel">*** OFFICE USE ONLY ***</div>
-                  <div class="MMtextField">
+                  <div id="officeUseTitle" class="MMlabel">*** OFFICE USE ONLY ***</div>
+                  <div id="charityId" class="MMtextField">
                      <div class="ITEMLabel">Charity ID</div><input type="text" size="50" name="charityId" placeholder="25"></div>
-                  <div class="MMdropDown">
+                  <div id="fundraisingMethod" class="MMdropDown">
                      <div class="ITEMLabel">Fundraising Method</div><select onchange="javascript:relationships();" name="fundraisingMethod">
                         <option value="1">01 - Door to door</option>
                         <option value="3">03 - Street</option>
                         <option value="10">10 - Mall/Special Event</option></select></div>
-                  <div class="MMtextField"><input type="text" size="50" name="batchId" placeholder="Batch #"></div>
-                  <div class="MMradioControl">
+                  <div id="batchId" class="MMtextField"><input type="text" size="50" name="batchId" placeholder="Batch #"></div>
+                  <div id="receivedWp" class="MMradioControl">
                      <div class="ITEMLabel">Did the donor receive a Charity Welcome Information Package?</div>
                      <li><input type="radio" onchange="javascript:relationships();" name="receivedWp" id="receivedWp1" value="Y"><label for="receivedWp1">Yes</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="receivedWp" id="receivedWp2" value="N"><label for="receivedWp2">No</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="receivedWp" id="receivedWp3" value="D"><label for="receivedWp3">Declined</label></li>
                   </div>
-                  <div class="MMspacerBlock"><br></div>
+                  <div id="group7Spacer" class="MMspacerBlock">
+                     <div style="display:block;height:30px;"></div>
+                  </div>
                </div>
                <div class="HTMLGroup" id="confirmationSection" name="confirmationSection">
                   <h3></h3>
-                  <div class="MMmultilineLabel">On behalf of your chosen charity we would like to thank you for your generous support.
+                  <div id="behalfPrint" class="MMmultilineLabel">On behalf of your chosen charity we would like to thank you for your generous support.
                      To help us monitor and maintain our fundraising standards could you please complete
                      the following:
                      
                   </div>
-                  <div class="MMspacerBlock"><br></div>
-                  <div class="MMradioControl">
+                  <div id="group8Spacer" class="MMspacerBlock">
+                     <div style="display:block;height:30px;"></div>
+                  </div>
+                  <div id="firstGift" class="MMradioControl">
                      <li><input type="radio" onchange="javascript:relationships();" name="firstGift" id="firstGift1" value="yes"><label for="firstGift1">Yes</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="firstGift" id="firstGift2" value="no"><label for="firstGift2">No</label></li>
                      <div class="ITEMDetailLabel">Did the fundraiser explain that the first gift will be processed today?</div>
                   </div>
-                  <div class="MMradioControl">
+                  <div id="ongoing" class="MMradioControl">
                      <li><input type="radio" onchange="javascript:relationships();" name="ongoing" id="ongoing1" value="yes"><label for="ongoing1">Yes</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="ongoing" id="ongoing2" value="no"><label for="ongoing2">No</label></li>
                      <div class="ITEMDetailLabel">Did the fundraiser make it clear that this is an ongoing monthly donation?</div>
                   </div>
-                  <div class="MMradioControl">
+                  <div id="notOneTime" class="MMradioControl">
                      <li><input type="radio" onchange="javascript:relationships();" name="notOneTime" id="notOneTime1" value="yes"><label for="notOneTime1">Yes</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="notOneTime" id="notOneTime2" value="no"><label for="notOneTime2">No</label></li>
                      <div class="ITEMDetailLabel">Has the fundraiser explained that this is not a program for one time donations?</div>
                   </div>
-                  <div class="MMradioControl">
+                  <div id="monthly" class="MMradioControl">
                      <li><input type="radio" onchange="javascript:relationships();" name="monthly" id="monthly1" value="yes"><label for="monthly1">Yes</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="monthly" id="monthly2" value="no"><label for="monthly2">No</label></li>
                      <div class="ITEMDetailLabel">Do you understand that a copy of your monthly giving agreement will be sent to the
                         email account (if) provided?
                      </div>
                   </div>
-                  <div class="MMradioControl">
+                  <div id="clearIdentification" class="MMradioControl">
                      <li><input type="radio" onchange="javascript:relationships();" name="clearIdentification" id="clearIdentification1" value="yes"><label for="clearIdentification1">Yes</label></li>
                      <li><input type="radio" onchange="javascript:relationships();" name="clearIdentification" id="clearIdentification2" value="no"><label for="clearIdentification2">No</label></li>
                      <div class="ITEMDetailLabel">Was the fundraiser clearly displaying valid identification?</div>
                   </div>
-                  <div class="MMsignatureBox">
+                  <div id="sign4" class="MMsignatureBox">
                      <div class="ITEMLabel">Donor Signature:</div><a href="javascript:openSignaturePanel(this);"><img src="images/emptysignature.png"></a><div class="ITEMDetailLabel">I have chosen to support: March of Dimes Canada with an ongoing contribution of money
                         per month.
                      </div>
                   </div>
-                  <div class="MMdateField">
+                  <div id="_formSignDate" class="MMdateField">
                      <div class="ITEMLabel">Date:</div><input type="text" data-role="date" data-inline="true" size="50" onchange="javascript:relationships();" name="_formSignDate"></div>
-                  <div class="MMspacerBlock"><br></div>
+                  <div id="group6Spacer2" class="MMspacerBlock">
+                     <div style="display:block;height:30px;"></div>
+                  </div>
                </div>
             </div>
          </div><input type="submit" name="submitButton" value="Submit Form" class="submitButton"></form><script>

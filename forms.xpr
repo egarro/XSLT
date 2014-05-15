@@ -10,11 +10,41 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>../MADE%20MEDIA/forms/XML/FIINA/MODC/MODC.xml</String>
+                                    <String>clean/WWF.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
                                         <String>Generate HTML</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>clean/MODC.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Generate HTML</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>../MADE%20MEDIA/forms/XML/FIINA/MODC/MODC.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Clean up form</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -529,7 +559,52 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>clean/WWF.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Test Forms</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>clean/</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Test Forms</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>clean/MODC.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Test Forms</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>../MADE%20MEDIA/forms/XML/FIINA/MODC/MODC.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -611,6 +686,8 @@
     </meta>
     <projectTree name="forms.xpr">
         <folder path="../MADE%20MEDIA/forms/XML/"/>
+        <folder path="clean/"/>
+        <folder path="html/"/>
         <file name="cleanup.xsl"/>
         <file name="form.xsd"/>
         <file name="toHTML.xsl"/>
