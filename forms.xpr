@@ -10,7 +10,7 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>clean/WWF.xml</String>
+                                    <String>clean/MODC.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -25,7 +25,7 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>clean/MODC.xml</String>
+                                    <String>clean/WWF.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>

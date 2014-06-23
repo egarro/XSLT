@@ -11,8 +11,9 @@
            <head>
                <title><xsl:value-of select="@formPrefix"/> Form</title>
                <link rel="stylesheet" type="text/css" href="css/HTMLForm.css" />
-               <script src="js/HTMLForm.js" />
                <script src="js/jquery-2.1.1.js" />
+               <script src="js/formValidation.js" />
+               <script src="js/HTMLForm.js" />
            </head>
             <body>
                 <form action="submit.php"  method="post" onsubmit="return submitForm(this);">        
@@ -31,7 +32,9 @@
                                     </xsl:if>
                                     <xsl:attribute name="id"><xsl:value-of select="@name"/></xsl:attribute>
                                     <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
-                                    <h3><xsl:value-of select="@title"/></h3>
+                                    <xsl:if test="@title">
+                                        <h3><xsl:value-of select="@title"/></h3>                        
+                                    </xsl:if>
                                     <xsl:for-each select="item">
                                         <div>
                                             <xsl:if test="@isHidden='YES'">
@@ -46,8 +49,28 @@
                             </xsl:for-each>
                         </div>
                     </xsl:for-each>
-                </div>
-             <input type="submit" name="submitButton" value="Submit Form" class="submitButton"/>       
+                    <!-- Add a left side panel -->
+                        <div class="HTMLPage" id="veryLastPage" name="veryLastPage">
+                            <div class="HTMLGroup" id="sidePanel" name="sidePanel">
+                                <div class='timer'>
+                                    <div class='loadingBars'>
+                                        <div class='loadingLeft'></div>
+                                        <div class='loadingRight'></div>
+                                    </div>
+                                    <div class='timerInner'>
+                                        <span>0:00</span>
+                                    </div>
+                                </div>
+                                <div class='lineBar'>
+                                    <div class='reached'></div>
+                                    <div class='circleIcon'></div>
+                                    <div class='errorList'></div>
+                                </div>
+                                <div class='errorSection'></div>
+                            </div>
+                        </div>
+                    <input type="submit" name="submitButton" value="Submit Form" class="submitButton"/>
+                    </div>
              </form>
                 
              <script>
@@ -191,39 +214,51 @@
         <xsl:if test="./label">
             <div>
                 <xsl:attribute name="class">ITEMLabel</xsl:attribute>
-                <xsl:value-of select="./label"/>
+                <span>
+                    <xsl:value-of select="./label"/>
+                </span>    
             </div>    
         </xsl:if>
         <xsl:choose>
             <xsl:when test="@type='localImage'">
+                <div class="simpleImage">
                 <img> 
                     <xsl:attribute name="src">images/<xsl:value-of select="./path"/></xsl:attribute>
-                </img>    
+                </img>
+                </div>    
             </xsl:when>
             <xsl:when test="@type='zipImage'">
+                <div class="simpleImage">
                 <img> 
                     <xsl:attribute name="src">images/<xsl:value-of select="//form/@formPrefix"/>/<xsl:value-of select="./path"/></xsl:attribute>
-                </img>    
+                    <xsl:if test="./width">
+                        <xsl:attribute name="width"><xsl:value-of select="./width" /></xsl:attribute>
+                    </xsl:if>
+                    <xsl:if test="./height">
+                        <xsl:attribute name="height"><xsl:value-of select="./height" /></xsl:attribute>
+                    </xsl:if>
+                </img>
+                </div>    
             </xsl:when>
-            <xsl:when test="@type='spacerBlock'">
+            <xsl:when test="@type='lineBlock'">
                  <div>
-                     <xsl:attribute name="style">display:block;height:<xsl:value-of select="./sizeY"/>px;</xsl:attribute>
+                     <xsl:attribute name="style">padding-top:<xsl:value-of select="./size"/>px; padding-bottom:<xsl:value-of select="./size"/>px;</xsl:attribute>
                  </div>        
             </xsl:when>
             <xsl:when test="@type='photoCapture'">
                 <a>
                     <xsl:attribute name="href">javascript:openPhotoCapture(this);</xsl:attribute>   
+                <div class="simpleImage">
                 <img> 
                     <xsl:attribute name="src">images/camera.png</xsl:attribute>
-                </img>          
+                </img>
+                </div>    
                 </a>
             </xsl:when>
             <xsl:when test="@type='signatureBox'">
                 <a>
                     <xsl:attribute name="href">javascript:openSignaturePanel(this);</xsl:attribute>   
-                    <img> 
-                        <xsl:attribute name="src">images/emptysignature.png</xsl:attribute>
-                    </img>          
+                    <div class="signBox"><span>TAP HERE TO SIGN</span></div>    
                 </a>
                 <xsl:if test="@submitsValue='YES'">
                     <input type="hidden" value="1">
@@ -248,11 +283,17 @@
                 </div>    
             </xsl:when>
             <xsl:when test="@type='dateField'">
-                <input type="text" data-role="date" data-inline="true" size="50" onchange="javascript:relationships();">
+                <input type="date" data-role="date" data-inline="true" size="50" onchange="javascript:relationships();">
                 <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
-                <xsl:if test="./placeholder">
-                    <xsl:attribute name="placeholder"><xsl:value-of select="./placeholder"/></xsl:attribute>
-                </xsl:if>
+                    <xsl:choose>
+                        <xsl:when test="./placeholder">
+                            <xsl:attribute name="placeholder"><xsl:value-of select="./placeholder"/></xsl:attribute>
+                        </xsl:when>
+                        <xsl:when test="./formatting">
+                            <xsl:attribute name="placeholder"><xsl:value-of select="./formatting"/></xsl:attribute>
+                        </xsl:when>
+                        <xsl:otherwise />
+                    </xsl:choose>
                 </input>    
             </xsl:when>
             <xsl:when test="@type='label'">
@@ -279,7 +320,7 @@
             </xsl:when>
             <xsl:when test="@type='segmentedControl'">
                 <xsl:text>SEGMENTED CONTROL ITEM - (Implemented as drop-downs for now)</xsl:text><br/>          
-                <select onchange="javascript:relationships();">
+                <div class="dropdown"><select onchange="javascript:relationships();">
                     <xsl:choose>
                         <xsl:when test="./submitName">
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
@@ -295,7 +336,7 @@
                             <xsl:value-of select="."/>    
                         </option>
                     </xsl:for-each> 
-                </select>
+                </select></div>
             </xsl:when>
             <xsl:when test="@type='radioControl'">
                 <xsl:choose>
@@ -355,7 +396,7 @@
                   </button>
             </xsl:when>
             <xsl:when test="@type='dropDown'">
-                <select onchange="javascript:relationships();">
+                <div class="dropdown"><select onchange="javascript:relationships();">
                     <xsl:choose>
                         <xsl:when test="./submitName">
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
@@ -376,10 +417,10 @@
                         <option value=""></option>
                     </xsl:otherwise> 
                     </xsl:choose>  
-                </select>                
+                </select></div>                
             </xsl:when>
             <xsl:when test="@type='valuePicker'">
-                <select>
+                <div class="dropdown"><select>
                     <xsl:choose>
                         <xsl:when test="./submitName">
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
@@ -398,10 +439,10 @@
                     <xsl:for-each select="./option">
                         <xsl:copy-of select="."/>    
                     </xsl:for-each> 
-                </select>
+                </select></div>
             </xsl:when>
             <xsl:when test="@type='canadianPostalCode'">
-                <input type="text" size="50">
+                <input type="text" size="50" validation="canadianPostalCode" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:choose>
                         <xsl:when test="./submitName">
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
@@ -423,7 +464,7 @@
                 </input>          
             </xsl:when>
             <xsl:when test="@type='emailPinger'">
-                <input type="text" size="50">
+                <input type="email" size="50" validation="email" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:choose>
                         <xsl:when test="./submitName">
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
@@ -447,11 +488,13 @@
                             <xsl:with-param name="itemType" select="'emailPinger'" />
                         </xsl:call-template>
                     </xsl:if>
-                </input>          
+                </input>  
+                <div class="MMbuttonField">
                 <button type="button">
                     <xsl:attribute name="onclick">javascript:validateEmail('<xsl:value-of select="@name"/>')</xsl:attribute>
                     Validate email
                 </button>
+                </div>
             </xsl:when>
             <xsl:when test="@type='FRBankPinger'">
                 <div>
@@ -471,6 +514,9 @@
             </xsl:when>
             <xsl:when test="@type='textField'">
                 <input type="text" size="50">
+                    <xsl:if test="@editable='NO'">
+                        <xsl:attribute name="editable">NO</xsl:attribute>
+                    </xsl:if>
                     <xsl:choose>
                         <xsl:when test="./submitName">
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
@@ -485,6 +531,8 @@
                     </xsl:if>
                     <xsl:if test="./validation">
                         <xsl:attribute name="validation"><xsl:value-of select="./validation"/></xsl:attribute>
+                        <xsl:attribute name="onkeydown">javascript:filterInput(event,this);</xsl:attribute>
+                        <xsl:attribute name="oninput">javascript:evaluateInput(this);</xsl:attribute>
                     </xsl:if>
                     <xsl:if test="./action">
                         <!-- Matches an action to a corresponding javascript function -->
@@ -494,14 +542,18 @@
                     </xsl:if>
                 </input>          
             </xsl:when>
-            <xsl:otherwise>
-                Unknown item type found in XML file:<b><xsl:value-of select="@type"/></b> 
-            </xsl:otherwise>    
+            <xsl:otherwise />
         </xsl:choose>
         <xsl:if test="./detailLabel">
             <div>
                   <xsl:attribute name="class">ITEMDetailLabel</xsl:attribute>
-                  <xsl:value-of select="./detailLabel"/>
+                  <span><xsl:value-of select="./detailLabel"/></span>    
+            </div>    
+        </xsl:if>
+        <xsl:if test="./inlineLabel">
+            <div>
+                <xsl:attribute name="class">ITEMInlineLabel</xsl:attribute>
+                <span><xsl:value-of select="./inlineLabel"/></span>    
             </div>    
         </xsl:if>
     </xsl:template>
@@ -520,7 +572,7 @@
                 <xsl:attribute name="onchange">javascript:sumItemsWithPredicate('<xsl:value-of select="./actionArg"/>');</xsl:attribute>
             </xsl:when>
             <xsl:when test="(string-length(./action) &gt; 9) and (substring(./action, 1, 9)='linksTo::')">
-                <xsl:attribute name="onchange">javascript:linkFieldToTypeField(this,'<xsl:value-of select="substring-after(./action,'::')"/>');</xsl:attribute>
+                <xsl:attribute name="linksTo"><xsl:value-of select="substring-after(./action,'::')"/></xsl:attribute>
             </xsl:when>
             <xsl:otherwise>
                 Unknown action found while building <xsl:value-of select="$itemType"/> item: <xsl:value-of select="./action"/> 
@@ -533,6 +585,7 @@
         <xsl:param name="tmp_name" />
         <xsl:param name="option_list" />
         <xsl:param name="with_images" />
+        <ul>
         <xsl:for-each select="$option_list">
             <li>
                 <input type="radio" onchange="javascript:relationships();">
@@ -544,17 +597,20 @@
                     <xsl:attribute name="for"><xsl:value-of select="concat($tmp_name,position())"/></xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="$with_images">
+                            <div class="simpleImage">
                             <img> 
                                 <xsl:attribute name="src">images/<xsl:value-of select="//form/@formPrefix"/>/<xsl:value-of select="."/></xsl:attribute>
                             </img>
+                            </div>    
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:value-of select="."/>
                         </xsl:otherwise>
                     </xsl:choose>
                 </label>     
-            </li>    
-        </xsl:for-each> 
+            </li>     
+        </xsl:for-each>
+        </ul>    
     </xsl:template>
 
     <!-- Address Factory -->        
@@ -567,7 +623,14 @@
         <!-- Emulated for loop for first three lines (just for fun)-->
         <xsl:variable name="count" select="3"/> 
         <xsl:for-each select="(//*)[position()&lt;=$count]"> 
-            <input type="text" size="50" validation="lettersNumeric">
+            <div class="MMtextField">
+            <xsl:if test="position()=1">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Address</span>    
+                </div>                
+            </xsl:if>            
+            <input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                 <xsl:attribute name="name">
                     <xsl:choose>
                         <xsl:when test="$prefix=''">address<xsl:value-of select="position()"/></xsl:when>
@@ -576,11 +639,17 @@
                 </xsl:attribute>
                 <xsl:attribute name="placeholder">Address Line <xsl:value-of select="position()"/></xsl:attribute>
                 <xsl:attribute name="maxlength"><xsl:value-of select="$MAX_ADDRESS_LENGTH"/></xsl:attribute>
-            </input><br/>
+            </input>
+            </div><br />    
         </xsl:for-each>
         
         <!-- All cases feature a city -->
-        <input type="text" size="50" validation="names" placeholder="City">
+        <div class="MMtextField">
+        <div>
+            <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+            <span>City</span>    
+        </div>        
+        <input type="text" size="50" validation="names" placeholder="City" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
             <xsl:attribute name="name">
                 <xsl:choose>
                     <xsl:when test="$prefix=''">city</xsl:when>
@@ -588,20 +657,33 @@
                 </xsl:choose>                
             </xsl:attribute>
             <xsl:attribute name="maxlength"><xsl:value-of select="$MAX_CITY_LENGTH"/></xsl:attribute>
-        </input><br/>
+        </input>
+        </div><br/>
+        
         
         <xsl:choose>
             <xsl:when test="$country='CANADA' or $country='CA'">
-                <input type="text" size="50" validation="canadianPostalCode" placeholder="Canadian Postal Code" maxlength="7">
+                <div class="MMtextField">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Canadian Postal Code</span>    
+                </div>
+                <input type="text" size="50" validation="canadianPostalCode" placeholder="Canadian Postal Code" maxlength="7" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">postalCode</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>PostalCode</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/> 
+                </input>
+                </div><br/> 
                 <!-- StateProv specific choices for Canada -->
-                <select>
+                <div class="MMdropDown">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Province</span>    
+                </div>
+                <div class="dropdown"><select>
                     <option value="AB">Alberta</option>
                     <option value="BC">British Columbia</option>
                     <option value="MB">Manitoba</option>
@@ -615,20 +697,38 @@
                     <option value="QC">Quebec</option>
                     <option value="SK">Saskatchewan</option>
                     <option value="YT">Yukon</option>
-                </select><br/>                
-                <div class="countryName">CANADA</div>
+                </select></div>
+                </div><br/>
+                <div class="MMtextField">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Country</span>    
+                </div>                
+                <div class="countryName" editable="NO">Canada</div>
+                </div>    
             </xsl:when>
             <xsl:when test="$country='QUEBEC' or $country='QC'">
-                <input type="text" size="50" validation="canadianPostalCode" placeholder="Code Postal Canadien" maxlength="7">
+                <div class="MMtextField">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Code Postal Canadien</span>    
+                </div>
+                <input type="text" size="50" validation="canadianPostalCode" placeholder="Code Postal Canadien" maxlength="7" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">postalCode</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>PostalCode</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>    
+                </input>
+                </div><br/>    
                 <!-- StateProv specific choices for Canada -->
-                <select>
+                <div class="MMdropDown">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Province</span>    
+                </div>
+                <div class="dropdown"><select>
                     <option value="AB">Alberta</option>
                     <option value="BC">British Columbia</option>
                     <option value="MB">Manitoba</option>
@@ -642,20 +742,38 @@
                     <option value="QC">Quebec</option>
                     <option value="SK">Saskatchewan</option>
                     <option value="YT">Yukon</option>
-                </select><br/>
-                <div class="countryName">Canada</div>
+                </select></div>
+                </div><br/>
+                <div class="MMtextField">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Pays</span>    
+                </div>
+                <div class="countryName" editable="NO">Canada</div>
+                </div>    
             </xsl:when>
             <xsl:when test="$country='USA' or $country='US'">
-                <input type="text" size="50" validation="usPostalCode" placeholder="Zip Code" maxlength="10">
+                <div class="MMtextField">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Zip Code</span>    
+                </div>                
+                <input type="number" size="50" validation="usPostalCode" placeholder="Zip Code" maxlength="10" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">postalCode</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>PostalCode</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>    
+                </input>
+                </div><br/>    
                 <!-- StateProv specific choices for USA -->
-                <select>
+                <div class="MMdropDown">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>State</span>    
+                </div>
+                <div class="dropdown"><select>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -707,19 +825,37 @@
                     <option value="WV">West Virginia</option>
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>                    
-                </select><br/>
-                <div class="countryName">USA</div>
+                </select></div>
+                </div><br/>
+                <div class="MMtextField">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Country</span>    
+                </div>
+                    <div class="countryName" editable="NO">USA</div>
+                </div>    
             </xsl:when>
             <xsl:when test="$country='FRANCE' or $country='FRA'">
-                <input type="text" size="50" validation="frenchPostalCode" placeholder="Code Postal" maxlength="5">
+                <div class="MMtextField">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Code Postal</span>    
+                </div>
+                <input type="number" size="50" validation="frenchPostalCode" placeholder="Code Postal" maxlength="5" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">postalCode</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>PostalCode</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/> 
-                <select>
+                </input>
+                </div><br/> 
+                <div class="MMdropDown">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Région</span>    
+                </div>
+                <div class="dropdown"><select>
                     <option value="Alsace">Alsace</option>
                     <option value="Aquitaine">Aquitaine</option>
                     <option value="Auvergne">Auvergne</option>
@@ -747,19 +883,37 @@
                     <option value="Rhône-Alpes">Rhône-Alpes</option>
                     <option value="Haute-Normandie">Haute-Normandie</option>
                     <option value="Île-de-France">Île-de-France</option>
-                </select><br/>
-                <div class="countryName">France</div>
+                </select></div>
+                </div><br/>
+                <div class="MMtextField">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Pays</span>    
+                </div>
+                    <div class="countryName" editable="NO">France</div>
+                </div>   
             </xsl:when>
             <xsl:when test="$country='UK'">
-                <input type="text" size="50" validation="ukPostalCode" placeholder="Postal Code" maxlength="8">
+                <div class="MMtextField">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Postal Code</span>    
+                </div>
+                <input type="text" size="50" validation="ukPostalCode" placeholder="Postal Code" maxlength="8" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">postalCode</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>PostalCode</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>    
-                <input type="text" size="50" validation="names" placeholder="County">
+                </input>
+                </div><br/>  
+                <div class="MMtextField">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>County</span>    
+                </div>
+                <input type="text" size="50" validation="names" placeholder="County" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">stateProv</xsl:when>
@@ -767,20 +921,38 @@
                         </xsl:choose>                
                     </xsl:attribute>
                     <xsl:attribute name="maxlength"><xsl:value-of select="$MAX_CITY_LENGTH"/></xsl:attribute>
-                </input><br/>
-                <div class="countryName">United Kingdom</div>
+                </input>
+                </div><br/>
+                <div class="MMtextField">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Country</span>    
+                </div>
+                    <div class="countryName" editable="NO">United Kingdom</div>
+                </div>    
             </xsl:when>
             <xsl:when test="$country='MEXICO' or $country='MEX'">
-                <input type="text" size="50" validation="mexicanPostalCode" placeholder="Código Postal" maxlength="5">
+                <div class="MMtextField">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Código Postal</span>    
+                </div>
+                <input type="number" size="50" validation="mexicanPostalCode" placeholder="Código Postal" maxlength="5" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">postalCode</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>PostalCode</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>    
+                </input>
+                </div><br/>    
                 <!-- StateProv specific choices for Canada -->
-                <select>
+                <div class="MMdropDown">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>Estado</span>    
+                </div>
+                <div class="dropdown"><select>
                 <option value="AG">Aguascalientes</option>
                 <option value="BN">Baja California</option>
                 <option value="BS">Baja California Sur</option>
@@ -813,8 +985,15 @@
                 <option value="VE">Veracruz</option>
                 <option value="YU">Yucatan</option>
                 <option value="ZA">Zacatecas</option>
-                </select><br/>
-                <div class="countryName">Mexico</div>
+                </select></div>
+                </div><br/>
+                <div class="MMtextField">
+                <div>
+                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                    <span>País</span>    
+                </div>
+                    <div class="countryName" editable="NO">México</div>
+                </div>
             </xsl:when>
             <xsl:otherwise>
                 Unknown address type found in XML file:<b><xsl:value-of select="$country"/></b> 
@@ -824,16 +1003,20 @@
         <!-- All cases check for validation -->
         <xsl:choose>
             <xsl:when test="./validationService">
+                <div class="MMbuttonField">
                 <button type="button">
                     <xsl:attribute name="onclick">javascript:validateAddress('<xsl:value-of select="@name"/>','<xsl:value-of select="./validationService"/>')</xsl:attribute>
                     Validate address
                 </button>
+                </div>    
             </xsl:when>
             <xsl:when test="./validation">
+                <div class="MMbuttonField">
                 <button type="button">
                     <xsl:attribute name="onclick">javascript:validateAddress('<xsl:value-of select="@name"/>','<xsl:value-of select="./validation"/>')</xsl:attribute>
                     Validate address
                 </button>
+                </div>
             </xsl:when>
         </xsl:choose>
         
@@ -854,14 +1037,25 @@
                 <xsl:text>US BANK FIELD</xsl:text>    
             </xsl:when>
             <xsl:when test="$country='FRANCE' or $country='FRA'"> 
-                <input type="text" size="50" validation="names" placeholder="Etablissement bancaire" maxlength="60">
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Etablissement bancaire</span>    
+                    </div>
+                <input type="text" size="50" validation="names" placeholder="Etablissement bancaire" maxlength="60" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankName</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>Name</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>   
+                </input>
+                </div><br/>   
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Adresse</span>    
+                    </div>
                 <input type="text" size="50" placeholder="Adresse" maxlength="60">
                     <xsl:attribute name="name">
                         <xsl:choose>
@@ -869,15 +1063,27 @@
                             <xsl:otherwise><xsl:value-of select="./prefix"/>Address</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>
-                <input type="text" size="50" validation="frenchPostalCode" placeholder="Code Postal" maxlength="5">
+                </input>
+                </div><br/>
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Code Postal</span>    
+                    </div>
+                <input type="number" size="50" validation="frenchPostalCode" placeholder="Code Postal" maxlength="5" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankPostalCode</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>PostalCode</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>
+                </input>
+                </div><br/>
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Ville</span>    
+                    </div>
                 <input type="text" size="50" placeholder="Ville">
                     <xsl:attribute name="name">
                         <xsl:choose>
@@ -885,11 +1091,17 @@
                             <xsl:otherwise><xsl:value-of select="./prefix"/>City</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>
+                </input>
+                </div><br/>
                 <p>
                     Désignation du compte à débiter:
                 </p>
-                <input type="text" size="50" validation="numeric" placeholder="Code banque" maxlength="5">
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Code banque</span>    
+                    </div>
+                <input type="number" size="50" validation="numeric" placeholder="Code banque" maxlength="5" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankCode</xsl:when>
@@ -897,7 +1109,13 @@
                         </xsl:choose>                
                     </xsl:attribute>
                 </input>
-                <input type="text" size="50" validation="numeric" placeholder="Code agence" maxlength="5">
+                </div>
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Code agence</span>    
+                    </div>
+                <input type="number" size="50" validation="numeric" placeholder="Code agence" maxlength="5" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankAgency</xsl:when>
@@ -905,6 +1123,7 @@
                         </xsl:choose>                
                     </xsl:attribute>
                 </input>
+                </div>
                 <input type="hidden">
                     <xsl:attribute name="name">
                         <xsl:choose>
@@ -913,15 +1132,26 @@
                         </xsl:choose>                
                     </xsl:attribute>
                 </input>
-                <input type="text" size="50" validation="lettersNumeric" placeholder="No. de compte" maxlength="11">
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>No. de compte</span>    
+                    </div>
+                <input type="number" size="50" validation="lettersNumeric" placeholder="No. de compte" maxlength="11" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankAccountNumber</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>AccountNumber</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>
-                <input type="text" size="50" validation="numeric" placeholder="RIB" maxlength="2">
+                </input>
+                </div><br/>
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>RIB</span>    
+                    </div>
+                <input type="number" size="50" validation="numeric" placeholder="RIB" maxlength="2" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankRIB</xsl:when>
@@ -929,37 +1159,63 @@
                         </xsl:choose>                
                     </xsl:attribute>
                     <xsl:attribute name="disabled"/>
-                </input><br/>                
-                <input type="text" size="50" validation="lettersNumeric" placeholder="IBAN" maxlength="27">
+                </input>
+                </div><br/>                
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>IBAN</span>    
+                    </div>
+                <input type="text" size="50" validation="lettersNumeric" placeholder="IBAN" maxlength="27" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankIBAN</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>IBAN</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>
-                <input type="text" size="50" validation="lettersNumeric" placeholder="BIC" maxlength="11">
+                </input>
+                </div><br/>
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>BIC</span>    
+                    </div>
+                <input type="text" size="50" validation="lettersNumeric" placeholder="BIC" maxlength="11" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankBIC</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>BIC</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>
+                </input>
+                </div><br/>
+                <div class="MMbuttonField">
                 <button type="button">
                     <xsl:attribute name="onclick">javascript:validateFRBank('<xsl:value-of select="@name"/>')</xsl:attribute>
                     Validate bank account
-                </button>    
+                </button> 
+                </div>    
             </xsl:when>
             <xsl:when test="$country='UK'">
-                <input type="text" size="50" validation="names" placeholder="Bank Name" maxlength="60">
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Bank Name</span>    
+                    </div>
+                <input type="text" size="50" validation="names" placeholder="Bank Name" maxlength="60" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankName</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>Name</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>   
+                </input>
+                </div><br/>   
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Bank Address</span>    
+                    </div>
                 <input type="text" size="50" placeholder="Bank Address" maxlength="60">
                     <xsl:attribute name="name">
                         <xsl:choose>
@@ -967,19 +1223,31 @@
                             <xsl:otherwise><xsl:value-of select="./prefix"/>Address</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>
-                <input type="text" size="50" validation="ukPostalCode" placeholder="POSTAL CODE" maxlength="7">
+                </input>
+                </div><br/>
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Postal Code</span>    
+                    </div>
+                <input type="text" size="50" validation="ukPostalCode" placeholder="Postal Code" maxlength="7" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankPostalCode</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>PostalCode</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>
+                </input>
+                </div><br/>
                 <p>
                     PERSONAL INFORMATION<br/>
                     Name(s) Of Account Holder(s):
                 </p>
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Name 1</span>    
+                    </div>
                 <input type="text" size="50" placeholder="Name 1">
                     <xsl:attribute name="name">
                         <xsl:choose>
@@ -987,7 +1255,13 @@
                             <xsl:otherwise><xsl:value-of select="./prefix"/>AccountName1</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>
+                </input>
+                </div><br/>
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Name 2</span>    
+                    </div>
                 <input type="text" size="50" placeholder="Name 2">
                     <xsl:attribute name="name">
                         <xsl:choose>
@@ -995,27 +1269,42 @@
                             <xsl:otherwise><xsl:value-of select="./prefix"/>AccountName2</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>
-                <input type="text" size="50" validation="numeric" placeholder="Sort Code" maxlength="6">
+                </input>
+                </div><br/>
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Sort Code</span>    
+                    </div>
+                <input type="number" size="50" validation="numeric" placeholder="Sort Code" maxlength="6" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankSortCode</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>SortCode</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>
-                <input type="text" size="50" validation="numeric" placeholder="Account Number" maxlength="8">
+                </input>
+                </div><br/>
+                <div class="MMtextField">
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Account Number</span>    
+                    </div>
+                <input type="number" size="50" validation="numeric" placeholder="Account Number" maxlength="8" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankAccountNumber</xsl:when>
                             <xsl:otherwise><xsl:value-of select="./prefix"/>AccountNumber</xsl:otherwise>
                         </xsl:choose>                
                     </xsl:attribute>
-                </input><br/>
+                </input>
+                </div><br/>
+                <div class="MMbuttonField">
                 <button type="button">
                     <xsl:attribute name="onclick">javascript:validateUKBank('<xsl:value-of select="@name"/>')</xsl:attribute>
                     Validate bank account
                 </button>
+                </div>    
             </xsl:when>
             <xsl:when test="$country='MEXICO' or $country='MEX'">
                 <xsl:text>MEXICAN BANK FIELD</xsl:text>    

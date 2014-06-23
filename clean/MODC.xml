@@ -14,36 +14,19 @@
         <leftPageMargin>100.0</leftPageMargin>
         <rightPageMargin>100.0</rightPageMargin>  
         <group name="header">
-            <item name="group0Spacer" type="spacerBlock" required="NO">
-                 <position>upper_right</position>
-                <sizeY>30</sizeY>
-            </item>
             <item name="logo" type="zipImage">
                 <path>MODC_Logo.png</path>
                 <position>upper_right</position>
                 <width>280</width>
                 <height>80</height> 
-            </item>
-            <item name="headerTitle" type="label" bleeds="YES">
-                <text>Supporter Giving Agreement</text>
-                <textColor>#333333</textColor>
-                <textSize>25</textSize>
-                <position>upper_left</position>
             </item> 
-            <item name="_internalFormId" type="textField" editable="NO">
+            <item name="_internalFormId" type="textField" editable="NO" isHidden="YES">
                 <size>250</size>
                 <label>Reference Number</label>
                 <position>upper_left</position>
                 <placeholder>CDC25</placeholder>
             </item>
-            <item name="fundraiserName" type="textField" editable="NO">
-                <size>620</size>
-                <textSize>18</textSize>
-                <position>center</position>
-                <placeholder>Fundraiser Name</placeholder>
-				        <submitName>fundraiserName</submitName>
-            </item>
-            <item name="repId" type="textField" editable="NO">
+            <item name="repId" type="textField" editable="NO" isHidden="YES">
                 <size>620</size>
                 <textSize>18</textSize> 
                 <position>center</position>
@@ -56,7 +39,75 @@
         <bgcolor>#cccccc</bgcolor>
         <leftPageMargin>20.0</leftPageMargin>
         <rightPageMargin>20.0</rightPageMargin> 
-        <group name="firstSection" number="1" title="DONOR DETAILS">
+        <group name="firstSection" number="1" title="Donor Details">
+            <item name="animals" type="imagePicker" required="YES" skipSubmit="YES">
+                <size>620</size>
+                <columns>2</columns>
+                <image value="1">tiger.jpeg</image>
+                <image value="2">elephant.jpeg</image>
+                <image value="3">snowleopard.jpeg</image>
+                <image value="4">gorilla.jpeg</image>
+                <label>Please choose an animal to adopt:</label>
+            </item>
+            <item name="animalsLegal" type="infoButton" required="NO">
+                <size>625</size>
+                <textSize>11</textSize>
+                <text encoding="base64">SW1hZ2VJRDogMjMzMjA2DQpUaXRsZTogU25vdyBsZW9wYXJkIHdpdGggY3ViIA0KQ2FwdGlvbjog
+                    U25vdyBsZW9wYXJkIHdpdGggY3ViIChQYW50aGVyYSB1bmNpYSkNCkNvcHlyaWdodDogqSBEYXZp
+                    ZCBMYXdzb24gLyBXV0YtVUsNCkRhdGUgb2YgUGhvdG86IA0KUmVzdHJpY3Rpb25zOgkgR2VuZXJh
+                    bCBSZXN0cmljdGlvbnMgYXBwbHkNCg0KSW1hZ2VJRDogMjMzMjk5DQpUaXRsZTogQXNpYW4gZWxl
+                    cGhhbnQgDQpDYXB0aW9uOiBBc2lhbiBlbGVwaGFudCAoRWxlcGhhcyBtYXhpbXVzKQ0KQ29weXJp
+                    Z2h0OiCpIERhdmlkIExhd3NvbiAvIFdXRi1VSw0KRGF0ZSBvZiBQaG90bzogDQpSZXN0cmljdGlv
+                    bnM6CSBHZW5lcmFsIFJlc3RyaWN0aW9ucyBhcHBseQ0KDQpJbWFnZUlEOiAyNTc4MTANClRpdGxl
+                    OiBCZW5nYWwgdGlnZXIsIEJhbmRoYXZnYXJoIE5hdGlvbmFsIFBhcmssIE1hZGh5YSBQcmFkZXNo
+                    LCBJbmRpYQ0KQ2FwdGlvbjogQmVuZ2FsIHRpZ2VyIChQYW50aGVyYSB0aWdyaXMgdGlncmlzKSBw
+                    b3J0cmFpdCBvZiBhIDE5LW1vbnRoIG1hbGUuIEJhbmRoYXZnYXJoIE5hdGlvbmFsIFBhcmssIE1h
+                    ZGh5YSBQcmFkZXNoLCBJbmRpYS4gDQpDb3B5cmlnaHQ6IKkgbmF0dXJlcGwuY29tIC8gQW5kcmV3
+                    IFBhcmtpbnNvbiAvIFdXRi1DYW5vbg0KRGF0ZSBvZiBQaG90bzogDQpSZXN0cmljdGlvbnM6CSBO
+                    byBNZXJjaGFuZGlzaW5nIFVzZQ0KDQpJbWFnZUlEOiA1MTE0Mw0KVGl0bGU6IE1vdW50YWluIGdv
+                    cmlsbGEgKEdvcmlsbGEgYmVyaW5nZWkgYmVyaW5nZWkpOyBVZ2FuZGENCkNhcHRpb246IEdvcmls
+                    bGEgZ29yaWxsYSBiZXJpbmdlaSBNb3VudGFpbiBnb3JpbGxhIFlvdW5nIHBsYXlpbmcgRm91bmQg
+                    dGhyb3VnaG91dCBDb25nbywgUndhbmRhLCBVZ2FuZGEgUHJvamVjdCBudW1iZXI6IFJXMDAwNg0K
+                    Q29weXJpZ2h0OiCpIE1hcnRpbiBIYXJ2ZXkgLyBXV0YtQ2Fub24NCkRhdGUgb2YgUGhvdG86IA0K
+                    UmVzdHJpY3Rpb25zOgkgR2VuZXJhbCBSZXN0cmljdGlvbnMgYXBwbHkNCg0KQ2xlYXJlZCBmb3Ig
+                    R2xvYmFsIHVzZQ0KT25seSBmb3IgYXV0aG9yaXplZCB1c2UgaW4gdGhlIGNvbnRleHQgb2YgcG9z
+                    aXRpdmVseSBwcm9tb3RpbmcgV1dGLiBQaG90byBjcmVkaXQgaXMgbWFuZGF0b3J5Lg0KTm90ZXM6
+                    IA0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+                    LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQpUZXJtcyBhbmQgQ29uZGl0aW9ucyBmb3IgSW1h
+                    Z2UgVXNlDQpCeSBkb3dubG9hZGluZyB0aGUgYWJvdmUgZGVzY3JpYmVkIGltYWdlIGZyb20gdGhl
+                    IFdXRiBHbG9iYWwgUGhvdG8gTmV0d29yayAoR1BOKSwgYm90aCB0aGUgR1BOJ3MgVGVybXMgb2Yg
+                    VXNlIGFuZCB0aGUgbGVnYWwgcmVxdWlyZW1lbnRzIHN0YXRlZCBpbiB0aGUgQ29weXJpZ2h0ICYg
+                    Q3JlZGl0cyBndWlkZWxpbmVzIGhhdmUgYmVlbiBhY2NlcHRlZCBieSB0aGUgYWJvdmUgaWRlbnRp
+                    ZmllZCB1c2VyLg0KUGVybWlzc2lvbiB0byBkb3dubG9hZCB0aGlzIGltYWdlIGhhcyBiZWVuIGdp
+                    dmVuIG9uIHRoZSBjb25kaXRpb24gdGhhdCB0aGUgaW1hZ2Ugc2hhbGwgb25seSBiZSB1c2VkIG9u
+                    Y2UgLSBhbmQgb25seSBmb3IgdGhlIHNwZWNpZmljIHB1cnBvc2Ugc3RhdGVkIGFib3ZlISBBbnkg
+                    c3Vic2VxdWVudCB1c2UsIHdoaWNoIGhhcyBub3QgYmVlbiBleHBsaWNpdGx5IGF1dGhvcml6ZWQg
+                    YnkgV1dGIGFuZCB0aGUgcGhvdG9ncmFwaGVyIGNvbmNlcm5lZCwgaXMgZm9yYmlkZGVuISAoVGhp
+                    cyBpbmNsdWRlcyB0aGUgc3RvcmFnZSBvZiB0aGUgaW1hZ2Ugb24gYW55IG1lZGlhIGZvciBhbnkg
+                    cHVycG9zZSBvdGhlciB0aGFuIHRoZSBhYm92ZSBzdGF0ZWQgdXNlIGFuZCBiZXlvbmQgdGhlIG5l
+                    Y2Vzc2FyeSBwcm9kdWN0aW9uIHBlcmlvZC4gU28gbm8gYnVpbGRpbmcgb2YgJ29mZmxpbmUgYXJj
+                    aGl2ZXMnIHdpdGggZG93bmxvYWRlZCBpbWFnZXMgb3Igc3RvcmluZyB0aGUgaW1hZ2UgLSBvciBj
+                    b3BpZXMgb2YgaXQgLSBvbiBDRC1ST00gZm9yIGxhdGVyIHJlLXVzZSEgQW55IHN1YnNlcXVlbnQg
+                    dXNlIG9mIHRoZSBpbWFnZSB3aWxsIHJlcXVpcmUgYSBmcmVzaCBkb3dubG9hZCBmcm9tIHRoZSBH
+                    UE4gd2l0aCBhIGZyZXNobHkgY29tcGxldGVkIGRvd25sb2FkIHJlcXVlc3QgZm9ybSEpDQpJdCBp
+                    cyBhbHNvIHVuZGVyc3Rvb2QgdGhhdCB0aGUgaW1hZ2UgLSBvciBhbnkgY29weSBvZiBpdCAtIG1h
+                    eSBub3QgYmUgZ2l2ZW4gdG8gYW55IHRoaXJkIHBhcnR5IGJleW9uZCB0aGUgbmVlZCBmb3IgdGhl
+                    IGFib3ZlIHN0YXRlZCB1c2UuIEluIHBhcnRpY3VsYXIgdGhlIGltYWdlIG1heSBub3QsIHVuZGVy
+                    IGFueSBjaXJjdW1zdGFuY2VzLCBiZSB1c2VkIGZvciBhbnkgY29tbWVyY2lhbCB1c2Ugb3V0c2lk
+                    ZSBhIGNsZWFybHkgZGVmaW5lZCBhbmQgcHJldmlvdXNseSBhdXRob3JpemVkIFdXRiBjb250ZXh0
+                    Lg0KQW55IGJyZWFjaCBvZiB0aGVzZSBjb25kaXRpb25zIHdpbGwgYmUgY29uc2lkZXJlZCBhIHNl
+                    dmVyZSB2aW9sYXRpb24gb2YgdGhlIFRlcm1zIG9mIFVzZSBhbmQgb2YgY29weXJpZ2h0IGxhdywg
+                    Zm9yIHdoaWNoIHRoZSBhYm92ZSB1c2VyIHdpbGwgYmVhciBmdWxsIGxlZ2FsIHJlc3BvbnNpYmls
+                    aXR5LiBJbiBjYXNlIG9mIGRvdWJ0IHBsZWFzZSBjb250YWN0IHRoZSBHUE4gdGVhbSENClBob3Rv
+                    LWNyZWRpdHMgYXJlIG1hbmRhdG9yeSEgRXZlcnkgcHVibGlzaGVkIGltYWdlIG11c3QgYmUgYWNj
+                    b21wYW5pZWQgYnkgYSBwcm9wZXJseSBmb3JtYXR0ZWQgaW5kaXZpZHVhbCBwaG90by1jcmVkaXQg
+                    LSBleGFjdGx5IGFzIGluZGljYXRlZCBhYm92ZS4gKENhcHRpb24gYW5kIGNyZWRpdCBpbmZvcm1h
+                    dGlvbiBpcyBhbHNvIGF2YWlsYWJsZSBmcm9tIHRoZSBJUFRDIGZpbGUgaW5mbyBlbWJlZGRlZCBp
+                    biB0aGUgZG93bmxvYWRlZCBpbWFnZS4pDQpQcm9vZiBjb3BpZXMgb2YgdGhlIHB1YmxpY2F0aW9u
+                    IG11c3QgYmUgcHJvdmlkZWQuIEZvciBtb3JlIGluZm9ybWF0aW9uIHBsZWFzZSBzZWUgdGhlIGlu
+                    Zm9ybWF0aW9uIG9uIHRoZSBHUE4gc2l0ZS4NCg0KVGhlIEdQTiBUZWFt</text>
+                <defaultValue>Image Credits</defaultValue>
+            </item>
             <item name="donationType"
                type="radioControl"
                multiple="NO"
@@ -67,6 +118,9 @@
                 <tag value="business">Business</tag>
                 <label>This donation is made on behalf of:</label>
             </item>
+            <item name="line1" type="lineBlock">
+                <size>5</size>
+            </item>    
             <item name="gender" type="radioControl" multiple="NO" required="YES">
                 <size>620</size>
                 <columns>2</columns>
@@ -77,9 +131,9 @@
                <message>Please, select a gender.</message>
             </onmissing>
             </item>
-            <item name="group10Spacer" type="spacerBlock" required="NO">
-                <sizeY>10</sizeY>
-            </item>  
+            <item name="line2" type="lineBlock">
+                <size>5</size>
+            </item>
             <item name="titleMale"
                type="radioControl"
                multiple="NO"
@@ -139,12 +193,13 @@
                <message>Please, select a title.</message>
             </onmissing>
             </item>  
-            <item name="group11Spacer" type="spacerBlock" required="NO">
-                <sizeY>10</sizeY>
-            </item>  
+            <item name="line3" type="lineBlock">
+                <size>5</size>
+            </item>
             <item name="firstName" type="textField" required="YES">
                 <size>620</size>
             <textSize>26</textSize>
+                <label>First Name</label>
                 <placeholder>First Name</placeholder>
                 <validation>names</validation>
                 <maxlength>20</maxlength>
@@ -155,6 +210,7 @@
             <item name="lastName" type="textField" required="YES">
                 <size>620</size>
             <textSize>26</textSize>
+                <label>Last Name</label>
                 <placeholder>Last Name</placeholder>
                 <validation>names</validation>
                 <maxlength>20</maxlength>
@@ -165,6 +221,7 @@
                required="YES">
                 <size>620</size>
             <textSize>26</textSize>
+                <label>Business Name</label>
                 <placeholder>Business Name</placeholder>
                 <validation>names</validation>
             </item>
@@ -224,15 +281,15 @@
                 <textColor>#111111</textColor>
                 <textSize>12</textSize>
             </item>
-            <item name="group1Spacer" type="spacerBlock" required="NO">
-                <sizeY>30</sizeY>
+            <item name="line4" type="lineBlock">
+                <size>5</size>
             </item>
         </group>
     </page>
     
     <page name="thirdPage">
         <bgcolor>#aaaaaa</bgcolor>
-        <group name="secondSection" number="2" title="REGULAR DONATION">
+        <group name="secondSection" number="2" title="Regular Donation">
             <item name="group2Label" type="label" bleeds="YES">
                 <text>I wish to make an automatic monthly contribution to:</text>
                 <textColor>#111111</textColor>
@@ -253,9 +310,6 @@
                 <tag value="1">Monthly</tag>
                 <defaultValue>1</defaultValue>
                 <label>Recurring:</label>
-            </item>
-            <item name="group2Spacer" type="spacerBlock" required="NO">
-                <sizeY>10</sizeY>
             </item>
             <item name="_amount" type="valuePicker" required="YES">
                 <size>620</size>
@@ -298,21 +352,14 @@
                 <tag value="15">15th of each month</tag>
                 <tag value="30">30th of each month</tag>
             </item>
-            
-            <item name="group3Spacer" type="spacerBlock" required="NO">
-                <sizeY>10</sizeY>
-            </item>
-            
+            <item name="line8" type="lineBlock">
+                <size>5</size>
+            </item>                        
             <item name="businessId" type="textField" editable="NO">
                 <size>620</size>
             <textSize>26</textSize>
-                <inlineLabel>Charitable Business #</inlineLabel>
                 <placeholder>879585214RR0001</placeholder>
                 <label>Charitable Business Number:</label>
-            </item>
-            
-            <item name="group4Spacer" type="spacerBlock" required="NO">
-                <sizeY>20</sizeY>
             </item>
             
             <item name="sign1" type="signatureBox" required="YES">
@@ -337,12 +384,15 @@
                 <bgcolor>clear</bgcolor>
                 <text>I may revoke my authorization or make changes to my donation at any time, subject to providing notice of 10 days. To obtain a sample cancellation form, or for more information on my right to cancel a PAD agreement, I may contact my financial institution or visit www.cdnpay.ca</text>
             </item>
+            <item name="line5" type="lineBlock">
+                <size>5</size>
+            </item>
         </group>
     </page>    
     
     <page name="fourthPage">
         <bgcolor>#888888</bgcolor>
-        <group name="thirdSection" number="3" title="METHOD OF PAYMENT">
+        <group name="thirdSection" number="3" title="Method of Payment">
             <item name="methodOfCollection"
                type="radioControl"
                multiple="NO"
@@ -372,6 +422,7 @@
                 <validation>numericOnly</validation>
                 <maxlength>3</maxlength>
                 <minlength>3</minlength>
+                <label>Bank Number</label>
             </item>
             <item name="accountNumber"
                type="textField"
@@ -383,6 +434,7 @@
                 <validation>numericOnly</validation>
                 <maxlength>12</maxlength>
                 <minlength>6</minlength>
+                <label>Account Number</label>
             </item>
             <item name="repeatAccountNumber"
                type="textField"
@@ -451,6 +503,9 @@
                 <size>620</size>
                 <textSize>26</textSize>
                 <submitName>comments</submitName>
+            </item>
+            <item name="line9" type="lineBlock">
+                <size>5</size>
             </item>
         </group>
         
@@ -584,6 +639,9 @@
                 <textSize>26</textSize>
                 <submitName>comments</submitName>
             </item>
+            <item name="line6" type="lineBlock">
+                <size>5</size>
+            </item>
         </group>
     </page>
     
@@ -613,12 +671,7 @@
                     
                     I agree to waive my right to receive pre-notification of any debits under this agreement. I acknowledge that I can request to make changes to the amount noted above simply by contacting March of Dimes Canada.
                 </text>
-            </item>
-            
-            <item name="group5Spacer" type="spacerBlock" required="NO">
-                <sizeY>460</sizeY>
-            </item>
-            
+            </item>                        
             <item name="sign3" type="signatureBox" bleeds="YES" required="YES">
                 <position>center</position>
                 <width>200</width>
@@ -627,10 +680,19 @@
                 <detailLabel>I have read and understand the terms and conditions.</detailLabel>
                 <legalText>I have read and understand the terms and conditions.</legalText>
             </item>
-            
-            <item name="group6Spacer" type="spacerBlock" required="NO">
-                <sizeY>30</sizeY>
+            <item name="bankInfo" type="UKBankPinger" required="YES" mustValidate="YES">
+                <size>630</size>
+                <textSize>18</textSize>
+                <label>Bank details:</label>
             </item>
+            <item name="bankInfo2" type="FRBankPinger" required="YES" mustValidate="YES">
+                <size>630</size>
+                <textSize>18</textSize>
+                <label>Bank details:</label>
+            </item>
+            <item name="line7" type="lineBlock">
+                <size>5</size>
+            </item>            
         </group>   
     </page>
     
@@ -663,6 +725,9 @@
             <textSize>26</textSize>
                 <placeholder>Batch #</placeholder>
             </item>
+            <item name="line10" type="lineBlock">
+                <size>5</size>
+            </item>
             <item name="receivedWp"
                type="radioControl"
                multiple="NO"
@@ -674,9 +739,6 @@
                 <tag value="D">Declined</tag>
                 <label>Did the donor receive a Charity Welcome Information Package?</label>
             </item> 
-            <item name="group7Spacer" type="spacerBlock" required="NO">
-                <sizeY>30</sizeY>
-            </item>
         </group>
         
         <group name="confirmationSection" isHidden="NO">
@@ -696,9 +758,6 @@
                 </text>
             </item>
             
-            <item name="group8Spacer" type="spacerBlock" required="NO">
-                <sizeY>30</sizeY>
-            </item>
             <item name="firstGift"
                type="radioControl"
                multiple="NO"
@@ -748,6 +807,9 @@
                 <detailLabel>Was the fundraiser clearly displaying valid identification?</detailLabel>
                 <requiredValue>yes</requiredValue>
             </item>         
+            <item name="line11" type="lineBlock">
+                <size>5</size>
+            </item>
             <item name="sign4" type="signatureBox" bleeds="YES" required="YES">
                 <width>250</width>
                 <height>100</height> 
@@ -764,9 +826,6 @@
                 <size>620</size>
                 <unix>YES</unix>
                 <defaultDate>today</defaultDate>
-            </item>
-            <item name="group6Spacer2" type="spacerBlock" required="NO">
-                <sizeY>30</sizeY>
             </item>
         </group>
     </page>    
