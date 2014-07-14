@@ -16,7 +16,12 @@
                <script src="js/HTMLForm.js" />
            </head>
             <body>
-                <form action="submit.php"  method="post" onsubmit="return submitForm(this);">        
+                <div class="form_header">
+                    <div class="form_menu">
+                        <span></span>
+                    </div>
+                </div>
+                <form action="#" id="theForm" onsubmit="return false;">   
                     <div class="HTMLForm">
                     <xsl:for-each select="page">
                         <div class="HTMLPage">
@@ -42,6 +47,17 @@
                                             </xsl:if>
                                             <xsl:attribute name="id"><xsl:value-of select="@name"/></xsl:attribute>
                                             <xsl:attribute name="class">MM<xsl:value-of select="@type"/></xsl:attribute>
+                                            <xsl:if test="@type='signatureBox'">
+                                                <xsl:attribute name="signed">false</xsl:attribute>                        
+                                            </xsl:if>
+                                            <xsl:choose>
+                                                <xsl:when test="@required and not(@required='NO')">
+                                                    <xsl:attribute name="req">true</xsl:attribute>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <xsl:attribute name="req">false</xsl:attribute>
+                                                </xsl:otherwise>
+                                            </xsl:choose>                                            
                                             <xsl:call-template name="buildItem" />   
                                         </div>
                                     </xsl:for-each>
@@ -69,13 +85,18 @@
                                 <div class='errorSection'></div>
                             </div>
                         </div>
-                    <input type="submit" name="submitButton" value="Submit Form" class="submitButton"/>
+                        <input type="button" id="submitButton" name="submitButton" value="Submit Form" class="submitButton"/> 
                     </div>
              </form>
                 
              <script>
              
-             function relationships() {   
+             function relationships(origin) { 
+                 $(origin).removeClass("success").removeClass("error"); 
+                 var name = $(origin).attr('name');
+                 if(name) {
+                    $('input[name="' + name +'"]').removeClass("success").removeClass("error"); 
+                 }
              <xsl:for-each select="//form/relationships/relationship">
                  <xsl:variable name="objectType" select="substring-before(@object,'::')"/>    
                  <xsl:variable name="targetName" select="substring-after(@object,'::')"/>
@@ -229,8 +250,8 @@
             </xsl:when>
             <xsl:when test="@type='zipImage'">
                 <div class="simpleImage">
-                <img> 
-                    <xsl:attribute name="src">images/<xsl:value-of select="//form/@formPrefix"/>/<xsl:value-of select="./path"/></xsl:attribute>
+                <img class="campaignAsset"> 
+                    <xsl:attribute name="src"><xsl:value-of select="./path"/></xsl:attribute>
                     <xsl:if test="./width">
                         <xsl:attribute name="width"><xsl:value-of select="./width" /></xsl:attribute>
                     </xsl:if>
@@ -247,7 +268,7 @@
             </xsl:when>
             <xsl:when test="@type='photoCapture'">
                 <a>
-                    <xsl:attribute name="href">javascript:openPhotoCapture(this);</xsl:attribute>   
+                    <xsl:attribute name="href">javascript:openPhotoCapture('<xsl:value-of select="@name"/>');</xsl:attribute>   
                 <div class="simpleImage">
                 <img> 
                     <xsl:attribute name="src">images/camera.png</xsl:attribute>
@@ -257,7 +278,7 @@
             </xsl:when>
             <xsl:when test="@type='signatureBox'">
                 <a>
-                    <xsl:attribute name="href">javascript:openSignaturePanel(this);</xsl:attribute>   
+                    <xsl:attribute name="href">javascript:openSignaturePanel('<xsl:value-of select="@name"/>');</xsl:attribute>   
                     <div class="signBox"><span>TAP HERE TO SIGN</span></div>    
                 </a>
                 <xsl:if test="@submitsValue='YES'">
@@ -283,7 +304,7 @@
                 </div>    
             </xsl:when>
             <xsl:when test="@type='dateField'">
-                <input type="date" data-role="date" data-inline="true" size="50" onchange="javascript:relationships();">
+                <input type="date" data-role="date" data-inline="true" size="50" onchange="javascript:relationships(this);">
                 <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
                     <xsl:choose>
                         <xsl:when test="./placeholder">
@@ -303,7 +324,7 @@
                 <xsl:value-of select="./text"/>          
             </xsl:when>
             <xsl:when test="@type='checkbox'">
-                <input type="checkbox" value="1" onchange="javascript:relationships();">
+                <input type="checkbox" value="1" onchange="javascript:relationships(this);">
                     <xsl:choose>
                         <xsl:when test="./submitName">
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
@@ -320,7 +341,7 @@
             </xsl:when>
             <xsl:when test="@type='segmentedControl'">
                 <xsl:text>SEGMENTED CONTROL ITEM - (Implemented as drop-downs for now)</xsl:text><br/>          
-                <div class="dropdown"><select onchange="javascript:relationships();">
+                <div class="dropdown"><select onchange="javascript:relationships(this);">
                     <xsl:choose>
                         <xsl:when test="./submitName">
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
@@ -396,7 +417,7 @@
                   </button>
             </xsl:when>
             <xsl:when test="@type='dropDown'">
-                <div class="dropdown"><select onchange="javascript:relationships();">
+                <div class="dropdown"><select onchange="javascript:relationships(this);">
                     <xsl:choose>
                         <xsl:when test="./submitName">
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
@@ -498,10 +519,23 @@
             </xsl:when>
             <xsl:when test="@type='FRBankPinger'">
                 <div>
+                    <xsl:attribute name="id"><xsl:value-of select="@name"/></xsl:attribute>
                     <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
                 <xsl:call-template name="buildBankComposite">
                     <xsl:with-param name="country">FRA</xsl:with-param>
-                </xsl:call-template>          
+                </xsl:call-template> 
+                <script>
+                    $(document).on('blur', '#<xsl:value-of select="@name"/> input[name="bankCode"], #<xsl:value-of select="@name"/> input[name="bankAgency"], #<xsl:value-of select="@name"/> input[name="bankAccountNumber"]', function(e) {                
+                       function removeLetter(num){ return strtr(num.toString(),"ABCDEFGHIJKLMNOPQRSTUVWXYZ","12345678912345678923456789"); }
+                       var bc = $('#<xsl:value-of select="@name"/> input[name="bankCode"]').val(); 
+                       var ba = $('#<xsl:value-of select="@name"/> input[name="bankAgency"]').val();
+                       var ban = $('#<xsl:value-of select="@name"/> input[name="bankAccountNumber"]').val();
+                       if (bc &amp;&amp; ba &amp;&amp; ban ) {
+                            var rib = 97 - ( ( 89 * parseInt(bc,10) + 15 * parseInt(ba,10) + 3 * parseInt(removeLetter(ban),10) ) % 97);
+                            $('#<xsl:value-of select="@name"/> input[name="bankRIB"]').val(rib); 
+                       }
+                    });
+                </script>    
                 </div>    
             </xsl:when>
             <xsl:when test="@type='UKBankPinger'">
@@ -515,7 +549,7 @@
             <xsl:when test="@type='textField'">
                 <input type="text" size="50">
                     <xsl:if test="@editable='NO'">
-                        <xsl:attribute name="editable">NO</xsl:attribute>
+                        <xsl:attribute name="disabled"/>
                     </xsl:if>
                     <xsl:choose>
                         <xsl:when test="./submitName">
@@ -563,7 +597,7 @@
         <xsl:param name="itemType"/>
         <xsl:choose>
             <xsl:when test="compare(./action,'itemShouldNotify:')=0">
-                <xsl:attribute name="onchange">javascript:relationships();</xsl:attribute>
+                <xsl:attribute name="onchange">javascript:relationships(this);</xsl:attribute>
             </xsl:when>
             <xsl:when test="compare(./action,'UFUcreateSourceCode')=0">
                 <xsl:attribute name="onchange">javascript:generateUFUSourceCode('sourceCode');</xsl:attribute>
@@ -588,7 +622,7 @@
         <ul>
         <xsl:for-each select="$option_list">
             <li>
-                <input type="radio" onchange="javascript:relationships();">
+                <input type="radio" onchange="javascript:relationships(this);">
                     <xsl:attribute name="name"><xsl:value-of select="$tmp_name"/></xsl:attribute>
                     <xsl:attribute name="id"><xsl:value-of select="concat($tmp_name,position())"/></xsl:attribute>
                     <xsl:attribute name="value"><xsl:value-of select="@value"/></xsl:attribute>   
@@ -598,8 +632,8 @@
                     <xsl:choose>
                         <xsl:when test="$with_images">
                             <div class="simpleImage">
-                            <img> 
-                                <xsl:attribute name="src">images/<xsl:value-of select="//form/@formPrefix"/>/<xsl:value-of select="."/></xsl:attribute>
+                            <img class="campaignAsset"> 
+                                <xsl:attribute name="src"><xsl:value-of select="."/></xsl:attribute>
                             </img>
                             </div>    
                         </xsl:when>
@@ -624,12 +658,21 @@
         <xsl:variable name="count" select="3"/> 
         <xsl:for-each select="(//*)[position()&lt;=$count]"> 
             <div class="MMtextField">
-            <xsl:if test="position()=1">
-                <div>
-                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
-                    <span>Address</span>    
-                </div>                
-            </xsl:if>            
+            <xsl:choose>
+                <xsl:when test="position()=1">
+                    <xsl:attribute name="req">true</xsl:attribute>
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Address</span>    
+                    </div>
+                </xsl:when>
+                <xsl:otherwise>
+                    <div>
+                        <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                        <span>Address</span>    
+                    </div>
+                </xsl:otherwise>
+            </xsl:choose>            
             <input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                 <xsl:attribute name="name">
                     <xsl:choose>
@@ -644,7 +687,7 @@
         </xsl:for-each>
         
         <!-- All cases feature a city -->
-        <div class="MMtextField">
+        <div class="MMtextField" req="true">
         <div>
             <xsl:attribute name="class">ITEMLabel</xsl:attribute>
             <span>City</span>    
@@ -663,7 +706,7 @@
         
         <xsl:choose>
             <xsl:when test="$country='CANADA' or $country='CA'">
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                 <div>
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Canadian Postal Code</span>    
@@ -683,7 +726,7 @@
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Province</span>    
                 </div>
-                <div class="dropdown"><select>
+                <div class="dropdown" req="true"><select name="stateProv">
                     <option value="AB">Alberta</option>
                     <option value="BC">British Columbia</option>
                     <option value="MB">Manitoba</option>
@@ -704,11 +747,11 @@
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Country</span>    
                 </div>                
-                <div class="countryName" editable="NO">Canada</div>
+                    <div class="countryName">Canada</div>
                 </div>    
             </xsl:when>
             <xsl:when test="$country='QUEBEC' or $country='QC'">
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                 <div>
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Code Postal Canadien</span>    
@@ -728,7 +771,7 @@
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Province</span>    
                 </div>
-                <div class="dropdown"><select>
+                    <div class="dropdown" req="true"><select name="stateProv">
                     <option value="AB">Alberta</option>
                     <option value="BC">British Columbia</option>
                     <option value="MB">Manitoba</option>
@@ -749,11 +792,11 @@
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Pays</span>    
                 </div>
-                <div class="countryName" editable="NO">Canada</div>
+                    <div class="countryName">Canada</div>
                 </div>    
             </xsl:when>
             <xsl:when test="$country='USA' or $country='US'">
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                 <div>
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Zip Code</span>    
@@ -773,7 +816,7 @@
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>State</span>    
                 </div>
-                <div class="dropdown"><select>
+                    <div class="dropdown" req="true"><select name="stateProv">
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -832,11 +875,11 @@
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Country</span>    
                 </div>
-                    <div class="countryName" editable="NO">USA</div>
+                    <div class="countryName">USA</div>
                 </div>    
             </xsl:when>
             <xsl:when test="$country='FRANCE' or $country='FRA'">
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                 <div>
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Code Postal</span>    
@@ -855,7 +898,7 @@
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Région</span>    
                 </div>
-                <div class="dropdown"><select>
+                    <div class="dropdown" req="true"><select name="stateProv">
                     <option value="Alsace">Alsace</option>
                     <option value="Aquitaine">Aquitaine</option>
                     <option value="Auvergne">Auvergne</option>
@@ -890,11 +933,11 @@
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Pays</span>    
                 </div>
-                    <div class="countryName" editable="NO">France</div>
+                    <div class="countryName">France</div>
                 </div>   
             </xsl:when>
             <xsl:when test="$country='UK'">
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                 <div>
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Postal Code</span>    
@@ -928,11 +971,11 @@
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Country</span>    
                 </div>
-                    <div class="countryName" editable="NO">United Kingdom</div>
+                    <div class="countryName">United Kingdom</div>
                 </div>    
             </xsl:when>
             <xsl:when test="$country='MEXICO' or $country='MEX'">
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                 <div>
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Código Postal</span>    
@@ -952,7 +995,7 @@
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>Estado</span>    
                 </div>
-                <div class="dropdown"><select>
+                    <div class="dropdown" req="true"><select name="stateProv">
                 <option value="AG">Aguascalientes</option>
                 <option value="BN">Baja California</option>
                 <option value="BS">Baja California Sur</option>
@@ -992,7 +1035,7 @@
                     <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                     <span>País</span>    
                 </div>
-                    <div class="countryName" editable="NO">México</div>
+                    <div class="countryName">México</div>
                 </div>
             </xsl:when>
             <xsl:otherwise>
@@ -1037,7 +1080,7 @@
                 <xsl:text>US BANK FIELD</xsl:text>    
             </xsl:when>
             <xsl:when test="$country='FRANCE' or $country='FRA'"> 
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                     <div>
                         <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                         <span>Etablissement bancaire</span>    
@@ -1096,7 +1139,7 @@
                 <p>
                     Désignation du compte à débiter:
                 </p>
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                     <div>
                         <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                         <span>Code banque</span>    
@@ -1110,7 +1153,7 @@
                     </xsl:attribute>
                 </input>
                 </div>
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                     <div>
                         <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                         <span>Code agence</span>    
@@ -1132,7 +1175,7 @@
                         </xsl:choose>                
                     </xsl:attribute>
                 </input>
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                     <div>
                         <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                         <span>No. de compte</span>    
@@ -1146,7 +1189,7 @@
                     </xsl:attribute>
                 </input>
                 </div><br/>
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                     <div>
                         <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                         <span>RIB</span>    
@@ -1161,7 +1204,7 @@
                     <xsl:attribute name="disabled"/>
                 </input>
                 </div><br/>                
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                     <div>
                         <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                         <span>IBAN</span>    
@@ -1243,7 +1286,7 @@
                     PERSONAL INFORMATION<br/>
                     Name(s) Of Account Holder(s):
                 </p>
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                     <div>
                         <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                         <span>Name 1</span>    
@@ -1271,7 +1314,7 @@
                     </xsl:attribute>
                 </input>
                 </div><br/>
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                     <div>
                         <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                         <span>Sort Code</span>    
@@ -1285,7 +1328,7 @@
                     </xsl:attribute>
                 </input>
                 </div><br/>
-                <div class="MMtextField">
+                <div class="MMtextField" req="true">
                     <div>
                         <xsl:attribute name="class">ITEMLabel</xsl:attribute>
                         <span>Account Number</span>    

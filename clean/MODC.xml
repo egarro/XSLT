@@ -20,18 +20,6 @@
                 <width>280</width>
                 <height>80</height> 
             </item> 
-            <item name="_internalFormId" type="textField" editable="NO" isHidden="YES">
-                <size>250</size>
-                <label>Reference Number</label>
-                <position>upper_left</position>
-                <placeholder>CDC25</placeholder>
-            </item>
-            <item name="repId" type="textField" editable="NO" isHidden="YES">
-                <size>620</size>
-                <textSize>18</textSize> 
-                <position>center</position>
-                <placeholder>Fundraiser ID</placeholder>
-            </item>
         </group>
     </page>
     
@@ -40,6 +28,25 @@
         <leftPageMargin>20.0</leftPageMargin>
         <rightPageMargin>20.0</rightPageMargin> 
         <group name="firstSection" number="1" title="Donor Details">
+            <item name="repId" type="textField" editable="NO" isHidden="YES">
+                <size>620</size>
+                <textSize>18</textSize> 
+                <position>center</position>
+                <placeholder>Fundraiser ID</placeholder>
+            </item>
+            <item name="submissionId" type="textField" editable="NO">
+                <size>250</size>
+                <label>Reference Number</label>
+                <position>upper_left</position>
+                <placeholder>CDC25</placeholder>
+            </item>
+            <item name="sign1" type="signatureBox" required="YES">
+                <position>center</position>
+                <width>280.0</width>
+                <height>80.0</height> 
+                <label>E) Did you complete sections A-D?</label>
+                <detailLabel>If YES, initial here.</detailLabel>
+            </item>
             <item name="animals" type="imagePicker" required="YES" skipSubmit="YES">
                 <size>620</size>
                 <columns>2</columns>
@@ -249,25 +256,6 @@
                 <placeholder>Home Phone</placeholder>
                 <validation>usphonenumber</validation>
             </item>
-            <item name="phone2" type="textField" required="phone1|phone2">
-                <size>620</size>
-            <textSize>26</textSize>
-                <placeholder>Cell Phone</placeholder>
-                <validation>usphonenumber</validation>
-            </item>
-            <item name="phone3" type="textField" isHidden="YES">
-                <size>620</size>
-            <textSize>26</textSize>
-                <placeholder>Business Phone</placeholder>
-                <validation>usphonenumber</validation>
-            </item>
-            <item name="phoneExtension" type="textField" isHidden="YES">
-                <size>620</size>
-            <textSize>26</textSize>
-                <placeholder>Ext</placeholder>
-                <validation>numericOnly</validation>
-                <maxlength>7</maxlength>
-            </item>
             <item name="emailRequired"
                type="emailPinger"
                submitAlerts="YES"
@@ -360,17 +348,7 @@
             <textSize>26</textSize>
                 <placeholder>879585214RR0001</placeholder>
                 <label>Charitable Business Number:</label>
-            </item>
-            
-            <item name="sign1" type="signatureBox" required="YES">
-                <position>center</position>
-                <width>200</width>
-                <height>80</height> 
-                <label>Donor Initials</label>
-                <detailLabel>I understand that this is an ongoing monthly contribution and my first gift will be processed today.</detailLabel>
-                <legalText>I understand that this is an ongoing monthly contribution and my first gift will be processed today.</legalText>
-            </item>
-            
+            </item>            
             <item name="finePrint3"
                type="multilineLabel"
                required="NO"
@@ -457,7 +435,7 @@
             <textSize>26</textSize>
                 <placeholder>Personal or Business Name on Bank Account</placeholder>
                 <validation>names</validation>
-                <submitName>_creditNameOnCard</submitName>
+                <submitName>creditNameOnCard</submitName>
 				        <maxlength>50</maxlength>
             </item>  
             <item name="dataProtectBank"
@@ -472,18 +450,6 @@
                 <textSize>16</textSize>
                 <bgcolor>clear</bgcolor>
                 <text>March of Dimes Canada respects your privacy and adheres to all legislative requirements and best practices with respect to protecting your privacy. All information collected regarding March of Dimes Canada supporters is kept in the strictest confidence. Your name will not be sold or traded. If at any time you wish to be removed from our contact list please contact our office at 1-800-263-3463 ext. 7338 or services@marchofdimes.ca</text>
-            </item>
-            <item name="sign2bank"
-               type="signatureBox"
-               bleeds="YES"
-               required="YES">
-                <position>center</position>
-                <width>250</width>
-                <height>80</height> 
-                <submitName>sign2</submitName>
-                <label>I am proud to be a monthly donor:</label>
-                <detailLabel>Donor authorizing monthly pledge and payment details.</detailLabel>
-                <legalText>Donor authorizing monthly pledge and payment details.</legalText>
             </item>
             <item name="cardPrintBank"
                type="multilineLabel"
@@ -510,20 +476,20 @@
         </group>
         
         <group name="creditCardInfo">
-            <item name="_creditCardType" type="dropDown" required="YES">
-                <option value="Visa">Visa</option>
-                <option value="Mastercard">Mastercard</option>
-                <option value="Amex">American Express</option>
+            <item name="creditCardType" type="dropDown" required="YES">
+                <option value="VISA">Visa</option>
+                <option value="MC">Mastercard</option>
+                <option value="AMEX">American Express</option>
                 <size>620</size>
             <textSize>26</textSize>
                 <label>Card Type:</label>
             </item>
-            <item name="_creditCardNumber" type="textField" required="YES">
+            <item name="creditCardNumber" type="textField" required="YES">
                 <size>620</size>
             <textSize>26</textSize>
                 <placeholder>Card Number</placeholder>
                 <validation>creditcard</validation>
-                <action>linksTo::_creditCardType</action>
+                <action>linksTo::creditCardType</action>
             </item>
             <item name="repeatCreditCardNumber" type="textField" required="YES">
                 <size>620</size>
@@ -544,57 +510,20 @@
                 <maxlength>3</maxlength>
                 <minlength>3</minlength>
             </item>
-            <item name="expDate" type="dateField" required="YES">
+            <item name="creditExpiryDate " type="dateField" required="YES">
                 <inlineLabel>Exp. Date</inlineLabel>
                 <formatting>MM/YY</formatting>
                 <size>300</size>
-                <prefix>_creditCardExp</prefix>
                 <minYearRestriction>0</minYearRestriction>
                 <maxYearRestriction>+10</maxYearRestriction>
             </item>  
-            <item name="cardholderName" type="textField" required="YES">
+            <item name="creditNameOnCard" type="textField" required="YES">
                 <size>620</size>
                 <textSize>26</textSize>
                 <placeholder>Personal or Business Name on Card</placeholder>
                 <validation>letters</validation>
-                <submitName>_creditNameOnCard</submitName> 
-				        <maxlength>50</maxlength>           
+				<maxlength>50</maxlength>           
             </item>
-            <item name="copyAddress" type="checkbox" required="NO">
-                <detailLabel>Billing address same as donor address</detailLabel>
-            </item>
-            <item name="_creditAddress" type="textField" required="YES">
-                <size>500</size>
-                <placeholder>Cardholder Address</placeholder>
-                <validation>alphanumeric</validation>
-            </item>
-            <item name="_creditCity" type="textField" required="YES">
-                <size>500</size>
-                <placeholder>City</placeholder>
-                <validation>letters</validation>
-            </item>
-            <item name="_creditStateProv"
-               type="dropDown"
-               isHidden="NO"
-               required="YES">
-                <option value="AB">Alberta</option>
-                <option value="BC">British Columbia</option>
-                <option value="MB">Manitoba</option>
-                <option value="NB">New Brunswick</option>
-                <option value="NL">Newfoundland and Labrador</option>
-                <option value="NT">Northwest Territories</option>
-                <option value="NS">Nova Scotia</option>
-                <option value="NU">Nunavut</option>
-                <option value="ON">Ontario</option>
-                <option value="PE">Prince Edward Island</option>
-                <option value="QC">Quebec</option>
-                <option value="SK">Saskatchewan</option>
-                <option value="YT">Yukon</option>
-                <size>500</size>
-            </item> 
-            <item name="_creditPostalCode" type="canadianPostalCode" required="YES">
-                <size>500</size>
-            </item> 
             <item name="dataProtectCard"
                type="multilineLabel"
                required="NO"
@@ -607,18 +536,6 @@
                 <textSize>16</textSize>
                 <bgcolor>clear</bgcolor>
                 <text>March of Dimes Canada respects your privacy and adheres to all legislative requirements and best practices with respect to protecting your privacy. All information collected regarding March of Dimes Canada supporters is kept in the strictest confidence. Your name will not be sold or traded. If at any time you wish to be removed from our contact list please contact our office at 1-800-263-3463 ext. 7338 or services@marchofdimes.ca</text>
-            </item>
-            <item name="sign2credit"
-               type="signatureBox"
-               bleeds="YES"
-               required="YES">
-                <position>center</position>
-                <width>250</width>
-                <height>80</height>
-                <submitName>sign2</submitName>
-                <label>I am proud to be a monthly donor:</label>
-                <detailLabel>Donor authorizing monthly pledge and payment details.</detailLabel>
-                <legalText>Donor authorizing monthly pledge and payment details.</legalText>
             </item>
             <item name="cardPrintCard"
                type="multilineLabel"
@@ -672,24 +589,6 @@
                     I agree to waive my right to receive pre-notification of any debits under this agreement. I acknowledge that I can request to make changes to the amount noted above simply by contacting March of Dimes Canada.
                 </text>
             </item>                        
-            <item name="sign3" type="signatureBox" bleeds="YES" required="YES">
-                <position>center</position>
-                <width>200</width>
-                <height>80</height> 
-                <label>Donor Initials:</label>
-                <detailLabel>I have read and understand the terms and conditions.</detailLabel>
-                <legalText>I have read and understand the terms and conditions.</legalText>
-            </item>
-            <item name="bankInfo" type="UKBankPinger" required="YES" mustValidate="YES">
-                <size>630</size>
-                <textSize>18</textSize>
-                <label>Bank details:</label>
-            </item>
-            <item name="bankInfo2" type="FRBankPinger" required="YES" mustValidate="YES">
-                <size>630</size>
-                <textSize>18</textSize>
-                <label>Bank details:</label>
-            </item>
             <item name="line7" type="lineBlock">
                 <size>5</size>
             </item>            
@@ -728,17 +627,6 @@
             <item name="line10" type="lineBlock">
                 <size>5</size>
             </item>
-            <item name="receivedWp"
-               type="radioControl"
-               multiple="NO"
-               required="YES">
-                <size>620</size>
-                <columns>3</columns>
-                <tag value="Y">Yes</tag>
-                <tag value="N">No</tag>
-                <tag value="D">Declined</tag>
-                <label>Did the donor receive a Charity Welcome Information Package?</label>
-            </item> 
         </group>
         
         <group name="confirmationSection" isHidden="NO">
@@ -758,64 +646,9 @@
                 </text>
             </item>
             
-            <item name="firstGift"
-               type="radioControl"
-               multiple="NO"
-               required="YES">
-                <size>220</size>
-                <columns>2</columns>
-                <tag value="yes">Yes</tag>
-                <tag value="no">No</tag>
-                <detailLabel>Did the fundraiser explain that the first gift will be processed today?</detailLabel>
-                <requiredValue>yes</requiredValue>
-            </item>
-            <item name="ongoing" type="radioControl" multiple="NO" required="YES">
-                <size>220</size>
-                <columns>2</columns>
-                <tag value="yes">Yes</tag>
-                <tag value="no">No</tag>
-                <detailLabel>Did the fundraiser make it clear that this is an ongoing monthly donation?</detailLabel>
-                <requiredValue>yes</requiredValue>
-            </item>
-            <item name="notOneTime"
-               type="radioControl"
-               multiple="NO"
-               required="YES">
-                <size>220</size>
-                <columns>2</columns>
-                <tag value="yes">Yes</tag>
-                <tag value="no">No</tag>
-                <detailLabel>Has the fundraiser explained that this is not a program for one time donations?</detailLabel>
-                <requiredValue>yes</requiredValue>
-            </item> 
-            <item name="monthly" type="radioControl" multiple="NO" required="YES">
-                <size>220</size>
-                <columns>2</columns>
-                <tag value="yes">Yes</tag>
-                <tag value="no">No</tag>
-                <detailLabel>Do you understand that a copy of your monthly giving agreement will be sent to the email account (if) provided?</detailLabel>
-                <requiredValue>yes</requiredValue>
-            </item> 
-            <item name="clearIdentification"
-               type="radioControl"
-               multiple="NO"
-               required="YES">
-                <size>220</size>
-                <columns>2</columns>
-                <tag value="yes">Yes</tag>
-                <tag value="no">No</tag>
-                <detailLabel>Was the fundraiser clearly displaying valid identification?</detailLabel>
-                <requiredValue>yes</requiredValue>
-            </item>         
+         
             <item name="line11" type="lineBlock">
                 <size>5</size>
-            </item>
-            <item name="sign4" type="signatureBox" bleeds="YES" required="YES">
-                <width>250</width>
-                <height>100</height> 
-                <label>Donor Signature:</label>
-                <detailLabel>I have chosen to support: March of Dimes Canada with an ongoing contribution of money per month.</detailLabel>
-                <legalText>I have chosen to support: March of Dimes Canada with an ongoing contribution of money per month.</legalText>
             </item>
             <item name="_formSignDate"
                type="dateField"
@@ -978,7 +811,7 @@
         </relationship>
         
         <relationship object="item::code">
-            <condition>_creditCardType == "Amex"</condition>
+            <condition>creditCardType == "AMEX"</condition>
             <if>
                 <maxlength>4</maxlength>
             </if>
@@ -988,7 +821,7 @@
         </relationship>
         
         <relationship object="item::code">
-            <condition>_creditCardType == "Amex"</condition>
+            <condition>creditCardType == "AMEX"</condition>
             <if>
                 <minlength>4</minlength>
             </if>
@@ -998,7 +831,7 @@
         </relationship>
         
         <relationship object="item::_creditCardNumber">
-            <condition>_creditCardType == "Amex"</condition>
+            <condition>creditCardType == "AMEX"</condition>
             <if>
                 <maxlength>15</maxlength>
             </if>
