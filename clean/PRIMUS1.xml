@@ -24,7 +24,7 @@
         <item name="custRef" type="textField" required="YES">
             <size>620</size>
             <textSize>26</textSize>
-            <label>Customer Reference #:</label>
+            <label>Customer Reference #</label>
             <minlength>6</minlength>
             <maxlength>8</maxlength>
             <validation>numericOnly</validation>
@@ -38,7 +38,7 @@
             <option value="6">537 Scarborough</option>
             <size>620</size>
             <textSize>26</textSize>
-            <label>Costco Location:</label>
+            <label>Costco Location</label>
         </item>
       </group>
       <group name="custInfo" number="2" title="CUSTOMER INFORMATION">
@@ -49,11 +49,12 @@
                 <tag value="Mrs">Mrs.</tag>
                 <size>620</size>
                 <textSize>26</textSize>
-                <label>Title:</label>
+                <label>Title</label>
             </item>
             <item name="firstName" type="textField" required="YES">
                 <size>610</size>
                 <textSize>26</textSize>
+                <label>First Name</label>
                 <placeholder>First Name</placeholder>
                 <validation>names</validation>
                 <maxlength>20</maxlength>
@@ -65,14 +66,16 @@
             <item name="middleInitial" type="textField">
                 <size>610</size>
                 <textSize>26</textSize>
+                <label>Middle Initial</label>
                 <placeholder>Middle Initial</placeholder>
                 <validation>lettersOnly</validation>
-                <maxlength>1</maxlength>
+                <maxlength>2</maxlength>
                 <action>itemShouldNotify:</action>
             </item>
             <item name="lastName" type="textField" required="YES">
                 <size>610</size>
                 <textSize>26</textSize>
+                <label>Last Name</label>
                 <placeholder>Last Name</placeholder>
                 <validation>names</validation>
                 <maxlength>20</maxlength>
@@ -92,7 +95,7 @@
                 <option value="MultiDwelling">Multi Dwelling (apartment, condo, etc.)</option>
                 <size>620</size>
                 <textSize>26</textSize>
-                <label>Type of Residence</label>
+                <label>Residence Type</label>
             </item>
             <item name="email"
                type="emailPinger"
@@ -110,6 +113,7 @@
                receipt="personal">
                 <size>620</size>
                 <textSize>26</textSize>
+                <label>Home Phone</label>
                 <placeholder>Home Phone</placeholder>
                 <validation>usphonenumber</validation>
             </item>
@@ -119,6 +123,7 @@
                receipt="personal">
                 <size>620</size>
                 <textSize>26</textSize>
+                <label>Alternate Contact Number</label>
                 <placeholder>Alternate Contact Number</placeholder>
                 <validation>usphonenumber</validation>
             </item>
@@ -126,8 +131,8 @@
                type="radioControl"
                required="YES">
                 <columns>2</columns>
-                <tag value="Yes">Yes</tag>
-                <tag value="No">No ($2.00/month)</tag>
+                <tag value="YES">YES</tag>
+                <tag value="NO">No ($2.00/month)</tag>
                 <size>620</size>
                 <textSize>26</textSize>
                 <label>Do you want your number to appear in the phone book and 411 directory</label>
@@ -149,7 +154,7 @@
                 <tag value="French">French</tag>
                 <size>620</size>
                 <textSize>26</textSize>
-                <label>Language Preference: </label>
+                <label>Language Preference</label>
             </item>
             <item name="Cust" type="radioControl" required="YES">
                 <size>620</size>
@@ -220,9 +225,9 @@
         <item name="DSL" type="radioControl" required="YES">
             <size>620</size>
             <columns>2</columns>
-            <tag value="Yes">Yes</tag>
-            <tag value="No">No</tag>
-            <label>Do you have DSL Internet service?</label>
+            <tag value="YES">YES</tag>
+            <tag value="NO">No</tag>
+            <label>1. Do you have DSL Internet service?</label>
         </item>
         <item name="exDSL"
                type="radioControl"
@@ -230,9 +235,9 @@
                required="NO">
             <size>620</size>
             <columns>2</columns>
-            <tag value="Yes">Yes</tag>
-            <tag value="No">No</tag>
-            <label>Would you like to keep your existing DSL Internet service?</label>
+            <tag value="YES">YES</tag>
+            <tag value="NO">No</tag>
+            <label>2. Would you like to keep your existing DSL Internet service?</label>
         </item>
         <item name="accOrPhoneNum"
                isHidden="YES"
@@ -240,7 +245,7 @@
                required="NO">
             <size>310</size>
             <textSize>26</textSize>
-            <detailLabel>Provide your account or home phone number so we can cancel your service.</detailLabel>
+            <detailLabel>3. Provide your account or home phone number so we can cancel your service.</detailLabel>
         </item>
       </group>
       <group name="phoneInfo" isHidden="YES" title="HOME PHONE">
@@ -283,7 +288,7 @@
                isHidden="YES"
                type="textField">
             <size>620</size>
-            <label>Please specify:</label>
+            <label>Please specify</label>
             <submitName>currPhoneNum</submitName>
         </item>
         <item name="namePhoneBill" isHidden="YES" type="textField">
@@ -292,16 +297,16 @@
         </item>
         <item name="altNum" type="radioControl">
             <columns>2</columns>
-            <tag value="Yes">Yes</tag>
-            <tag value="No">No</tag>
+            <tag value="YES">YES</tag>
+            <tag value="NO">No</tag>
             <size>620</size>
             <textSize>26</textSize>
             <label>Do you currently have an alternate number(s)</label>
         </item>
         <item name="keepAltNum" isHidden="YES" type="radioControl">
             <columns>2</columns>
-            <tag value="Yes">Yes</tag>
-            <tag value="No">No</tag>
+            <tag value="YES">YES</tag>
+            <tag value="NO">No</tag>
             <size>620</size>
             <textSize>26</textSize>
             <label>Do you want to keep your alternate number(s)</label>
@@ -388,7 +393,7 @@
       <!-- if Traditional -->
       <group name="tradOpts"
              isHidden="YES"
-             title="TRADITIONAL HOME PHONE ADDITIONAL FEATURES($4.00/mo. each)">
+             title="TRADITIONAL HOME PHONE ADD-ON FEATURES($4/mo ea.)">
         <item name="tradHomePhFeatures-1" type="checkbox" required="NO">
             <detailLabel>Call Display</detailLabel>
         </item>
@@ -445,7 +450,6 @@
                required="NO">
             <detailLabel>Choose up to 3: ($4/mo. each)</detailLabel>
         </item>
-        
       </group>
 
       <group name="ldInfo"
@@ -580,7 +584,7 @@
                required="YES">
             <size>610</size>
             <textSize>26</textSize>
-            <!--<validation>usphonenumber</validation>-->
+            <validation>usphonenumber</validation>
             <placeholder>Long Distance #1</placeholder>
             <maxlength>10</maxlength>
             <minlength>10</minlength>
@@ -592,7 +596,7 @@
             <size>610</size>
             <textSize>26</textSize>
             <placeholder>Long Distance #2</placeholder>
-            <!--<validation>usphonenumber</validation>-->
+            <validation>usphonenumber</validation>
             <maxlength>10</maxlength>
             <minlength>10</minlength>
         </item>
@@ -722,12 +726,15 @@
               <label>Credit Card Number(principal owner/no expiry date required)</label>
               <validation>creditcard</validation>
           </item>
-        <item name="prevAddress" type="textField" required="NO">
-            <label>Previous Address:</label>
-            <detailLabel>(if current is less than 2 years)</detailLabel>
-            <size>400</size>
-            <textSize>26</textSize>
-        </item>
+          <item name="lessThanTwoYears" type="checkbox" required="NO">
+              <detailLabel>Have you been living in your current address for less than 2 years?</detailLabel>
+          </item>
+          <item name="prevAddress" type="addressField" required="NO" isHidden="YES">
+              <size>630</size>
+              <textSize>26</textSize>
+              <country>CANADA</country>
+              <prefix>prev</prefix>
+          </item>
     </group>
 
       <group name="billingInfo"
@@ -740,12 +747,13 @@
             <columns>2</columns>
             <tag value="1">e-Bill to my email address.</tag>
             <tag value="2">Please send me my invoice via the regular mail ($.99/mo. fee).</tag>
-            <label>Billing Method: </label>
+            <label>Billing Method</label>
         </item>
         <item name="billEmail" type="textField" required="YES" isHidden="YES">
-            <label>E-Mail:</label>
+            <label>E-Mail</label>
             <size>620</size>
             <textSize>26</textSize>
+            <validation>email</validation>
         </item>
           <item name="creditCardType" type="dropDown" required="YES">
               <option value="VISA">Visa</option>
@@ -753,7 +761,7 @@
               <option value="AMEX">American Express</option>
               <size>620</size>
               <textSize>26</textSize>
-              <label>Credit Card Type:</label>
+              <label>Credit Card Type</label>
           </item>
         <item name="creditCardNumber" type="textField" required="YES">
             <size>620</size>
@@ -769,7 +777,7 @@
             <validation>letters</validation>
         </item>
           <item name="expirationMonth" type="dropDown" required="YES">
-              <label>Expiry Month/Year:</label>
+              <label>Expiry Month/Year</label>
               <option value="01">Jan</option>
               <option value="02">Feb</option>
               <option value="03">March</option>
@@ -805,12 +813,12 @@
         <item name="chSign" type="signatureBox" required="YES">
             <width>250</width>
             <height>120</height>
-            <label>Cardholder's Signature:</label>
+            <label>Cardholder's Signature</label>
             <detailLabel>By signing this form, I authorize Primus to debit the above credit card for all my Primus charges. This authorization may be cancelled at any time upon written notice to Primus. Any delivery of this authorization to you constitutes delivery by me.</detailLabel>
             <legalText>By signing this form, I authorize Primus to debit the above credit card for all my Primus charges. This authorization may be cancelled at any time upon written notice to Primus. Any delivery of this authorization to you constitutes delivery by me.</legalText>
         </item>
         <item name="chSignDate" type="dateField" required="YES">
-             <label>Date:</label>
+             <label>Date</label>
             <formatting>MM/DD/YYYY</formatting>
             <size>320</size>
             <string>dd-MM-yyyy @ HH:mm:ss ZZZZ</string>
@@ -844,7 +852,7 @@
           <item name="custSign" type="signatureBox" required="YES">
               <width>250</width>
               <height>120</height>
-              <label>Customer's Signature:</label>
+              <label>Customer's Signature</label>
               <detailLabel>I understand that further service availability restrictions may apply at time of service provisioning due to distance of resident from central office.</detailLabel>
               <legalText>I understand that further service availability restrictions may apply at time of service provisioning due to distance of resident from central office.</legalText>
           </item>
@@ -855,15 +863,15 @@
               receipt="header">
               <size>620</size>
               <textSize>26</textSize>
-              <label>Agent ID:</label>
+              <label>Agent ID</label>
           </item>
           <item name="repSign" type="signatureBox" required="YES">
               <width>250</width>
               <height>120</height>
-              <label>Representative's Signature:</label>
+              <label>Representative's Signature</label>
           </item>
           <item name="formSignDate" type="dateField" required="YES">
-              <label>Date:</label>
+              <label>Date</label>
               <formatting>MM/DD/YYYY</formatting>
               <size>320</size>
               <string>dd-MM-yyyy @ HH:mm:ss ZZZZ</string>
@@ -1043,7 +1051,7 @@
         </relationship>
 
         <relationship object="item::keepAltNum">
-            <condition>altNum == "Yes"</condition>
+            <condition>altNum == "YES"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1053,7 +1061,7 @@
         </relationship>
 
         <relationship object="item::lblAltNum">
-            <condition>altNum == "Yes"</condition>
+            <condition>altNum == "YES"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1063,7 +1071,7 @@
         </relationship>
 
         <relationship object="item::enterExtNum1">
-            <condition>keepAltNum == "No"</condition>
+            <condition>keepAltNum == "NO"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1073,28 +1081,28 @@
         </relationship>
 
         <relationship object="item::enterExtNum1">
-            <condition>altNum == "No"</condition>
+            <condition>altNum == "NO"</condition>
             <if>
                 <hide>THIS</hide>
             </if>
         </relationship>
         
         <relationship object="item::enterExtNum2">
-            <condition>altNum == "No"</condition>
+            <condition>altNum == "NO"</condition>
             <if>
                 <hide>THIS</hide>
             </if>
         </relationship>
         
         <relationship object="item::enterExtNum3">
-            <condition>altNum == "No"</condition>
+            <condition>altNum == "NO"</condition>
             <if>
                 <hide>THIS</hide>
             </if>
         </relationship>
         
         <relationship object="item::enterExtNum2">
-            <condition>keepAltNum == "No" OR keepAltNum == "Yes"</condition>
+            <condition>keepAltNum == "NO" OR keepAltNum == "YES"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1104,7 +1112,7 @@
         </relationship>
 
         <relationship object="item::enterExtNum3">
-            <condition>keepAltNum == "Yes"</condition>
+            <condition>keepAltNum == "YES"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1214,7 +1222,7 @@
         </relationship>
 
         <relationship object="item::standAloneBasic">
-            <condition>(homePhone == "No" AND longDist == "Yes") OR tradHomePh == "1" OR digHomePhNT == "1" OR digHomePhT == "1" OR tradHomePh == "2" OR digHomePhNT == "2" OR digHomePhT == "2"</condition>
+            <condition>(homePhone == "NO" AND longDist == "YES") OR tradHomePh == "1" OR digHomePhNT == "1" OR digHomePhT == "1" OR tradHomePh == "2" OR digHomePhNT == "2" OR digHomePhT == "2"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1244,7 +1252,7 @@
         </relationship>
 
          <relationship object="item::lblAddOn">
-            <condition>homePhone == "Yes"</condition>
+            <condition>homePhone == "YES"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1396,7 +1404,7 @@
         </relationship> 
 
         <relationship object="item::exDSL">
-            <condition>DSL == "Yes"</condition>
+            <condition>DSL == "YES"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1406,7 +1414,7 @@
         </relationship>   
 
         <relationship object="item::accOrPhoneNum">
-            <condition>exDSL == "No"</condition>
+            <condition>exDSL == "NO"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1416,7 +1424,7 @@
         </relationship> 
 
         <relationship object="item::estMonUsageOpt">
-            <condition>longDist == "No"</condition>
+            <condition>longDist == "NO"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1426,7 +1434,7 @@
         </relationship>
 
         <relationship object="item::estMonUsageMand">
-            <condition>longDist == "Yes"</condition>
+            <condition>longDist == "YES"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1452,5 +1460,15 @@
             </else>
         </relationship>
 
+        <relationship object="item::prevAddress">
+            <condition>lessThanTwoYears == "YES"</condition>
+            <if>
+                <show>THIS</show>
+            </if>
+            <else>
+                <hide>THIS</hide>
+            </else>
+        </relationship>
+        
     </relationships>
 </form>
