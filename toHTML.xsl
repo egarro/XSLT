@@ -98,10 +98,13 @@
                  if(name) {
                     $('input[name="' + name +'"]').removeClass("success").removeClass("error"); 
                  }
+                 var pos = '';
              <xsl:for-each select="//form/relationships/relationship">
                  <xsl:variable name="objectType" select="substring-before(@object,'::')"/>    
                  <xsl:variable name="targetName" select="substring-after(@object,'::')"/>
                  <xsl:variable name="condition" select="./condition"/>
+                 pos = '<xsl:value-of select="string-join(tokenize($condition,'&quot;\w+&quot;| AND | OR | BT | LT | == | != |[()\s]'),'')"/>'.indexOf(name);
+                 if ( ~pos ) { 
                          if (  <xsl:call-template name="for-each-loop"> 
                                <!-- Changing the condition statement to javascript -->
                                <xsl:with-param name="list" select="tokenize($condition,'&quot;\w+&quot;| AND | OR | BT | LT | == | != |[()\s]')" />
@@ -111,10 +114,40 @@
                               <!-- Interpreting the tags into corresponding javascript functions -->
                              <xsl:choose>    
                                  <xsl:when test="./if/option">
-                                     <xsl:text>updateItemOptions('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select='string-join(./if/option,"&apos;,&apos;")' /><xsl:text>');</xsl:text>
+                                     <xsl:text>updateItemOptions('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text>
+                                     <xsl:for-each select="./if/option">
+                                         <xsl:choose>
+                                             <xsl:when test="position() = last()">
+                                                 <xsl:call-template name="option-builder">
+                                                     <xsl:with-param name="isLast">YES</xsl:with-param>
+                                                 </xsl:call-template>
+                                             </xsl:when>
+                                             <xsl:otherwise>
+                                                 <xsl:call-template name="option-builder">
+                                                     <xsl:with-param name="isLast">NO</xsl:with-param>
+                                                 </xsl:call-template>
+                                             </xsl:otherwise>
+                                         </xsl:choose> 
+                                     </xsl:for-each>                                        
+                                     <xsl:text>');</xsl:text>
                                  </xsl:when>
                                  <xsl:when test="./if/tag">
-                                     <xsl:text>updateItemOptionTags('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select='string-join(./if/tag,"&apos;,&apos;")' /><xsl:text>');</xsl:text>
+                                     <xsl:text>updateItemOptionTags('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text>
+                                     <xsl:for-each select="./if/tag">
+                                         <xsl:choose>
+                                             <xsl:when test="position() = last()">
+                                                 <xsl:call-template name="option-builder">
+                                                     <xsl:with-param name="isLast">YES</xsl:with-param>
+                                                 </xsl:call-template>
+                                             </xsl:when>
+                                             <xsl:otherwise>
+                                                 <xsl:call-template name="option-builder">
+                                                     <xsl:with-param name="isLast">NO</xsl:with-param>
+                                                 </xsl:call-template>
+                                             </xsl:otherwise>
+                                         </xsl:choose> 
+                                     </xsl:for-each>
+                                     <xsl:text>');</xsl:text>
                                  </xsl:when>
                                  <xsl:otherwise>
                                      <xsl:for-each select="./if/descendant::*">
@@ -130,10 +163,40 @@
                              <!-- Interpreting the tags into corresponding javascript functions -->
                              <xsl:choose>    
                                  <xsl:when test="./else/option">
-                                     <xsl:text>updateItemOptions('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select='string-join(./else/option,"&apos;,&apos;")' /><xsl:text>');</xsl:text>
+                                     <xsl:text>updateItemOptions('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text>
+                                     <xsl:for-each select="./else/option">
+                                         <xsl:choose>
+                                             <xsl:when test="position() = last()">
+                                                 <xsl:call-template name="option-builder">
+                                                     <xsl:with-param name="isLast">YES</xsl:with-param>
+                                                 </xsl:call-template>
+                                             </xsl:when>
+                                             <xsl:otherwise>
+                                                 <xsl:call-template name="option-builder">
+                                                     <xsl:with-param name="isLast">NO</xsl:with-param>
+                                                 </xsl:call-template>
+                                             </xsl:otherwise>
+                                         </xsl:choose> 
+                                     </xsl:for-each>
+                                     <xsl:text>');</xsl:text>
                                  </xsl:when>
                                  <xsl:when test="./else/tag">
-                                     <xsl:text>updateItemOptionTags('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text><xsl:value-of select='string-join(./else/tag,"&apos;,&apos;")' /><xsl:text>');</xsl:text>
+                                     <xsl:text>updateItemOptionTags('</xsl:text><xsl:value-of select="$targetName" /><xsl:text>','</xsl:text>
+                                     <xsl:for-each select="./else/tag">
+                                         <xsl:choose>
+                                             <xsl:when test="position() = last()">
+                                                 <xsl:call-template name="option-builder">
+                                                     <xsl:with-param name="isLast">YES</xsl:with-param>
+                                                 </xsl:call-template>
+                                             </xsl:when>
+                                             <xsl:otherwise>
+                                                 <xsl:call-template name="option-builder">
+                                                     <xsl:with-param name="isLast">NO</xsl:with-param>
+                                                 </xsl:call-template>
+                                             </xsl:otherwise>
+                                         </xsl:choose> 
+                                     </xsl:for-each>
+                                     <xsl:text>');</xsl:text>
                                  </xsl:when>
                                  <xsl:otherwise>
                                      <xsl:for-each select="./else/descendant::*">
@@ -146,6 +209,7 @@
                              </xsl:choose>                             
                          }
                          </xsl:if>
+                    }
              </xsl:for-each>  
              } 
              </script>    
@@ -153,6 +217,14 @@
         </html>
     </xsl:template>
 
+    <!-- Option builder: We make sure we escape single quotes! -->
+    <xsl:template name="option-builder">
+        <xsl:param name="isLast" />
+        <xsl:choose>
+            <xsl:when test="$isLast='YES'"><xsl:value-of select='concat(replace(@value,"&apos;","\\&apos;"),concat("::",replace(.,"&apos;","\\&apos;")))' /></xsl:when>
+            <xsl:otherwise><xsl:value-of select='concat(replace(@value,"&apos;","\\&apos;"),concat("::",concat(replace(.,"&apos;","\\&apos;"),"&apos;,&apos;")))' /></xsl:otherwise>
+        </xsl:choose>    
+    </xsl:template>  
 
     <!-- Tags to JS Functions mapping -->
     <xsl:template name="create-JS-function">
@@ -562,6 +634,9 @@
             </xsl:when>
             <xsl:when test="@type='textField'">
                 <input size="50">
+                    <xsl:if test="@forceSubmit='YES'">
+                        <xsl:attribute name="forceSubmit">true</xsl:attribute>
+                    </xsl:if>
                     <xsl:if test="@editable='NO'">
                         <xsl:attribute name="disabled"/>
                     </xsl:if>
@@ -577,6 +652,9 @@
                     <xsl:if test="./maxlength">
                         <xsl:attribute name="maxlength"><xsl:value-of select="./maxlength"/></xsl:attribute>
                     </xsl:if>                    
+                    <xsl:if test="./minlength">
+                        <xsl:attribute name="minlength"><xsl:value-of select="./minlength"/></xsl:attribute>
+                    </xsl:if>
                     <xsl:if test="./placeholder">
                         <xsl:attribute name="placeholder"><xsl:value-of select="./placeholder"/></xsl:attribute>
                     </xsl:if>
@@ -786,6 +864,9 @@
                 </div><br/> 
                 <!-- StateProv specific choices for Canada -->
                 <div class="MMdropDown">
+                    <xsl:if test="$required='YES'">
+                        <xsl:attribute name="req">true</xsl:attribute>
+                    </xsl:if>
                     <xsl:choose>
                         <xsl:when test="$required='YES'">
                             <div>
@@ -801,9 +882,6 @@
                         </xsl:otherwise>
                     </xsl:choose>                    
                 <div class="dropdown">
-                    <xsl:if test="$required='YES'">
-                        <xsl:attribute name="req">true</xsl:attribute>
-                    </xsl:if>
                     <select name="stateProv">
                     <option value=""></option>
                     <option value="AB">Alberta</option>
@@ -857,6 +935,9 @@
                 </div><br/> 
                 <!-- StateProv specific choices for Canada -->
                 <div class="MMdropDown">
+                    <xsl:if test="$required='YES'">
+                        <xsl:attribute name="req">true</xsl:attribute>
+                    </xsl:if>
                     <xsl:choose>
                         <xsl:when test="$required='YES'">
                             <div>
@@ -872,9 +953,6 @@
                         </xsl:otherwise>
                     </xsl:choose>                    
                     <div class="dropdown">
-                        <xsl:if test="$required='YES'">
-                            <xsl:attribute name="req">true</xsl:attribute>
-                        </xsl:if>
                         <select name="stateProv">
                             <option value=""></option>
                             <option value="AB">Alberta</option>
@@ -901,11 +979,22 @@
                 </div>     
             </xsl:when>
             <xsl:when test="$country='USA' or $country='US'">
-                <div class="MMtextField" req="true">
-                <div>
-                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
-                    <span>Zip Code</span>    
-                </div>                
+                <div class="MMtextField">
+                    <xsl:choose>
+                        <xsl:when test="$required='YES'">
+                            <xsl:attribute name="req">true</xsl:attribute>
+                            <div>
+                                <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                                <span>Zip Code *</span>    
+                            </div>    
+                        </xsl:when>
+                        <xsl:otherwise> 
+                            <div>
+                                <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                                <span>Zip Code</span>    
+                            </div>
+                        </xsl:otherwise>
+                    </xsl:choose>    
                 <input type="number" size="50" validation="usPostalCode" placeholder="Zip Code" maxlength="10" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
@@ -917,11 +1006,24 @@
                 </div><br/>    
                 <!-- StateProv specific choices for USA -->
                 <div class="MMdropDown">
-                <div>
-                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
-                    <span>State</span>    
-                </div>
-                <div class="dropdown" req="true"><select name="stateProv">
+                    <xsl:if test="$required='YES'">
+                        <xsl:attribute name="req">true</xsl:attribute>
+                    </xsl:if>
+                    <xsl:choose>
+                        <xsl:when test="$required='YES'">
+                            <div>
+                                <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                                <span>State *</span>    
+                            </div>
+                        </xsl:when>
+                        <xsl:otherwise>                     
+                            <div>
+                                <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                                <span>State</span>    
+                            </div>
+                        </xsl:otherwise>
+                    </xsl:choose>                    
+                <div class="dropdown"><select name="stateProv">
                     <option value=""></option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -985,11 +1087,22 @@
                 </div>    
             </xsl:when>
             <xsl:when test="$country='FRANCE' or $country='FRA'">
-                <div class="MMtextField" req="true">
-                <div>
-                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
-                    <span>Code Postal</span>    
-                </div>
+                <div class="MMtextField">
+                    <xsl:choose>
+                        <xsl:when test="$required='YES'">
+                            <xsl:attribute name="req">true</xsl:attribute>
+                            <div>
+                                <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                                <span>Code Postal *</span>    
+                            </div>    
+                        </xsl:when>
+                        <xsl:otherwise> 
+                            <div>
+                                <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                                <span>Code Postal</span>    
+                            </div>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 <input type="number" size="50" validation="frenchPostalCode" placeholder="Code Postal" maxlength="5" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
@@ -1000,11 +1113,24 @@
                 </input>
                 </div><br/> 
                 <div class="MMdropDown">
-                <div>
-                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
-                    <span>Région</span>    
-                </div>
-                    <div class="dropdown" req="true"><select name="stateProv">
+                    <xsl:if test="$required='YES'">
+                        <xsl:attribute name="req">true</xsl:attribute>
+                    </xsl:if>
+                    <xsl:choose>
+                        <xsl:when test="$required='YES'">
+                            <div>
+                                <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                                <span>Région *</span>    
+                            </div>
+                        </xsl:when>
+                        <xsl:otherwise>                     
+                            <div>
+                                <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                                <span>Region</span>    
+                            </div>
+                        </xsl:otherwise>
+                    </xsl:choose>                
+                    <div class="dropdown"><select name="stateProv">
                     <option value=""></option>
                     <option value="Alsace">Alsace</option>
                     <option value="Aquitaine">Aquitaine</option>
@@ -1044,11 +1170,22 @@
                 </div>   
             </xsl:when>
             <xsl:when test="$country='UK'">
-                <div class="MMtextField" req="true">
-                <div>
-                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
-                    <span>Postal Code</span>    
-                </div>
+                <div class="MMtextField">
+                    <xsl:choose>
+                        <xsl:when test="$required='YES'">
+                            <xsl:attribute name="req">true</xsl:attribute>
+                            <div>
+                                <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                                <span>Postal Code *</span>    
+                            </div>    
+                        </xsl:when>
+                        <xsl:otherwise> 
+                            <div>
+                                <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                                <span>Postal Code</span>    
+                            </div>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 <input type="text" size="50" validation="ukPostalCode" placeholder="Postal Code" maxlength="8" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
@@ -1082,11 +1219,22 @@
                 </div>    
             </xsl:when>
             <xsl:when test="$country='MEXICO' or $country='MEX'">
-                <div class="MMtextField" req="true">
-                <div>
-                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
-                    <span>Código Postal</span>    
-                </div>
+                <div class="MMtextField">
+                    <xsl:choose>
+                        <xsl:when test="$required='YES'">
+                            <xsl:attribute name="req">true</xsl:attribute>
+                            <div>
+                                <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                                <span>Código Postal *</span>    
+                            </div>    
+                        </xsl:when>
+                        <xsl:otherwise> 
+                            <div>
+                                <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                                <span>Código Postal</span>    
+                            </div>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 <input type="number" size="50" validation="mexicanPostalCode" placeholder="Código Postal" maxlength="5" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
                     <xsl:attribute name="name">
                         <xsl:choose>
@@ -1098,11 +1246,24 @@
                 </div><br/>    
                 <!-- StateProv specific choices for Canada -->
                 <div class="MMdropDown">
-                <div>
-                    <xsl:attribute name="class">ITEMLabel</xsl:attribute>
-                    <span>Estado</span>    
-                </div>
-                    <div class="dropdown" req="true"><select name="stateProv">
+                    <xsl:if test="$required='YES'">
+                        <xsl:attribute name="req">true</xsl:attribute>
+                    </xsl:if>
+                    <xsl:choose>
+                        <xsl:when test="$required='YES'">
+                            <div>
+                                <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                                <span>Estado *</span>    
+                            </div>
+                        </xsl:when>
+                        <xsl:otherwise>                     
+                            <div>
+                                <xsl:attribute name="class">ITEMLabel</xsl:attribute>
+                                <span>Estado</span>    
+                            </div>
+                        </xsl:otherwise>
+                    </xsl:choose>                
+                <div class="dropdown"><select name="stateProv">
                 <option value=""></option>
                 <option value="AG">Aguascalientes</option>
                 <option value="BN">Baja California</option>

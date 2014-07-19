@@ -13,45 +13,45 @@
             <div class="HTMLPage" id="headerPage" name="headerPage">
                <div class="HTMLGroup" id="header" name="header">
                   <div id="logo" class="MMzipImage" req="false">
-                     <div class="simpleImage"><img class="campaignAsset" src="PrimusSA_Logo.png"></div>
+                     <div class="simpleImage"><img class="campaignAsset" src="PrimusSA_Logo"></div>
                   </div>
                </div>
             </div>
             <div class="HTMLPage" id="firstPage" name="firstPage">
                <div class="HTMLGroup" id="headerSection" name="headerSection">
-                  <h3>COSTCO SERVICE APP</h3>
+                  <h3>Costco Service App - Stand Alone</h3>
                   <div style="display:none;" id="submissionId" class="MMtextField" req="false"><input size="50" disabled="" name="submissionId" type="text"></div>
                   <div style="display:none;" id="campaignId" class="MMtextField" req="false"><input size="50" disabled="" name="campaignId" type="text"></div>
                   <div id="custRef" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Customer Reference # *</span></div><input size="50" name="custRef" maxlength="8" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Customer Reference # *</span></div><input size="50" name="custRef" maxlength="8" minlength="6" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="costcoLoc" class="MMdropDown" req="true">
                      <div class="ITEMLabel"><span>Costco Location *</span></div>
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="costcoLoc">
                            <option value=""></option>
-                           <option value="1">159 Ajax</option>
-                           <option value="2">162 Brampton</option>
-                           <option value="3">510 Newmarket</option>
-                           <option value="4">524 Etobicoke</option>
-                           <option value="5">535 Downsview</option>
-                           <option value="6">537 Scarborough</option></select></div>
+                           <option value="159 Ajax">159 Ajax</option>
+                           <option value="162 Brampton">162 Brampton</option>
+                           <option value="510 Newmarket">510 Newmarket</option>
+                           <option value="524 Etobicoke">524 Etobicoke</option>
+                           <option value="535 Downsview">535 Downsview</option>
+                           <option value="537 Scarborough">537 Scarborough</option></select></div>
                   </div>
                </div>
                <div class="HTMLGroup" id="custInfo" name="custInfo">
-                  <h3>CUSTOMER INFORMATION</h3>
+                  <h3>Customer Information</h3>
                   <div id="title" class="MMradioControl" req="true">
                      <div class="ITEMLabel"><span>Title *</span></div>
                      <ul>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="title" id="title1" value="Mr"><label for="title1">Mr.</label></li>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="title" id="title2" value="Ms"><label for="title2">Ms.</label></li>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="title" id="title3" value="Mrs"><label for="title3">Mrs.</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="title" id="title1" value="1"><label for="title1">Mr.</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="title" id="title2" value="2"><label for="title2">Ms.</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="title" id="title3" value="3"><label for="title3">Mrs.</label></li>
                      </ul>
                   </div>
                   <div id="firstName" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>First Name *</span></div><input size="50" name="firstName" maxlength="20" placeholder="First Name" type="text" validation="names" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" onchange="javascript:relationships(this);"></div>
+                     <div class="ITEMLabel"><span>First Name *</span></div><input size="50" name="firstName" maxlength="20" placeholder="First Name" type="text" validation="names" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="middleInitial" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Middle Initial</span></div><input size="50" name="middleInitial" maxlength="2" placeholder="Middle Initial" type="text" validation="lettersOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" onchange="javascript:relationships(this);"></div>
+                     <div class="ITEMLabel"><span>Middle Initial</span></div><input size="50" name="middleInitial" maxlength="2" placeholder="Middle Initial" type="text" validation="lettersOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="lastName" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Last Name *</span></div><input size="50" name="lastName" maxlength="20" placeholder="Last Name" type="text" validation="names" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" onchange="javascript:relationships(this);"></div>
+                     <div class="ITEMLabel"><span>Last Name *</span></div><input size="50" name="lastName" maxlength="20" placeholder="Last Name" type="text" validation="names" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="address1" class="MMaddressField" req="true">
                      <div name="address1">
                         <div class="MMtextField" req="true">
@@ -59,9 +59,9 @@
                            <div class="ITEMLabel"></div><input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="address2" placeholder="Address Line 2" maxlength="50"></div><br><div class="MMtextField">
                            <div class="ITEMLabel"></div><input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="address3" placeholder="Address Line 3" maxlength="50"></div><br><div class="MMtextField" req="true">
                            <div class="ITEMLabel"><span>City *</span></div><input type="text" size="50" validation="names" placeholder="City" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="city" maxlength="25"></div><br><div class="MMtextField" req="true">
-                           <div class="ITEMLabel"><span>Canadian Postal Code *</span></div><input type="text" size="50" validation="canadianPostalCode" placeholder="Canadian Postal Code" maxlength="7" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="postalCode"></div><br><div class="MMdropDown">
+                           <div class="ITEMLabel"><span>Canadian Postal Code *</span></div><input type="text" size="50" validation="canadianPostalCode" placeholder="Canadian Postal Code" maxlength="7" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="postalCode"></div><br><div class="MMdropDown" req="true">
                            <div class="ITEMLabel"><span>Province *</span></div>
-                           <div class="dropdown" req="true"><select name="stateProv">
+                           <div class="dropdown"><select name="stateProv">
                                  <option value=""></option>
                                  <option value="AB">Alberta</option>
                                  <option value="BC">British Columbia</option>
@@ -85,12 +85,12 @@
                               </button></div>
                      </div>
                   </div>
-                  <div id="resType" class="MMdropDown" req="true">
+                  <div id="resType" class="MMradioControl" req="true">
                      <div class="ITEMLabel"><span>Residence Type *</span></div>
-                     <div class="dropdown"><select onchange="javascript:relationships(this);" name="resType">
-                           <option value=""></option>
-                           <option value="SingleDwelling">Single Dwelling (house, townhouse, etc.)</option>
-                           <option value="MultiDwelling">Multi Dwelling (apartment, condo, etc.)</option></select></div>
+                     <ul>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="resType" id="resType1" value="1"><label for="resType1">Single Dwelling (house, townhouse, etc.)</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="resType" id="resType2" value="2"><label for="resType2">Multi Dwelling (apartment, condo, etc.)</label></li>
+                     </ul>
                   </div>
                   <div id="email" class="MMemailPinger" req="true">
                      <div class="ITEMLabel"><span>Contact Email Address *</span></div><input type="email" size="50" validation="email" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="email" submitName="email" placeholder="Email" onchange="javascript:relationships(this);"><div class="MMbuttonField"><button type="button" onclick="javascript:validateEmail('email')">
@@ -99,13 +99,13 @@
                   </div>
                   <div id="homeNum" class="MMtextField" req="true">
                      <div class="ITEMLabel"><span>Home Phone *</span></div><input size="50" name="homeNum" placeholder="Home Phone" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
-                  <div id="alternateNum" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Alternate Contact Number *</span></div><input size="50" name="alternateNum" placeholder="Alternate Contact Number" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                  <div id="alternateNum" class="MMtextField" req="false">
+                     <div class="ITEMLabel"><span>Alternate Contact Number</span></div><input size="50" name="alternateNum" placeholder="Alternate Contact Number" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="fourOneOne" class="MMradioControl" req="true">
                      <div class="ITEMLabel"><span>Do you want your number to appear in the phone book and 411 directory *</span></div>
                      <ul>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="fourOneOne" id="fourOneOne1" value="YES"><label for="fourOneOne1">YES</label></li>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="fourOneOne" id="fourOneOne2" value="NO"><label for="fourOneOne2">No ($2.00/month)</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="fourOneOne" id="fourOneOne1" value="true"><label for="fourOneOne1">Yes</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="fourOneOne" id="fourOneOne2" value="false"><label for="fourOneOne2">No ($2.00/month)</label></li>
                      </ul>
                   </div>
                   <div style="display:none;" id="namePhBook" class="MMtextField" req="true">
@@ -113,29 +113,50 @@
                   <div id="lanPref" class="MMradioControl" req="true">
                      <div class="ITEMLabel"><span>Language Preference *</span></div>
                      <ul>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="lanPref" id="lanPref1" value="English"><label for="lanPref1">English</label></li>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="lanPref" id="lanPref2" value="French"><label for="lanPref2">French</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="lanPref" id="lanPref1" value="1"><label for="lanPref1">English</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="lanPref" id="lanPref2" value="2"><label for="lanPref2">French</label></li>
                      </ul>
                   </div>
                   <div id="Cust" class="MMradioControl" req="true">
                      <div class="ITEMLabel"><span>New or Existing Customer? *</span></div>
                      <ul>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="Cust" id="Cust1" value="New"><label for="Cust1">New Customer</label></li>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="Cust" id="Cust2" value="Exi"><label for="Cust2">Existing Primus Customer</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="Cust" id="Cust1" value="1"><label for="Cust1">New Customer</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="Cust" id="Cust2" value="2"><label for="Cust2">Existing Primus Customer</label></li>
                      </ul>
                   </div>
-                  <div style="display:none;" id="exPriAccNum" class="MMtextField" req="true"><input size="50" name="exPriAccNum" maxlength="9" placeholder="Primus Account No." type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
-                  <div id="costcoMemNum" class="MMtextField" req="true"><input size="50" name="costcoMemNum" placeholder="Costco Membership Number" type="text"></div>
+                  <div style="display:none;" id="exPriAccNum" class="MMtextField" req="false">
+                     <div class="ITEMLabel"><span>Primus Account No</span></div><input size="50" name="exPriAccNum" maxlength="9" placeholder="Primus Account Number" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                  <div id="costcoMemNum" class="MMtextField" req="true">
+                     <div class="ITEMLabel"><span>Costco Membership Number *</span></div><input size="50" name="costcoMemNum" maxlength="13" placeholder="Costco Membership Number" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="cosMemType" class="MMradioControl" req="true">
-                     <div class="ITEMLabel"><span>Costco membership Type:  *</span></div>
+                     <div class="ITEMLabel"><span>Costco membership Type *</span></div>
                      <ul>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="cosMemType" id="cosMemType1" value="E"><label for="cosMemType1">Executive</label></li>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="cosMemType" id="cosMemType2" value="G"><label for="cosMemType2">Gold Star</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="cosMemType" id="cosMemType1" value="1"><label for="cosMemType1">Executive</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="cosMemType" id="cosMemType2" value="2"><label for="cosMemType2">Gold Star</label></li>
                      </ul>
                   </div>
                </div>
+               <div class="HTMLGroup" id="additionalInfo" name="additionalInfo">
+                  <h3>Additional Information</h3>
+                  <div id="DSL" class="MMradioControl" req="true">
+                     <div class="ITEMLabel"><span>1. Do you have DSL Internet service? *</span></div>
+                     <ul>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="DSL" id="DSL1" value="true"><label for="DSL1">Yes</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="DSL" id="DSL2" value="false"><label for="DSL2">No</label></li>
+                     </ul>
+                  </div>
+                  <div style="display:none;" id="exDSL" class="MMradioControl" req="true">
+                     <div class="ITEMLabel"><span>2. Would you like to keep your existing DSL Internet service? *</span></div>
+                     <ul>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="exDSL" id="exDSL1" value="true"><label for="exDSL1">Yes</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="exDSL" id="exDSL2" value="false"><label for="exDSL2">No</label></li>
+                     </ul>
+                  </div>
+                  <div style="display:none;" id="accOrPhoneNum" class="MMtextField" req="false">
+                     <div class="ITEMLabel"><span>3. Provide your account or home phone number so we can cancel your service</span></div><input size="50" name="accOrPhoneNum" maxlength="20" type="text"></div>
+               </div>
                <div class="HTMLGroup" id="uselessGroup" name="uselessGroup">
-                  <h3>SERVICE DETAILS</h3>
+                  <h3>Service Details</h3>
                   <div id="homePhone" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="homePhone"><div class="ITEMDetailLabel"><span>Home Phone</span></div>
                   </div>
                   <div id="longDist" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="longDist"><div class="ITEMDetailLabel"><span>Long Distance</span></div>
@@ -145,55 +166,36 @@
                   <div style="display:none;" id="term" class="MMradioControl" req="true">
                      <div class="ITEMLabel"><span>Service Term *</span></div>
                      <ul>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="term" id="term1" value="noTerm"><label for="term1">No Term</label></li>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="term" id="term2" value="2yearTerm"><label for="term2">2 Year Term</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="term" id="term1" value="1"><label for="term1">No Term</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="term" id="term2" value="2"><label for="term2">2 Year Term</label></li>
                      </ul>
                   </div>
                   <div style="display:none;" id="tradOrDig" class="MMradioControl" req="true">
                      <div class="ITEMLabel"><span>Traditional/Digital Service? *</span></div>
                      <ul>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="tradOrDig" id="tradOrDig1" value="Traditional"><label for="tradOrDig1">Traditional</label></li>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="tradOrDig" id="tradOrDig2" value="Digital"><label for="tradOrDig2">Digital</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="tradOrDig" id="tradOrDig1" value="1"><label for="tradOrDig1">Traditional</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="tradOrDig" id="tradOrDig2" value="2"><label for="tradOrDig2">Digital</label></li>
                      </ul>
-                  </div>
-               </div>
-               <div class="HTMLGroup" id="additionalInfo" name="additionalInfo">
-                  <h3>ADDITIONAL INFORMATION</h3>
-                  <div id="DSL" class="MMradioControl" req="true">
-                     <div class="ITEMLabel"><span>1. Do you have DSL Internet service? *</span></div>
-                     <ul>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="DSL" id="DSL1" value="YES"><label for="DSL1">YES</label></li>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="DSL" id="DSL2" value="NO"><label for="DSL2">No</label></li>
-                     </ul>
-                  </div>
-                  <div style="display:none;" id="exDSL" class="MMradioControl" req="false">
-                     <div class="ITEMLabel"><span>2. Would you like to keep your existing DSL Internet service?</span></div>
-                     <ul>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="exDSL" id="exDSL1" value="YES"><label for="exDSL1">YES</label></li>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="exDSL" id="exDSL2" value="NO"><label for="exDSL2">No</label></li>
-                     </ul>
-                  </div>
-                  <div style="display:none;" id="accOrPhoneNum" class="MMtextField" req="false"><input size="50" name="accOrPhoneNum" type="text"><div class="ITEMDetailLabel"><span>3. Provide your account or home phone number so we can cancel your service.</span></div>
                   </div>
                </div>
                <div class="HTMLGroup" style="display:none;" id="phoneInfo" name="phoneInfo">
-                  <h3>HOME PHONE</h3>
+                  <h3>Home Phone</h3>
                   <div id="Wish" class="MMradioControl" req="true">
                      <div class="ITEMLabel"><span>New or Existing Phone Number? *</span></div>
                      <ul>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="Wish" id="Wish1" value="New"><label for="Wish1">I wish to have a new phone number ($55)</label></li>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="Wish" id="Wish2" value="Trans"><label for="Wish2">I wish to transfer my existing home phone number to Primus</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="Wish" id="Wish1" value="1"><label for="Wish1">I wish to have a new phone number ($55)</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="Wish" id="Wish2" value="2"><label for="Wish2">I wish to transfer my existing home phone number to Primus</label></li>
                      </ul>
                   </div>
                   <div style="display:none;" id="extPhoneTransfer1" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Phone #1 *</span></div><input size="50" name="extPhoneTransfer1" maxlength="10" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Phone #1 *</span></div><input size="50" name="extPhoneTransfer1" maxlength="10" minlength="10" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div style="display:none;" id="extPhoneTransfer2" class="MMtextField" req="false">
                      <div class="ITEMLabel"><span>Phone #2</span></div><input size="50" name="extPhoneTransfer2" type="text"></div>
                   <div style="display:none;" id="currPhoneNum" class="MMdropDown" req="false">
-                     <div class="ITEMLabel"><span>MY CURRENT PHONE PROVIDER IS: </span></div>
+                     <div class="ITEMLabel"><span>MY CURRENT PHONE PROVIDER IS</span></div>
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="currPhoneNum">
                            <option value=""></option>
-                           <option value="Bell">BELL</option>
+                           <option value="BELL">BELL</option>
                            <option value="Rogers">Rogers</option>
                            <option value="Telus">Telus</option>
                            <option value="Shaw">Shaw</option>
@@ -203,28 +205,29 @@
                   <div style="display:none;" id="otherTextBox" class="MMtextField" req="true">
                      <div class="ITEMLabel"><span>Please specify *</span></div><input size="50" name="otherTextBox" submitName="currPhoneNum" type="text"></div>
                   <div style="display:none;" id="namePhoneBill" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>NAME AS IT APPEARS ON YOUR CURRENT PHONE BILL: </span></div><input size="50" name="namePhoneBill" type="text"></div>
+                     <div class="ITEMLabel"><span>NAME AS IT APPEARS ON YOUR CURRENT PHONE BILL</span></div><input size="50" name="namePhoneBill" type="text"></div>
                   <div id="altNum" class="MMradioControl" req="false">
                      <div class="ITEMLabel"><span>Do you currently have an alternate number(s)</span></div>
                      <ul>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="altNum" id="altNum1" value="YES"><label for="altNum1">YES</label></li>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="altNum" id="altNum2" value="NO"><label for="altNum2">No</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="altNum" id="altNum1" value="true"><label for="altNum1">Yes</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="altNum" id="altNum2" value="false"><label for="altNum2">No</label></li>
                      </ul>
                   </div>
                   <div style="display:none;" id="keepAltNum" class="MMradioControl" req="false">
                      <div class="ITEMLabel"><span>Do you want to keep your alternate number(s)</span></div>
                      <ul>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="keepAltNum" id="keepAltNum1" value="YES"><label for="keepAltNum1">YES</label></li>
-                        <li><input type="radio" onchange="javascript:relationships(this);" name="keepAltNum" id="keepAltNum2" value="NO"><label for="keepAltNum2">No</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="keepAltNum" id="keepAltNum1" value="true"><label for="keepAltNum1">Yes</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="keepAltNum" id="keepAltNum2" value="false"><label for="keepAltNum2">No</label></li>
                      </ul>
                   </div>
-                  <div style="display:none;" id="lblAltNum" class="MMmultilineLabel" req="false">Please enter the existing alternate numbers regardness of whether or not you want
+                  <div style="display:none;" id="lblAltNum" class="MMmultilineLabel" req="false">Please enter the existing alternate numbers regardless of whether or not you want
                      to keep them (You can cancel alternate number(s) after the completed migration by
                      contacting customer support)
                   </div>
-                  <div style="display:none;" id="enterExtNum1" class="MMtextField" req="true"><input size="50" name="enterExtNum1" submitName="enterExtNum1" placeholder="Alternate #1" type="text"></div>
-                  <div style="display:none;" id="enterExtNum3" class="MMtextField" req="false"><input size="50" name="enterExtNum3" submitName="enterExtNum1" placeholder="Alternate #1" type="text"></div>
-                  <div style="display:none;" id="enterExtNum2" class="MMtextField" req="false"><input size="50" name="enterExtNum2" submitName="enterExtNum1" placeholder="Alternate #2" type="text"></div>
+                  <div style="display:none;" id="enterExtNum1" class="MMtextField" req="true">
+                     <div class="ITEMLabel"><span>Alternate #1 *</span></div><input size="50" name="enterExtNum1" placeholder="Alternate #1" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                  <div style="display:none;" id="enterExtNum2" class="MMtextField" req="false">
+                     <div class="ITEMLabel"><span>Alternate #2</span></div><input size="50" name="enterExtNum2" placeholder="Alternate #2" type="text"></div>
                   <div style="display:none;" id="tradHomePh" class="MMdropDown" req="true">
                      <div class="ITEMLabel"><span>Traditional Home Phone *</span></div>
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="tradHomePh">
@@ -257,14 +260,12 @@
                   </div>
                </div>
                <div class="HTMLGroup" style="display:none;" id="tradOpts" name="tradOpts">
-                  <h3>TRADITIONAL HOME PHONE ADD-ON FEATURES($4/mo ea.)</h3>
+                  <h3>Traditional Home Phone Features ($4/mo each)</h3>
                   <div id="tradHomePhFeatures-1" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="tradHomePhFeatures-1"><div class="ITEMDetailLabel"><span>Call Display</span></div>
                   </div>
                   <div id="tradHomePhFeatures-2" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="tradHomePhFeatures-2"><div class="ITEMDetailLabel"><span>Call Waiting</span></div>
                   </div>
                   <div id="tradHomePhFeatures-3" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="tradHomePhFeatures-3"><div class="ITEMDetailLabel"><span>Permanent Call Blocking</span></div>
-                  </div>
-                  <div id="tradHomePhFeatures-4" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="tradHomePhFeatures-4"><div class="ITEMDetailLabel"><span>Voice Mail</span></div>
                   </div>
                   <div id="tradHomePhFeatures-5" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="tradHomePhFeatures-5"><div class="ITEMDetailLabel"><span>Call Forward</span></div>
                   </div>
@@ -276,18 +277,26 @@
                   </div>
                   <div id="tradHomePhFeatures-9" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="tradHomePhFeatures-9"><div class="ITEMDetailLabel"><span>Last Call Return</span></div>
                   </div>
+                  <div id="tradHomePhFeatures-4" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="tradHomePhFeatures-4"><div class="ITEMDetailLabel"><span>Voice Mail</span></div>
+                  </div>
                   <div style="display:none;" id="tradHomePhFeatures-10" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="tradHomePhFeatures-10"><div class="ITEMDetailLabel"><span>Deluxe Voice Mail (must have Voice Mail)</span></div>
                   </div>
                   <div style="display:none;" id="tradHomePhFeatures-11" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="tradHomePhFeatures-11"><div class="ITEMDetailLabel"><span>Extension Mailbox (must have Deluxe Voice Mail)</span></div>
                   </div>
-                  <div style="display:none;" id="extMBox" class="MMtextField" req="false"><input size="50" name="extMBox" maxlength="1" placeholder="Number of mailboxes (max 4)" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                  <div style="display:none;" id="extMBox" class="MMtextField" req="true">
+                     <div class="ITEMLabel"><span>Number of mailboxes *</span></div><input size="50" name="extMBox" maxlength="1" placeholder="Please enter number of mailboxes (max 4)" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="tradHomePhFeatures-12" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="tradHomePhFeatures-12"><div class="ITEMDetailLabel"><span>Alternate Number</span></div>
                   </div>
-                  <div style="display:none;" id="chooseAltNum" class="MMtextField" req="false"><input size="50" name="chooseAltNum" type="text"><div class="ITEMDetailLabel"><span>Choose up to 3: ($4/mo. each)</span></div>
-                  </div>
+                  <div style="display:none;" id="chooseAltNumLabel" class="MMlabel" req="false">Choose up to 3: ($4/mo. each)</div>
+                  <div style="display:none;" id="chooseAltNum1" class="MMtextField" req="true">
+                     <div class="ITEMLabel"><span>Choice 1 *</span></div><input size="50" name="chooseAltNum1" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                  <div style="display:none;" id="chooseAltNum2" class="MMtextField" req="false">
+                     <div class="ITEMLabel"><span>Choice 2</span></div><input size="50" name="chooseAltNum2" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                  <div style="display:none;" id="chooseAltNum3" class="MMtextField" req="false">
+                     <div class="ITEMLabel"><span>Choice 3</span></div><input size="50" name="chooseAltNum3" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                </div>
                <div class="HTMLGroup" style="display:none;" id="ldInfo" name="ldInfo">
-                  <h3>LONG DISTANCE PLANS</h3>
+                  <h3>Long Distance Plans</h3>
                   <div id="lblStandalone" class="MMlabel" req="false">Stand Alone</div>
                   <div style="display:none;" id="standAloneBasic" class="MMdropDown" req="false">
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="standAloneBasic" submitName="standAlone">
@@ -318,28 +327,28 @@
                            <option value=""></option>
                            <option value="1">Primus World: $2.00/mo.</option>
                            <option value="3">World Lite 30 (400 min): $7.00/mo.</option>
-                           <option value="5">Unlimited Provincial: $6.00/mo.</option>
-                           <option value="6">Unlimited North America: $10.00/mo.</option>
-                           <option value="7">Unlimited World: $5.00/mo. (60 Countries)</option>
-                           <option value="8">UK and India 1000: $9.95/mo.</option>
-                           <option value="9">Unlimited World: $14.95/mo. (75 Countries)</option></select></div>
+                           <option value="4">Unlimited Provincial: $6.00/mo.</option>
+                           <option value="5">Unlimited North America: $10.00/mo.</option>
+                           <option value="6">Unlimited World: $5.00/mo. (60 Countries)</option>
+                           <option value="7">UK and India 1000: $9.95/mo.</option>
+                           <option value="8">Unlimited World: $14.95/mo. (75 Countries)</option></select></div>
                   </div>
                   <div style="display:none;" id="addOnUltimate" class="MMdropDown" req="false">
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="addOnUltimate" submitName="addOn">
                            <option value=""></option>
                            <option value="1">Primus World: $2.00/mo.</option>
                            <option value="3">World Lite 30 (400 min): $7.00/mo.</option>
-                           <option value="7">Unlimited World: $5.00/mo. (60 Countries)</option>
-                           <option value="8">UK and India 1000: $9.95/mo.</option>
-                           <option value="9">Unlimited World: $14.95/mo. (75 Countries)</option></select></div>
+                           <option value="6">Unlimited World: $5.00/mo. (60 Countries)</option>
+                           <option value="7">UK and India 1000: $9.95/mo.</option>
+                           <option value="8">Unlimited World: $14.95/mo. (75 Countries)</option></select></div>
                   </div>
                   <div style="display:none;" id="addOnUltimatePlus" class="MMdropDown" req="false">
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="addOnUltimatePlus" submitName="addOn">
                            <option value=""></option>
                            <option value="1">Primus World: $2.00/mo.</option>
                            <option value="3">World Lite 30 (400 min): $7.00/mo.</option>
-                           <option value="8">UK and India 1000: $9.95/mo.</option>
-                           <option value="9">Unlimited World: $14.95/mo. (75 Countries)</option></select></div>
+                           <option value="7">UK and India 1000: $9.95/mo.</option>
+                           <option value="8">Unlimited World: $14.95/mo. (75 Countries)</option></select></div>
                   </div>
                   <div style="display:none;" id="addOnDigitalBasic" class="MMdropDown" req="false">
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="addOnDigitalBasic" submitName="addOn">
@@ -347,91 +356,94 @@
                            <option value="1">Primus World: $2.00/mo.</option>
                            <option value="2">Truly International: $2.00/mo.</option>
                            <option value="3">World Lite 30 (400 min): $7.00/mo.</option>
-                           <option value="5">Unlimited Provincial: $6.00/mo.</option>
-                           <option value="6">Unlimited North America: $10.00/mo.</option>
-                           <option value="7">Unlimited World: $5.00/mo. (60 Countries)</option>
-                           <option value="8">UK and India 1000: $9.95/mo.</option>
-                           <option value="9">Unlimited World: $14.95/mo. (75 Countries)</option></select></div>
+                           <option value="4">Unlimited Provincial: $6.00/mo.</option>
+                           <option value="5">Unlimited North America: $10.00/mo.</option>
+                           <option value="6">Unlimited World: $5.00/mo. (60 Countries)</option>
+                           <option value="7">UK and India 1000: $9.95/mo.</option>
+                           <option value="8">Unlimited World: $14.95/mo. (75 Countries)</option></select></div>
                   </div>
                   <div style="display:none;" id="addOnDigitalUltimate" class="MMdropDown" req="false">
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="addOnDigitalUltimate" submitName="addOn">
                            <option value=""></option>
                            <option value="2">Truly International: $2.00/mo.</option>
                            <option value="3">World Lite 30 (400 min): $7.00/mo.</option>
-                           <option value="8">UK and India 1000: $9.95/mo.</option></select></div>
+                           <option value="7">UK and India 1000: $9.95/mo.</option></select></div>
                   </div>
                   <div style="display:none;" id="addOn-2" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="addOn-2"><div class="ITEMDetailLabel"><span>Truly International: $2.00/mo.</span></div>
                   </div>
                   <div id="addOn-4" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="addOn-4"><div class="ITEMDetailLabel"><span>I wish to have long distance access for Wireless (PAP mandatory for this selection
                            as standalone)</span></div>
                   </div>
-                  <div style="display:none;" id="longDistNum1" class="MMtextField" req="true"><input size="50" name="longDistNum1" maxlength="10" placeholder="Long Distance #1" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
-                  <div style="display:none;" id="longDistNum2" class="MMtextField" req="true"><input size="50" name="longDistNum2" maxlength="10" placeholder="Long Distance #2" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                  <div style="display:none;" id="longDistNum1" class="MMtextField" req="true">
+                     <div class="ITEMLabel"><span>Number 1 *</span></div><input size="50" name="longDistNum1" maxlength="10" minlength="10" placeholder="Long Distance #1" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                  <div style="display:none;" id="longDistNum2" class="MMtextField" req="false">
+                     <div class="ITEMLabel"><span>Number 2</span></div><input size="50" name="longDistNum2" maxlength="10" minlength="10" placeholder="Long Distance #2" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                </div>
                <div class="HTMLGroup" style="display:none;" id="internetInfo" name="internetInfo">
-                  <h3>HIGH SPEED INTERNET SERVICES OPTIONS</h3>
+                  <h3>Hight Speed Internet Services Options</h3>
                   <div style="display:none;" id="highSpeedNT" class="MMdropDown" req="true">
                      <div class="ITEMLabel"><span>High Speed Internet (No Term) *</span></div>
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="highSpeedNT">
                            <option value=""></option>
-                           <option value="1">7 Mbps: $41.95</option>
-                           <option value="2">16 Mbps: $46.95</option>
-                           <option value="3">25 Mbps: $49.95</option>
-                           <option value="4">50 Mbps: $77.95</option></select></div>
+                           <option value="7">7 Mbps: $41.95</option>
+                           <option value="16">16 Mbps: $46.95</option>
+                           <option value="25">25 Mbps: $49.95</option>
+                           <option value="50">50 Mbps: $77.95</option></select></div>
                   </div>
                   <div style="display:none;" id="highSpeed2YT" class="MMdropDown" req="true">
                      <div class="ITEMLabel"><span>High Speed Internet (Two Year Term) *</span></div>
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="highSpeed2YT">
                            <option value=""></option>
-                           <option value="1">7 Mbps: $32.95</option>
-                           <option value="2">16 Mbps: $37.95</option>
-                           <option value="3">25 Mbps: $40.95</option>
-                           <option value="4">50 Mbps: $68.95</option></select></div>
+                           <option value="7">7 Mbps: $32.95</option>
+                           <option value="16">16 Mbps: $37.95</option>
+                           <option value="25">25 Mbps: $40.95</option>
+                           <option value="50">50 Mbps: $68.95</option></select></div>
                   </div>
+                  <div style="display:none;" id="bundleChoice" class="MMtextField" req="false"><input size="50" forceSubmit="true" name="bundleChoice" type="text"></div>
                   <div style="display:none;" id="slowModem" class="MMdropDown" req="false">
                      <div class="ITEMLabel"><span>Modem Rental/Purchase</span></div>
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="slowModem">
                            <option value=""></option>
                            <option value="1">Standard Modem Rental (7, 16 Mbps) 2.95/mo.</option>
                            <option value="2">Wireless Modem Rental (7, 16 Mbps) 3.95/mo.</option>
-                           <option value="3">Standard Modem Purchase (7, 16 Mbps) 34.95/mo.</option>
-                           <option value="4">Wireless Modem Purchase (7, 16 Mbps) 69.95/mo.</option></select></div>
+                           <option value="4">Standard Modem Purchase (7, 16 Mbps) 34.95/mo.</option>
+                           <option value="5">Wireless Modem Purchase (7, 16 Mbps) 69.95/mo.</option></select></div>
                   </div>
                   <div style="display:none;" id="fastModem" class="MMdropDown" req="false">
                      <div class="ITEMLabel"><span>Modem Rental/Purchase</span></div>
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="fastModem">
                            <option value=""></option>
-                           <option value="1">Wireless Modem Rental (25, 50 Mbps) 5.95/mo.</option>
-                           <option value="2">Wireless Modem Purchase (25, 50 Mbps) 99.95/mo.</option></select></div>
+                           <option value="3">Wireless Modem Rental (25, 50 Mbps) 5.95/mo.</option>
+                           <option value="6">Wireless Modem Purchase (25, 50 Mbps) 99.95/mo.</option></select></div>
                   </div>
                   <div style="display:none;" id="dryLoop" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="dryLoop"><div class="ITEMDetailLabel"><span>Dry Loop: $10/mo. (No term and 7Mbps term plans only)</span></div>
                   </div>
                   <div style="display:none;" id="dmFilter" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="dmFilter"><div class="ITEMDetailLabel"><span>Deskmount filters (2 included) extra $10 each</span></div>
                   </div>
                   <div style="display:none;" id="dmFilterExtra" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Extra Quantity Required: </span></div><input size="50" name="dmFilterExtra" type="text"></div>
+                     <div class="ITEMLabel"><span>Extra Quantity Required</span></div><input size="50" name="dmFilterExtra" type="text"></div>
                   <div style="display:none;" id="wmFilter" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="wmFilter"><div class="ITEMDetailLabel"><span>Wallmount filter $15 each</span></div>
                   </div>
                </div>
                <div class="HTMLGroup" id="creditDetails" name="creditDetails">
-                  <h3>CREDIT DETAILS Please provide one of the following</h3>
+                  <h3>Credit Details - provide one of the following</h3>
                   <div id="sin" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Social Insurance Number</span></div><input size="50" name="sin" maxlength="9" type="tel" validation="luhn" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"><div class="ITEMDetailLabel"><span>This information is optional, but will help to expedite the process of your application.</span></div>
+                     <div class="ITEMLabel"><span>Social Insurance Number</span></div><input size="50" name="sin" maxlength="9" minlength="9" type="tel" validation="luhn" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"><div class="ITEMDetailLabel"><span>This information is optional, but will help to expedite the process of your application.</span></div>
                   </div>
                   <div id="birthDate" class="MMdateField" req="true">
                      <div class="ITEMLabel"><span>Date of birth *</span></div><input type="date" data-role="date" data-inline="true" size="50" onchange="javascript:relationships(this);" name="birthDate" placeholder="DD/MM/YYYY"><div class="ITEMDetailLabel"><span>Mandatory, Customer must be of legal age within province.</span></div>
                   </div>
                   <div id="empContNum" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Employment/Daytime Contact Number *</span></div><input size="50" name="empContNum" maxlength="10" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"><div class="ITEMDetailLabel"><span>This information is optional, but will help to expedite the process of your application.</span></div>
+                     <div class="ITEMLabel"><span>Employment/Daytime Contact Number *</span></div><input size="50" name="empContNum" maxlength="10" minlength="10" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"><div class="ITEMDetailLabel"><span>This information is optional, but will help to expedite the process of your application.</span></div>
                   </div>
                   <div style="display:none;" id="estMonUsageOpt" class="MMtextField" req="false">
                      <div class="ITEMLabel"><span>Estimated Monthly Usage(total of all services)</span></div><input size="50" name="estMonUsageOpt" submitName="estMonUsage" maxlength="3" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"><div class="ITEMDetailLabel"><span>(Mandatory for Long Distance Plans)</span></div>
                   </div>
                   <div style="display:none;" id="estMonUsageMand" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Estimated Monthly Usage(total of all services) *</span></div><input size="50" name="estMonUsageMand" submitName="estMonUsage" maxlength="3" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Estimated Monthly Usage (total of all services) *</span></div><input size="50" name="estMonUsageMand" submitName="estMonUsage" maxlength="3" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="ccNum" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Credit Card Number(principal owner/no expiry date required) *</span></div><input size="50" name="ccNum" type="tel" validation="creditcard" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
-                  <div id="lessThanTwoYears" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="lessThanTwoYears"><div class="ITEMDetailLabel"><span>Have you been living in your current address for less than 2 years?</span></div>
+                     <div class="ITEMLabel"><span>Credit Card Number (principal owner/no expiry date required) *</span></div><input size="50" name="ccNum" type="tel" validation="creditcard" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                  <div id="lessThanTwoYears" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="lessThanTwoYears"><div class="ITEMDetailLabel"><span>Click here if you have been living at your current address for less than 2 years</span></div>
                   </div>
                   <div style="display:none;" id="prevAddress" class="MMaddressField" req="false">
                      <div name="prevAddress">
@@ -465,7 +477,7 @@
                   </div>
                </div>
                <div class="HTMLGroup" id="billingInfo" name="billingInfo">
-                  <h3>BILLING AND PAYMENT INFORMATION</h3>
+                  <h3>Billing and Payment Information</h3>
                   <div id="billMethod" class="MMradioControl" req="true">
                      <div class="ITEMLabel"><span>Billing Method *</span></div>
                      <ul>
@@ -529,7 +541,7 @@
                      <div class="ITEMLabel"><span>Date *</span></div><input type="date" data-role="date" data-inline="true" size="50" onchange="javascript:relationships(this);" name="chSignDate" defaultDate="today" placeholder="MM/DD/YYYY"></div>
                </div>
                <div class="HTMLGroup" id="bottomInfo" name="bottomInfo">
-                  <h3>PLEASE READ THIS IMPORTANT INFORMATION</h3>
+                  <h3>Please read this important information</h3>
                   <div id="termsLine" class="MMmultilineLabel" req="false">Primus may make credit inquiries regarding my application and account. This information
                      is confidential and will be used for the sole purpose of establishing and administering
                      my account.
@@ -591,8 +603,11 @@
                  if(name) {
                     $('input[name="' + name +'"]').removeClass("success").removeClass("error"); 
                  }
+                 var pos = '';
              
-                         if (  valueOfItem("homePhone") == "YES"  ) {
+                 pos = 'homePhone'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("homePhone") == "true"  ) {
                               
                              displayElement('phoneInfo',true);  
                          }
@@ -601,7 +616,11 @@
                              displayElement('phoneInfo',false);                             
                          }
                          
-                         if (  valueOfItem("homePhone") == "YES" && valueOfItem("tradOrDig") == "Traditional"  ) {
+                    }
+             
+                 pos = 'homePhonetradOrDig'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("homePhone") == "true" && valueOfItem("tradOrDig") == "1"  ) {
                               
                              displayElement('tradOpts',true);  
                          }
@@ -610,7 +629,11 @@
                              displayElement('tradOpts',false);                             
                          }
                          
-                         if (  valueOfItem("longDist") == "YES"  ) {
+                    }
+             
+                 pos = 'longDist'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("longDist") == "true"  ) {
                               
                              displayElement('ldInfo',true);  
                          }
@@ -619,7 +642,11 @@
                              displayElement('ldInfo',false);                             
                          }
                          
-                         if (  valueOfItem("internet") == "YES"  ) {
+                    }
+             
+                 pos = 'internet'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("internet") == "true"  ) {
                               
                              displayElement('internetInfo',true);  
                          }
@@ -628,7 +655,11 @@
                              displayElement('internetInfo',false);                             
                          }
                          
-                         if (  valueOfItem("Cust") == "Exi"  ) {
+                    }
+             
+                 pos = 'Cust'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("Cust") == "2"  ) {
                               
                              displayElement('exPriAccNum',true);  
                          }
@@ -637,7 +668,11 @@
                              displayElement('exPriAccNum',false);                             
                          }
                          
-                         if (  valueOfItem("fourOneOne") == "YES"  ) {
+                    }
+             
+                 pos = 'fourOneOne'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("fourOneOne") == "true"  ) {
                               
                              displayElement('namePhBook',true);  
                          }
@@ -646,12 +681,20 @@
                              displayElement('namePhBook',false);                             
                          }
                          
-                         if (  valueOfItem("fourOneOne") == "YES"  ) {
+                    }
+             
+                 pos = 'fourOneOne'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("fourOneOne") == "true"  ) {
                               
-                             copyOntoItemFromItem('namePhBook','firstName');  
+                             evaluatePredicateForItem('namePhBook','firstName.  lastName');  
                          }
                          
-                         if (  valueOfItem("homePhone") == "YES" || valueOfItem("internet") == "YES"  ) {
+                    }
+             
+                 pos = 'homePhoneinternet'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("homePhone") == "true" || valueOfItem("internet") == "true"  ) {
                               
                              displayElement('term',true);  
                          }
@@ -660,7 +703,11 @@
                              displayElement('term',false);                             
                          }
                          
-                         if (  valueOfItem("homePhone") == "YES"  ) {
+                    }
+             
+                 pos = 'homePhone'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("homePhone") == "true"  ) {
                               
                              displayElement('tradOrDig',true);  
                          }
@@ -669,7 +716,11 @@
                              displayElement('tradOrDig',false);                             
                          }
                          
-                         if (  valueOfItem("Wish") == "Trans"  ) {
+                    }
+             
+                 pos = 'Wish'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("Wish") == "2"  ) {
                               
                              displayElement('extPhoneTransfer1',true);  
                          }
@@ -678,7 +729,11 @@
                              displayElement('extPhoneTransfer1',false);                             
                          }
                          
-                         if (  valueOfItem("Wish") == "Trans"  ) {
+                    }
+             
+                 pos = 'Wish'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("Wish") == "2"  ) {
                               
                              displayElement('extPhoneTransfer2',true);  
                          }
@@ -687,7 +742,11 @@
                              displayElement('extPhoneTransfer2',false);                             
                          }
                          
-                         if (  valueOfItem("Wish") == "Trans"  ) {
+                    }
+             
+                 pos = 'Wish'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("Wish") == "2"  ) {
                               
                              displayElement('currPhoneNum',true);  
                          }
@@ -696,6 +755,10 @@
                              displayElement('currPhoneNum',false);                             
                          }
                          
+                    }
+             
+                 pos = 'currPhoneNum'.indexOf(name);
+                 if ( ~pos ) { 
                          if (  valueOfItem("currPhoneNum") == "Other"  ) {
                               
                              displayElement('otherTextBox',true);  
@@ -705,7 +768,11 @@
                              displayElement('otherTextBox',false);                             
                          }
                          
-                         if (  valueOfItem("Wish") == "Trans"  ) {
+                    }
+             
+                 pos = 'Wish'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("Wish") == "2"  ) {
                               
                              displayElement('namePhoneBill',true);  
                          }
@@ -714,12 +781,20 @@
                              displayElement('namePhoneBill',false);                             
                          }
                          
-                         if (  valueOfItem("Wish") == "Trans"  ) {
+                    }
+             
+                 pos = 'Wish'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("Wish") == "2"  ) {
                               
-                             copyOntoItemFromItem('namePhoneBill','firstName');  
+                             evaluatePredicateForItem('namePhoneBill','firstName.  lastName');  
                          }
                          
-                         if (  valueOfItem("altNum") == "YES"  ) {
+                    }
+             
+                 pos = 'altNum'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("altNum") == "true"  ) {
                               
                              displayElement('keepAltNum',true);  
                          }
@@ -728,7 +803,11 @@
                              displayElement('keepAltNum',false);                             
                          }
                          
-                         if (  valueOfItem("altNum") == "YES"  ) {
+                    }
+             
+                 pos = 'altNum'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("altNum") == "true"  ) {
                               
                              displayElement('lblAltNum',true);  
                          }
@@ -737,7 +816,11 @@
                              displayElement('lblAltNum',false);                             
                          }
                          
-                         if (  valueOfItem("keepAltNum") == "NO"  ) {
+                    }
+             
+                 pos = 'altNum'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("altNum") == "true"  ) {
                               
                              displayElement('enterExtNum1',true);  
                          }
@@ -746,22 +829,11 @@
                              displayElement('enterExtNum1',false);                             
                          }
                          
-                         if (  valueOfItem("altNum") == "NO"  ) {
-                              
-                             displayElement('enterExtNum1',false);  
-                         }
-                         
-                         if (  valueOfItem("altNum") == "NO"  ) {
-                              
-                             displayElement('enterExtNum2',false);  
-                         }
-                         
-                         if (  valueOfItem("altNum") == "NO"  ) {
-                              
-                             displayElement('enterExtNum3',false);  
-                         }
-                         
-                         if (  valueOfItem("keepAltNum") == "NO" || valueOfItem("keepAltNum") == "YES"  ) {
+                    }
+             
+                 pos = 'altNum'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("altNum") == "true"  ) {
                               
                              displayElement('enterExtNum2',true);  
                          }
@@ -770,16 +842,11 @@
                              displayElement('enterExtNum2',false);                             
                          }
                          
-                         if (  valueOfItem("keepAltNum") == "YES"  ) {
-                              
-                             displayElement('enterExtNum3',true);  
-                         }
-                         else {
-                             
-                             displayElement('enterExtNum3',false);                             
-                         }
-                         
-                         if (  valueOfItem("homePhone") == "YES" && valueOfItem("tradOrDig") == "Traditional"  ) {
+                    }
+             
+                 pos = 'homePhonetradOrDig'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("homePhone") == "true" && valueOfItem("tradOrDig") == "1"  ) {
                               
                              displayElement('tradHomePh',true);  
                          }
@@ -788,7 +855,11 @@
                              displayElement('tradHomePh',false);                             
                          }
                          
-                         if (  valueOfItem("homePhone") == "YES" && valueOfItem("tradOrDig") == "Digital" && valueOfItem("term") == "noTerm"  ) {
+                    }
+             
+                 pos = 'homePhonetradOrDigterm'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("homePhone") == "true" && valueOfItem("tradOrDig") == "2" && valueOfItem("term") == "1"  ) {
                               
                              displayElement('digHomePhNT',true);  
                          }
@@ -797,7 +868,11 @@
                              displayElement('digHomePhNT',false);                             
                          }
                          
-                         if (  valueOfItem("homePhone") == "YES" && valueOfItem("tradOrDig") == "Digital" && valueOfItem("term") == "noTerm"  ) {
+                    }
+             
+                 pos = 'homePhonetradOrDigterm'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("homePhone") == "true" && valueOfItem("tradOrDig") == "2" && valueOfItem("term") == "1"  ) {
                               
                              displayElement('adaPurchase',true);  
                          }
@@ -806,7 +881,11 @@
                              displayElement('adaPurchase',false);                             
                          }
                          
-                         if (  valueOfItem("homePhone") == "YES" && valueOfItem("tradOrDig") == "Digital" && valueOfItem("term") == "noTerm"  ) {
+                    }
+             
+                 pos = 'homePhonetradOrDigterm'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("homePhone") == "true" && valueOfItem("tradOrDig") == "2" && valueOfItem("term") == "1"  ) {
                               
                              displayElement('finePrintHomePhone',true);  
                          }
@@ -815,7 +894,11 @@
                              displayElement('finePrintHomePhone',false);                             
                          }
                          
-                         if (  valueOfItem("homePhone") == "YES" && valueOfItem("tradOrDig") == "Digital" && valueOfItem("term") == "2yearTerm"  ) {
+                    }
+             
+                 pos = 'homePhonetradOrDigterm'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("homePhone") == "true" && valueOfItem("tradOrDig") == "2" && valueOfItem("term") == "2"  ) {
                               
                              displayElement('digHomePhT',true);  
                          }
@@ -824,7 +907,11 @@
                              displayElement('digHomePhT',false);                             
                          }
                          
-                         if (  valueOfItem("tradHomePhFeatures-4") == "YES"  ) {
+                    }
+             
+                 pos = 'tradHomePhFeatures-4'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("tradHomePhFeatures-4") == "true"  ) {
                               
                              displayElement('tradHomePhFeatures-10',true);  
                          }
@@ -833,7 +920,29 @@
                              displayElement('tradHomePhFeatures-10',false);                             
                          }
                          
-                         if (  valueOfItem("tradHomePhFeatures-10") == "YES"  ) {
+                    }
+             
+                 pos = 'tradHomePhFeatures-4'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("tradHomePhFeatures-4") == "false"  ) {
+                              
+                             displayElement('tradHomePhFeatures-11',false);  
+                         }
+                         
+                    }
+             
+                 pos = 'tradHomePhFeatures-4'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("tradHomePhFeatures-4") == "false"  ) {
+                              
+                             displayElement('extMBox',false);  
+                         }
+                         
+                    }
+             
+                 pos = 'tradHomePhFeatures-10'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("tradHomePhFeatures-10") == "true"  ) {
                               
                              displayElement('tradHomePhFeatures-11',true);  
                          }
@@ -842,7 +951,11 @@
                              displayElement('tradHomePhFeatures-11',false);                             
                          }
                          
-                         if (  valueOfItem("tradHomePhFeatures-11") == "YES"  ) {
+                    }
+             
+                 pos = 'tradHomePhFeatures-11'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("tradHomePhFeatures-11") == "true"  ) {
                               
                              displayElement('extMBox',true);  
                          }
@@ -851,16 +964,63 @@
                              displayElement('extMBox',false);                             
                          }
                          
-                         if (  valueOfItem("tradHomePhFeatures-12") == "YES"  ) {
+                    }
+             
+                 pos = 'tradHomePhFeatures-12'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("tradHomePhFeatures-12") == "true"  ) {
                               
-                             displayElement('chooseAltNum',true);  
+                             displayElement('chooseAltNumLabel',true);  
                          }
                          else {
                              
-                             displayElement('chooseAltNum',false);                             
+                             displayElement('chooseAltNumLabel',false);                             
                          }
                          
-                         if (  valueOfItem("dmFilter") == "YES"  ) {
+                    }
+             
+                 pos = 'tradHomePhFeatures-12'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("tradHomePhFeatures-12") == "true"  ) {
+                              
+                             displayElement('chooseAltNum1',true);  
+                         }
+                         else {
+                             
+                             displayElement('chooseAltNum1',false);                             
+                         }
+                         
+                    }
+             
+                 pos = 'tradHomePhFeatures-12'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("tradHomePhFeatures-12") == "true"  ) {
+                              
+                             displayElement('chooseAltNum2',true);  
+                         }
+                         else {
+                             
+                             displayElement('chooseAltNum2',false);                             
+                         }
+                         
+                    }
+             
+                 pos = 'tradHomePhFeatures-12'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("tradHomePhFeatures-12") == "true"  ) {
+                              
+                             displayElement('chooseAltNum3',true);  
+                         }
+                         else {
+                             
+                             displayElement('chooseAltNum3',false);                             
+                         }
+                         
+                    }
+             
+                 pos = 'dmFilter'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("dmFilter") == "true"  ) {
                               
                              displayElement('dmFilterExtra',true);  
                          }
@@ -869,7 +1029,11 @@
                              displayElement('dmFilterExtra',false);                             
                          }
                          
-                         if (  (valueOfItem("homePhone") == "NO" && valueOfItem("longDist") == "YES") || valueOfItem("tradHomePh") == "1" || valueOfItem("digHomePhNT") == "1" || valueOfItem("digHomePhT") == "1" || valueOfItem("tradHomePh") == "2" || valueOfItem("digHomePhNT") == "2" || valueOfItem("digHomePhT") == "2"  ) {
+                    }
+             
+                 pos = 'homePhonelongDisttradHomePhdigHomePhNTdigHomePhTtradHomePhdigHomePhNTdigHomePhT'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  (valueOfItem("homePhone") == "false" && valueOfItem("longDist") == "true") || valueOfItem("tradHomePh") == "1" || valueOfItem("digHomePhNT") == "1" || valueOfItem("digHomePhT") == "1" || valueOfItem("tradHomePh") == "2" || valueOfItem("digHomePhNT") == "2" || valueOfItem("digHomePhT") == "2"  ) {
                               
                              displayElement('standAloneBasic',true);  
                          }
@@ -878,6 +1042,10 @@
                              displayElement('standAloneBasic',false);                             
                          }
                          
+                    }
+             
+                 pos = 'tradHomePhdigHomePhNTdigHomePhTtradHomePh'.indexOf(name);
+                 if ( ~pos ) { 
                          if (  valueOfItem("tradHomePh") == "3" || valueOfItem("digHomePhNT") == "3" || valueOfItem("digHomePhT") == "3" || valueOfItem("tradHomePh") == "4"  ) {
                               
                              displayElement('standAloneUltimate',true);  
@@ -887,6 +1055,10 @@
                              displayElement('standAloneUltimate',false);                             
                          }
                          
+                    }
+             
+                 pos = 'digHomePhNTdigHomePhT'.indexOf(name);
+                 if ( ~pos ) { 
                          if (  valueOfItem("digHomePhNT") == "4" || valueOfItem("digHomePhT") == "4"  ) {
                               
                              displayElement('standAloneDigitalUltimatePlus',true);  
@@ -896,7 +1068,11 @@
                              displayElement('standAloneDigitalUltimatePlus',false);                             
                          }
                          
-                         if (  valueOfItem("homePhone") == "YES"  ) {
+                    }
+             
+                 pos = 'homePhone'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("homePhone") == "true"  ) {
                               
                              displayElement('lblAddOn',true);  
                          }
@@ -905,6 +1081,10 @@
                              displayElement('lblAddOn',false);                             
                          }
                          
+                    }
+             
+                 pos = 'tradHomePhtradHomePh'.indexOf(name);
+                 if ( ~pos ) { 
                          if (  valueOfItem("tradHomePh") == "1" || valueOfItem("tradHomePh") == "2"  ) {
                               
                              displayElement('addOnBasic',true);  
@@ -914,6 +1094,10 @@
                              displayElement('addOnBasic',false);                             
                          }
                          
+                    }
+             
+                 pos = 'tradHomePhdigHomePhNTdigHomePhT'.indexOf(name);
+                 if ( ~pos ) { 
                          if (  valueOfItem("tradHomePh") == "3" || valueOfItem("digHomePhNT") == "3" || valueOfItem("digHomePhT") == "3"  ) {
                               
                              displayElement('addOnUltimate',true);  
@@ -923,6 +1107,10 @@
                              displayElement('addOnUltimate',false);                             
                          }
                          
+                    }
+             
+                 pos = 'tradHomePh'.indexOf(name);
+                 if ( ~pos ) { 
                          if (  valueOfItem("tradHomePh") == "4"  ) {
                               
                              displayElement('addOnUltimatePlus',true);  
@@ -932,6 +1120,10 @@
                              displayElement('addOnUltimatePlus',false);                             
                          }
                          
+                    }
+             
+                 pos = 'digHomePhNTdigHomePhNTdigHomePhTdigHomePhT'.indexOf(name);
+                 if ( ~pos ) { 
                          if (  valueOfItem("digHomePhNT") == "1" || valueOfItem("digHomePhNT") == "2" || valueOfItem("digHomePhT") == "1" || valueOfItem("digHomePhT") == "2"  ) {
                               
                              displayElement('addOnDigitalBasic',true);  
@@ -941,6 +1133,10 @@
                              displayElement('addOnDigitalBasic',false);                             
                          }
                          
+                    }
+             
+                 pos = 'digHomePhNTdigHomePhT'.indexOf(name);
+                 if ( ~pos ) { 
                          if (  valueOfItem("digHomePhNT") == "4" || valueOfItem("digHomePhT") == "4"  ) {
                               
                              displayElement('addOnDigitalUltimate',true);  
@@ -950,7 +1146,11 @@
                              displayElement('addOnDigitalUltimate',false);                             
                          }
                          
-                         if (  valueOfItem("addOn-4") == "YES"  ) {
+                    }
+             
+                 pos = 'addOn-4'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("addOn-4") == "true"  ) {
                               
                              displayElement('longDistNum1',true);  
                          }
@@ -959,7 +1159,11 @@
                              displayElement('longDistNum1',false);                             
                          }
                          
-                         if (  valueOfItem("addOn-4") == "YES"  ) {
+                    }
+             
+                 pos = 'addOn-4'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("addOn-4") == "true"  ) {
                               
                              displayElement('longDistNum2',true);  
                          }
@@ -968,7 +1172,11 @@
                              displayElement('longDistNum2',false);                             
                          }
                          
-                         if (  valueOfItem("term") == "noTerm"  ) {
+                    }
+             
+                 pos = 'term'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("term") == "1"  ) {
                               
                              displayElement('highSpeedNT',true);  
                          }
@@ -977,7 +1185,11 @@
                              displayElement('highSpeedNT',false);                             
                          }
                          
-                         if (  valueOfItem("term") == "2yearTerm"  ) {
+                    }
+             
+                 pos = 'term'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("term") == "2"  ) {
                               
                              displayElement('highSpeed2YT',true);  
                          }
@@ -986,7 +1198,11 @@
                              displayElement('highSpeed2YT',false);                             
                          }
                          
-                         if (  valueOfItem("highSpeedNT") == "1" || valueOfItem("highSpeedNT") == "2" || valueOfItem("highSpeed2YT") == "1" || valueOfItem("highSpeed2YT") == "2"  ) {
+                    }
+             
+                 pos = 'highSpeedNThighSpeedNThighSpeed2YThighSpeed2YT'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("highSpeedNT") == "7" || valueOfItem("highSpeedNT") == "16" || valueOfItem("highSpeed2YT") == "7" || valueOfItem("highSpeed2YT") == "16"  ) {
                               
                              displayElement('slowModem',true);  
                          }
@@ -995,7 +1211,11 @@
                              displayElement('slowModem',false);                             
                          }
                          
-                         if (  valueOfItem("highSpeedNT") == "3" || valueOfItem("highSpeedNT") == "4" || valueOfItem("highSpeed2YT") == "3" || valueOfItem("highSpeed2YT") == "4"  ) {
+                    }
+             
+                 pos = 'highSpeedNThighSpeedNThighSpeed2YThighSpeed2YT'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("highSpeedNT") == "25" || valueOfItem("highSpeedNT") == "50" || valueOfItem("highSpeed2YT") == "25" || valueOfItem("highSpeed2YT") == "50"  ) {
                               
                              displayElement('fastModem',true);  
                          }
@@ -1004,7 +1224,11 @@
                              displayElement('fastModem',false);                             
                          }
                          
-                         if (  valueOfItem("term") == "noTerm" && valueOfItem("highSpeedNT") == "1"  ) {
+                    }
+             
+                 pos = 'termhighSpeedNT'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("term") == "1" && valueOfItem("highSpeedNT") == "7"  ) {
                               
                              displayElement('dryLoop',true);  
                          }
@@ -1013,7 +1237,11 @@
                              displayElement('dryLoop',false);                             
                          }
                          
-                         if (  valueOfItem("highSpeedNT") == "1" || valueOfItem("highSpeed2YT") == "1"  ) {
+                    }
+             
+                 pos = 'highSpeedNThighSpeed2YT'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("highSpeedNT") == "7" || valueOfItem("highSpeed2YT") == "7"  ) {
                               
                              displayElement('dmFilter',true);  
                          }
@@ -1022,7 +1250,11 @@
                              displayElement('dmFilter',false);                             
                          }
                          
-                         if (  valueOfItem("highSpeedNT") == "1" || valueOfItem("highSpeed2YT") == "1"  ) {
+                    }
+             
+                 pos = 'highSpeedNThighSpeed2YT'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("highSpeedNT") == "7" || valueOfItem("highSpeed2YT") == "7"  ) {
                               
                              displayElement('wmFilter',true);  
                          }
@@ -1031,7 +1263,11 @@
                              displayElement('wmFilter',false);                             
                          }
                          
-                         if (  valueOfItem("DSL") == "YES"  ) {
+                    }
+             
+                 pos = 'DSL'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("DSL") == "true"  ) {
                               
                              displayElement('exDSL',true);  
                          }
@@ -1040,7 +1276,11 @@
                              displayElement('exDSL',false);                             
                          }
                          
-                         if (  valueOfItem("exDSL") == "NO"  ) {
+                    }
+             
+                 pos = 'exDSL'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("exDSL") == "false"  ) {
                               
                              displayElement('accOrPhoneNum',true);  
                          }
@@ -1049,7 +1289,11 @@
                              displayElement('accOrPhoneNum',false);                             
                          }
                          
-                         if (  valueOfItem("longDist") == "NO"  ) {
+                    }
+             
+                 pos = 'longDist'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("longDist") == "false"  ) {
                               
                              displayElement('estMonUsageOpt',true);  
                          }
@@ -1058,7 +1302,11 @@
                              displayElement('estMonUsageOpt',false);                             
                          }
                          
-                         if (  valueOfItem("longDist") == "YES"  ) {
+                    }
+             
+                 pos = 'longDist'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("longDist") == "true"  ) {
                               
                              displayElement('estMonUsageMand',true);  
                          }
@@ -1067,11 +1315,19 @@
                              displayElement('estMonUsageMand',false);                             
                          }
                          
+                    }
+             
+                 pos = 'billMethod'.indexOf(name);
+                 if ( ~pos ) { 
                          if (  valueOfItem("billMethod") == "1"  ) {
                               
                              copyOntoItemFromItem('billEmail','email');  
                          }
                          
+                    }
+             
+                 pos = 'billMethod'.indexOf(name);
+                 if ( ~pos ) { 
                          if (  valueOfItem("billMethod") == "1"  ) {
                               
                              displayElement('billEmail',true);  
@@ -1081,7 +1337,11 @@
                              displayElement('billEmail',false);                             
                          }
                          
-                         if (  valueOfItem("lessThanTwoYears") == "YES"  ) {
+                    }
+             
+                 pos = 'lessThanTwoYears'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("lessThanTwoYears") == "true"  ) {
                               
                              displayElement('prevAddress',true);  
                          }
@@ -1089,7 +1349,27 @@
                              
                              displayElement('prevAddress',false);                             
                          }
-                           
+                         
+                    }
+             
+                 pos = 'highSpeedNT'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("highSpeedNT") != "100"  ) {
+                              
+                             copyOntoItemFromItem('bundleChoice','highSpeedNT');  
+                         }
+                         
+                    }
+             
+                 pos = 'highSpeed2YT'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("highSpeed2YT") != "100"  ) {
+                              
+                             copyOntoItemFromItem('bundleChoice','highSpeed2YT');  
+                         }
+                         
+                    }
+               
              } 
              </script></body>
 </html>

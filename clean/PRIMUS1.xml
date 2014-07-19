@@ -9,12 +9,12 @@
     <page name="headerPage">
         <group name="header">
             <item name="logo" type="zipImage">
-                <path>PrimusSA_Logo.png</path>
+                <path>PrimusSA_Logo</path>
             </item> 
         </group>
     </page>
     <page name="firstPage">
-      <group name="headerSection" number="1" title="COSTCO SERVICE APP">
+      <group name="headerSection" number="1" title="Costco Service App - Stand Alone">
           <item name="submissionId" type="textField" isHidden="YES" editable="NO">
               <size>250</size>
           </item>        
@@ -30,23 +30,23 @@
             <validation>numericOnly</validation>
         </item>
         <item name="costcoLoc" type="dropDown" required="YES">
-            <option value="1">159 Ajax</option>
-            <option value="2">162 Brampton</option>
-            <option value="3">510 Newmarket</option>
-            <option value="4">524 Etobicoke</option>
-            <option value="5">535 Downsview</option>
-            <option value="6">537 Scarborough</option>
+            <option value="159 Ajax">159 Ajax</option>
+            <option value="162 Brampton">162 Brampton</option>
+            <option value="510 Newmarket">510 Newmarket</option>
+            <option value="524 Etobicoke">524 Etobicoke</option>
+            <option value="535 Downsview">535 Downsview</option>
+            <option value="537 Scarborough">537 Scarborough</option>
             <size>620</size>
             <textSize>26</textSize>
             <label>Costco Location</label>
         </item>
       </group>
-      <group name="custInfo" number="2" title="CUSTOMER INFORMATION">
+      <group name="custInfo" number="2" title="Customer Information">
             <item name="title" type="radioControl" required="YES">
                 <columns>3</columns>
-                <tag value="Mr">Mr.</tag>
-                <tag value="Ms">Ms.</tag>
-                <tag value="Mrs">Mrs.</tag>
+                <tag value="1">Mr.</tag>
+                <tag value="2">Ms.</tag>
+                <tag value="3">Mrs.</tag>
                 <size>620</size>
                 <textSize>26</textSize>
                 <label>Title</label>
@@ -59,9 +59,8 @@
                 <validation>names</validation>
                 <maxlength>20</maxlength>
                 <onmissing>
-               <message>Please, enter your name.</message>
-            </onmissing>
-                <action>itemShouldNotify:</action>
+                   <message>Please, enter your name.</message>
+                </onmissing>
             </item>
             <item name="middleInitial" type="textField">
                 <size>610</size>
@@ -70,7 +69,6 @@
                 <placeholder>Middle Initial</placeholder>
                 <validation>lettersOnly</validation>
                 <maxlength>2</maxlength>
-                <action>itemShouldNotify:</action>
             </item>
             <item name="lastName" type="textField" required="YES">
                 <size>610</size>
@@ -80,23 +78,25 @@
                 <validation>names</validation>
                 <maxlength>20</maxlength>
                 <onmissing>
-               <message>Please, enter your name.</message>
-            </onmissing>
-                <action>itemShouldNotify:</action>
+                   <message>Please, enter your name.</message>
+                </onmissing>
             </item>
             <item name="address1" type="addressField" required="YES">
                 <size>630</size>
                 <textSize>26</textSize>
                 <country>CANADA</country>
-                <validation>QAS</validation>
+                <validationService>QAS</validationService>
             </item>
-            <item name="resType" type="dropDown" required="YES">
-                <option value="SingleDwelling">Single Dwelling (house, townhouse, etc.)</option>
-                <option value="MultiDwelling">Multi Dwelling (apartment, condo, etc.)</option>
-                <size>620</size>
-                <textSize>26</textSize>
-                <label>Residence Type</label>
-            </item>
+          <item name="resType"
+              type="radioControl"
+              required="YES">
+              <columns>2</columns>
+              <tag value="1">Single Dwelling (house, townhouse, etc.)</tag>
+              <tag value="2">Multi Dwelling (apartment, condo, etc.)</tag>
+              <size>620</size>
+              <textSize>26</textSize>
+              <label>Residence Type</label>
+          </item>
             <item name="email"
                type="emailPinger"
                required="YES"
@@ -109,7 +109,7 @@
             </item>
             <item name="homeNum"
                type="textField"
-               required="homeNum|alternateNum"
+               required="YES"
                receipt="personal">
                 <size>620</size>
                 <textSize>26</textSize>
@@ -118,9 +118,7 @@
                 <validation>usphonenumber</validation>
             </item>
             <item name="alternateNum"
-               type="textField"
-               required="homeNum|alternateNum"
-               receipt="personal">
+               type="textField">
                 <size>620</size>
                 <textSize>26</textSize>
                 <label>Alternate Contact Number</label>
@@ -131,8 +129,8 @@
                type="radioControl"
                required="YES">
                 <columns>2</columns>
-                <tag value="YES">YES</tag>
-                <tag value="NO">No ($2.00/month)</tag>
+                <tag value="true">Yes</tag>
+                <tag value="false">No ($2.00/month)</tag>
                 <size>620</size>
                 <textSize>26</textSize>
                 <label>Do you want your number to appear in the phone book and 411 directory</label>
@@ -150,8 +148,8 @@
                type="radioControl"
                required="YES">
                 <columns>2</columns>
-                <tag value="English">English</tag>
-                <tag value="French">French</tag>
+                <tag value="1">English</tag>
+                <tag value="2">French</tag>
                 <size>620</size>
                 <textSize>26</textSize>
                 <label>Language Preference</label>
@@ -159,38 +157,69 @@
             <item name="Cust" type="radioControl" required="YES">
                 <size>620</size>
                 <columns>2</columns>
-                <tag value="New">New Customer</tag>
-                <tag value="Exi">Existing Primus Customer</tag>
+                <tag value="1">New Customer</tag>
+                <tag value="2">Existing Primus Customer</tag>
                 <label>New or Existing Customer?</label>
             </item>
             <item name="exPriAccNum"
                isHidden="YES"
-               type="textField"
-               required="YES">
+               type="textField">
                 <size>620</size>
                 <textSize>26</textSize>
-                <placeholder>Primus Account No.</placeholder>
+                <label>Primus Account No</label>
+                <placeholder>Primus Account Number</placeholder>
                 <maxlength>9</maxlength>
                 <validation>numericOnly</validation>
             </item>
             <item name="costcoMemNum" type="textField" required="YES">
                 <size>620</size>
                 <textSize>26</textSize>
+                <label>Costco Membership Number</label>
                 <placeholder>Costco Membership Number</placeholder>
+                <maxlength>13</maxlength>
+                <validation>numericOnly</validation>
             </item>
             <item name="cosMemType"
                type="radioControl"
                required="YES">
                 <columns>2</columns>
-                <tag value="E">Executive</tag>
-                <tag value="G">Gold Star</tag>
+                <tag value="1">Executive</tag>
+                <tag value="2">Gold Star</tag>
                 <size>620</size>
                 <textSize>26</textSize>
-                <label>Costco membership Type: </label>
+                <label>Costco membership Type</label>
             </item>
             
       </group>
-      <group name="uselessGroup" number="3" title="SERVICE DETAILS">
+        <group name="additionalInfo" number="3" title="Additional Information">
+            <item name="DSL" type="radioControl" required="YES">
+                <size>620</size>
+                <columns>2</columns>
+                <tag value="true">Yes</tag>
+                <tag value="false">No</tag>
+                <label>1. Do you have DSL Internet service?</label>
+            </item>
+            <item name="exDSL"
+                type="radioControl"
+                isHidden="YES"
+                required="YES">
+                <size>620</size>
+                <columns>2</columns>
+                <tag value="true">Yes</tag>
+                <tag value="false">No</tag>
+                <label>2. Would you like to keep your existing DSL Internet service?</label>
+            </item>
+            <item name="accOrPhoneNum"
+                isHidden="YES"
+                type="textField"
+                required="NO">
+                <size>310</size>
+                <textSize>26</textSize>
+                <maxlength>20</maxlength>
+                <label>3. Provide your account or home phone number so we can cancel your service</label>
+            </item>
+        </group>
+        <group name="uselessGroup" number="4" title="Service Details">
         <item name="homePhone" type="checkbox" required="NO">
             <detailLabel>Home Phone</detailLabel>
         </item>
@@ -206,8 +235,8 @@
                required="YES">
             <size>620</size>
             <columns>2</columns>
-            <tag value="noTerm">No Term</tag>
-            <tag value="2yearTerm">2 Year Term</tag>
+            <tag value="1">No Term</tag>
+            <tag value="2">2 Year Term</tag>
             <label>Service Term</label>
         </item>
         <item name="tradOrDig"
@@ -216,44 +245,17 @@
                required="YES">
             <size>620</size>
             <columns>2</columns>
-            <tag value="Traditional">Traditional</tag>
-            <tag value="Digital">Digital</tag>
+            <tag value="1">Traditional</tag>
+            <tag value="2">Digital</tag>
             <label>Traditional/Digital Service?</label>
         </item>
       </group>
-      <group name="additionalInfo" number="4" title="ADDITIONAL INFORMATION">
-        <item name="DSL" type="radioControl" required="YES">
-            <size>620</size>
-            <columns>2</columns>
-            <tag value="YES">YES</tag>
-            <tag value="NO">No</tag>
-            <label>1. Do you have DSL Internet service?</label>
-        </item>
-        <item name="exDSL"
-               type="radioControl"
-               isHidden="YES"
-               required="NO">
-            <size>620</size>
-            <columns>2</columns>
-            <tag value="YES">YES</tag>
-            <tag value="NO">No</tag>
-            <label>2. Would you like to keep your existing DSL Internet service?</label>
-        </item>
-        <item name="accOrPhoneNum"
-               isHidden="YES"
-               type="textField"
-               required="NO">
-            <size>310</size>
-            <textSize>26</textSize>
-            <detailLabel>3. Provide your account or home phone number so we can cancel your service.</detailLabel>
-        </item>
-      </group>
-      <group name="phoneInfo" isHidden="YES" title="HOME PHONE">
+      <group name="phoneInfo" isHidden="YES" title="Home Phone">
         <item name="Wish" type="radioControl" required="YES">
             <size>620</size>
             <columns>2</columns>
-            <tag value="New">I wish to have a new phone number ($55)</tag>
-            <tag value="Trans">I wish to transfer my existing home phone number to Primus</tag>
+            <tag value="1">I wish to have a new phone number ($55)</tag>
+            <tag value="2">I wish to transfer my existing home phone number to Primus</tag>
             <label>New or Existing Phone Number?</label>
         </item>
         <item name="extPhoneTransfer1"
@@ -273,7 +275,7 @@
             <textSize>26</textSize>
         </item>
         <item name="currPhoneNum" isHidden="YES" type="dropDown">
-            <option value="Bell">BELL</option>
+            <option value="BELL">BELL</option>
             <option value="Rogers">Rogers</option>
             <option value="Telus">Telus</option>
             <option value="Shaw">Shaw</option>
@@ -281,7 +283,7 @@
             <option value="Other">Other</option>
             <size>620</size>
             <textSize>26</textSize>
-            <label>MY CURRENT PHONE PROVIDER IS: </label>
+            <label>MY CURRENT PHONE PROVIDER IS</label>
         </item>
         <item name="otherTextBox"
                required="YES"
@@ -293,20 +295,20 @@
         </item>
         <item name="namePhoneBill" isHidden="YES" type="textField">
             <size>620</size>
-            <label>NAME AS IT APPEARS ON YOUR CURRENT PHONE BILL: </label>
+            <label>NAME AS IT APPEARS ON YOUR CURRENT PHONE BILL</label>
         </item>
         <item name="altNum" type="radioControl">
             <columns>2</columns>
-            <tag value="YES">YES</tag>
-            <tag value="NO">No</tag>
+            <tag value="true">Yes</tag>
+            <tag value="false">No</tag>
             <size>620</size>
             <textSize>26</textSize>
             <label>Do you currently have an alternate number(s)</label>
         </item>
         <item name="keepAltNum" isHidden="YES" type="radioControl">
             <columns>2</columns>
-            <tag value="YES">YES</tag>
-            <tag value="NO">No</tag>
+            <tag value="true">Yes</tag>
+            <tag value="false">No</tag>
             <size>620</size>
             <textSize>26</textSize>
             <label>Do you want to keep your alternate number(s)</label>
@@ -317,7 +319,7 @@
             <size>620</size>
             <textSize>18</textSize>
             <bgcolor>clear</bgcolor>
-            <text>Please enter the existing alternate numbers regardness of whether or not you want to keep them (You can cancel alternate number(s) after the completed migration by contacting customer support)</text>
+            <text>Please enter the existing alternate numbers regardless of whether or not you want to keep them (You can cancel alternate number(s) after the completed migration by contacting customer support)</text>
         </item>
         <item name="enterExtNum1"
                isHidden="YES"
@@ -325,28 +327,17 @@
                required="YES">
                 <size>620</size>
                 <textSize>26</textSize>
+                <label>Alternate #1</label>
                 <placeholder>Alternate #1</placeholder>
-                <submitName>enterExtNum1</submitName>
-                <!--<validation>usphonenumber</validation>-->
-        </item>
-        <item name="enterExtNum3"
-               isHidden="YES"
-               type="textField"
-               required="NO">
-                <size>620</size>
-                <textSize>26</textSize>
-                <placeholder>Alternate #1</placeholder>
-                <submitName>enterExtNum1</submitName>
-                <!--<validation>usphonenumber</validation>-->
+                <validation>usphonenumber</validation>
         </item>
         <item name="enterExtNum2"
                isHidden="YES"
-               type="textField"
-               required="NO">
+               type="textField">
             <size>620</size>
             <textSize>26</textSize>
+            <label>Alternate #2</label>
             <placeholder>Alternate #2</placeholder>
-            <submitName>enterExtNum1</submitName>
         </item>
 
         <item name="tradHomePh" isHidden="YES" type="dropDown" required="YES">
@@ -393,7 +384,7 @@
       <!-- if Traditional -->
       <group name="tradOpts"
              isHidden="YES"
-             title="TRADITIONAL HOME PHONE ADD-ON FEATURES($4/mo ea.)">
+             title="Traditional Home Phone Features ($4/mo each)">
         <item name="tradHomePhFeatures-1" type="checkbox" required="NO">
             <detailLabel>Call Display</detailLabel>
         </item>
@@ -402,9 +393,6 @@
         </item>
         <item name="tradHomePhFeatures-3" type="checkbox" required="NO">
             <detailLabel>Permanent Call Blocking</detailLabel>
-        </item>
-        <item name="tradHomePhFeatures-4" type="checkbox" required="NO">
-            <detailLabel>Voice Mail</detailLabel>
         </item>
         <item name="tradHomePhFeatures-5" type="checkbox" required="NO">
             <detailLabel>Call Forward</detailLabel>
@@ -421,7 +409,10 @@
         <item name="tradHomePhFeatures-9" type="checkbox" required="NO">
             <detailLabel>Last Call Return</detailLabel>
         </item>
-        <item name="tradHomePhFeatures-10"
+          <item name="tradHomePhFeatures-4" type="checkbox" required="NO">
+              <detailLabel>Voice Mail</detailLabel>
+          </item>
+          <item name="tradHomePhFeatures-10"
                isHidden="YES"
                type="checkbox"
                required="NO">
@@ -433,28 +424,46 @@
                required="NO">
             <detailLabel>Extension Mailbox (must have Deluxe Voice Mail)</detailLabel>
         </item>
-        <item name="extMBox" isHidden="YES" type="textField" required="NO">
+        <item name="extMBox" isHidden="YES" type="textField" required="YES">
             <size>620</size>
             <textSize>26</textSize>
-            <placeholder>Number of mailboxes (max 4)</placeholder>
+            <label>Number of mailboxes</label> 
+            <placeholder>Please enter number of mailboxes (max 4)</placeholder>
             <validation>numericOnly</validation>
             <maxlength>1</maxlength>
+            <maxValue>4</maxValue>
         </item>
 
         <item name="tradHomePhFeatures-12" type="checkbox" required="NO">
             <detailLabel>Alternate Number</detailLabel>
         </item>
-        <item name="chooseAltNum"
-               isHidden="YES"
-               type="textField"
-               required="NO">
-            <detailLabel>Choose up to 3: ($4/mo. each)</detailLabel>
-        </item>
+          <item name="chooseAltNumLabel" type="label" isHidden="YES">
+              <text>Choose up to 3: ($4/mo. each)</text>
+          </item>
+          <item name="chooseAltNum1"
+              isHidden="YES"
+              type="textField"
+              required="YES">
+              <label>Choice 1</label>
+              <validation>usphonenumber</validation>
+          </item>           
+          <item name="chooseAltNum2"
+              isHidden="YES"
+              type="textField">
+              <label>Choice 2</label>
+              <validation>usphonenumber</validation>
+          </item>
+          <item name="chooseAltNum3"
+              isHidden="YES"
+              type="textField">
+              <label>Choice 3</label>
+              <validation>usphonenumber</validation>
+          </item>
       </group>
 
       <group name="ldInfo"
              isHidden="YES"
-             title="LONG DISTANCE PLANS">
+             title="Long Distance Plans">
 
         <!-- if standalone -->
         <item name="lblStandalone" type="label">
@@ -506,11 +515,11 @@
         <item name="addOnBasic" isHidden="YES" type="dropDown" required="NO">
             <option value="1">Primus World: $2.00/mo.</option>
             <option value="3">World Lite 30 (400 min): $7.00/mo.</option>
-            <option value="5">Unlimited Provincial: $6.00/mo.</option>
-            <option value="6">Unlimited North America: $10.00/mo.</option>
-            <option value="7">Unlimited World: $5.00/mo. (60 Countries)</option>
-            <option value="8">UK and India 1000: $9.95/mo.</option>
-            <option value="9">Unlimited World: $14.95/mo. (75 Countries)</option>
+            <option value="4">Unlimited Provincial: $6.00/mo.</option>
+            <option value="5">Unlimited North America: $10.00/mo.</option>
+            <option value="6">Unlimited World: $5.00/mo. (60 Countries)</option>
+            <option value="7">UK and India 1000: $9.95/mo.</option>
+            <option value="8">Unlimited World: $14.95/mo. (75 Countries)</option>
             <size>620</size>
             <submitName>addOn</submitName>
         </item>
@@ -521,9 +530,9 @@
                required="NO">
             <option value="1">Primus World: $2.00/mo.</option>
             <option value="3">World Lite 30 (400 min): $7.00/mo.</option>
-            <option value="7">Unlimited World: $5.00/mo. (60 Countries)</option>
-            <option value="8">UK and India 1000: $9.95/mo.</option>
-            <option value="9">Unlimited World: $14.95/mo. (75 Countries)</option>
+            <option value="6">Unlimited World: $5.00/mo. (60 Countries)</option>
+            <option value="7">UK and India 1000: $9.95/mo.</option>
+            <option value="8">Unlimited World: $14.95/mo. (75 Countries)</option>
             <size>620</size>
             <submitName>addOn</submitName>
         </item>
@@ -534,8 +543,8 @@
                required="NO">
             <option value="1">Primus World: $2.00/mo.</option>
             <option value="3">World Lite 30 (400 min): $7.00/mo.</option>
-            <option value="8">UK and India 1000: $9.95/mo.</option>
-            <option value="9">Unlimited World: $14.95/mo. (75 Countries)</option>
+            <option value="7">UK and India 1000: $9.95/mo.</option>
+            <option value="8">Unlimited World: $14.95/mo. (75 Countries)</option>
             <size>620</size>
             <submitName>addOn</submitName>
         </item>
@@ -547,11 +556,11 @@
             <option value="1">Primus World: $2.00/mo.</option>
             <option value="2">Truly International: $2.00/mo.</option>
             <option value="3">World Lite 30 (400 min): $7.00/mo.</option>
-            <option value="5">Unlimited Provincial: $6.00/mo.</option>
-            <option value="6">Unlimited North America: $10.00/mo.</option>
-            <option value="7">Unlimited World: $5.00/mo. (60 Countries)</option>
-            <option value="8">UK and India 1000: $9.95/mo.</option>
-            <option value="9">Unlimited World: $14.95/mo. (75 Countries)</option>
+            <option value="4">Unlimited Provincial: $6.00/mo.</option>
+            <option value="5">Unlimited North America: $10.00/mo.</option>
+            <option value="6">Unlimited World: $5.00/mo. (60 Countries)</option>
+            <option value="7">UK and India 1000: $9.95/mo.</option>
+            <option value="8">Unlimited World: $14.95/mo. (75 Countries)</option>
             <size>620</size>
             <submitName>addOn</submitName>
         </item>
@@ -562,7 +571,7 @@
                required="NO">
             <option value="2">Truly International: $2.00/mo.</option>
             <option value="3">World Lite 30 (400 min): $7.00/mo.</option>
-            <option value="8">UK and India 1000: $9.95/mo.</option>
+            <option value="7">UK and India 1000: $9.95/mo.</option>
             <size>620</size>
             <submitName>addOn</submitName>
         </item>
@@ -585,18 +594,19 @@
             <size>610</size>
             <textSize>26</textSize>
             <validation>usphonenumber</validation>
+            <label>Number 1</label>
             <placeholder>Long Distance #1</placeholder>
             <maxlength>10</maxlength>
             <minlength>10</minlength>
         </item>
         <item name="longDistNum2"
                isHidden="YES"
-               type="textField"
-               required="YES">
+               type="textField">
             <size>610</size>
             <textSize>26</textSize>
             <placeholder>Long Distance #2</placeholder>
             <validation>usphonenumber</validation>
+            <label>Number 2</label>
             <maxlength>10</maxlength>
             <minlength>10</minlength>
         </item>
@@ -604,15 +614,15 @@
 
       <group name="internetInfo"
              isHidden="YES"
-             title="HIGH SPEED INTERNET SERVICES OPTIONS">
+             title="Hight Speed Internet Services Options">
         <item name="highSpeedNT"
                isHidden="YES"
                type="dropDown"
                required="YES">
-            <option value="1">7 Mbps: $41.95</option>
-            <option value="2">16 Mbps: $46.95</option>
-            <option value="3">25 Mbps: $49.95</option>
-            <option value="4">50 Mbps: $77.95</option>
+            <option value="7">7 Mbps: $41.95</option>
+            <option value="16">16 Mbps: $46.95</option>
+            <option value="25">25 Mbps: $49.95</option>
+            <option value="50">50 Mbps: $77.95</option>
             <size>620</size>
             <textSize>26</textSize>
             <label>High Speed Internet (No Term)</label>
@@ -621,27 +631,29 @@
                isHidden="YES"
                type="dropDown"
                required="YES">
-            <option value="1">7 Mbps: $32.95</option>
-            <option value="2">16 Mbps: $37.95</option>
-            <option value="3">25 Mbps: $40.95</option>
-            <option value="4">50 Mbps: $68.95</option>
+            <option value="7">7 Mbps: $32.95</option>
+            <option value="16">16 Mbps: $37.95</option>
+            <option value="25">25 Mbps: $40.95</option>
+            <option value="50">50 Mbps: $68.95</option>
             <size>620</size>
             <textSize>26</textSize>
             <label>High Speed Internet (Two Year Term)</label>
         </item>
-
+        <item name="bundleChoice" type="textField" isHidden="YES" forceSubmit="YES">
+              <size>200</size>
+        </item>
         <item name="slowModem" isHidden="YES" type="dropDown">
             <option value="1">Standard Modem Rental (7, 16 Mbps) 2.95/mo.</option>
             <option value="2">Wireless Modem Rental (7, 16 Mbps) 3.95/mo.</option>
-            <option value="3">Standard Modem Purchase (7, 16 Mbps) 34.95/mo.</option>
-            <option value="4">Wireless Modem Purchase (7, 16 Mbps) 69.95/mo.</option>
+            <option value="4">Standard Modem Purchase (7, 16 Mbps) 34.95/mo.</option>
+            <option value="5">Wireless Modem Purchase (7, 16 Mbps) 69.95/mo.</option>
             <size>620</size>
             <textSize>26</textSize>
             <label>Modem Rental/Purchase</label>
         </item>
         <item name="fastModem" isHidden="YES" type="dropDown">
-            <option value="1">Wireless Modem Rental (25, 50 Mbps) 5.95/mo.</option>
-            <option value="2">Wireless Modem Purchase (25, 50 Mbps) 99.95/mo.</option>
+            <option value="3">Wireless Modem Rental (25, 50 Mbps) 5.95/mo.</option>
+            <option value="6">Wireless Modem Purchase (25, 50 Mbps) 99.95/mo.</option>
             <size>620</size>
             <textSize>26</textSize>
             <label>Modem Rental/Purchase</label>
@@ -659,7 +671,7 @@
                required="NO">
             <size>620</size>
             <textSize>26</textSize>
-            <label>Extra Quantity Required: </label>
+            <label>Extra Quantity Required</label>
         </item>
         <item name="wmFilter" isHidden="YES" type="checkbox" required="NO">
             <detailLabel>Wallmount filter $15 each</detailLabel>
@@ -668,7 +680,7 @@
 
       <group name="creditDetails"
              number="5"
-             title="CREDIT DETAILS Please provide one of the following">
+             title="Credit Details - provide one of the following">
         <item name="sin" type="textField" required="NO">
             <label>Social Insurance Number</label>
             <size>200</size>
@@ -713,7 +725,7 @@
                isHidden="YES"
                type="textField"
                required="YES">
-            <label>Estimated Monthly Usage(total of all services)</label>
+            <label>Estimated Monthly Usage (total of all services)</label>
             <size>400</size>
             <textSize>26</textSize>
             <validation>numericOnly</validation>
@@ -723,11 +735,11 @@
           <item name="ccNum" type="textField" required="YES">
               <size>620</size>
               <textSize>26</textSize>
-              <label>Credit Card Number(principal owner/no expiry date required)</label>
+              <label>Credit Card Number (principal owner/no expiry date required)</label>
               <validation>creditcard</validation>
           </item>
           <item name="lessThanTwoYears" type="checkbox" required="NO">
-              <detailLabel>Have you been living in your current address for less than 2 years?</detailLabel>
+              <detailLabel>Click here if you have been living at your current address for less than 2 years</detailLabel>
           </item>
           <item name="prevAddress" type="addressField" required="NO" isHidden="YES">
               <size>630</size>
@@ -739,7 +751,7 @@
 
       <group name="billingInfo"
              number="6"
-             title="BILLING AND PAYMENT INFORMATION">
+             title="Billing and Payment Information">
         <item name="billMethod"
                type="radioControl"
                required="YES">
@@ -828,7 +840,7 @@
 
       <group name="bottomInfo"
              number="7"
-             title="PLEASE READ THIS IMPORTANT INFORMATION">
+             title="Please read this important information">
           <item name="termsLine" type="multilineLabel" bleeds="YES">
               <size>620</size>
               <sizeY>180</sizeY>
@@ -905,7 +917,7 @@
     <relationships>
 
         <relationship object="group::phoneInfo">
-            <condition>homePhone == "YES"</condition>
+            <condition>homePhone == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -915,7 +927,7 @@
         </relationship>
 
         <relationship object="group::tradOpts">
-            <condition>homePhone == "YES" AND tradOrDig == "Traditional"</condition>
+            <condition>homePhone == "true" AND tradOrDig == "1"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -925,7 +937,7 @@
         </relationship>
 
         <relationship object="group::ldInfo">
-            <condition>longDist == "YES"</condition>
+            <condition>longDist == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -935,7 +947,7 @@
         </relationship>
 
         <relationship object="group::internetInfo">
-            <condition>internet == "YES"</condition>
+            <condition>internet == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -946,7 +958,7 @@
 
 
         <relationship object="item::exPriAccNum">
-            <condition>Cust == "Exi"</condition>
+            <condition>Cust == "2"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -956,7 +968,7 @@
         </relationship>
 
         <relationship object="item::namePhBook">
-            <condition>fourOneOne == "YES"</condition>
+            <condition>fourOneOne == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -966,14 +978,14 @@
         </relationship>
 
         <relationship object="item::namePhBook">
-            <condition>fourOneOne == "YES"</condition>
+            <condition>fourOneOne == "true"</condition>
             <if>
-                <copy>firstName</copy>
+                <evaluate>firstName.  lastName</evaluate>
             </if>
         </relationship>
 
         <relationship object="item::term">
-            <condition>homePhone == "YES" OR internet == "YES"</condition>
+            <condition>homePhone == "true" OR internet == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -983,7 +995,7 @@
         </relationship>
 
         <relationship object="item::tradOrDig">
-            <condition>homePhone == "YES"</condition>
+            <condition>homePhone == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -993,7 +1005,7 @@
         </relationship>
 
         <relationship object="item::extPhoneTransfer1">
-            <condition>Wish == "Trans"</condition>
+            <condition>Wish == "2"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1003,7 +1015,7 @@
         </relationship>
 
         <relationship object="item::extPhoneTransfer2">
-            <condition>Wish == "Trans"</condition>
+            <condition>Wish == "2"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1014,7 +1026,7 @@
 
 
         <relationship object="item::currPhoneNum">
-            <condition>Wish == "Trans"</condition>
+            <condition>Wish == "2"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1034,7 +1046,7 @@
         </relationship>
 
         <relationship object="item::namePhoneBill">
-            <condition>Wish == "Trans"</condition>
+            <condition>Wish == "2"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1044,14 +1056,14 @@
         </relationship>
 
         <relationship object="item::namePhoneBill">
-            <condition>Wish == "Trans"</condition>
+            <condition>Wish == "2"</condition>
             <if>
-                <copy>firstName</copy>
+                <evaluate>firstName.  lastName</evaluate>
             </if>
         </relationship>
 
         <relationship object="item::keepAltNum">
-            <condition>altNum == "YES"</condition>
+            <condition>altNum == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1059,9 +1071,9 @@
                 <hide>THIS</hide>
             </else>
         </relationship>
-
+        
         <relationship object="item::lblAltNum">
-            <condition>altNum == "YES"</condition>
+            <condition>altNum == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1069,50 +1081,19 @@
                 <hide>THIS</hide>
             </else>
         </relationship>
-
+        
         <relationship object="item::enterExtNum1">
-            <condition>keepAltNum == "NO"</condition>
+            <condition>altNum == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
             <else>
                 <hide>THIS</hide>
             </else>
-        </relationship>
-
-        <relationship object="item::enterExtNum1">
-            <condition>altNum == "NO"</condition>
-            <if>
-                <hide>THIS</hide>
-            </if>
         </relationship>
         
         <relationship object="item::enterExtNum2">
-            <condition>altNum == "NO"</condition>
-            <if>
-                <hide>THIS</hide>
-            </if>
-        </relationship>
-        
-        <relationship object="item::enterExtNum3">
-            <condition>altNum == "NO"</condition>
-            <if>
-                <hide>THIS</hide>
-            </if>
-        </relationship>
-        
-        <relationship object="item::enterExtNum2">
-            <condition>keepAltNum == "NO" OR keepAltNum == "YES"</condition>
-            <if>
-                <show>THIS</show>
-            </if>
-            <else>
-                <hide>THIS</hide>
-            </else>
-        </relationship>
-
-        <relationship object="item::enterExtNum3">
-            <condition>keepAltNum == "YES"</condition>
+            <condition>altNum == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1122,7 +1103,7 @@
         </relationship>
 
         <relationship object="item::tradHomePh">
-            <condition>homePhone == "YES" AND tradOrDig == "Traditional"</condition>
+            <condition>homePhone == "true" AND tradOrDig == "1"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1132,7 +1113,7 @@
         </relationship>
 
         <relationship object="item::digHomePhNT">
-            <condition>homePhone == "YES" AND tradOrDig == "Digital" AND term == "noTerm"</condition>
+            <condition>homePhone == "true" AND tradOrDig == "2" AND term == "1"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1142,7 +1123,7 @@
         </relationship>
 
         <relationship object="item::adaPurchase">
-            <condition>homePhone == "YES" AND tradOrDig == "Digital" AND term == "noTerm"</condition>
+            <condition>homePhone == "true" AND tradOrDig == "2" AND term == "1"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1152,7 +1133,7 @@
         </relationship>
 
         <relationship object="item::finePrintHomePhone">
-            <condition>homePhone == "YES" AND tradOrDig == "Digital" AND term == "noTerm"</condition>
+            <condition>homePhone == "true" AND tradOrDig == "2" AND term == "1"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1162,7 +1143,7 @@
         </relationship>
 
         <relationship object="item::digHomePhT">
-            <condition>homePhone == "YES" AND tradOrDig == "Digital" AND term == "2yearTerm"</condition>
+            <condition>homePhone == "true" AND tradOrDig == "2" AND term == "2"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1172,7 +1153,7 @@
         </relationship>   
 
         <relationship object="item::tradHomePhFeatures-10">
-            <condition>tradHomePhFeatures-4 == "YES"</condition>
+            <condition>tradHomePhFeatures-4 == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1182,7 +1163,21 @@
         </relationship>
 
         <relationship object="item::tradHomePhFeatures-11">
-            <condition>tradHomePhFeatures-10 == "YES"</condition>
+            <condition>tradHomePhFeatures-4 == "false"</condition>
+            <if>
+                <hide>THIS</hide>
+            </if>
+        </relationship>
+        
+        <relationship object="item::extMBox">
+            <condition>tradHomePhFeatures-4 == "false"</condition>
+            <if>
+                <hide>THIS</hide>
+            </if>
+        </relationship>
+        
+        <relationship object="item::tradHomePhFeatures-11">
+            <condition>tradHomePhFeatures-10 == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1192,7 +1187,7 @@
         </relationship>
 
         <relationship object="item::extMBox">
-            <condition>tradHomePhFeatures-11 == "YES"</condition>
+            <condition>tradHomePhFeatures-11 == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1201,8 +1196,8 @@
             </else>
         </relationship>
 
-        <relationship object="item::chooseAltNum">
-            <condition>tradHomePhFeatures-12 == "YES"</condition>
+        <relationship object="item::chooseAltNumLabel">
+            <condition>tradHomePhFeatures-12 == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1211,8 +1206,38 @@
             </else>
         </relationship>
 
+        <relationship object="item::chooseAltNum1">
+            <condition>tradHomePhFeatures-12 == "true"</condition>
+            <if>
+                <show>THIS</show>
+            </if>
+            <else>
+                <hide>THIS</hide>
+            </else>
+        </relationship>
+
+        <relationship object="item::chooseAltNum2">
+            <condition>tradHomePhFeatures-12 == "true"</condition>
+            <if>
+                <show>THIS</show>
+            </if>
+            <else>
+                <hide>THIS</hide>
+            </else>
+        </relationship>
+        
+        <relationship object="item::chooseAltNum3">
+            <condition>tradHomePhFeatures-12 == "true"</condition>
+            <if>
+                <show>THIS</show>
+            </if>
+            <else>
+                <hide>THIS</hide>
+            </else>
+        </relationship>
+        
         <relationship object="item::dmFilterExtra">
-            <condition>dmFilter == "YES"</condition>
+            <condition>dmFilter == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1222,7 +1247,7 @@
         </relationship>
 
         <relationship object="item::standAloneBasic">
-            <condition>(homePhone == "NO" AND longDist == "YES") OR tradHomePh == "1" OR digHomePhNT == "1" OR digHomePhT == "1" OR tradHomePh == "2" OR digHomePhNT == "2" OR digHomePhT == "2"</condition>
+            <condition>(homePhone == "false" AND longDist == "true") OR tradHomePh == "1" OR digHomePhNT == "1" OR digHomePhT == "1" OR tradHomePh == "2" OR digHomePhNT == "2" OR digHomePhT == "2"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1252,7 +1277,7 @@
         </relationship>
 
          <relationship object="item::lblAddOn">
-            <condition>homePhone == "YES"</condition>
+            <condition>homePhone == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1314,7 +1339,7 @@
         
 
         <relationship object="item::longDistNum1">
-            <condition>addOn-4 == "YES"</condition>
+            <condition>addOn-4 == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1324,7 +1349,7 @@
         </relationship>
 
         <relationship object="item::longDistNum2">
-            <condition>addOn-4 == "YES"</condition>
+            <condition>addOn-4 == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1334,7 +1359,7 @@
         </relationship>
 
         <relationship object="item::highSpeedNT">
-            <condition>term == "noTerm"</condition>
+            <condition>term == "1"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1344,7 +1369,7 @@
         </relationship>  
 
         <relationship object="item::highSpeed2YT">
-            <condition>term == "2yearTerm"</condition>
+            <condition>term == "2"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1354,7 +1379,7 @@
         </relationship>  
 
         <relationship object="item::slowModem">
-            <condition>highSpeedNT == "1" OR highSpeedNT == "2" OR highSpeed2YT == "1" OR highSpeed2YT == "2"</condition>
+            <condition>highSpeedNT == "7" OR highSpeedNT == "16" OR highSpeed2YT == "7" OR highSpeed2YT == "16"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1364,7 +1389,7 @@
         </relationship> 
 
         <relationship object="item::fastModem">
-            <condition>highSpeedNT == "3" OR highSpeedNT == "4" OR highSpeed2YT == "3" OR highSpeed2YT == "4"</condition>
+            <condition>highSpeedNT == "25" OR highSpeedNT == "50" OR highSpeed2YT == "25" OR highSpeed2YT == "50"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1374,7 +1399,7 @@
         </relationship> 
 
         <relationship object="item::dryLoop">
-            <condition>term == "noTerm" AND highSpeedNT == "1"</condition>
+            <condition>term == "1" AND highSpeedNT == "7"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1384,7 +1409,7 @@
         </relationship> 
 
         <relationship object="item::dmFilter">
-            <condition>highSpeedNT == "1" OR highSpeed2YT == "1"</condition>
+            <condition>highSpeedNT == "7" OR highSpeed2YT == "7"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1394,7 +1419,7 @@
         </relationship> 
 
         <relationship object="item::wmFilter">
-            <condition>highSpeedNT == "1" OR highSpeed2YT == "1"</condition>
+            <condition>highSpeedNT == "7" OR highSpeed2YT == "7"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1404,7 +1429,7 @@
         </relationship> 
 
         <relationship object="item::exDSL">
-            <condition>DSL == "YES"</condition>
+            <condition>DSL == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1414,7 +1439,7 @@
         </relationship>   
 
         <relationship object="item::accOrPhoneNum">
-            <condition>exDSL == "NO"</condition>
+            <condition>exDSL == "false"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1424,7 +1449,7 @@
         </relationship> 
 
         <relationship object="item::estMonUsageOpt">
-            <condition>longDist == "NO"</condition>
+            <condition>longDist == "false"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1434,7 +1459,7 @@
         </relationship>
 
         <relationship object="item::estMonUsageMand">
-            <condition>longDist == "YES"</condition>
+            <condition>longDist == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1461,7 +1486,7 @@
         </relationship>
 
         <relationship object="item::prevAddress">
-            <condition>lessThanTwoYears == "YES"</condition>
+            <condition>lessThanTwoYears == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1469,6 +1494,20 @@
                 <hide>THIS</hide>
             </else>
         </relationship>
+        
+        <relationship object="item::bundleChoice">
+            <condition>highSpeedNT != "100"</condition>
+            <if>
+                <copy>highSpeedNT</copy>
+            </if>
+        </relationship>
+        
+        <relationship object="item::bundleChoice">
+            <condition>highSpeed2YT != "100"</condition>
+            <if>
+                <copy>highSpeed2YT</copy>
+            </if>
+        </relationship>        
         
     </relationships>
 </form>
