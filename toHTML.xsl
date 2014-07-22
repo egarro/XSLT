@@ -519,7 +519,6 @@
                         </xsl:for-each>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:attribute name="style">display:none;</xsl:attribute>
                         <option value=""></option>
                     </xsl:otherwise> 
                     </xsl:choose>  

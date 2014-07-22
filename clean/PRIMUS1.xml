@@ -99,7 +99,6 @@
           </item>
             <item name="email"
                type="emailPinger"
-               required="YES"
                mustValidate="NO">
                 <size>620</size>
                 <textSize>26</textSize>
@@ -732,7 +731,7 @@
             <maxlength>3</maxlength>
             <submitName>estMonUsage</submitName>
         </item>
-          <item name="ccNum" type="textField" required="YES">
+          <item name="ccNum" type="textField">
               <size>620</size>
               <textSize>26</textSize>
               <label>Credit Card Number (principal owner/no expiry date required)</label>
@@ -767,7 +766,20 @@
             <textSize>26</textSize>
             <validation>email</validation>
         </item>
-          <item name="creditCardType" type="dropDown" required="YES">
+        <item name="paymentOptions"
+              type="radioControl"
+              required="YES">
+              <size>620</size>
+              <columns>2</columns>
+              <tag value="1">CreditCard</tag>
+              <tag value="2">Pre-authorized Chequing (attach void cheque)</tag>
+              <tag value="3">Direct Payment</tag>
+            <label>Payment Options</label>
+        </item>
+      </group>      
+      <group name="creditGroup"
+             isHidden="YES">
+        <item name="creditCardType" type="dropDown" required="YES">
               <option value="VISA">Visa</option>
               <option value="MC">Mastercard</option>
               <option value="AMEX">American Express</option>
@@ -1508,6 +1520,16 @@
                 <copy>highSpeed2YT</copy>
             </if>
         </relationship>        
+        
+        <relationship object="group::creditGroup">
+            <condition>paymentOptions == "1"</condition>
+            <if>
+                <show>THIS</show>
+            </if>
+            <else>
+                <hide>THIS</hide>
+            </else>
+        </relationship>
         
     </relationships>
 </form>

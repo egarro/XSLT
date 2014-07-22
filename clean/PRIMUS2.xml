@@ -54,6 +54,7 @@
             <item name="firstName" type="textField" required="YES">
                 <size>610</size>
                 <textSize>26</textSize>
+                <label>First Name</label>
                 <placeholder>First Name</placeholder>
                 <validation>names</validation>
                 <maxlength>20</maxlength>
@@ -64,6 +65,7 @@
             <item name="middleInitial" type="textField">
                 <size>610</size>
                 <textSize>26</textSize>
+                <label>Middle Initial</label>
                 <placeholder>Middle Initial</placeholder>
                 <validation>lettersOnly</validation>
                 <maxlength>1</maxlength>
@@ -71,6 +73,7 @@
             <item name="lastName" type="textField" required="YES">
                 <size>610</size>
                 <textSize>26</textSize>
+                <label>Last Name</label>
                 <placeholder>Last Name</placeholder>
                 <validation>names</validation>
                 <maxlength>20</maxlength>
@@ -97,7 +100,6 @@
           </item>
             <item name="email"
                type="emailPinger"
-               required="YES"
                mustValidate="NO">
                 <size>620</size>
                 <textSize>26</textSize>
@@ -776,7 +778,7 @@
             <maxlength>3</maxlength>
             <submitName>estMonUsage</submitName>
         </item>
-        <item name="ccNum" type="textField" required="YES">
+        <item name="ccNum" type="textField">
             <size>620</size>
             <textSize>26</textSize>
             <label>Credit Card Number(principal owner/no expiry date required)</label>
@@ -810,7 +812,20 @@
             <textSize>26</textSize>
             <validation>email</validation>
         </item>
-        <item name="creditCardType" type="dropDown" required="YES">
+          <item name="paymentOptions"
+              type="radioControl"
+              required="YES">
+              <size>620</size>
+              <columns>2</columns>
+              <tag value="1">CreditCard</tag>
+              <tag value="2">Pre-authorized Chequing (attach void cheque)</tag>
+              <tag value="3">Direct Payment</tag>
+              <label>Payment Options</label>
+          </item>
+      </group>      
+       <group name="creditGroup"
+           isHidden="YES">
+          <item name="creditCardType" type="dropDown" required="YES">
           <option value="VISA">Visa</option>
           <option value="MC">Mastercard</option>
           <option value="AMEX">American Express</option>
@@ -1357,7 +1372,8 @@
            <condition>package == "1" AND term == "2" AND (digiBasic2T == "7" OR digiBasic2T == "16")</condition>
            <if>
                <option value="1">Modem and Adapter Rental (7,16 Mbps) $3.95/mo.</option>
-               <option value="3">Modem and Adapter Purchase (7,16 Mbps) $104.95</option>           </if>
+               <option value="3">Modem and Adapter Purchase (7,16 Mbps) $104.95</option>           
+           </if>
        </relationship>
        
        <relationship object="item::modemAdapRent">
@@ -1703,6 +1719,16 @@
            <if>
                <copy>digiTriple2T</copy>
            </if>
+       </relationship>
+       
+       <relationship object="group::creditGroup">
+           <condition>paymentOptions == "1"</condition>
+           <if>
+               <show>THIS</show>
+           </if>
+           <else>
+               <hide>THIS</hide>
+           </else>
        </relationship>
                   
    </relationships>

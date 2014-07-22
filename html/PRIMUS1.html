@@ -92,8 +92,8 @@
                         <li><input type="radio" onchange="javascript:relationships(this);" name="resType" id="resType2" value="2"><label for="resType2">Multi Dwelling (apartment, condo, etc.)</label></li>
                      </ul>
                   </div>
-                  <div id="email" class="MMemailPinger" req="true">
-                     <div class="ITEMLabel"><span>Contact Email Address *</span></div><input type="email" size="50" validation="email" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="email" submitName="email" placeholder="Email" onchange="javascript:relationships(this);"><div class="MMbuttonField"><button type="button" onclick="javascript:validateEmail('email')">
+                  <div id="email" class="MMemailPinger" req="false">
+                     <div class="ITEMLabel"><span>Contact Email Address</span></div><input type="email" size="50" validation="email" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="email" submitName="email" placeholder="Email" onchange="javascript:relationships(this);"><div class="MMbuttonField"><button type="button" onclick="javascript:validateEmail('email')">
                            Validate email
                            </button></div>
                   </div>
@@ -441,8 +441,8 @@
                   </div>
                   <div style="display:none;" id="estMonUsageMand" class="MMtextField" req="true">
                      <div class="ITEMLabel"><span>Estimated Monthly Usage (total of all services) *</span></div><input size="50" name="estMonUsageMand" submitName="estMonUsage" maxlength="3" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
-                  <div id="ccNum" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Credit Card Number (principal owner/no expiry date required) *</span></div><input size="50" name="ccNum" type="tel" validation="creditcard" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                  <div id="ccNum" class="MMtextField" req="false">
+                     <div class="ITEMLabel"><span>Credit Card Number (principal owner/no expiry date required)</span></div><input size="50" name="ccNum" type="tel" validation="creditcard" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="lessThanTwoYears" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="lessThanTwoYears"><div class="ITEMDetailLabel"><span>Click here if you have been living at your current address for less than 2 years</span></div>
                   </div>
                   <div style="display:none;" id="prevAddress" class="MMaddressField" req="false">
@@ -487,6 +487,16 @@
                   </div>
                   <div style="display:none;" id="billEmail" class="MMtextField" req="true">
                      <div class="ITEMLabel"><span>E-Mail *</span></div><input size="50" name="billEmail" type="email" validation="email" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                  <div id="paymentOptions" class="MMradioControl" req="true">
+                     <div class="ITEMLabel"><span>Payment Options *</span></div>
+                     <ul>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="paymentOptions" id="paymentOptions1" value="1"><label for="paymentOptions1">CreditCard</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="paymentOptions" id="paymentOptions2" value="2"><label for="paymentOptions2">Pre-authorized Chequing (attach void cheque)</label></li>
+                        <li><input type="radio" onchange="javascript:relationships(this);" name="paymentOptions" id="paymentOptions3" value="3"><label for="paymentOptions3">Direct Payment</label></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="HTMLGroup" style="display:none;" id="creditGroup" name="creditGroup">
                   <div id="creditCardType" class="MMdropDown" req="true">
                      <div class="ITEMLabel"><span>Credit Card Type *</span></div>
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="creditCardType">
@@ -1366,6 +1376,19 @@
                          if (  valueOfItem("highSpeed2YT") != "100"  ) {
                               
                              copyOntoItemFromItem('bundleChoice','highSpeed2YT');  
+                         }
+                         
+                    }
+             
+                 pos = 'paymentOptions'.indexOf(name);
+                 if ( ~pos ) { 
+                         if (  valueOfItem("paymentOptions") == "1"  ) {
+                              
+                             displayElement('creditGroup',true);  
+                         }
+                         else {
+                             
+                             displayElement('creditGroup',false);                             
                          }
                          
                     }
