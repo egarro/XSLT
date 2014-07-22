@@ -107,7 +107,7 @@
                 <label>Contact Email Address</label>
                 <action>itemShouldNotify:</action>
             </item>
-              <item name="homeNum" type="textField" required="YES">
+              <item name="homeNum" type="textField">
                 <size>620</size>
                 <textSize>26</textSize>
                 <label>Home Phone</label>

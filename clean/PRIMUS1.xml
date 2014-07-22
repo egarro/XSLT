@@ -108,7 +108,6 @@
             </item>
             <item name="homeNum"
                type="textField"
-               required="YES"
                receipt="personal">
                 <size>620</size>
                 <textSize>26</textSize>
