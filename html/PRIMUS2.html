@@ -20,10 +20,10 @@
             <div class="HTMLPage" id="firstPage" name="firstPage">
                <div class="HTMLGroup" id="headerSection" name="headerSection">
                   <h3>Costco Service App - Bundles</h3>
-                  <div style="display:none;" id="submissionId" class="MMtextField" req="false"><input size="50" disabled="" name="submissionId" type="text"></div>
-                  <div style="display:none;" id="campaignId" class="MMtextField" req="false"><input size="50" disabled="" name="campaignId" type="text"></div>
+                  <div style="display:none;" id="submissionId" class="MMtextField" req="false"><input size="50" tabindex="1" disabled="" name="submissionId" type="text"></div>
+                  <div style="display:none;" id="campaignId" class="MMtextField" req="false"><input size="50" tabindex="2" disabled="" name="campaignId" type="text"></div>
                   <div id="custRef" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Customer Reference # *</span></div><input size="50" name="custRef" maxlength="8" minlength="6" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Customer Reference # *</span></div><input size="50" tabindex="3" name="custRef" maxlength="8" minlength="6" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="costcoLoc" class="MMdropDown" req="true">
                      <div class="ITEMLabel"><span>Costco Location *</span></div>
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="costcoLoc">
@@ -47,21 +47,21 @@
                      </ul>
                   </div>
                   <div id="firstName" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>First Name *</span></div><input size="50" name="firstName" maxlength="20" placeholder="First Name" type="text" validation="names" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>First Name *</span></div><input size="50" tabindex="2" name="firstName" maxlength="20" placeholder="First Name" type="text" validation="names" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="middleInitial" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Middle Initial</span></div><input size="50" name="middleInitial" maxlength="1" placeholder="Middle Initial" type="text" validation="lettersOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Middle Initial</span></div><input size="50" tabindex="3" name="middleInitial" maxlength="1" placeholder="Middle Initial" type="text" validation="lettersOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="lastName" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Last Name *</span></div><input size="50" name="lastName" maxlength="20" placeholder="Last Name" type="text" validation="names" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Last Name *</span></div><input size="50" tabindex="4" name="lastName" maxlength="20" placeholder="Last Name" type="text" validation="names" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="address1" class="MMaddressField" req="true">
                      <div name="address1">
                         <div class="MMtextField" req="true">
-                           <div class="ITEMLabel"><span>Address *</span></div><input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="address1" placeholder="Address Line 1" maxlength="50"></div><br><div class="MMtextField">
-                           <div class="ITEMLabel"></div><input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="address2" placeholder="Address Line 2" maxlength="50"></div><br><div class="MMtextField">
-                           <div class="ITEMLabel"></div><input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="address3" placeholder="Address Line 3" maxlength="50"></div><br><div class="MMtextField" req="true">
-                           <div class="ITEMLabel"><span>City *</span></div><input type="text" size="50" validation="names" placeholder="City" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="city" maxlength="25"></div><br><div class="MMtextField" req="true">
-                           <div class="ITEMLabel"><span>Canadian Postal Code *</span></div><input type="text" size="50" validation="canadianPostalCode" placeholder="Canadian Postal Code" maxlength="7" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="postalCode"></div><br><div class="MMdropDown" req="true">
+                           <div class="ITEMLabel"><span>Address *</span></div><input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" tabindex="5" name="address1" placeholder="Address Line 1" maxlength="50"></div><br><div class="MMtextField">
+                           <div class="ITEMLabel"></div><input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" tabindex="6" name="address2" placeholder="Address Line 2" maxlength="50"></div><br><div class="MMtextField">
+                           <div class="ITEMLabel"></div><input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" tabindex="7" name="address3" placeholder="Address Line 3" maxlength="50"></div><br><div class="MMtextField" req="true">
+                           <div class="ITEMLabel"><span>City *</span></div><input type="text" size="50" validation="names" placeholder="City" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" tabindex="8" name="city" maxlength="25"></div><br><div class="MMtextField" req="true">
+                           <div class="ITEMLabel"><span>Canadian Postal Code *</span></div><input type="text" size="50" validation="canadianPostalCode" placeholder="Canadian Postal Code" maxlength="7" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" tabindex="9" name="postalCode"></div><br><div class="MMdropDown" req="true">
                            <div class="ITEMLabel"><span>Province *</span></div>
-                           <div class="dropdown"><select name="stateProv">
+                           <div class="dropdown"><select name="stateProv" onchange="javascript:highlightElement(this,-1);">
                                  <option value=""></option>
                                  <option value="AB">Alberta</option>
                                  <option value="BC">British Columbia</option>
@@ -93,14 +93,14 @@
                      </ul>
                   </div>
                   <div id="email" class="MMemailPinger" req="false">
-                     <div class="ITEMLabel"><span>Contact Email Address</span></div><input type="email" size="50" validation="email" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="email" submitName="email" placeholder="Email" onchange="javascript:relationships(this);"><div class="MMbuttonField"><button type="button" onclick="javascript:validateEmail('email')">
+                     <div class="ITEMLabel"><span>Contact Email Address</span></div><input type="email" size="50" validation="email" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" tabindex="7" name="email" submitName="email" placeholder="Email" onchange="javascript:relationships(this);"><div class="MMbuttonField"><button type="button" onclick="javascript:validateEmail('email')">
                            Validate email
                            </button></div>
                   </div>
                   <div id="homeNum" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Home Phone</span></div><input size="50" name="homeNum" placeholder="Home Phone" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Home Phone</span></div><input size="50" tabindex="8" name="homeNum" placeholder="Home Phone" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="alternateNum" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Alternate Contact Number</span></div><input size="50" name="alternateNum" placeholder="Alternate Contact Number" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Alternate Contact Number</span></div><input size="50" tabindex="9" name="alternateNum" placeholder="Alternate Contact Number" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="fourOneOne" class="MMradioControl" req="true">
                      <div class="ITEMLabel"><span>Do you want your number to appear in the phone book and 411 directory *</span></div>
                      <ul>
@@ -109,7 +109,7 @@
                      </ul>
                   </div>
                   <div style="display:none;" id="namePhBook" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>How would you like your name to appear in the phone book? *</span></div><input size="50" name="namePhBook" type="text" validation="letters" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>How would you like your name to appear in the phone book? *</span></div><input size="50" tabindex="11" name="namePhBook" type="text" validation="letters" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="lanPref" class="MMradioControl" req="true">
                      <div class="ITEMLabel"><span>Language Preference *</span></div>
                      <ul>
@@ -125,9 +125,9 @@
                      </ul>
                   </div>
                   <div style="display:none;" id="exPriAccNum" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Primus Account No</span></div><input size="50" name="exPriAccNum" maxlength="9" placeholder="Primus Account Number" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Primus Account No</span></div><input size="50" tabindex="14" name="exPriAccNum" maxlength="9" placeholder="Primus Account Number" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="costcoMemNum" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Costco Membership Number *</span></div><input size="50" name="costcoMemNum" maxlength="13" placeholder="Costco Membership Number" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Costco Membership Number *</span></div><input size="50" tabindex="15" name="costcoMemNum" maxlength="13" placeholder="Costco Membership Number" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="cosMemType" class="MMradioControl" req="true">
                      <div class="ITEMLabel"><span>Costco membership Type *</span></div>
                      <ul>
@@ -146,9 +146,9 @@
                      </ul>
                   </div>
                   <div style="display:none;" id="extPhoneTransfer1" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Phone #1 *</span></div><input size="50" name="extPhoneTransfer1" maxlength="10" minlength="10" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Phone #1 *</span></div><input size="50" tabindex="2" name="extPhoneTransfer1" maxlength="10" minlength="10" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div style="display:none;" id="extPhoneTransfer2" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Phone #2</span></div><input size="50" name="extPhoneTransfer2" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Phone #2</span></div><input size="50" tabindex="3" name="extPhoneTransfer2" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div style="display:none;" id="currPhoneNum" class="MMdropDown" req="false">
                      <div class="ITEMLabel"><span>MY CURRENT PHONE PROVIDER IS</span></div>
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="currPhoneNum">
@@ -161,9 +161,9 @@
                            <option value="Other">Other</option></select></div>
                   </div>
                   <div style="display:none;" id="otherTextBox" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Please specify *</span></div><input size="50" name="otherTextBox" submitName="currPhoneNum" type="text"></div>
+                     <div class="ITEMLabel"><span>Please specify *</span></div><input size="50" tabindex="5" name="otherTextBox" submitName="currPhoneNum" type="text"></div>
                   <div style="display:none;" id="namePhoneBill" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>NAME AS IT APPEARS ON YOUR CURRENT PHONE BILL</span></div><input size="50" name="namePhoneBill" type="text"></div>
+                     <div class="ITEMLabel"><span>NAME AS IT APPEARS ON YOUR CURRENT PHONE BILL</span></div><input size="50" tabindex="6" name="namePhoneBill" type="text"></div>
                   <div id="altNum" class="MMradioControl" req="false">
                      <div class="ITEMLabel"><span>Do you currently have an alternate number(s)</span></div>
                      <ul>
@@ -183,9 +183,9 @@
                      contacting customer support)
                   </div>
                   <div style="display:none;" id="enterExtNum1" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Alternate #1 *</span></div><input size="50" name="enterExtNum1" placeholder="Alternate #1" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Alternate #1 *</span></div><input size="50" tabindex="10" name="enterExtNum1" placeholder="Alternate #1" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div style="display:none;" id="enterExtNum2" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Alternate #2</span></div><input size="50" name="enterExtNum2" placeholder="Alternate #2" type="text"></div>
+                     <div class="ITEMLabel"><span>Alternate #2</span></div><input size="50" tabindex="11" name="enterExtNum2" placeholder="Alternate #2" type="text"></div>
                </div>
                <div class="HTMLGroup" id="additionalInfo" name="additionalInfo">
                   <h3>Additional Information</h3>
@@ -204,7 +204,7 @@
                      </ul>
                   </div>
                   <div style="display:none;" id="accOrPhoneNum" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>3. Provide your account or home phone number so we can cancel your service</span></div><input size="50" name="accOrPhoneNum" maxlength="20" type="text"></div>
+                     <div class="ITEMLabel"><span>3. Provide your account or home phone number so we can cancel your service</span></div><input size="50" tabindex="3" name="accOrPhoneNum" maxlength="20" type="text"></div>
                </div>
                <div class="HTMLGroup" id="bundleSelect" name="bundleSelect">
                   <h3>Bundles</h3>
@@ -348,7 +348,7 @@
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="modemAdapRent">
                            <option value=""></option></select></div>
                   </div>
-                  <div style="display:none;" id="bundleChoice" class="MMtextField" req="false"><input size="50" forceSubmit="true" name="bundleChoice" type="text"></div>
+                  <div style="display:none;" id="bundleChoice" class="MMtextField" req="false"><input size="50" tabindex="18" forceSubmit="true" name="bundleChoice" type="text"></div>
                </div>
                <div class="HTMLGroup" style="display:none;" id="tradOpts" name="tradOpts">
                   <h3>Traditional Home Phone Features ($4/mo each)</h3>
@@ -375,16 +375,16 @@
                   <div style="display:none;" id="tradHomePhFeatures-11" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="tradHomePhFeatures-11"><div class="ITEMDetailLabel"><span>Extension Mailbox (must have Deluxe Voice Mail)</span></div>
                   </div>
                   <div style="display:none;" id="extMBox" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Number of mailboxes *</span></div><input size="50" name="extMBox" maxlength="1" placeholder="Please enter number of mailboxes (max 4)" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Number of mailboxes *</span></div><input size="50" tabindex="12" name="extMBox" maxlength="1" placeholder="Please enter number of mailboxes (max 4)" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="tradHomePhFeatures-12" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="tradHomePhFeatures-12"><div class="ITEMDetailLabel"><span>Alternate Number</span></div>
                   </div>
                   <div style="display:none;" id="chooseAltNumLabel" class="MMlabel" req="false">Choose up to 3: ($4/mo. each)</div>
                   <div style="display:none;" id="chooseAltNum1" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Choice 1 *</span></div><input size="50" name="chooseAltNum1" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Choice 1 *</span></div><input size="50" tabindex="15" name="chooseAltNum1" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div style="display:none;" id="chooseAltNum2" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Choice 2</span></div><input size="50" name="chooseAltNum2" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Choice 2</span></div><input size="50" tabindex="16" name="chooseAltNum2" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div style="display:none;" id="chooseAltNum3" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Choice 3</span></div><input size="50" name="chooseAltNum3" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Choice 3</span></div><input size="50" tabindex="17" name="chooseAltNum3" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                </div>
                <div class="HTMLGroup" id="longDistQn" name="longDistQn">
                   <div id="longDistanceSeparator" class="MMlineBlock" req="false">
@@ -463,39 +463,39 @@
                            as standalone)</span></div>
                   </div>
                   <div style="display:none;" id="longDistNum1" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Number 1 *</span></div><input size="50" name="longDistNum1" maxlength="10" minlength="10" placeholder="Long Distance #1" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Number 1 *</span></div><input size="50" tabindex="12" name="longDistNum1" maxlength="10" minlength="10" placeholder="Long Distance #1" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div style="display:none;" id="longDistNum2" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Number 2</span></div><input size="50" name="longDistNum2" maxlength="10" minlength="10" placeholder="Long Distance #2" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Number 2</span></div><input size="50" tabindex="13" name="longDistNum2" maxlength="10" minlength="10" placeholder="Long Distance #2" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                </div>
                <div class="HTMLGroup" id="creditDetails" name="creditDetails">
                   <h3>Credit Details - provide one of the following</h3>
                   <div id="sin" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Social Insurance Number</span></div><input size="50" name="sin" maxlength="9" minlength="9" type="tel" validation="luhn" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"><div class="ITEMDetailLabel"><span>This information is optional, but will help to expedite the process of your application.</span></div>
+                     <div class="ITEMLabel"><span>Social Insurance Number</span></div><input size="50" tabindex="1" name="sin" maxlength="9" minlength="9" type="tel" validation="luhn" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"><div class="ITEMDetailLabel"><span>This information is optional, but will help to expedite the process of your application.</span></div>
                   </div>
                   <div id="birthDate" class="MMdateField" req="true">
-                     <div class="ITEMLabel"><span>Date of birth *</span></div><input type="date" data-role="date" data-inline="true" size="50" onchange="javascript:relationships(this);" name="birthDate" placeholder="DD/MM/YYYY"><div class="ITEMDetailLabel"><span>Mandatory, Customer must be of legal age within province.</span></div>
+                     <div class="ITEMLabel"><span>Date of birth *</span></div><input type="date" data-role="date" data-inline="true" size="50" onchange="javascript:relationships(this);" tabindex="2" name="birthDate" placeholder="DD/MM/YYYY"><div class="ITEMDetailLabel"><span>Mandatory, Customer must be of legal age within province.</span></div>
                   </div>
                   <div id="empContNum" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Employment/Daytime Contact Number *</span></div><input size="50" name="empContNum" maxlength="10" minlength="10" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Employment/Daytime Contact Number *</span></div><input size="50" tabindex="3" name="empContNum" maxlength="10" minlength="10" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div style="display:none;" id="estMonUsageOpt" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Estimated Monthly Usage(total of all services)</span></div><input size="50" name="estMonUsageOpt" submitName="estMonUsage" maxlength="3" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Estimated Monthly Usage(total of all services)</span></div><input size="50" tabindex="4" name="estMonUsageOpt" submitName="estMonUsage" maxlength="3" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div style="display:none;" id="estMonUsageMand" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Estimated Monthly Usage(total of all services) *</span></div><input size="50" name="estMonUsageMand" submitName="estMonUsage" maxlength="3" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"><div class="ITEMDetailLabel"><span>(Mandatory for Long Distance Plans)</span></div>
+                     <div class="ITEMLabel"><span>Estimated Monthly Usage(total of all services) *</span></div><input size="50" tabindex="5" name="estMonUsageMand" submitName="estMonUsage" maxlength="3" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"><div class="ITEMDetailLabel"><span>(Mandatory for Long Distance Plans)</span></div>
                   </div>
                   <div id="ccNum" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Credit Card Number(principal owner/no expiry date required)</span></div><input size="50" name="ccNum" type="tel" validation="creditcard" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Credit Card Number(principal owner/no expiry date required)</span></div><input size="50" tabindex="6" name="ccNum" type="tel" validation="creditcard" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="lessThanTwoYears" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="lessThanTwoYears"><div class="ITEMDetailLabel"><span>Click here if you have been living at your current address for less than 2 years</span></div>
                   </div>
                   <div style="display:none;" id="prevAddress" class="MMaddressField" req="false">
                      <div name="prevAddress">
                         <div class="MMtextField">
-                           <div class="ITEMLabel"><span>Address</span></div><input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="Address1" placeholder="Address Line 1" maxlength="50"></div><br><div class="MMtextField">
-                           <div class="ITEMLabel"></div><input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="Address2" placeholder="Address Line 2" maxlength="50"></div><br><div class="MMtextField">
-                           <div class="ITEMLabel"></div><input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="Address3" placeholder="Address Line 3" maxlength="50"></div><br><div class="MMtextField">
-                           <div class="ITEMLabel"><span>City</span></div><input type="text" size="50" validation="names" placeholder="City" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="prevCity" maxlength="25"></div><br><div class="MMtextField">
-                           <div class="ITEMLabel"><span>Canadian Postal Code</span></div><input type="text" size="50" validation="canadianPostalCode" placeholder="Canadian Postal Code" maxlength="7" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" name="prevPostalCode"></div><br><div class="MMdropDown">
+                           <div class="ITEMLabel"><span>Address</span></div><input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" tabindex="8" name="Address1" placeholder="Address Line 1" maxlength="50"></div><br><div class="MMtextField">
+                           <div class="ITEMLabel"></div><input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" tabindex="9" name="Address2" placeholder="Address Line 2" maxlength="50"></div><br><div class="MMtextField">
+                           <div class="ITEMLabel"></div><input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" tabindex="10" name="Address3" placeholder="Address Line 3" maxlength="50"></div><br><div class="MMtextField">
+                           <div class="ITEMLabel"><span>City</span></div><input type="text" size="50" validation="names" placeholder="City" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" tabindex="11" name="prevCity" maxlength="25"></div><br><div class="MMtextField">
+                           <div class="ITEMLabel"><span>Canadian Postal Code</span></div><input type="text" size="50" validation="canadianPostalCode" placeholder="Canadian Postal Code" maxlength="7" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" tabindex="12" name="prevPostalCode"></div><br><div class="MMdropDown">
                            <div class="ITEMLabel"><span>Province</span></div>
-                           <div class="dropdown"><select name="stateProv">
+                           <div class="dropdown"><select name="stateProv" onchange="javascript:highlightElement(this,-1);">
                                  <option value=""></option>
                                  <option value="AB">Alberta</option>
                                  <option value="BC">British Columbia</option>
@@ -527,7 +527,7 @@
                      </ul>
                   </div>
                   <div style="display:none;" id="billEmail" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>E-Mail *</span></div><input size="50" name="billEmail" type="email" validation="email" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>E-Mail *</span></div><input size="50" tabindex="2" name="billEmail" type="email" validation="email" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="paymentOptions" class="MMradioControl" req="true">
                      <div class="ITEMLabel"><span>Payment Options *</span></div>
                      <ul>
@@ -546,9 +546,9 @@
                            <option value="MC">Mastercard</option>
                            <option value="AMEX">American Express</option></select></div>
                   </div>
-                  <div id="creditCardNumber" class="MMtextField" req="true"><input size="50" name="creditCardNumber" placeholder="Card Number" type="tel" validation="creditcard" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" linksTo="creditCardType"></div>
+                  <div id="creditCardNumber" class="MMtextField" req="true"><input size="50" tabindex="2" name="creditCardNumber" placeholder="Card Number" type="tel" validation="creditcard" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);" linksTo="creditCardType"></div>
                   <div id="creditNameOnCard" class="MMtextField" req="true">
-                     <div class="ITEMLabel"><span>Cardholder's name (Please Print) *</span></div><input size="50" name="creditNameOnCard" type="text" validation="letters" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
+                     <div class="ITEMLabel"><span>Cardholder's name (Please Print) *</span></div><input size="50" tabindex="3" name="creditNameOnCard" type="text" validation="letters" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div id="expirationMonth" class="MMdropDown" req="true">
                      <div class="ITEMLabel"><span>Expiry Month/Year *</span></div>
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="expirationMonth">
@@ -581,7 +581,7 @@
                            <option value="23">23</option></select></div>
                   </div>
                   <div id="specInstruct" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Special Instructions</span></div><input size="50" name="specInstruct" maxlength="140" type="text"></div>
+                     <div class="ITEMLabel"><span>Special Instructions</span></div><input size="50" tabindex="6" name="specInstruct" maxlength="140" type="text"></div>
                   <div id="chSign" class="MMsignatureBox" signed="false" req="true">
                      <div class="ITEMLabel"><span>Cardholder's Signature *</span></div><a href="javascript:openSignaturePanel('chSign');">
                         <div class="signBox"><span>TAP HERE TO SIGN</span></div></a><div class="ITEMDetailLabel"><span>By signing this form, I authorize Primus to debit the above credit card for all my
@@ -589,7 +589,7 @@
                            to Primus. Any delivery of this authorization to you constitutes delivery by me.</span></div>
                   </div>
                   <div id="chSignDate" class="MMdateField" req="true">
-                     <div class="ITEMLabel"><span>Date *</span></div><input type="date" data-role="date" data-inline="true" size="50" onchange="javascript:relationships(this);" name="chSignDate" defaultDate="today" placeholder="MM/DD/YYYY"></div>
+                     <div class="ITEMLabel"><span>Date *</span></div><input type="date" data-role="date" data-inline="true" size="50" onchange="javascript:relationships(this);" tabindex="8" name="chSignDate" defaultDate="today" placeholder="MM/DD/YYYY"></div>
                </div>
                <div class="HTMLGroup" id="bottomInfo" name="bottomInfo">
                   <h3>Please read this important information</h3>
@@ -614,12 +614,12 @@
                            provisioning due to distance of resident from central office.</span></div>
                   </div>
                   <div id="repUsername" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Agent ID</span></div><input size="50" disabled="" name="repUsername" type="text"></div>
+                     <div class="ITEMLabel"><span>Agent ID</span></div><input size="50" tabindex="4" disabled="" name="repUsername" type="text"></div>
                   <div id="repSign" class="MMsignatureBox" signed="false" req="true">
                      <div class="ITEMLabel"><span>Representative's Signature *</span></div><a href="javascript:openSignaturePanel('repSign');">
                         <div class="signBox"><span>TAP HERE TO SIGN</span></div></a></div>
                   <div id="formSignDate" class="MMdateField" req="true">
-                     <div class="ITEMLabel"><span>Date *</span></div><input type="date" data-role="date" data-inline="true" size="50" onchange="javascript:relationships(this);" name="formSignDate" defaultDate="today" placeholder="MM/DD/YYYY"></div>
+                     <div class="ITEMLabel"><span>Date *</span></div><input type="date" data-role="date" data-inline="true" size="50" onchange="javascript:relationships(this);" tabindex="6" name="formSignDate" defaultDate="today" placeholder="MM/DD/YYYY"></div>
                   <div id="group5Spacer" class="MMspacerBlock" req="false"></div>
                   <div id="finePrint" class="MMmultilineLabel" req="false">To confirm that your long distance carrier has been switched to Primus, call toll
                      free 1 700 555-4141within 15 business days.
