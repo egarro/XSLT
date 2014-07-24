@@ -822,6 +822,11 @@
               <tag value="3">Direct Payment</tag>
               <label>Payment Options</label>
           </item>
+          <item name="specInstruct" type="textField" required="NO">
+              <size>620</size>
+              <maxlength>140</maxlength>
+              <label>Special Instructions</label>
+          </item>
       </group>      
        <group name="creditGroup"
            isHidden="YES">
@@ -875,11 +880,6 @@
                 <option value="22">22</option>
                 <option value="23">23</option>
                 <size>620</size>
-        </item>
-        <item name="specInstruct" type="textField" required="NO">
-            <size>620</size>
-            <maxlength>140</maxlength>
-            <label>Special Instructions</label>
         </item>
         <item name="chSign" type="signatureBox" required="YES">
             <width>250</width>

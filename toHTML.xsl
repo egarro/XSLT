@@ -59,9 +59,7 @@
                                                     <xsl:attribute name="req">false</xsl:attribute>
                                                 </xsl:otherwise>
                                             </xsl:choose>                                            
-                                            <xsl:call-template name="buildItem">
-                                                <xsl:with-param name="gCount" select="position()"/>
-                                            </xsl:call-template>   
+                                            <xsl:call-template name="buildItem" />
                                         </div>
                                     </xsl:for-each>
                                 </div>
@@ -95,10 +93,10 @@
              <script>
              
              function relationships(origin) { 
-                 $(origin).removeClass("success").removeClass("error"); 
+                 highlightElement(origin,-1);
                  var name = $(origin).attr('name');
                  if(name) {
-                    $('input[name="' + name +'"]').removeClass("success").removeClass("error"); 
+                     highlightElement($('input[name="' + name +'"]'),-1);
                  }
                  var pos = '';
              <xsl:for-each select="//form/relationships/relationship">
@@ -219,6 +217,7 @@
         </html>
     </xsl:template>
 
+
     <!-- Option builder: We make sure we escape single quotes! -->
     <xsl:template name="option-builder">
         <xsl:param name="isLast" />
@@ -307,7 +306,6 @@
     
     <!-- Item Factory -->        
     <xsl:template name="buildItem"> 
-        <xsl:param name="gCount"/>
         <xsl:if test="./label">
             <div>
                 <xsl:attribute name="class">ITEMLabel</xsl:attribute>
@@ -379,14 +377,12 @@
                            <xsl:call-template name="buildAddressComposite">
                                <xsl:with-param name="country"><xsl:value-of select="./country"/></xsl:with-param>
                                <xsl:with-param name="required">YES</xsl:with-param>
-                               <xsl:with-param name="gCount" select='$gCount'/>
                            </xsl:call-template>
                        </xsl:when>
                        <xsl:otherwise>
                            <xsl:call-template name="buildAddressComposite">
                                <xsl:with-param name="country"><xsl:value-of select="./country"/></xsl:with-param>
                                <xsl:with-param name="required">NO</xsl:with-param>
-                               <xsl:with-param name="gCount" select='$gCount'/>
                            </xsl:call-template>
                        </xsl:otherwise>
                    </xsl:choose>
@@ -394,7 +390,7 @@
             </xsl:when>
             <xsl:when test="@type='dateField'">
                 <input type="date" data-role="date" data-inline="true" size="50" onchange="javascript:relationships(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount"/></xsl:attribute>
+                    
                     <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
                     <xsl:if test="./placeholder">
                         <xsl:attribute name="placeholder"><xsl:value-of select="./placeholder"/></xsl:attribute>
@@ -555,7 +551,7 @@
             </xsl:when>
             <xsl:when test="@type='canadianPostalCode'">
                 <input type="text" maxlength="7" size="50" validation="canadianPostalCode" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount"/></xsl:attribute>
+                    
                     <xsl:choose>
                         <xsl:when test="./submitName">
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
@@ -578,7 +574,7 @@
             </xsl:when>
             <xsl:when test="@type='emailPinger'">
                 <input type="email" size="50" validation="email" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount"/></xsl:attribute>
+                    
                     <xsl:choose>
                         <xsl:when test="./submitName">
                             <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
@@ -616,7 +612,6 @@
                     <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
                 <xsl:call-template name="buildBankComposite">
                     <xsl:with-param name="country">FRA</xsl:with-param>
-                    <xsl:with-param name="gCount" select='$gCount'/>
                 </xsl:call-template> 
                 <script>
                     $(document).on('blur', '#<xsl:value-of select="@name"/> input[name="bankCode"], #<xsl:value-of select="@name"/> input[name="bankAgency"], #<xsl:value-of select="@name"/> input[name="bankAccountNumber"]', function(e) {                
@@ -637,13 +632,12 @@
                     <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
                     <xsl:call-template name="buildBankComposite">
                         <xsl:with-param name="country">UK</xsl:with-param>
-                        <xsl:with-param name="gCount" select='$gCount'/>
                     </xsl:call-template>  
                 </div>    
             </xsl:when>
             <xsl:when test="@type='textField'">
                 <input size="50">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount"/></xsl:attribute>
+                    
                     <xsl:if test="@forceSubmit='YES'">
                         <xsl:attribute name="forceSubmit">true</xsl:attribute>
                     </xsl:if>
@@ -671,11 +665,14 @@
                     <xsl:choose>
                         <xsl:when test="./validation">
                             <xsl:choose>
-                                <xsl:when test="./validation='luhn' or ./validation='year' or ./validation='month' or ./validation='day' or ./validation='creditcard' or ./validation='usphonenumber' or ./validation='intlphonenumber' or ./validation='numeric' or ./validation='numericOnly'">
+                                <xsl:when test="./validation='luhn' or ./validation='year' or ./validation='month' or ./validation='day' or ./validation='usphonenumber' or ./validation='intlphonenumber' or ./validation='numeric' or ./validation='numericOnly'">
                                     <xsl:attribute name="type">tel</xsl:attribute>
                                 </xsl:when>
                                 <xsl:when test="./validation='email'">
                                     <xsl:attribute name="type">email</xsl:attribute>
+                                </xsl:when>
+                                <xsl:when test="./validation='creditcard'">
+                                    <xsl:attribute name="type">password</xsl:attribute>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <xsl:attribute name="type">text</xsl:attribute>
@@ -770,7 +767,6 @@
 
     <!-- Address Factory -->        
     <xsl:template name="buildAddressComposite">
-        <xsl:param name="gCount" />
         <xsl:param name="country" />
         <xsl:param name="required" />
         <xsl:variable name="prefix"><xsl:value-of select="./prefix"/></xsl:variable>
@@ -806,7 +802,7 @@
                 </xsl:otherwise>
             </xsl:choose>            
             <input type="text" size="50" validation="lettersNumeric" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+position()-1"/></xsl:attribute>
+                
                 <xsl:attribute name="name">
                     <xsl:choose>
                         <xsl:when test="$prefix=''">address<xsl:value-of select="position()"/></xsl:when>
@@ -837,7 +833,7 @@
             </xsl:otherwise>
         </xsl:choose>
         <input type="text" size="50" validation="names" placeholder="City" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-            <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+3"/></xsl:attribute>
+            
             <xsl:attribute name="name">
                 <xsl:choose>
                     <xsl:when test="$prefix=''">city</xsl:when>
@@ -867,7 +863,7 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 <input type="text" size="50" validation="canadianPostalCode" placeholder="Canadian Postal Code" maxlength="7" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+4"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">postalCode</xsl:when>
@@ -939,7 +935,7 @@
                         </xsl:otherwise>
                     </xsl:choose>
                     <input type="text" size="50" validation="canadianPostalCode" placeholder="Code Postal Canadien" maxlength="7" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                        <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+4"/></xsl:attribute>
+                        
                         <xsl:attribute name="name">
                             <xsl:choose>
                                 <xsl:when test="$prefix=''">postalCode</xsl:when>
@@ -1011,7 +1007,7 @@
                         </xsl:otherwise>
                     </xsl:choose>    
                 <input type="number" size="50" validation="usPostalCode" placeholder="Zip Code" maxlength="10" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+4"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">postalCode</xsl:when>
@@ -1120,7 +1116,7 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 <input type="number" size="50" validation="frenchPostalCode" placeholder="Code Postal" maxlength="5" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+4"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">postalCode</xsl:when>
@@ -1204,7 +1200,7 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 <input type="text" size="50" validation="ukPostalCode" placeholder="Postal Code" maxlength="8" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+4"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">postalCode</xsl:when>
@@ -1219,7 +1215,7 @@
                     <span>County</span>    
                 </div>
                 <input type="text" size="50" validation="names" placeholder="County" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+5"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">stateProv</xsl:when>
@@ -1255,7 +1251,7 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 <input type="number" size="50" validation="mexicanPostalCode" placeholder="Código Postal" maxlength="5" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+4"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">postalCode</xsl:when>
@@ -1356,7 +1352,6 @@
 
     <!-- Bank Factory -->        
     <xsl:template name="buildBankComposite"> 
-        <xsl:param name="gCount" />
         <xsl:param name="country" />
         <xsl:variable name="prefix"><xsl:value-of select="./prefix"/></xsl:variable>        
         <xsl:choose>
@@ -1376,7 +1371,7 @@
                         <span>Etablissement bancaire</span>    
                     </div>
                 <input type="text" size="50" validation="names" placeholder="Etablissement bancaire" maxlength="60" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankName</xsl:when>
@@ -1391,7 +1386,7 @@
                         <span>Adresse</span>    
                     </div>
                 <input type="text" size="50" placeholder="Adresse" maxlength="60">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+1"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankAddress</xsl:when>
@@ -1406,7 +1401,7 @@
                         <span>Code Postal</span>    
                     </div>
                 <input type="number" size="50" validation="frenchPostalCode" placeholder="Code Postal" maxlength="5" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+2"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankPostalCode</xsl:when>
@@ -1421,7 +1416,7 @@
                         <span>Ville</span>    
                     </div>
                 <input type="text" size="50" placeholder="Ville">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+3"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankCity</xsl:when>
@@ -1439,7 +1434,7 @@
                         <span>Code banque</span>    
                     </div>
                 <input type="number" size="50" validation="numeric" placeholder="Code banque" maxlength="5" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+4"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankCode</xsl:when>
@@ -1454,7 +1449,7 @@
                         <span>Code agence</span>    
                     </div>
                 <input type="number" size="50" validation="numeric" placeholder="Code agence" maxlength="5" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+5"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankAgency</xsl:when>
@@ -1477,7 +1472,7 @@
                         <span>No. de compte</span>    
                     </div>
                 <input type="number" size="50" validation="lettersNumeric" placeholder="No. de compte" maxlength="11" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+6"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankAccountNumber</xsl:when>
@@ -1507,7 +1502,7 @@
                         <span>IBAN</span>    
                     </div>
                 <input type="text" size="50" validation="lettersNumeric" placeholder="IBAN" maxlength="27" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+7"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankIBAN</xsl:when>
@@ -1522,7 +1517,7 @@
                         <span>BIC</span>    
                     </div>
                 <input type="text" size="50" validation="lettersNumeric" placeholder="BIC" maxlength="11" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+8"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankBIC</xsl:when>
@@ -1545,7 +1540,7 @@
                         <span>Bank Name</span>    
                     </div>
                 <input type="text" size="50" validation="names" placeholder="Bank Name" maxlength="60" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankName</xsl:when>
@@ -1560,7 +1555,7 @@
                         <span>Bank Address</span>    
                     </div>
                 <input type="text" size="50" placeholder="Bank Address" maxlength="60">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+1"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankAddress</xsl:when>
@@ -1575,7 +1570,7 @@
                         <span>Postal Code</span>    
                     </div>
                 <input type="text" size="50" validation="ukPostalCode" placeholder="Postal Code" maxlength="7" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+2"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankPostalCode</xsl:when>
@@ -1594,7 +1589,7 @@
                         <span>Name 1</span>    
                     </div>
                 <input type="text" size="50" placeholder="Name 1">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+3"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankAccountName1</xsl:when>
@@ -1609,7 +1604,7 @@
                         <span>Name 2</span>    
                     </div>
                 <input type="text" size="50" placeholder="Name 2">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+4"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankAccountName2</xsl:when>
@@ -1624,7 +1619,7 @@
                         <span>Sort Code</span>    
                     </div>
                 <input type="number" size="50" validation="numeric" placeholder="Sort Code" maxlength="6" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+5"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankSortCode</xsl:when>
@@ -1639,7 +1634,7 @@
                         <span>Account Number</span>    
                     </div>
                 <input type="number" size="50" validation="numeric" placeholder="Account Number" maxlength="8" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);">
-                    <xsl:attribute name="tabindex"><xsl:value-of select="$gCount+6"/></xsl:attribute>
+                    
                     <xsl:attribute name="name">
                         <xsl:choose>
                             <xsl:when test="$prefix=''">bankAccountNumber</xsl:when>
