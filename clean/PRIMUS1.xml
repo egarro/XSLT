@@ -218,13 +218,13 @@
             </item>
         </group>
         <group name="uselessGroup" number="4" title="Service Details">
-        <item name="homePhone" type="checkbox" required="NO">
+        <item name="homePhone" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Home Phone</detailLabel>
         </item>
-        <item name="longDist" type="checkbox" required="NO">
+        <item name="longDist" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Long Distance</detailLabel>
         </item>
-        <item name="internet" type="checkbox" required="NO">
+        <item name="internet" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Internet</detailLabel>
         </item>
         <item name="term"
@@ -359,7 +359,7 @@
             <textSize>26</textSize>
             <label>Digital Home Phone (No Term)</label>
         </item>
-        <item name="adaPurchase" isHidden="YES" type="checkbox" required="NO">
+          <item name="adaPurchase" isHidden="YES" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Adapter Purchase (No Term only): $35.00</detailLabel>
         </item>
         <item name="finePrintHomePhone" isHidden="YES" type="label">
@@ -383,43 +383,45 @@
       <group name="tradOpts"
              isHidden="YES"
              title="Traditional Home Phone Features ($4/mo each)">
-        <item name="tradHomePhFeatures-1" type="checkbox" required="NO">
+          <item name="tradHomePhFeatures-1" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Call Display</detailLabel>
         </item>
-        <item name="tradHomePhFeatures-2" type="checkbox" required="NO">
+          <item name="tradHomePhFeatures-2" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Call Waiting</detailLabel>
         </item>
-        <item name="tradHomePhFeatures-3" type="checkbox" required="NO">
+          <item name="tradHomePhFeatures-3" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Permanent Call Blocking</detailLabel>
         </item>
-        <item name="tradHomePhFeatures-5" type="checkbox" required="NO">
+          <item name="tradHomePhFeatures-5" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Call Forward</detailLabel>
         </item>
-        <item name="tradHomePhFeatures-6" type="checkbox" required="NO">
+          <item name="tradHomePhFeatures-6" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Call Privacy</detailLabel>
         </item>
-        <item name="tradHomePhFeatures-7" type="checkbox" required="NO">
+          <item name="tradHomePhFeatures-7" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Call Screen</detailLabel>
         </item>
-        <item name="tradHomePhFeatures-8" type="checkbox" required="NO">
+          <item name="tradHomePhFeatures-8" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Conference 3 Way Calling</detailLabel>
         </item>
-        <item name="tradHomePhFeatures-9" type="checkbox" required="NO">
+          <item name="tradHomePhFeatures-9" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Last Call Return</detailLabel>
         </item>
-          <item name="tradHomePhFeatures-4" type="checkbox" required="NO">
+          <item name="tradHomePhFeatures-4" type="checkbox" required="NO" submitsValue="YES">
               <detailLabel>Voice Mail</detailLabel>
           </item>
           <item name="tradHomePhFeatures-10"
                isHidden="YES"
                type="checkbox"
-               required="NO">
+               required="NO"
+               submitsValue="YES">
             <detailLabel>Deluxe Voice Mail (must have Voice Mail)</detailLabel>
         </item>
         <item name="tradHomePhFeatures-11"
                isHidden="YES"
                type="checkbox"
-               required="NO">
+               required="NO"
+               submitsValue="YES">
             <detailLabel>Extension Mailbox (must have Deluxe Voice Mail)</detailLabel>
         </item>
         <item name="extMBox" isHidden="YES" type="textField" required="YES">
@@ -432,7 +434,7 @@
             <maxValue>4</maxValue>
         </item>
 
-        <item name="tradHomePhFeatures-12" type="checkbox" required="NO">
+          <item name="tradHomePhFeatures-12" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Alternate Number</detailLabel>
         </item>
           <item name="chooseAltNumLabel" type="label" isHidden="YES">
@@ -574,14 +576,7 @@
             <submitName>addOn</submitName>
         </item>
 
-        <!-- if bundled -->
-        
-
-        <item name="addOn-2" isHidden="YES" type="checkbox" required="NO">
-            <detailLabel>Truly International: $2.00/mo.</detailLabel>
-        </item>
-
-        <item name="addOn-4" type="checkbox" required="NO">
+        <item name="addOn-4" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>I wish to have long distance access for Wireless (PAP mandatory for this selection as standalone)</detailLabel>
         </item>
 
@@ -657,10 +652,10 @@
             <label>Modem Rental/Purchase</label>
         </item>
 
-        <item name="dryLoop" isHidden="YES" type="checkbox" required="NO">
+          <item name="dryLoop" isHidden="YES" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Dry Loop: $10/mo. (No term and 7Mbps term plans only)</detailLabel>
         </item>
-        <item name="dmFilter" isHidden="YES" type="checkbox" required="NO">
+          <item name="dmFilter" isHidden="YES" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Deskmount filters (2 included) extra $10 each</detailLabel>
         </item>
         <item name="dmFilterExtra"
@@ -671,7 +666,7 @@
             <textSize>26</textSize>
             <label>Extra Quantity Required</label>
         </item>
-        <item name="wmFilter" isHidden="YES" type="checkbox" required="NO">
+          <item name="wmFilter" isHidden="YES" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Wallmount filter $15 each</detailLabel>
         </item>
       </group>
@@ -736,7 +731,7 @@
               <label>Credit Card Number (principal owner/no expiry date required)</label>
               <validation>creditcard</validation>
           </item>
-          <item name="lessThanTwoYears" type="checkbox" required="NO">
+          <item name="lessThanTwoYears" type="checkbox" required="NO" submitsValue="YES">
               <detailLabel>Click here if you have been living at your current address for less than 2 years</detailLabel>
           </item>
           <item name="prevAddress" type="addressField" required="NO" isHidden="YES">
@@ -848,6 +843,32 @@
             <defaultDate>today</defaultDate>
         </item>
       </group>
+      <group name="911Disclosure"
+          title="Acknowledgements" isHidden="YES">
+        <item name="911read" type="checkbox" required="YES">
+            <detailLabel>I have read and I understand the 911 acknowledgement.</detailLabel>
+        </item>
+        <item name="911Button" type="infoButton" required="NO" bleeds="YES">
+            <size>620</size>
+            <defaultValue>911 Acknowledgement</defaultValue>
+            <text>Based on your address and phone number, the 9-1-1 service associated with your Digital Home Phone Service is: Basic 9-1-1 Service.//
+                //
+                Basic 9-1-1 service is different from Enhanced 9-1-1 service that is available on most traditional telephone services.//
+                //
+                If you dial 9-1-1, you will be automatically routed to a specialized call centre that handles emergency calls. The call centre is different from the Public Safety Answering Point (PSAP) that could answer a traditional emergency call. You will be required to provide your name, telephone number and address to the call centre operator.//
+                //
+                9-1-1 Service will NOT be available if your Internet connection is down or your Digital Home Phone service is not available, e.g. in the case of a power failure. //
+                //
+                9-1-1 Service may not be available when calling from outside of Canada. //
+                //
+                Please refer to Primus’ Terms of Use for full terms and conditions related to 9-1-1 service associated with your Digital Home Phone Service. More information and user tips are available at primus.ca/dhp911. //
+                //
+                1)	I have read and understood the important information regarding 9-1-1 service. What is this? (link this to primus.ca/dhp911)//
+                2)	My 9-1-1 service type as described above is correct and I understand and will inform all users of the Digital Home Phone Service of the nature and limitations of the 9-1-1 service I will receive. //
+                3)	At any time, if I change the address in which I will use my Digital Home Phone Service, I must immediately contact Primus Canada, and that failure to do so may adversely affect my 9-1-1 service. //
+            </text>
+        </item>    
+      </group>     
       <group name="bottomInfo"
              number="7"
              title="Please read this important information">

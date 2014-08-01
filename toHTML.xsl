@@ -21,6 +21,9 @@
                     <div class="form_menu">
                         <span></span>
                     </div>
+                    <div class="form_delete" style="display:none;">
+                        <span></span>
+                    </div>
                 </div>
                 <form action="#" id="theForm" onsubmit="return false;">  
                     <div class="HTMLForm">
@@ -404,10 +407,14 @@
                 </input>    
             </xsl:when>
             <xsl:when test="@type='label'">
-                <xsl:value-of select="./text"/>          
+                <xsl:call-template name="insert-html-linebreaks">
+                    <xsl:with-param name="text" select="./text" />
+                </xsl:call-template>          
             </xsl:when>
             <xsl:when test="@type='multilineLabel'">
-                <xsl:value-of select="./text"/>          
+                <xsl:call-template name="insert-html-linebreaks">
+                    <xsl:with-param name="text" select="./text" />
+                </xsl:call-template>          
             </xsl:when>
             <xsl:when test="@type='checkbox'">
                 <input type="checkbox" value="1" onchange="javascript:relationships(this);">
@@ -496,11 +503,16 @@
                 </xsl:choose>
             </xsl:when>
             <xsl:when test="@type='infoButton'">
+                  <xsl:variable name="texto" select="normalize-space(./text)" />
                   <button type="button">
-                      <xsl:variable name="texto" select="normalize-space(./text)" />
-                      <xsl:attribute name="onclick">javascript:openInfoPanelWithText(this,'<xsl:value-of select="$texto"/>');</xsl:attribute>
+                      <xsl:attribute name="onclick">javascript:openInfoPanelWithText(this);</xsl:attribute>
                       <xsl:value-of select="./defaultValue"/>
                   </button>
+                  <div style="display:none;">
+                      <xsl:call-template name="insert-html-linebreaks">
+                          <xsl:with-param name="text" select="$texto" />
+                      </xsl:call-template>
+                  </div>    
             </xsl:when>
             <xsl:when test="@type='dropDown'">
                 <div class="dropdown"><select onchange="javascript:relationships(this);">
@@ -1656,6 +1668,23 @@
             <xsl:otherwise>
                 Unknown bank type found in XML file:<b><xsl:value-of select="$country"/></b> 
             </xsl:otherwise>    
+        </xsl:choose>
+    </xsl:template>
+    
+    <!-- New line creator for text with // -->
+    <xsl:template name="insert-html-linebreaks">
+        <xsl:param name="text" />
+        <xsl:choose>
+            <xsl:when test="contains($text, '//')">
+                <xsl:value-of select="substring-before($text,'//')" />
+                <br/>
+                <xsl:call-template name="insert-html-linebreaks">
+                    <xsl:with-param name="text" select="substring-after($text,'//')" />
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$text" />
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
     
