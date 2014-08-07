@@ -228,7 +228,7 @@
                   <div style="display:none;" id="enterExtNum1" class="MMtextField" req="true">
                      <div class="ITEMLabel"><span>Alternate #1 *</span></div><input size="50" name="enterExtNum1" placeholder="Alternate #1" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div style="display:none;" id="enterExtNum2" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Alternate #2</span></div><input size="50" name="enterExtNum2" placeholder="Alternate #2" type="text"></div>
+                     <div class="ITEMLabel"><span>Alternate #2</span></div><input size="50" name="enterExtNum2" placeholder="Alternate #2" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div style="display:none;" id="tradHomePh" class="MMdropDown" req="true">
                      <div class="ITEMLabel"><span>Traditional Home Phone *</span></div>
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="tradHomePh">
@@ -379,7 +379,7 @@
                      <div class="ITEMLabel"><span>Number 2</span></div><input size="50" name="longDistNum2" maxlength="10" minlength="10" placeholder="Long Distance #2" type="tel" validation="usphonenumber" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                </div>
                <div class="HTMLGroup" style="display:none;" id="internetInfo" name="internetInfo">
-                  <h3>Hight Speed Internet Services Options</h3>
+                  <h3>High Speed Internet Services Options</h3>
                   <div style="display:none;" id="highSpeedNT" class="MMdropDown" req="true">
                      <div class="ITEMLabel"><span>High Speed Internet (No Term) *</span></div>
                      <div class="dropdown"><select onchange="javascript:relationships(this);" name="highSpeedNT">
@@ -420,7 +420,7 @@
                   <div style="display:none;" id="dmFilter" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="dmFilter" submitsValue="YES"><div class="ITEMDetailLabel"><span>Deskmount filters (2 included) extra $10 each</span></div>
                   </div>
                   <div style="display:none;" id="dmFilterExtra" class="MMtextField" req="false">
-                     <div class="ITEMLabel"><span>Extra Quantity Required</span></div><input size="50" name="dmFilterExtra" type="text"></div>
+                     <div class="ITEMLabel"><span>Extra Quantity Required</span></div><input size="50" name="dmFilterExtra" type="tel" validation="numericOnly" onkeydown="javascript:filterInput(event,this);" oninput="javascript:evaluateInput(this);"></div>
                   <div style="display:none;" id="wmFilter" class="MMcheckbox" req="false"><input type="checkbox" value="1" onchange="javascript:relationships(this);" name="wmFilter" submitsValue="YES"><div class="ITEMDetailLabel"><span>Wallmount filter $15 each</span></div>
                   </div>
                </div>
@@ -1307,9 +1307,9 @@
                          
                     }
              
-                 pos = 'exDSL'.indexOf(name);
+                 pos = 'exDSLadditionalInfo'.indexOf(name);
                  if ( ~pos ) { 
-                         if (  valueOfItem("exDSL") == "false"  ) {
+                         if (  valueOfItem("exDSL") == "false" && valueOfItem("additionalInfo") == "true"  ) {
                               
                              displayElement('accOrPhoneNum',true);  
                          }

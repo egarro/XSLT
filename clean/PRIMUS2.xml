@@ -280,6 +280,7 @@
               <textSize>26</textSize>
               <label>Alternate #2</label>
               <placeholder>Alternate #2</placeholder>
+              <validation>usphonenumber</validation>
           </item>        
       </group>
 
@@ -646,11 +647,11 @@
         <item name="addOnBasic" isHidden="YES" type="dropDown" required="NO">
             <option value="1">Primus World: $2.00/mo.</option>
             <option value="3">World Lite 30 (400 min): $7.00/mo.</option>
-            <option value="5">Unlimited Provincial: $6.00/mo.</option>
-            <option value="6">Unlimited North America: $10.00/mo.</option>
-            <option value="7">Unlimited World: $5.00/mo. (60 Countries)</option>
-            <option value="8">UK and India 1000: $9.95/mo.</option>
-            <option value="9">Unlimited World: $14.95/mo. (75 Countries)</option>
+            <option value="4">Unlimited Provincial: $6.00/mo.</option>
+            <option value="5">Unlimited North America: $10.00/mo.</option>
+            <option value="6">Unlimited World: $5.00/mo. (60 Countries)</option>
+            <option value="7">UK and India 1000: $9.95/mo.</option>
+            <option value="8">Unlimited World: $14.95/mo. (75 Countries)</option>
             <size>620</size>
             <submitName>addOn</submitName>
         </item>
@@ -660,8 +661,8 @@
                type="dropDown"
                required="NO">
             <option value="3">World Lite 30 (400 min): $7.00/mo.</option>
-            <option value="8">UK and India 1000: $9.95/mo.</option>
-            <option value="9">Unlimited World: $14.95/mo. (75 Countries)</option>
+            <option value="7">UK and India 1000: $9.95/mo.</option>
+            <option value="8">Unlimited World: $14.95/mo. (75 Countries)</option>
             <size>620</size>
             <submitName>addOn</submitName>
         </item>
@@ -673,11 +674,11 @@
             <option value="1">Primus World: $2.00/mo.</option>
             <option value="2">Truly International: $2.00/mo.</option>
             <option value="3">World Lite 30 (400 min): $7.00/mo.</option>
-            <option value="5">Unlimited Provincial: $6.00/mo.</option>
-            <option value="6">Unlimited North America: $10.00/mo.</option>
-            <option value="7">Unlimited World: $5.00/mo. (60 Countries)</option>
-            <option value="8">UK and India 1000: $9.95/mo.</option>
-            <option value="9">Unlimited World: $14.95/mo. (75 Countries)</option>
+            <option value="4">Unlimited Provincial: $6.00/mo.</option>
+            <option value="5">Unlimited North America: $10.00/mo.</option>
+            <option value="6">Unlimited World: $5.00/mo. (60 Countries)</option>
+            <option value="7">UK and India 1000: $9.95/mo.</option>
+            <option value="8">Unlimited World: $14.95/mo. (75 Countries)</option>
             <size>620</size>
             <submitName>addOn</submitName>
         </item>
@@ -686,8 +687,8 @@
                type="dropDown"
                required="NO">
             <option value="3">World Lite 30 (400 min): $7.00/mo.</option>
-            <option value="8">UK and India 1000: $9.95/mo.</option>
-            <option value="9">Unlimited World: $14.95/mo. (75 Countries)</option>
+            <option value="7">UK and India 1000: $9.95/mo.</option>
+            <option value="8">Unlimited World: $14.95/mo. (75 Countries)</option>
             <size>620</size>
             <submitName>addOn</submitName>
         </item>
@@ -1048,7 +1049,7 @@
         </relationship>   
 
         <relationship object="item::accOrPhoneNum">
-            <condition>exDSL == "false"</condition>
+            <condition>exDSL == "false" AND additionalInfo == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
@@ -1271,7 +1272,6 @@
            </if>
        </relationship>
        
-       
        <relationship object="item::modemRent">
            <condition>package == "2" AND term == "1" AND (tradBasicPlusNT == "7" OR tradBasicPlusNT == "16")</condition>
            <if>
@@ -1308,7 +1308,42 @@
            </if>
        </relationship>
        
+       <relationship object="item::modemRent">
+           <condition>package == "3" AND term == "1" AND (tradTripleNT == "7" OR tradTripleNT == "16")</condition>
+           <if>
+               <option value="1">Standard Modem Rental (7,16 Mbps) $2.95/mo.</option>
+               <option value="2">Wireless Modem Rental (7,16 Mbps) $3.95/mo.</option>
+               <option value="4">Standard Modem Purchase (7,16 Mbps) $34.95</option>
+               <option value="5">Wireless Modem Purchase (7,16 Mbps) $69.95</option>
+           </if>
+       </relationship>
        
+       <relationship object="item::modemRent">
+           <condition>package == "3" AND term == "1" AND (tradTripleNT == "25" OR tradTripleNT == "50")</condition>
+           <if>
+               <option value="3">Wireless Modem Rental (25,50 Mbps) $5.95/mo.</option>
+               <option value="6">Wireless Modem Purchase (25,50 Mbps) $99.95</option>
+           </if>
+       </relationship>
+       
+       <relationship object="item::modemRent">
+           <condition>package == "3" AND term == "2" AND (tradTriple2T == "7" OR tradTriple2T == "16")</condition>
+           <if>
+               <option value="1">Standard Modem Rental (7,16 Mbps) $2.95/mo.</option>
+               <option value="2">Wireless Modem Rental (7,16 Mbps) $3.95/mo.</option>
+               <option value="4">Standard Modem Purchase (7,16 Mbps) $34.95</option>
+               <option value="5">Wireless Modem Purchase (7,16 Mbps) $69.95</option>
+           </if>
+       </relationship>
+       
+       <relationship object="item::modemRent">
+           <condition>package == "3" AND term == "2" AND (tradTriple2T == "25" OR tradTriple2T == "50")</condition>
+           <if>
+               <option value="3">Wireless Modem Rental (25,50 Mbps) $5.95/mo.</option>
+               <option value="6">Wireless Modem Purchase (25,50 Mbps) $99.95</option>
+           </if>
+       </relationship>
+
         <relationship object="item::digiBasicNT">
             <condition>tradOrDig == "2" AND package == "1" AND term == "1"</condition>
             <if>
@@ -1442,7 +1477,39 @@
                <option value="2">Modem and Adapter Rental (25,50 Mbps) $5.95/mo.</option>
                <option value="4">Modem and Adapter Purchase (25,50 Mbps) $134.95</option>
            </if>
-       </relationship>       
+       </relationship>
+
+       <relationship object="item::modemAdapRent">
+           <condition>package == "3" AND term == "1" AND (digiTripleNT == "7" OR digiTripleNT == "16")</condition>
+           <if>
+               <option value="1">Modem and Adapter Rental (7,16 Mbps) $3.95/mo.</option>
+               <option value="3">Modem and Adapter Purchase (7,16 Mbps) $104.95</option>
+           </if>
+       </relationship>
+       
+       <relationship object="item::modemAdapRent">
+           <condition>package == "3" AND term == "1" AND (digiTripleNT == "25" OR digiTripleNT == "50")</condition>
+           <if>
+               <option value="2">Modem and Adapter Rental (25,50 Mbps) $5.95/mo.</option>
+               <option value="4">Modem and Adapter Purchase (25,50 Mbps) $134.95</option>
+           </if>
+       </relationship>
+       
+       <relationship object="item::modemAdapRent">
+           <condition>package == "3" AND term == "2" AND (digiTriple2T == "7" OR digiTriple2T == "16")</condition>
+           <if>
+               <option value="1">Modem and Adapter Rental (7,16 Mbps) $3.95/mo.</option>
+               <option value="3">Modem and Adapter Purchase (7,16 Mbps) $104.95</option>
+           </if>
+       </relationship>
+       
+       <relationship object="item::modemAdapRent">
+           <condition>package == "3" AND term == "2" AND (digiTriple2T == "25" OR digiTriple2T == "50")</condition>
+           <if>
+               <option value="2">Modem and Adapter Rental (25,50 Mbps) $5.95/mo.</option>
+               <option value="4">Modem and Adapter Purchase (25,50 Mbps) $134.95</option>
+           </if>
+       </relationship>
        
        <relationship object="item::tradHomePhFeatures-10">
             <condition>tradHomePhFeatures-4 == "true"</condition>

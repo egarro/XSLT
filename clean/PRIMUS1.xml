@@ -336,8 +336,8 @@
             <textSize>26</textSize>
             <label>Alternate #2</label>
             <placeholder>Alternate #2</placeholder>
+            <validation>usphonenumber</validation>
         </item>
-
         <item name="tradHomePh" isHidden="YES" type="dropDown" required="YES">
             <option value="1">Classic Home Phone: $38.35/mo.</option>
             <option value="2">Deluxe Home Phone: $42.35/mo.</option>
@@ -607,7 +607,7 @@
 
       <group name="internetInfo"
              isHidden="YES"
-             title="Hight Speed Internet Services Options">
+             title="High Speed Internet Services Options">
         <item name="highSpeedNT"
                isHidden="YES"
                type="dropDown"
@@ -665,6 +665,7 @@
             <size>620</size>
             <textSize>26</textSize>
             <label>Extra Quantity Required</label>
+            <validation>numericOnly</validation>
         </item>
           <item name="wmFilter" isHidden="YES" type="checkbox" required="NO" submitsValue="YES">
             <detailLabel>Wallmount filter $15 each</detailLabel>
@@ -1470,7 +1471,7 @@
         </relationship>   
 
         <relationship object="item::accOrPhoneNum">
-            <condition>exDSL == "false"</condition>
+            <condition>exDSL == "false" AND additionalInfo == "true"</condition>
             <if>
                 <show>THIS</show>
             </if>
