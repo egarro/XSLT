@@ -18,4 +18,10 @@ java -jar saxon9he.jar "/Users/egarro/Desktop/MADE MEDIA/forms/XML/Primus/PRIMUS
 
 will apply the toHTML.xsl stylesheet to the PRIMUS1.xml source-xml and will create a PRIMUS1.html file in the directory where you type in the command (you must have the [saxon9he.jar](saxon9he.jar) file in that directory).
 
+To validate .xmls against the [MM XML FORM BUILDER LANGUAGE V.1.1](XMLDocumentationV1.1.pdf) implemented in the schema [form.xsd](form.xsd), use:
 
+```Shell
+java -jar saxon9he.jar Validate -s:"/Users/egarro/Desktop/MADE MEDIA/forms/XML/Primus/PRIMUS1.xml" -xsd:"form.xsd"
+```
+
+For this last feature, there seems to be some licensing issue. I'm working hard to hack this somehow.
