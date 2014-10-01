@@ -12,19 +12,22 @@
                <title><xsl:value-of select="@formPrefix"/> Form</title>
                <meta name="viewport" content="height=device-height"/>
                <link rel="stylesheet" type="text/css" href="css/HTMLForm.css" />
+               <link rel="stylesheet" type="text/css" href="css/pbox.css" />
+               <link rel="stylesheet" type="text/css" href="css/sig.css" />
+               <link rel="stylesheet" type="text/css" href="css/pikaday.css" />
                <script src="js/jquery-2.1.1.js" />
                <script src="js/formValidation.js" />
                <script src="js/HTMLForm.js" />
+               <script src="js/sha256.min.js"></script>
+               <script src="js/canvas2blob.js"></script>
+               <script src="js/pbox.js"></script>
+               <script src="js/sig.js"></script>
+               <script src="js/jsencrypt.min.js"></script>
+               <script src="js/moment.min.js"></script>
+               <script src="js/pikaday.min.js"></script>
            </head>
             <body>
-                <div class="form_header">
-                    <div class="form_menu">
-                        <span></span>
-                    </div>
-                    <div class="form_delete" style="display:none;">
-                        <span></span>
-                    </div>
-                </div>
+                <div class="form_header" />               
                 <form action="#" id="theForm" onsubmit="return false;">  
                     <div class="HTMLForm">
                     <xsl:for-each select="page">
@@ -50,7 +53,11 @@
                                                 <xsl:attribute name="style">display:none;</xsl:attribute>                        
                                             </xsl:if>
                                             <xsl:attribute name="id"><xsl:value-of select="@name"/></xsl:attribute>
-                                            <xsl:attribute name="class">MM<xsl:value-of select="@type"/></xsl:attribute>
+                                            <xsl:attribute name="class">MM<xsl:value-of select="@type"/>
+                                                <xsl:if test="not(./label)">
+                                                    <xsl:text> noLabel</xsl:text>                        
+                                                </xsl:if>                                            
+                                            </xsl:attribute>
                                             <xsl:if test="@type='signatureBox'">
                                                 <xsl:attribute name="signed">false</xsl:attribute>                        
                                             </xsl:if>
@@ -80,11 +87,6 @@
                                     <div class='timerInner'>
                                         <span>0:00</span>
                                     </div>
-                                </div>
-                                <div class='lineBar'>
-                                    <div class='reached'></div>
-                                    <div class='circleIcon'></div>
-                                    <div class='errorList'></div>
                                 </div>
                                 <div class='errorSection'></div>
                             </div>
@@ -355,8 +357,8 @@
             </xsl:when>
             <xsl:when test="@type='signatureBox'">
                 <a>
-                    <xsl:attribute name="href">javascript:openSignaturePanel('<xsl:value-of select="@name"/>');</xsl:attribute>   
-                    <div class="signBox"><span>TAP HERE TO SIGN</span></div>    
+                    <xsl:attribute name="href">javascript:openSigPanel('<xsl:value-of select="@name"/>');</xsl:attribute>   
+                    <div class="signBox"><span>CLICK HERE TO SIGN</span></div>    
                 </a>
                 <xsl:if test="@submitsValue='YES'">
                     <input type="hidden" value="1">
@@ -392,7 +394,7 @@
                 </div>    
             </xsl:when>
             <xsl:when test="@type='dateField'">
-                <input type="date" data-role="date" data-inline="true" size="50" onchange="javascript:relationships(this);">
+                <input type="text" data-role="date" data-inline="true" size="50" onchange="javascript:relationships(this);">
                     
                     <xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
                     <xsl:if test="./placeholder">
@@ -403,6 +405,12 @@
                     </xsl:if>
                     <xsl:if test="./formatting">
                         <xsl:attribute name="placeholder"><xsl:value-of select="./formatting"/></xsl:attribute>
+                    </xsl:if>
+                    <xsl:if test="./minAgeRestriction">
+                        <xsl:attribute name="min-age"><xsl:value-of select="./minAgeRestriction"/></xsl:attribute>
+                    </xsl:if>
+                    <xsl:if test="./maxAgeRestriction">
+                        <xsl:attribute name="max-age"><xsl:value-of select="./maxAgeRestriction"/></xsl:attribute>
                     </xsl:if>
                 </input>    
             </xsl:when>
